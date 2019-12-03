@@ -1,0 +1,39 @@
+<loader [showIf]="request.onTheGo">
+
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title" *ngIf="!edit">{{ 'modal.city.title.edit' | translate }}</h5>
+            <h5 class="card-title" *ngIf="edit">{{ 'modal.city.title.save' | translate }}</h5>
+
+            <div class="alert alert-danger" *ngIf="request.error">{{request.error.message}}
+                <p *ngIf="request.error.body">{{request.error.body.error}}</p>
+            </div>
+            <form [formGroup]="form" (ngSubmit)="save()">
+                <input type="hidden" class="form-control" placeholder="CITY_ID" formControlName="CITY_ID">
+                <ng-select [items]="countries" [readonly]="!this.edit" bindLabel="COUNTRY" autofocus
+                    bindValue="COUNTRY_ID" formControlName="COUNTRY_ID">
+                </ng-select>
+                <div class="form-group">
+                    <label>{{'City.CITY'|translate}} </label>
+                    <input type="text" class="form-control" placeholder="{{'City.CITY'|translate}}"
+                        formControlName="CITY" name="CITY">
+                </div>
+                <div class="form-group">
+                    <label>{{'City.CITY'|translate}} </label>
+                    <input type="text" class="form-control" placeholder="{{'City.CITY_CODE'|translate}}"
+                        formControlName="CITY_CODE" name="CITY_CODE">
+                </div>
+                <div class="form-check">
+                    <input type="checkbox" class="form-check-input " id="exampleCheck1" formControlName="ACTIVE">
+                    <label class="form-check-label" for="exampleCheck1 ">{{ 'active' | translate }}</label>
+                </div>
+                <button type="submit" class="btn btn-xs btn-primary float-right text-white" *ngIf="!edit"
+                    [disabled]="!form.valid">{{ 'KAYDET' | translate }}</button>
+                <button type="submit" class="btn btn-xs btn-success float-right text-white" *ngIf="edit"
+                    [disabled]="!form.valid">{{ 'EKLE' | translate }}</button>
+                <a class="btn btn-xs btn-warning float-right text-white mr-1"
+                    (click)="cancel()">{{ 'cancel' | translate }}</a>
+            </form>
+        </div>
+    </div>
+</loader>

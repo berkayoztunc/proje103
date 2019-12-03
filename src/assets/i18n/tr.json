@@ -1,0 +1,217 @@
+{
+    "BENEFIT_PACK_ID": "benefit paketleri",
+    "BUSINESS_PARTNER_ID": "İş ortağı partneri",
+    "Benefit": {
+        "ACTIVE": "Aktif",
+        "BENEFIT": "Benefit açıklaması",
+        "BENEFIT_ID": "Benefit ID",
+        "EXPLANATION": "Benefit",
+        "action": "İşlemler",
+        "email_ad_placeholser": "Benefit ile ara",
+        "search": "Arama butonu",
+        "search_clear": "Arama temizle"
+    },
+    "BenefitPack": {
+        "ACTIVE": "Aktif",
+        "BENEFIT_PACK": "Benefit paket adı",
+        "BENEFIT_PACK_ID": "Benefit Paket ID",
+        "action": "İşlemler",
+        "benefist_button": "Benefits",
+        "email_ad_placeholser": "Benefit paket adı ile ara",
+        "search": "Arama butonu",
+        "search_clear": "Arama temizle"
+    },
+    "CURRENCY": "kur",
+    "CancelReason": {
+        "ACTIVE": "Aktif",
+        "CANCEL_REASON": "İptal nedeni",
+        "CANCEL_REASON_ID": "İptal nedene ID",
+        "CANCEL_REASON_TYPE": "İptal nedeni tipi",
+        "action": "İşlemler",
+        "email_ad_placeholser": "İptal nedeni ile ara",
+        "search": "Arama butonu",
+        "search_clear": "Arama temizle"
+    },
+    "Channel": {
+        "ACTIVE": "Aktif",
+        "PARTNER_CHANNEL": "Kanal adı",
+        "PARTNER_CHANNEL_ID": "Kanal ID",
+        "action": "İşlemler",
+        "email_ad_placeholser": "Kanal adı ile ara",
+        "search": "Arama butonu",
+        "search_clear": "Arama temizle"
+    },
+    "City": {
+        "ACTIVE": "Aktif",
+        "CITY": "Şehir adı",
+        "CITY_CODE": "Şehir Numarası",
+        "CITY_ID": "Şehir ID",
+        "action": "İşlemler",
+        "email_ad_placeholser": "Şehir adı ile ara",
+        "search": "Arama butonu",
+        "search_clear": "Arama temizle"
+    },
+    "Country": {
+        "ACTIVE": "Aktif",
+        "COUNTRY": "Ülke adı",
+        "COUNTRY_ID": "Ülke ID",
+        "COUNTRY_CODE": "Ülke kodu",
+        "PHONE_CODE": "Telefon kodu",
+        "action": "İşlemler",
+        "city_button": "Şehirler",
+        "email_ad_placeholser": "Ülke adı ile ara",
+        "search": "Arama butonu",
+        "search_clear": "Arama temizle"
+    },
+    "Currency": {
+        "ACTIVE": "Aktif",
+        "CURRENCY": "Para birimi",
+        "CURRENCY_ID": "Para birimi ID",
+        "action": "İşlemler",
+        "email_ad_placeholser": "Para birimi ile ara",
+        "search": "Arama butonu",
+        "search_clear": "Arama temizle"
+    },
+    "EKLE": "Ekle",
+    "KAYDET": "Kaydet",
+    "MIGRATION_PRODUCT_ID": "Birleştirilen ürün numarası",
+    "PARTNER_CHANNEL_ID": "Partner kanalı",
+    "PRODUCT_SALE_TYPE": "Ürün satış tipi",
+    "PRODUCT_TYPE": "Ürün tipi",
+    "Partner": {
+        "ACTIVE": "Aktif",
+        "PARTNER": "Partner adı",
+        "PARTNER_ID": "Partner ID",
+        "action": "İşlemler",
+        "email_ad_placeholser": "Partner adı ile ara",
+        "search": "Arama butonu",
+        "search_clear": "Arama temizle"
+    },
+    "Role": {
+        "ACTIVE": "Aktif",
+        "ROLE": "Role Adı",
+        "ROLE_ID": "Role ID",
+        "action": "İşlemler",
+        "email_ad_placeholser": "Role adı ile ara",
+        "search": "Arama butonu",
+        "search_clear": "Arama temizle"
+    },
+    "SERVICE_TYPE_ID": "Servis tipi",
+    "SOLDBY": "Satıcı",
+    "ServiceType": {
+        "ACTIVE": "Aktif",
+        "PREFIX": "Açıklama",
+        "SERVICE_TYPE": "Servis Tipi",
+        "SERVICE_TYPE_ID": "Servis tipi ID",
+        "action": "İşlemler",
+        "email_ad_placeholser": "Serivis tipi adı ile ara",
+        "search": "Arama butonu",
+        "search_clear": "Arama temizle"
+    },
+    "active": "Aktif",
+    "app_name": "Policy Platform",
+    "cancel": "İptal",
+    "delete_item": "bir silme işlemi yapıyorsunuz, eminmisiniz ?",
+    "dialog_no": "Hayır",
+    "dialog_yes": "Evet",
+    "form_change": "Form alanında bir değişiklik yaptınız, iptal etmek istediğinizden eminmisiniz ?",
+    "menu": {
+        "benefit": "Kazanımlar",
+        "benefitPack": "Kazanım paketleri",
+        "cancelreason": "İptal nedenleri",
+        "channel": "Kanallar",
+        "country": "Ülkeler",
+        "cruds": "Tanımlamalar",
+        "currency": "Kurlar",
+        "dashboard": "Platform",
+        "partner": "Partnerler",
+        "password": {
+            "newpassword": "Yeni şifre",
+            "newpasswordrepead": "Tekrar yeni şifre",
+            "oldpassword": "Eski şifre"
+        },
+        "policy": "Poliçe Sorgulama",
+        "product": "Ürünler",
+        "resetpassword": "Şifreni sıfırla",
+        "role": "Roller",
+        "serviceType": "Servis Tipleri",
+        "signout": "Güvenli çıkış",
+        "user": "Kullanıcı"
+    },
+    "modal": {
+        "benefit": {
+            "title": {
+                "save": "Kazanım Ekle"
+            }
+        },
+        "role": {
+            "role": "Rol",
+            "title": {
+                "edit": "Rol düzenle",
+                "save": "Rol ekle"
+            }
+        },
+        "user": {
+            "email": {
+                "email": "E-posta",
+                "validation": "E-posta alanı için geçerli bir e-posta girin"
+            },
+            "name": "Ad soyad",
+            "title": {
+                "edit": "Kullanıcı düzenle",
+                "save": "Kullanıcı ekle"
+            }
+        }
+    },
+    "product": {
+        "ACTIVE": "Aktif",
+        "BENEFIT_PACK_ID": "Ürün benefit paketi",
+        "BUSINESS_MODEL": "İş modeli",
+        "BUSINESS_PARTNER_ID": "Ürün partneri",
+        "CURRENCY": "Kur",
+        "DUPLICATE_CONTROL": "Kopya kontrol",
+        "EXPLANATION": "Açıklama",
+        "GUIDE": "Anlatım",
+        "MIGRATION_DATE": "Birleştirme tarihi",
+        "MIGRATION_PRODUCT_ID": "Birleştirildiği ürün",
+        "NEW_COMMISSION_RATE": "Yeni komisyon oranı",
+        "OLD_CAMPAIGN_ID": "Eski kampanyan numarası",
+        "OLD_PRODUCT_ID": "Eski ürün numarası",
+        "PARTNER_CHANNEL_ID": "Ürün kanalı",
+        "POLICY_LENGHT_MONTHS": "Ürünün poliçe süresi",
+        "PRICE": "Fiyat",
+        "PRODUCT": "Ürün adı",
+        "PRODUCT_ID": "Ürün ID",
+        "PRODUCT_SALE_TYPE": "Ürün satış tipi",
+        "PRODUCT_TYPE": "Ürün tipi",
+        "REFUND_CANCEL_PERIOD_DAYS": "Ürünin iptal ödeme süresi",
+        "RENEWAL": "Yenilenme",
+        "RENEWAL_COMMISSION_RATE": "Yenilenme komisyon oranı",
+        "SERVICE_TYPE_ID": "Ürün servisi tipi",
+        "SOLDBY": "Ürünün satış yolu",
+        "WELCOME": "Hoşgeldin",
+        "action": "İşlemler",
+        "email_ad_placeholser": "Ürün adı veya Numarası ile ara",
+        "search": "Arama butonu",
+        "search_clear": "Arama temizle"
+    },
+    "save": "kaydet",
+    "swal": {
+        "forgetpassword": {
+            "placeholder": "E-posta adresi",
+            "title": "Lütfen sistemdeki e-posta adresini yazın"
+        },
+        "okey": "Tamam"
+    },
+    "user": {
+        "action": "İşlemler",
+        "active": "Aktif",
+        "add_new": "Yeni",
+        "email": "E-posta",
+        "email_ad_placeholser": "ad ve email ile ara",
+        "id": "ID",
+        "name": "Ad soyad",
+        "search": "Arama butonu",
+        "search_clear": "Arama temizle"
+    }
+}

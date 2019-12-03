@@ -1,0 +1,54 @@
+<div class="card">
+    <div class="card-body">
+
+        <div class="row">
+            <div class="col-md-6 ">
+                <div class="input-group">
+
+                        <input type="text" class="form-control form-control-sm"
+                        [placeholder]="'user.email_ad_placeholser' | translate" required [(ngModel)]="search">
+                    <div class="input-group-append">
+                        <a class="btn btn-primary btn-sm" (click)="searchClick()" [title]="'user.search' | translate"><i
+                                class="fas fa-search"></i></a>
+                        <a class="btn btn-info btn-sm" (click)="search = ''; searchClick()"
+                            [title]="'user.search_clear' | translate"><i class="fas fa-eraser"></i></a>
+                        <a class="btn btn-success btn-sm" (click)="create()" [title]="'user.add_new' | translate"><i
+                                class="fas fa-plus"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row pt-3 table-scrool">
+            <div class="col-12">
+                <table class="table">
+                    <thead class="bg-primary text-white">
+                        <tr>
+                            <th>{{ 'BenefitPack.BENEFIT_PACK_ID' |translate}}</th>
+                            <th>{{'BenefitPack.BENEFIT_PACK'|translate}}</th>
+                            <th>{{'BenefitPack.ACTIVE' | translate}}</th>
+                            <th>{{'BenefitPack.action'|translate}}</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <tr *ngFor="let BenefitPack of BenefitPacks; let i = index">
+                            <th scope="row">{{BenefitPack.BENEFIT_PACK_ID}}</th>
+                            <td>{{BenefitPack.BENEFIT_PACK}}</td>
+                            <td>
+                                <i class="fas fa-check fa-2x text-success" *ngIf="BenefitPack.ACTIVE"></i>
+                                <i class="fas fa-times fa-2x text-danger" *ngIf="!BenefitPack.ACTIVE"></i>
+
+                            </td>
+                            <td>
+                                <a class="btn btn-xs btn-warning " (click)="select(BenefitPack,i)"><i class="fas fa-edit"></i></a>
+                                <a class="btn btn-xs btn-info text-white" (click)="viewBenefits(BenefitPack)">{{'BenefitPack.benefist_button' | translate}}</a>
+                                <a class="btn btn-xs btn-danger " (click)="delete(BenefitPack,i)"><i class="fas fa-trash"></i></a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+    </div>
+</div>

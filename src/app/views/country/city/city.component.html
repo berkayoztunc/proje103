@@ -1,0 +1,58 @@
+<div class="card">
+    <div class="card-body">
+
+        <div class="row">
+            <div class="col-md-6 ">
+                <div class="input-group">
+                    <input type="text" class="form-control form-control-sm"
+                        [placeholder]="'user.email_ad_placeholser' | translate" required [(ngModel)]="search">
+                    <div class="input-group-append">
+                        <a class="btn btn-primary btn-sm" (click)="searchClick()" [title]="'user.search' | translate"><i
+                                class="fas fa-search"></i></a>
+                        <a class="btn btn-info btn-sm" (click)="search = ''; searchClick()"
+                            [title]="'user.search_clear' | translate"><i class="fas fa-eraser"></i></a>
+                        <a class="btn btn-success btn-sm" (click)="create()" [title]="'user.add_new' | translate"><i
+                                class="fas fa-plus"></i></a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="row pt-3 table-scrool">
+            <div class="col-12">
+                <table class="table">
+                    <thead class="bg-primary text-white">
+                        <tr>
+                            <th>{{ 'City.CITY_ID' |translate}}</th>
+                            <th>{{'City.CITY'|translate}}</th>
+                            <th>{{'City.CITY_CODE' | translate}}</th>
+                            <th>{{'City.ACTIVE' | translate}}</th>
+                            <th>{{'City.action'|translate}}</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <tr *ngFor="let City of cityies; let i = index">
+                            <th scope="row">{{City.CITY_ID}}</th>
+                            <td>{{City.CITY}}</td>
+                            <td>{{City.CITY_CODE}}</td>
+                            <td>
+                                <i class="fas fa-check fa-2x text-success" *ngIf="City.ACTIVE"></i>
+                                <i class="fas fa-times fa-2x text-danger" *ngIf="!City.ACTIVE"></i>
+
+                            </td>
+                            <td>
+                                <a class="btn btn-xs btn-warning " (click)="select(City,i)"><i
+                                        class="fas fa-edit"></i></a>
+
+                                <a class="btn btn-xs btn-danger " (click)="delete(City,i)"><i
+                                        class="fas fa-trash"></i></a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+    </div>
+</div>

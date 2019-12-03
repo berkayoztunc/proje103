@@ -1,0 +1,62 @@
+<div class="row">
+    <div class="col-md-12">
+        <div class="alert alert-warning" *ngIf="request.error">
+            {{request.error ? request.error.message: null }}
+            <p *ngIf="request.body">{{request.body.error}}</p>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-body">
+                <div class="input-group">
+
+                    <input type="text" class="form-control" [placeholder]="'Benefit.email_ad_placeholser' | translate"
+                        required [(ngModel)]="search">
+                    <div class="input-group-append">
+
+                        <a class="btn btn-primary" (click)="searchClick()" [title]="'Benefit.search' | translate"><i
+                                class="fas fa-search"></i></a>
+                        <a class="btn btn-info" (click)="search = null" [title]="'Benefit.search_clear' | translate"><i
+                                class="fas fa-eraser"></i></a>
+
+                    </div>
+                </div>
+                <br>
+                <ul class="list-group">
+                    <li class="list-group-item" *ngFor="let item of data ; let i = index" data-toggle="collapse"
+                        [attr.data-target]="'#list'+i" aria-expanded="false" [attr.aria-controls]="'list'+i">
+                        {{item.CAPTION}}
+                        <div class="collapse" [id]="'list'+i">
+                                <p>{{item.BODY}}</p>
+
+                        </div>
+                        <a class="btn btn-success btn-xs float-right" (click)="add(item)">
+                            <i class="fas fa-plus "></i>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    
+         
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-body">
+                <ul class="list-group">
+                    <li class="list-group-item" *ngFor="let item of selectedPackData ; let i = index"
+                        data-toggle="collapse" [attr.data-target]="'#selected'+i" aria-expanded="false"
+                        [attr.aria-controls]="'selected'+i">
+                        {{item.CAPTION}}
+                        <div class="collapse" [id]="'selected'+i">
+                            <p>{{item.BODY}}</p>
+                        </div>
+                        <a class="btn btn-danger btn-xs float-right" (click)="remove(item,i) ">
+                            <i class="fas fa-trash "></i>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,54 @@
+<div class="card">
+    <div class="card-body">
+
+        <div class="row">
+            <div class="col-md-6 ">
+                <div class="input-group">
+                    <input type="text" class="form-control form-control-sm"
+                        [placeholder]="'user.email_ad_placeholser' | translate" required [(ngModel)]="search">
+                    <div class="input-group-append">
+                        <a class="btn btn-primary btn-sm" (click)="searchClick()" [title]="'user.search' | translate"><i
+                                class="fas fa-search"></i></a>
+                        <a class="btn btn-info btn-sm" (click)="search = ''; searchClick()"
+                            [title]="'user.search_clear' | translate"><i class="fas fa-eraser"></i></a>
+                        <a class="btn btn-success btn-sm" (click)="create()" [title]="'user.add_new' | translate"><i
+                                class="fas fa-plus"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row pt-3 table-scrool">
+            <div class="col-12">
+                <table class="table">
+                    <thead class="bg-primary text-white">
+                        <tr>
+                            <th>{{ 'Channel.PARTNER_CHANNEL_ID' |translate}}</th>
+                            <th>{{'Channel.PARTNER_CHANNEL'|translate}}</th>
+                            <th>{{'Channel.ACTIVE' | translate}}</th>
+                            <th>{{'Channel.action'|translate}}</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <tr *ngFor="let Channel of Channels; let i = index">
+                            <th scope="row">{{Channel.PARTNER_CHANNEL_ID}}</th>
+                            <td>{{Channel.PARTNER_CHANNEL}}</td>
+                            <td>
+                                <i class="fas fa-check fa-2x text-success" *ngIf="Channel.ACTIVE"></i>
+                                <i class="fas fa-times fa-2x text-danger" *ngIf="!Channel.ACTIVE"></i>
+
+                            </td>
+                            <td>
+                                <a class="btn btn-xs btn-warning " (click)="select(Channel,i)"><i
+                                        class="fas fa-edit"></i></a>
+                               
+                                <a class="btn btn-xs btn-danger " (click)="delete(Channel,i)"><i class="fas fa-trash"></i></a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+    </div>
+</div>

@@ -1,0 +1,180 @@
+<div class="row m-0 p-0">
+  <div class="col-md-2 p-0 sidebar">
+    <div class="card">
+      <div class="card-body">
+        <form>
+          <div class="form-group">
+            <label for="exampleInputEmail1">Search policy with</label>
+            <input type="email" class="form-control form-control-sm" id="exampleInputEmail1"
+              aria-describedby="emailHelp" placeholder="Customer name">
+            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+            <input type="email" class="form-control form-control-sm" id="exampleInputEmail1"
+              aria-describedby="emailHelp" placeholder="policy number">
+            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+            <input type="email" class="form-control form-control-sm" id="exampleInputEmail1"
+              aria-describedby="emailHelp" placeholder="phone number">
+            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+          </div>
+
+          <button type="submit" class="btn btn-primary btn-xs btn-block">Search</button>
+        </form>
+      </div>
+    </div>
+
+     <ul class="list-group">
+          <li class="list-group-item active">Last search</li>
+          <li class="list-group-item d-flex justify-content-between align-items-center">berkay    <span class="badge badge-primary badge-pill">7</span>           </li>
+          <li class="list-group-item d-flex justify-content-between align-items-center">Berkay öztunç    <span class="badge badge-primary badge-pill">14</span>           </li>
+          <li class="list-group-item d-flex justify-content-between align-items-center">123928882    <span class="badge badge-primary badge-pill">20</span>           </li>
+          <li class="list-group-item d-flex justify-content-between align-items-center">5321729630     <span class="badge badge-primary badge-pill">20</span>           </li>
+      </ul>
+
+  </div>
+  <div class="col-md-8 p-0 ">
+    <div class="card">
+      <div class="card-body">
+        <router-outlet></router-outlet>
+        <table class="table table-hover">
+          <thead>
+            <tr>
+              <th>Column</th>
+              <th>Column</th>
+              <th>Column</th>
+              <th>Column</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="clickable" data-toggle="collapse" data-target="#group-of-rows-1" aria-expanded="false"
+              aria-controls="group-of-rows-1">
+              <td><i class="fa fa-plus" aria-hidden="true"></i></td>
+              <td>data</td>
+              <td>data</td>
+              <td>data</td>
+            </tr>
+          </tbody>
+          <tbody id="group-of-rows-1" class="collapse">
+            <tr>
+              <td>- child row</td>
+              <td>data 1</td>
+              <td>data 2</td>
+              <td>data 3</td>
+              <td>data 4</td>
+            </tr>
+            <tr>
+              <td>- child row</td>
+              <td>data 1</td>
+              <td>data 1</td>
+              <td>data 1</td>
+            </tr>
+          </tbody>
+          <tbody>
+            <tr class="clickable" data-toggle="collapse" data-target="#group-of-rows-2" aria-expanded="false"
+              aria-controls="group-of-rows-2">
+              <td><i class="fa fa-plus" aria-hidden="true"></i></td>
+              <td>data</td>
+              <td>data</td>
+              <td>data</td>
+            </tr>
+          </tbody>
+          <tbody id="group-of-rows-2" class="collapse">
+            <tr>
+              <td>- child row</td>
+              <td>data 2</td>
+              <td>data 2</td>
+              <td>data 2</td>
+            </tr>
+            <tr>
+              <td>- child row</td>
+              <td>data 2</td>
+              <td>data 2</td>
+              <td>data 2</td>
+            </tr>
+          </tbody>
+        </table>
+
+      </div>
+    </div>
+  </div>
+  <div class="col-md-2 p-0 sidebar">
+    <div class="list-group filter-wrap">
+      <article class="list-group-item">
+        <header class="filter-header">
+          <a href="#" data-toggle="collapse" data-target="#collapse1" aria-expanded="true" class="">
+            <i class="icon-action fa fa-chevron-down"></i>
+            <h6 class="title">Policy pack </h6>
+          </a>
+        </header>
+        <div class="filter-content collapse show" id="collapse1" style="">
+          <table class="table table-hover">
+            <tbody>
+              <tr>
+                <td>Mark</td>
+                <td>Otto</td>
+              </tr>
+              <tr>
+                <td>Thornton</td>
+                <td>@fat</td>
+              </tr>
+              <tr>
+                <td>the Bird</td>
+                <td>@twitter</td>
+              </tr>
+            </tbody>
+          </table>
+        </div> <!-- collapse -filter-content  .// -->
+      </article>
+      <article class="list-group-item">
+        <header class="filter-header">
+          <a href="#" data-toggle="collapse" data-target="#collapse2">
+            <i class="icon-action fa fa-chevron-down"></i>
+            <h6 class="title">Policy information </h6>
+          </a>
+        </header>
+        <div class="filter-content collapse show" id="collapse2">
+            <table class="table table-hover">
+                <tbody>
+                  <tr>
+                    <td>Mark</td>
+                    <td>Otto</td>
+                  </tr>
+                  <tr>
+                    <td>Thornton</td>
+                    <td>@fat</td>
+                  </tr>
+                  <tr>
+                    <td>the Bird</td>
+                    <td>@twitter</td>
+                  </tr>
+                </tbody>
+              </table>
+        </div>
+      </article>
+      <article class="list-group-item">
+        <header class="filter-header">
+          <a href="#" data-toggle="collapse" data-target="#collapse3">
+            <i class="icon-action fa fa-chevron-down"></i>
+            <h6 class="title">Customer adres </h6>
+          </a>
+        </header>
+        <div class="filter-content collapse" id="collapse3">
+            <table class="table table-hover">
+                <tbody>
+                  <tr>
+                    <td>Mark</td>
+                    <td>Otto</td>
+                  </tr>
+                  <tr>
+                    <td>Thornton</td>
+                    <td>@fat</td>
+                  </tr>
+                  <tr>
+                    <td>the Bird</td>
+                    <td>@twitter</td>
+                  </tr>
+                </tbody>
+              </table>
+        </div>
+      </article>
+    </div>
+  </div>
+</div>

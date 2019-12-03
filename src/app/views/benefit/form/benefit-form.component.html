@@ -1,0 +1,33 @@
+<loader [showIf]="request.onTheGo">
+
+<div class="card">
+    <div class="card-body">
+            <h5 class="card-title" *ngIf="!edit">{{ 'modal.benefit.title.edit' | translate }}</h5>
+            <h5 class="card-title" *ngIf="edit">{{ 'modal.benefit.title.save' | translate }}</h5>
+            <app-alert></app-alert>
+
+        <form [formGroup]="form" (ngSubmit)="save()">
+                <input type="hidden" class="form-control" placeholder="BENEFIT_ID" formControlName="BENEFIT_ID">
+
+            <div class="form-group">
+                <label>{{'Benefit.BENEFIT'|translate}} </label>
+                <input type="text" class="form-control" placeholder="{{'Benefit.BENEFIT'|translate}}" formControlName="BENEFIT" name="BENEFIT">
+            </div>
+            <div class="form-group">
+                <label>{{'Benefit.EXPLANATION'|translate}} </label>
+                <textarea name="" id="" cols="30" rows="10" class="form-control" placeholder="{{'Benefit.EXPLANATION'|translate}}" formControlName="EXPLANATION"></textarea>
+            </div>
+            <div class="form-check">
+                    <input type="checkbox" class="form-check-input " id="exampleCheck1" formControlName="ACTIVE">
+                    <label class="form-check-label" for="exampleCheck1 ">{{ 'active' | translate }}</label>
+                </div>
+                <button type="submit" class="btn btn-xs btn-primary float-right text-white" *ngIf="!edit"
+                    [disabled]="!form.valid">{{ 'KAYDET' | translate }}</button>
+                <button type="submit" class="btn btn-xs btn-success float-right text-white" *ngIf="edit"
+                    [disabled]="!form.valid">{{ 'EKLE' | translate }}</button>
+                <a class="btn btn-xs btn-warning float-right text-white mr-1"
+                    (click)="cancel()">{{ 'cancel' | translate }}</a>
+        </form>
+    </div>
+</div>
+</loader>

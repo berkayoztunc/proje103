@@ -1,0 +1,40 @@
+{
+    "fileType" :{ 
+        "test" : {
+          "colm" : ["name","email","surname","adress","price","created_at"],
+          "rule" : {
+              "name" : {
+                  "validation" : "required|max:100|min:3",
+                  "type" : "string"
+              },
+              "email": {
+                  "validation":"email|max:255",
+                  "type":"string"
+  
+              },
+              "surname" : {
+                  "validation":"required|min:3|max:100",
+                  "type" : "string"
+  
+              },
+              "adress" : {
+                  "validation" : "required|min:10|max:300",
+                  "type" : "string"
+              },
+              "price" :{
+                  "validation" : "required|number|max:300",
+                  "type" : "integer",
+                  "former": "return value * 100"
+
+              },
+              "created_at": {
+                "validation" : "required|date:YYYYmmDD",
+                "type" : "date:YYYYmmDD"
+              }
+          }
+      }
+    },
+    "updated_at" : "11/11/2019",
+    "update_staff" :"berkay",
+    "version" : "0.0.1"
+  }

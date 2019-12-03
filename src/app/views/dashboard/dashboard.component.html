@@ -1,0 +1,70 @@
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary ">
+    <a class="navbar-brand" href="#">
+        {{ 'app_name' | translate }}
+      </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+           
+            <li class="nav-item active">
+              <a class="nav-link" routerLink="policy">{{ 'menu.policy' | translate }}</a>
+            </li>
+            <li class="nav-item dropdown active">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                {{ 'menu.cruds' | translate }}
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" routerLink="benefit">{{ 'menu.benefit' | translate }}</a>
+                <a class="dropdown-item" routerLink="benefitPack">{{ 'menu.benefitPack' | translate }}</a>
+                <a class="dropdown-item" routerLink="cancelReason">{{ 'menu.cancelreason' | translate }}</a>
+                <a class="dropdown-item" routerLink="country">{{ 'menu.country' | translate }}</a>
+                <a class="dropdown-item" routerLink="partner">{{ 'menu.partner' | translate }}</a>
+                <a class="dropdown-item" routerLink="channel">{{ 'menu.channel' | translate }}</a>
+                <a class="dropdown-item" routerLink="currency">{{ 'menu.currency' | translate }}</a>
+                <a class="dropdown-item" routerLink="product">{{ 'menu.product' | translate }}</a>
+                <a class="dropdown-item" routerLink="role">{{ 'menu.role' | translate }}</a>
+                <a class="dropdown-item" routerLink="serviceType">{{ 'menu.serviceType' | translate }}</a>
+                <a class="dropdown-item" routerLink="user">{{ 'menu.user' | translate }}</a>
+              </div>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" routerLink="upload-csv">{{ 'menu.upload-csv' | translate }}</a>
+              </li>
+          </ul>
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item dropdown active">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown2" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                     {{ storage.auth.user.NAME}}
+                  </a>
+                  <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown2">
+                    <a class="dropdown-item" (click)="passwordReset()">{{ 'menu.resetpassword' | translate }}</a>
+                    <a class="dropdown-item" (click)="signout()">{{ 'menu.signout' | translate }}</a>
+                  </div>
+            </li>
+          </ul>
+        </div>
+        
+      </nav>
+      <div class="container-fuild">
+          <div class="row">
+                <div class="col-md-12">
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                          <li [class]="i == fragment.length-1 ? 'breadcrumb-item active' : 'breadcrumb-item'" *ngFor="let item of fragment ; let i = index">
+                            <a [routerLink]="[item.url]" *ngIf="i != fragment.length-1">{{'menu.'+item.name | translate}} </a>
+                            <span *ngIf="i == fragment.length-1">{{'menu.'+item.name | translate}}</span>
+                          </li>
+                        </ol>
+                        
+                  </nav>
+                    <div class="components p-1">
+                      
+                        <router-outlet></router-outlet>
+                    </div>
+                </div>
+          </div>
+      </div>

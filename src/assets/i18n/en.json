@@ -1,0 +1,84 @@
+{
+    "BENEFIT_PACK_ID": "benefit paketleri",
+    "BUSINESS_MODEL": "İş modeli",
+    "BUSINESS_PARTNER_ID": "İş ortağı partneri",
+    "Benefit": "menu.benefit",
+    "CURRENCY": "Kur",
+    "EKLE": "Add",
+    "KAYDET": "Save",
+    "MIGRATION_PRODUCT_ID": "Birleştirilen ürün numarası",
+    "PARTNER_CHANNEL_ID": "Partner kanalı",
+    "POLICY_LENGHT_MONTHS": "Poliçe uzatma süresi",
+    "PRODUCT_SALE_TYPE": "Ürün satış tipi",
+    "PRODUCT_TYPE": "Ürün tipi",
+    "SERVICE_TYPE_ID": "Servis tipi",
+    "SOLDBY": "Satıcı",
+    "active": "Aktive",
+    "app_name": "Policy Platform",
+    "breadcrumb": {
+        "dashboard": "Dashboard"
+    },
+    "breadcrump": {
+        "permissions": "Permissions",
+        "role": "Role"
+    },
+    "cancel": "Cancel",
+    "form_change": "Bir eğişiklik yaptınız, kaydetemeden çıkıcakmısınız ?",
+    "mamu": {
+        "cancelreason": "cancelReason"
+    },
+    "menu": {
+        "askPolicy": "Poliçe Sorgulama",
+        "benefit": "Benefit",
+        "benefitPack": "Benefit Pack",
+        "channel": "Channel",
+        "country": "Country",
+        "cruds": "Tanımlamalar",
+        "currency": "Currency",
+        "partner": "Partner",
+        "password": {
+            "newpassword": "New password",
+            "newpasswordrepead": "Confirim new password",
+            "oldpassword": "Old password"
+        },
+        "product": "Product",
+        "role": "Role",
+        "serviceType": "serviceType",
+        "user": "User"
+    },
+    "modal": {
+        "benefit": {
+            "title": {
+                "save": "Kazanım Ekle"
+            }
+        },
+        "role": {
+            "role": "Role"
+        },
+        "user": {
+            "email": {
+                "email": "Email",
+                "validation": "E-posta alanı için geçerli bir e-posta girin"
+            },
+            "name": "Name",
+            "title": {
+                "save": "Kullanıcı ekle"
+            }
+        }
+    },
+    "model": {
+        "user": {
+            "title": {
+                "edit": "Kullanıcı düzenle"
+            }
+        }
+    },
+    "save": "Save",
+    "search": "Search button",
+    "swal": {
+        "forgetpassword": {
+            "placeholder": "Email adress"
+        },
+        "okey": "Okey"
+    }
+}

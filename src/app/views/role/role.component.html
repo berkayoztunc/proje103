@@ -1,0 +1,54 @@
+<div class="card">
+    <div class="card-body">
+
+        <div class="row">
+
+            <div class="col-md-6 ">
+                <div class="input-group">
+                        <input type="text" class="form-control form-control-sm" [placeholder]="'user.email_ad_placeholser' | translate" required [(ngModel)]="search">
+                        <div class="input-group-append">
+                            <a class="btn btn-primary btn-sm" (click)="searchClick()" [title]="'user.search' | translate"><i class="fas fa-search"></i></a>
+                            <a class="btn btn-info btn-sm" (click)="search = ''; searchClick()" [title]="'user.search_clear' | translate"><i class="fas fa-eraser"></i></a>
+                            <a class="btn btn-success btn-sm" (click)="create()" [title]="'user.add_new' | translate"><i class="fas fa-plus"></i></a>
+                        </div>
+                </div>
+            </div>
+        </div>
+        <div class="row pt-3 table-scrool">
+            <div class="col-12">
+                <table class="table">
+                    <thead class="bg-primary text-white">
+                        <tr>
+                            <th>{{ 'Role.ROLE_ID' |translate}}</th>
+                            <th>{{'Role.ROLE'|translate}}</th>
+                            <th>{{'Role.ACTIVE' | translate}}</th>
+                            <th>{{'Role.action'|translate}}</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <tr *ngFor="let Role of Roles; let i = index">
+                            <th scope="row">{{Role.ROLE_ID}}</th>
+                            <td>{{Role.ROLE}}</td>
+                            <td>
+                                <i class="fas fa-check fa-2x text-success" *ngIf="Role.ACTIVE"></i>
+                                <i class="fas fa-times fa-2x text-danger" *ngIf="!Role.ACTIVE"></i>
+
+                            </td>
+                            <td>
+                                <a class="btn btn-xs btn-warning " (click)="select(Role,i)"><i
+                                        class="fas fa-edit"></i></a>
+                                <a class="btn btn-xs btn-info text-white" (click)="viewPermission(Role)"><i
+                                        class="fas fa-info-circle"></i> İzinler </a>
+                                <a class="btn btn-xs btn-info text-white" (click)="viewUser(Role)"><i
+                                        class="fas fa-info-circle"></i> Kullanıcılar </a>
+                                <a class="btn btn-xs btn-danger "(click)="delete(Role,i)"><i class="fas fa-trash"></i></a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+    </div>
+</div>

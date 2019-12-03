@@ -1,0 +1,20 @@
+<div class="row">
+        <div class="col-md-12 backs ">
+                <a routerLink="/role">Role \ </a>
+                <a href="javascrip:void()"> {{storage.role.selectedRole.item.ROLE}} </a>
+        </div>
+    </div>
+<div class="card">
+    <div class="card-body">
+        <form [formGroup]="form" (ngSubmit)="save()">
+                
+            <div class="form-check" *ngFor="let item  of form.get('items').controls; let i = index" formArrayName="items">
+                <div [formGroupName]="i">
+                        <input type="checkbox" class="form-check-input " id="exampleCheck1" formControlName="check">
+                        <label class="form-check-label" for="exampleCheck1 ">{{item.value.key}}</label>
+                </div>            
+            </div>
+            <button type="submit" class="btn btn-primary float-right">KAYDET</button>
+        </form>
+    </div>
+</div>

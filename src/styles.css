@@ -1,0 +1,150 @@
+@import "~@ng-select/ng-select/themes/default.theme.css";
+body,html{
+  height:100%;
+}
+.sidebar{
+  height: 79vh;
+  overflow-y: scroll;
+  background-color: rgba(0, 0, 0, 0.1);
+}
+.components {
+  padding: 10px;
+}
+.btn i{
+  color:  white !important;
+}
+.btn-xs{
+  padding: 0.1rem 0.2rem;
+}
+.table td, .table th {
+  padding: 2px  0 2px 0!important;
+}
+.table .btn{
+  padding: 6px 6px;
+  margin-left: 10px;
+  font-size: 15px;
+  line-height: 1;
+}
+.table .btn i{
+ padding: 0px;
+ font-size: 15px;
+}
+.table i {
+  font-size: 14px;
+}
+body{
+  font-weight: 300;
+}
+.green {
+  color: green;
+}
+.red{
+  color: red;
+}
+.backs a {
+  text-decoration:  none;
+  color: black;
+}
+.breadcrumb{
+  margin-bottom: 0px;
+}
+
+/**
+ Swicth css
+**/
+
+
+
+/* The switch - the box around the slider */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 40px;
+  height: 20px;
+  float:right;
+}
+
+/* Hide default HTML checkbox */
+.switch input {display:none;}
+
+/* The slider */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #f44336;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 15px;
+  width: 15px;
+  left: 4px;
+  right: 2px;
+  bottom: 3px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+input.default:checked + .slider {
+  background-color: #444;
+}
+input.primary:checked + .slider {
+  background-color: #2196F3;
+}
+input.success:checked + .slider {
+  background-color: #8bc34a;
+}
+input.info:checked + .slider {
+  background-color: #3de0f5;
+}
+input.warning:checked + .slider {
+  background-color: #FFC107;
+}
+input.danger:checked + .slider {
+  background-color: #f44336;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked + .slider:before {
+  left: -4px;
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
+.modal-lg{
+  max-width: 90%;
+}
+
+.modal-lg .form-group{
+  margin-bottom: 0px;
+}
+
+.modal-lg .form-group label {
+  margin-bottom: 0px;
+  font-size: 12px;
+}
+.table-scrool {
+  overflow-y: scroll;
+  height: 68vh;
+}
