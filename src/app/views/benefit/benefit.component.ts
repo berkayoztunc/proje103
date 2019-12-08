@@ -20,8 +20,8 @@ export class BenefitComponent implements OnInit {
   constructor(
     private modalService: NgbModal,
     public activeModal: NgbActiveModal,
-    private request : RequestService,
-    private storage : StoreService) {
+    public request : RequestService,
+    public storage : StoreService) {
 
   }
 

@@ -14,8 +14,8 @@ import { FormBuilder, FormGroup  } from '@angular/forms';
 export class PolicyBenefitComponent implements OnInit {
   benefits = [];
   constructor(
-    private request: RequestService,
-    private storage: StoreService,
+    public request: RequestService,
+    public storage: StoreService,
     private activeModal: NgbActiveModal,
   ) {
 

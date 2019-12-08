@@ -7,7 +7,7 @@ import { NgSelectModule } from '@ng-select/ng-select';
 
 
 @NgModule({
-  declarations: [CityFormComponent],
+  declarations: [],
   imports: [
     CommonModule,
     NgSelectModule,

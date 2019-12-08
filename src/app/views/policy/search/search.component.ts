@@ -18,7 +18,7 @@ export class SearchComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    private request: RequestService,
+    public request: RequestService,
     public storage: StoreService,
     private fb: FormBuilder
   ) {

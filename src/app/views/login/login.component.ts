@@ -25,8 +25,8 @@ export class LoginComponent implements OnInit {
     private translate: TranslateService,
     private route: ActivatedRoute,
     private router: Router,
-    private request: RequestService,
-    private storage: StoreService,
+    public request: RequestService,
+    public storage: StoreService,
   ) { }
 
   ngOnInit() {

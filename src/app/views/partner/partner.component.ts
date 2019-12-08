@@ -18,7 +18,7 @@ export class PartnerComponent implements OnInit {
   detail = false;
   tabelOnInit = true;
   constructor( private modalService: NgbModal,
-    public activeModal: NgbActiveModal,private request : RequestService,private storage : StoreService,private route : Router) {
+    public activeModal: NgbActiveModal,public request : RequestService,public storage : StoreService,private route : Router) {
 
   }
 

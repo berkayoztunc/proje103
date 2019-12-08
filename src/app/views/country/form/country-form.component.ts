@@ -16,7 +16,7 @@ export class CountryFormComponent implements OnInit {
   edit = true;
   change = false;
   initValue = {};
-  constructor(public activeModal: NgbActiveModal, private request: RequestService, private storage: StoreService, private fb: FormBuilder, private route: ActivatedRoute, private location: Location) {
+  constructor(public activeModal: NgbActiveModal, public request: RequestService, public storage: StoreService, private fb: FormBuilder, private route: ActivatedRoute, private location: Location) {
     this.createForm();
   }
   createForm() {

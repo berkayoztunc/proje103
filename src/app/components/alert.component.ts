@@ -7,7 +7,7 @@ import { RequestService } from '../services/request.service';
 })
 
 export class AlertComponent implements OnInit {
-    constructor(private request : RequestService) { }
+    constructor(public request : RequestService) { }
 
     ngOnInit() {
      }

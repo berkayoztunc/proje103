@@ -1,5 +1,4 @@
 import { NgModule } from '@angular/core';
-import { CityComponent } from './city.component';
 import { CommonModule } from '@angular/common';
 import { CityRoutingModule } from './city-routing.module';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
@@ -9,7 +8,7 @@ import { NgSelectModule } from '@ng-select/ng-select';
 
 
 @NgModule({
-  declarations: [CityComponent],
+  declarations: [],
   imports: [
     NgSelectModule,
     CommonModule,

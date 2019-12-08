@@ -18,7 +18,7 @@ export class PolicyComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    private request: RequestService,
+    public request: RequestService,
     public storage: StoreService,
     private modalService: NgbModal,
     private fb: FormBuilder

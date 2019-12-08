@@ -19,7 +19,7 @@ export class CancelReasonComponent implements OnInit {
   constructor(
     
     private modalService: NgbModal,
-    public activeModal: NgbActiveModal,private request : RequestService, private storage : StoreService) {
+    public activeModal: NgbActiveModal,public request : RequestService, public storage : StoreService) {
 
   }
 

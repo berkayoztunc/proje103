@@ -4,7 +4,6 @@ import { TranslateModule } from '@ngx-translate/core';
 
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
-import { ExplanationComponent } from './explanation.component';
 
 @NgModule({
     imports: [
@@ -14,7 +13,7 @@ import { ExplanationComponent } from './explanation.component';
         FormsModule,
         ReactiveFormsModule
     ],
-    declarations: [ExplanationComponent]
+    declarations: []
 
 })
 export class ExplanationModule {}

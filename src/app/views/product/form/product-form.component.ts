@@ -32,7 +32,7 @@ export class ProductFormComponent implements OnInit {
   edit = true;
   change = false;
   initValue= {};
-  constructor(private activeModal: NgbActiveModal, private request: RequestService, private storage: StoreService, private fb: FormBuilder, private route: ActivatedRoute, private location: Location) {
+  constructor(private activeModal: NgbActiveModal, public request: RequestService, public storage: StoreService, private fb: FormBuilder, private route: ActivatedRoute, private location: Location) {
     this.createForm();
   }
   createForm() {

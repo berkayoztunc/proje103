@@ -16,8 +16,8 @@ export class UserComponent implements OnInit {
   detail = false;
   tabelOnInit = true;
   constructor(
-    private request: RequestService,
-    private storage: StoreService,
+    public request: RequestService,
+    public storage: StoreService,
     private modalService: NgbModal,
     public activeModal: NgbActiveModal
   ) {

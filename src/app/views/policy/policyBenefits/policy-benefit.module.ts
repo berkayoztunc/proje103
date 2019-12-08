@@ -14,7 +14,7 @@ import { PolicyBenefitComponent } from './policy-benefit.component';
         FormsModule,
         ReactiveFormsModule
     ],
-    declarations: [PolicyBenefitComponent]
+    declarations: []
 
 })
 export class PolicyBenefitModule {}

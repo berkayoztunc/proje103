@@ -12,11 +12,12 @@ import { StoreService } from './store.service';
 export class RequestService {
   error = null;
   //domain = 'http://192.168.116.206:9201/';
-  domain = 'http://192.168.43.211:9201/';
+  domain = 'http://192.168.117.251:9201/';
+  //domain = 'http://192.168.43.211:9201/';
   onTheGo = false;
   systemError = new Subject();
   constructor(
-    private http: HttpClient, private storage: StoreService) { }
+    private http: HttpClient, public storage: StoreService) { }
 
   /** GET heroes from the server */
   get(url, params = null): Observable<any> {

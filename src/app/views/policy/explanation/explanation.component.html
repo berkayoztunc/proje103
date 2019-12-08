@@ -2,7 +2,7 @@
 
     <div class="card">
         <div class="card-body">
-            <h5 class="card-title" *ngIf="edit">{{ 'modal.explanation.title.save' | translate }}</h5>
+            <h5 class="card-title" >{{ 'modal.explanation.title.save' | translate }}</h5>
 
             <app-alert></app-alert>
             <form [formGroup]="form" (ngSubmit)="save()">
@@ -10,10 +10,8 @@
                     <label>{{'policy.modal.EXPLANATION'|translate}} </label>
                     <textarea name="" id="" cols="30" rows="10" class="form-control" placeholder="{{'policy.modal.EXPLANATION'|translate}}" formControlName="EXPLANATION"></textarea>
                 </div>
-                <button type="submit" class="btn btn-xs btn-primary float-right text-white" *ngIf="!edit"
+                <button type="submit" class="btn btn-xs btn-primary float-right text-white" 
                     [disabled]="!form.valid">{{ 'KAYDET' | translate }}</button>
-                <button type="submit" class="btn btn-xs btn-success float-right text-white" *ngIf="edit"
-                    [disabled]="!form.valid">{{ 'EKLE' | translate }}</button>
                 <a class="btn btn-xs btn-warning float-right text-white mr-1"
                     (click)="cancel()">{{ 'cancel' | translate }}</a>
             </form>

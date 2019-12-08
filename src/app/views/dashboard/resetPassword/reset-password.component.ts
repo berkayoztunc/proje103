@@ -15,8 +15,8 @@ export class ResetPasswordComponent {
   form : FormGroup;
   constructor(
     private translate: TranslateService,
-    private request: RequestService,
-    private storage: StoreService,
+    public request: RequestService,
+    public storage: StoreService,
     private fb: FormBuilder,
     private activeModal : NgbActiveModal
   ){

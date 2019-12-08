@@ -17,7 +17,7 @@ export class UserFormComponent implements OnInit {
   initValue= {};
   roles$ =  [];
   constructor(   
-    private activeModal : NgbActiveModal,private request: RequestService, private storage: StoreService, private fb: FormBuilder, private route: ActivatedRoute, private location: Location) {
+    private activeModal : NgbActiveModal,public request: RequestService, public storage: StoreService, private fb: FormBuilder, private route: ActivatedRoute, private location: Location) {
     this.createForm();
   }
   createForm() {

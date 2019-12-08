@@ -1,5 +1,4 @@
 import { NgModule } from '@angular/core';
-import { BenefitPackBenefitsComponent } from './benefitPack-benefit.component';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { SharedModule } from 'src/app/shared.module';
@@ -7,7 +6,7 @@ import { SharedModule } from 'src/app/shared.module';
 
 
 @NgModule({
-  declarations: [BenefitPackBenefitsComponent],
+  declarations: [],
   imports: [
     CommonModule,
     FormsModule,

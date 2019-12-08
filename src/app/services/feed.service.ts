@@ -6,7 +6,7 @@ import { Country } from '../models/country';
 @Injectable({ providedIn: 'root' })
 export class FeedService {
 
-    constructor(private request : RequestService,private storage : StoreService) { }
+    constructor(public request : RequestService,public storage : StoreService) { }
 
     feedCountyies() : void{
         this.request.get( 'api/country').subscribe((response)=>{

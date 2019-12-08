@@ -20,8 +20,8 @@ export class OverviewComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    private request: RequestService,
-    private storage: StoreService,
+    public request: RequestService,
+    public storage: StoreService,
     private modalService: NgbModal,
   ) {
 

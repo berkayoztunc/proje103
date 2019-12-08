@@ -11,7 +11,7 @@ export class PermissionDirective {
     private element: ElementRef,
     private templateRef: TemplateRef<any>,
     private viewContainer: ViewContainerRef,
-    private storage : StoreService
+    public storage : StoreService
   ) {
   }
 

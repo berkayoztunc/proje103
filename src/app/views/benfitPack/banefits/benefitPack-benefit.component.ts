@@ -15,7 +15,7 @@ export class BenefitPackBenefitsComponent implements OnInit {
   data = [];
   realData = [];
   selectedPackData = []
-  constructor(private request: RequestService, private storage: StoreService, private fb: FormBuilder, private route: ActivatedRoute, private location: Location) {
+  constructor(public request: RequestService, public storage: StoreService, private fb: FormBuilder, private route: ActivatedRoute, private location: Location) {
   }
 
   ngOnInit() {

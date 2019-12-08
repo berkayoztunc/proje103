@@ -2,7 +2,7 @@
     <div class="card-body">
         <form [formGroup]="form" (ngSubmit)="save()">
             <div class="row">
-                <div formArrayName="items" class="form-check col-12" *ngFor="let item  of form.get('items').controls; let i = index">
+                <div formArrayName="items" class="form-check col-12" *ngFor="let item  of getControls(form,'items'); let i = index">
                     <div [formGroupName]="i">
                         
                         <label class="switch float-left ">

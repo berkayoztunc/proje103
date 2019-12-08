@@ -4,7 +4,7 @@ import {StoreService} from '../services/store.service';
 @Injectable()
 export class AuthGuard implements CanActivate {
 
-    constructor(private router: Router,private storage : StoreService) { }
+    constructor(private router: Router,public storage : StoreService) { }
 
     canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
         // let parentPath = route.routeConfig.path;

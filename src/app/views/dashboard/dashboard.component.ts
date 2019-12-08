@@ -19,8 +19,8 @@ export class DashboardComponent implements OnInit {
     private translate : TranslateService,
     private route: ActivatedRoute,
     private router: Router,
-    private request: RequestService,
-    private storage: StoreService,
+    public request: RequestService,
+    public storage: StoreService,
     private modalService: NgbModal,
   ) {
 

@@ -6,7 +6,7 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 
 @NgModule({
-  declarations: [ChannelFormComponent],
+  declarations: [],
   imports: [
     CommonModule,
     FormsModule,

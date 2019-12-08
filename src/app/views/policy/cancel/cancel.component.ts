@@ -14,9 +14,10 @@ import { FormBuilder, FormGroup  } from '@angular/forms';
 export class CancelComponent implements OnInit {
   historyData = [];
   form:FormGroup;
+  
   constructor(
-    private request: RequestService,
-    private storage: StoreService,
+    public request: RequestService,
+    public storage: StoreService,
     private activeModal: NgbActiveModal,
     private fb : FormBuilder
   ) {

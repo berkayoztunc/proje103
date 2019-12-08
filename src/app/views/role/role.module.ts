@@ -6,12 +6,11 @@ import { RoleFormComponent } from './form/role-form.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { TranslateModule } from '@ngx-translate/core';
 import { RolePermissionSyncComponent } from './permission/role-permission-sync.component';
-import { RoleUserSyncComponent } from './user/role-user-sync.component';
 
 
 
 @NgModule({
-  declarations: [RoleComponent,RolePermissionSyncComponent,RoleUserSyncComponent],
+  declarations: [RoleComponent,RolePermissionSyncComponent],
   imports: [
     CommonModule,
     TranslateModule,

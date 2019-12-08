@@ -16,7 +16,7 @@ export class ServiceTypeFormComponent implements OnInit {
   edit = true;
   initValue = {};
   change = false;
-  constructor(private activeModal: NgbActiveModal, private request: RequestService, private storage: StoreService, private fb: FormBuilder, private route: ActivatedRoute, private location: Location) {
+  constructor(private activeModal: NgbActiveModal, public request: RequestService, public storage: StoreService, private fb: FormBuilder, private route: ActivatedRoute, private location: Location) {
     this.createForm();
   }
   createForm() {

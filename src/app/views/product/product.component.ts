@@ -20,7 +20,7 @@ export class ProductComponent implements OnInit {
   constructor(
     private modalService: NgbModal,
     public activeModal: NgbActiveModal,
-    private request : RequestService,private storage : StoreService,private route : Router) {
+    public request : RequestService,public storage : StoreService,private route : Router) {
 
   }
 

@@ -13,7 +13,7 @@ import { StoreService } from 'src/app/services/store.service';
 export class RolePermissionSyncComponent implements OnInit {
   form: FormGroup;
   data  = [];
-  constructor(private request : RequestService, private storage : StoreService,private fb: FormBuilder,private route: ActivatedRoute, private location: Location    ) {
+  constructor(public request : RequestService, public storage : StoreService,private fb: FormBuilder,private route: ActivatedRoute, private location: Location    ) {
     this.createForm();
   }
   createForm() {
@@ -24,6 +24,10 @@ export class RolePermissionSyncComponent implements OnInit {
   get allItems(): FormArray {
     return this.form.get('items') as FormArray;
  } 
+
+  getControls(frmGrp: FormGroup, key: string) {
+    return (<FormArray>frmGrp.controls[key]).controls;
+  }
   ngOnInit() {
     
     if(this.storage.role.selectedRole == null){

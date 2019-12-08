@@ -7,7 +7,7 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { NgSelectModule } from '@ng-select/ng-select';
 
 @NgModule({
-  declarations: [ProductFormComponent],
+  declarations: [],
   imports: [
     CommonModule,
     NgSelectModule,

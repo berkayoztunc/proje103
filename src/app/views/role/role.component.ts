@@ -20,7 +20,7 @@ export class RoleComponent implements OnInit {
   constructor(
     private modalService: NgbModal,
     public activeModal: NgbActiveModal,
-    private request : RequestService,private storage : StoreService,private route : Router) {
+    public request : RequestService,public storage : StoreService,private route : Router) {
 
   }
 
@@ -42,11 +42,6 @@ export class RoleComponent implements OnInit {
   select(item,index){
     this.storage.role.selectedRole = {item,index};
     this.modalService.open(RoleFormComponent)
-  }
-  viewUser(item){
-    this.storage.role.selectedRole = {item};
-    this.route.navigate(['dashboard/role/user'])
-
   }
   viewPermission(item){
     this.storage.role.selectedRole = {item};

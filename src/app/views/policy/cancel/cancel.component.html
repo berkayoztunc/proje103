@@ -2,7 +2,7 @@
 
     <div class="card">
         <div class="card-body">
-            <h5 class="card-title" *ngIf="edit">{{ 'modal.explanation.title.save' | translate }}</h5>
+            <h5 class="card-title" >{{ 'modal.explanation.title.save' | translate }}</h5>
 
             <app-alert></app-alert>
             <div class="row">
@@ -51,7 +51,7 @@
                     <hr>
 
                     <button type="submit" class="btn btn-xs btn-primary float-right text-white"
-                    [disabled]="valid">{{ 'KAYDET' | translate }}</button>
+                    [disabled]="form.valid">{{ 'KAYDET' | translate }}</button>
                 <a class="btn btn-xs btn-warning float-right text-white mr-1"
                     (click)="cancel()">{{ 'cancel' | translate }}</a>
             </div>

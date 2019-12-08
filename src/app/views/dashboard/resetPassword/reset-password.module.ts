@@ -13,7 +13,7 @@ import { ReactiveFormsModule } from '@angular/forms';
         NgbModule,
         ReactiveFormsModule
     ],
-    declarations: [ResetPasswordComponent]
+    declarations: []
 
 })
 export class ResetPasswordModule {}
