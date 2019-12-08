@@ -5,6 +5,7 @@ import { StoreService } from 'src/app/services/store.service';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ResetPasswordComponent } from './resetPassword/reset-password.component';
 import { filter } from 'rxjs/operators';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-dashboard',
@@ -15,6 +16,7 @@ import { filter } from 'rxjs/operators';
 export class DashboardComponent implements OnInit {
   fragment = [];
   constructor(
+    private translate : TranslateService,
     private route: ActivatedRoute,
     private router: Router,
     private request: RequestService,
@@ -40,7 +42,13 @@ export class DashboardComponent implements OnInit {
   }
 
   ngOnInit() {
-
+    if(this.storage.auth.user.PASSWORD_LOCKED){
+      this.modalService.open(ResetPasswordComponent);
+    }
+  }
+  setLanguage(lang){
+    this.storage.language.selectedLanguage = lang
+    this.translate.use(lang);
   }
   passwordReset() {
     this.modalService.open(ResetPasswordComponent);
@@ -50,9 +58,11 @@ export class DashboardComponent implements OnInit {
     this.storage.auth = {
       token: '',
       user: {
-        NAME: ''
+        NAME: '',
+        PASSWORD_LOCKED : false
       },
-      permissions: {}
+      permissions: {},
+      mapedPermissions : []
     }
   }
 }

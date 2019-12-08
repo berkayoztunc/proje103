@@ -5,7 +5,7 @@ import { DashboardComponent } from './dashboard.component';
 const routes: Routes = [
   { path: '', component: DashboardComponent ,children : 
     [
-      { path: '', redirectTo: 'user', pathMatch: 'full' },
+      { path: '', redirectTo: 'policy', pathMatch: 'full' },
       { path: 'benefit', loadChildren: () => import('../benefit/benefit.module').then(m => m.BenefitModule) },
       { path: 'benefitPack', loadChildren: () => import('../benfitPack/benefitPack.module').then(m => m.BenefitPackModule) },
       { path: 'cancelReason', loadChildren: () => import('../cancelReason/cancelReason.module').then(m => m.CancelReasonModule) },

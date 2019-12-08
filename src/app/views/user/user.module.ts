@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { UserRoutingModule } from './user-routing.module';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { TranslateModule } from '@ngx-translate/core';
+import { NgSelectModule } from '@ng-select/ng-select';
 
 
 
@@ -13,6 +14,7 @@ import { TranslateModule } from '@ngx-translate/core';
     CommonModule,
     TranslateModule,
     FormsModule,
+    NgSelectModule,
     ReactiveFormsModule,
     UserRoutingModule,
   ],

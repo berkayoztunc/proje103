@@ -24,22 +24,26 @@ export class ResetPasswordComponent {
   }
   createForm() {
     this.form = this.fb.group({
-      old_password: ['',Validators.required],
-      password: ['', Validators.required],
-      confirim_password: ['',Validators.required],
+      PASSWORD: ['',Validators.required],
+      NEW_PASSWORD: ['', Validators.required],
+      CONIFIRM_PASSWORD: ['',Validators.required],
     }, {validator: this.checkPasswords });
   }
   save() : void {
-    this.request.post('user/update-password',this.form.value).subscribe((response)=>{
+    this.request.update('api/users/change-password/'+this.storage.auth.user['USER_ID'],this.form.value).subscribe((response)=>{
       if(response){
+        this.storage.auth.user.PASSWORD_LOCKED = false;
         this.activeModal.dismiss();
       }
     })
   }
+  close(){
+    this.activeModal.dismiss();
+  }
   checkPasswords(group: FormGroup) { 
-  let pass = group.get('password').value;
-  let old_password = group.get('old_password').value;
-  let confirmPass = group.get('confirim_password').value;
+  let pass = group.get('NEW_PASSWORD').value;
+  let old_password = group.get('PASSWORD').value;
+  let confirmPass = group.get('CONIFIRM_PASSWORD').value;
   return pass === confirmPass ? pass === old_password ? { oldSame: true }  : null : { notSame: true }     
 }
  

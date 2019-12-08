@@ -5,9 +5,8 @@
             <h5 class="card-title" *ngIf="!edit">{{ 'modal.city.title.edit' | translate }}</h5>
             <h5 class="card-title" *ngIf="edit">{{ 'modal.city.title.save' | translate }}</h5>
 
-            <div class="alert alert-danger" *ngIf="request.error">{{request.error.message}}
-                <p *ngIf="request.error.body">{{request.error.body.error}}</p>
-            </div>
+            <app-alert></app-alert>
+
             <form [formGroup]="form" (ngSubmit)="save()">
                 <input type="hidden" class="form-control" placeholder="CITY_ID" formControlName="CITY_ID">
                 <ng-select [items]="countries" [readonly]="!this.edit" bindLabel="COUNTRY" autofocus

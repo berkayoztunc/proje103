@@ -2,6 +2,7 @@
     <div class="card-body">
 
         <div class="row">
+
             <div class="col-md-6 ">
                 <div class="input-group">
 
@@ -17,6 +18,10 @@
                     </div>
                 </div>
             </div>
+            <div class="col-md-6">
+                <app-alert></app-alert>
+            </div>
+            
         </div>
         <div class="row pt-3 table-scrool">
             <div class="col-12">
@@ -32,7 +37,7 @@
 
                     <tbody>
                         <tr *ngFor="let BenefitPack of BenefitPacks; let i = index">
-                            <th scope="row">{{BenefitPack.BENEFIT_PACK_ID}}</th>
+                            <th scope="row" width="5%">{{BenefitPack.BENEFIT_PACK_ID}}</th>
                             <td>{{BenefitPack.BENEFIT_PACK}}</td>
                             <td>
                                 <i class="fas fa-check fa-2x text-success" *ngIf="BenefitPack.ACTIVE"></i>

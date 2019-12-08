@@ -51,7 +51,9 @@ export class ServiceTypeComponent implements OnInit {
   searchServiceTypes(): void {
     this.request.get( 'api/servicetypes' )
     .subscribe(response => {
-      this.ServiceTypes = this.storage.serviceType.serviceTypes =response.data 
+      if(response){
+        this.ServiceTypes = this.storage.serviceType.serviceTypes =response.data 
+      }
     });
 
   }

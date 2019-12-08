@@ -44,15 +44,14 @@
                                     <small *ngIf="!password.valid"
                                         class="help-block text-danger">{{'Password control' | translate}}</small>
                                 </div>
-
-                                <div class="form-group">
-                                    <button class="btn bg-success btn-block text-white" >{{'Login' | translate}} <i
+                               
+                                <div   class="form-group">
+                                    
+                                    <button class="btn bg-success btn-block text-white" [disabled]="!password.valid" >{{'Login' | translate}} <i
                                             class="fas fa-key"></i></button>
                                 </div>
 
-                                <div class="text-center">
-                                    <a href="javascript:void()" (click)="forgetMyPassword()">{{'I forgot my password' | translate}}</a>
-                                </div>
+                               
                             </div>
                         </div>
                 </form>

@@ -1,0 +1,28 @@
+<div class="row m-1">
+  <div class="col-md-12">
+      <a class="btn btn-info btn-xs " (click)="explanationAdd()">Poliçeye kayıt ekle</a>
+      <a class="btn btn-danger btn-xs " (click)="cancelOpen()">Iptal</a>
+      <a class="btn btn-info btn-xs " (click)="benefits()">Benfitler</a>
+      <a class="btn btn-info btn-xs " (click)="explanationAdd()">Aksiyon 3</a>
+      <a class="btn btn-info btn-xs " (click)="explanationAdd()">Aksiyon 4</a>
+  </div>
+</div>
+<div class="row m-1">
+  
+    <div class="col-md-12 table-scrool">
+        <h6>{{ 'policy.reced_service_history' | translate }}</h6>
+        <table class="table table-striped">
+            <tbody>
+              <tr *ngFor="let history of historyData;let i = index">
+                  <td scope="col">{{history.M_DATE}}</td>
+
+                  <td scope="col">{{history.M_USER_NAME}}</td>
+                  <td scope="col">{{history.AUDIT_TYPE}}</td>
+
+                <td scope="col">{{history.EXPLANATION}}</td>
+              </tr>
+            </tbody>
+            
+          </table>
+    </div>
+</div>

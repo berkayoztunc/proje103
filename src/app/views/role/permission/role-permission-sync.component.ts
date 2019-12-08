@@ -13,7 +13,6 @@ import { StoreService } from 'src/app/services/store.service';
 export class RolePermissionSyncComponent implements OnInit {
   form: FormGroup;
   data  = [];
-  groups  = [];
   constructor(private request : RequestService, private storage : StoreService,private fb: FormBuilder,private route: ActivatedRoute, private location: Location    ) {
     this.createForm();
   }
@@ -32,18 +31,18 @@ export class RolePermissionSyncComponent implements OnInit {
     }
     else{
       /*
-    this.request.get('api/rolePermission',{
+      this.request.get('api/rolePermission',{
               ROLE_ID : this.storage.role.selectedRole.item.ROLE_ID
           })
       */
-      this.request.get( 'api/rolePermission' ).subscribe((response)=>{
-        this.data = this.transformer(response) 
-        this.groups = Object.keys(this.data)
-        response.forEach((o, i) => {
-          const control =  this.fb.group(o)
-          this.allItems.push(control);          
+      this.request.get( 'api/roles/permissions/'+this.storage.role.selectedRole.item.ROLE_ID ).subscribe((response)=>{
+        this.data = response.data; //this.transformer() 
+        response.data.forEach((o, i) => {  
+          const control =  this.fb.group({check : o.check,key:o.key})
+          this.allItems.push(control);  
         });
-
+        this.form.patchValue({items:response.data})
+        
       })
     }
   }
@@ -55,9 +54,7 @@ export class RolePermissionSyncComponent implements OnInit {
         hand[permissionSplit[0]] = []
       }
       hand[permissionSplit[0]].push(item)
-    })
-    console.log(hand);
-    
+    })    
     return hand
   }
 
@@ -65,9 +62,8 @@ export class RolePermissionSyncComponent implements OnInit {
     this.location.back();
   }
   save(): void {
-      console.log({
-        ROLE_ID : this.storage.role.selectedRole.item.ROLE_ID,
-        permissions : this.form.value.items
+      this.request.update('api/roles/permissions/'+this.storage.role.selectedRole.item.ROLE_ID , {PERMISSIONS : JSON.stringify(this.form.value.items)}).subscribe(()=>{
+        this.goBack()
       })
   }
 

@@ -6,17 +6,16 @@ import { TranslateModule } from '@ngx-translate/core';
 import { LoginRoutingModule } from './login-routing.module';
 import { LoginComponent } from './login.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { AlertComponent } from 'src/app/components/alert.component';
-import { AlertModule } from 'src/app/components/alert.module';
+import { SharedModule } from 'src/app/shared.module';
 
 @NgModule({
     imports: [
         CommonModule,
+        SharedModule,
         LoginRoutingModule,
-        FormsModule,
         TranslateModule,
         NgbModule,
-        AlertModule
+        
     ],
     declarations: [LoginComponent],
     

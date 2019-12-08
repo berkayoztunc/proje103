@@ -13,6 +13,7 @@
     "PRODUCT_TYPE": "Ürün tipi",
     "SERVICE_TYPE_ID": "Servis tipi",
     "SOLDBY": "Satıcı",
+    "Search": "Search",
     "active": "Aktive",
     "app_name": "Policy Platform",
     "breadcrumb": {
@@ -71,6 +72,25 @@
             "title": {
                 "edit": "Kullanıcı düzenle"
             }
+        }
+    },
+    "policy": {
+        "EXTERNAL_POLICY_NUMBER": "policy.EXTERNAL_POLICY_NUMBER",
+        "START_DATE": "Start date",
+        "customer_addreses": "Müşteri adresi",
+        "customer_info": "Customer detail",
+        "national_id": "National ID",
+        "number": "Policy number",
+        "phone_number": "Phone Number",
+        "reced_service_history": "Recebt service history",
+        "seach": {
+            "policy_number": "Policy number"
+        },
+        "search": {
+            "external_policy_number": "External policy number",
+            "last_name": "Last name",
+            "mobile_phone": "Mobile phone",
+            "national_id": "National ID"
         }
     },
     "save": "Save",

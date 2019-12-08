@@ -28,14 +28,23 @@ import { BenefitFormComponent } from './views/benefit/form/benefit-form.componen
 import { BenefitPackFormComponent } from './views/benfitPack/form/benefitPack-form.component';
 import { ResetPasswordComponent } from './views/dashboard/resetPassword/reset-password.component';
 import { AuthGuard } from './guard/auth.guard';
-import { AlertModule } from './components/alert.module';
+import { SharedModule } from './shared.module';
+import { ExplanationComponent } from './views/policy/explanation/explanation.component';
+import { CancelComponent } from './views/policy/cancel/cancel.component';
+import { SystemErrorComponent } from './components/system-error.component';
+import { NgxJsonViewerModule } from 'ngx-json-viewer';
+import { PermissionDirective } from './directives/permission.directive';
+import { PolicyBenefitComponent } from './views/policy/policyBenefits/policy-benefit.component';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, '/assets/i18n/', '.json');
 }
 @NgModule({
   declarations: [
+    CancelComponent,
+    PolicyBenefitComponent,
     AppComponent,
+    ExplanationComponent,
     UserFormComponent,
     ServiceTypeFormComponent,
     ProductFormComponent,
@@ -51,6 +60,9 @@ export function HttpLoaderFactory(http: HttpClient) {
     ResetPasswordComponent,
   ],
   entryComponents : [
+    CancelComponent,
+    PolicyBenefitComponent,
+    ExplanationComponent,
     ResetPasswordComponent,
     UserFormComponent,
     ServiceTypeFormComponent,
@@ -63,16 +75,18 @@ export function HttpLoaderFactory(http: HttpClient) {
     ChannelFormComponent,
     CancelReasonFormComponent,
     BenefitPackFormComponent,
-    BenefitFormComponent
+    BenefitFormComponent,
+    SystemErrorComponent,
   ],
   imports: [
+    NgxJsonViewerModule,
+    SharedModule,
     BrowserModule,
     NgbModule,
     NgSelectModule,
     FormsModule,
     ReactiveFormsModule,
     CommonModule,
-    AlertModule,
     AppRoutingModule,
     HttpClientModule,
     TranslateModule.forRoot({

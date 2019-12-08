@@ -37,7 +37,7 @@
 
                     <tbody>
                         <tr *ngFor="let product of Products; let i = index">
-                            <th scope="row">{{product.PRODUCT_ID}}</th>
+                            <th scope="row" width="5%">{{product.PRODUCT_ID}}</th>
                             <td>{{product.PRODUCT}}</td>
                             <td>{{product.PRODUCT_TYPE}}</td>
                             <td>{{product.BUSINESS_PARTNER_ID}}</td>
@@ -46,12 +46,10 @@
                             <td>
                                 <i class="fas fa-check fa-2x text-success" *ngIf="product.ACTIVE"></i>
                                 <i class="fas fa-times fa-2x text-danger" *ngIf="!product.ACTIVE"></i>
-
                             </td>
                             <td>
                                 <a class="btn btn-xs btn-warning " (click)="select(product,i)"><i class="fas fa-edit"></i></a>
-                                <a class="btn btn-xs btn-info " (click)="view(product)"><i
-                                        class="fas fa-info-circle"></i></a>
+                                <a class="btn btn-xs btn-danger " (click)="activation(product,i)"><i class="fas fa-lock"></i></a>
                                 <a class="btn btn-xs btn-danger " (click)="delete(product,i)"><i class="fas fa-trash"></i></a>
                             </td>
                         </tr>

@@ -4,13 +4,22 @@ import { TranslateService } from '@ngx-translate/core';
 @Injectable({ providedIn: 'root' })
 export class StoreService {
     
+
+    policy = {
+        searchData : [],
+        selectedCustomer : null,
+        selectedPolicy : null,
+        historys : []
+    }
     auth = {
         token : '',
         user : {
-            NAME: ''
+            NAME: '',
+            PASSWORD_LOCKED : false
         },
         permissions : {
-        }   
+        },
+        mapedPermissions :[] 
     }
     benefit =  {
         benefits: [],
@@ -59,6 +68,10 @@ export class StoreService {
     currency = {
         currencyies : [],
         selectedCurrency : null
+    }
+    language = {
+        allLanguage : ['en','tr'],
+        selectedLanguage : 'tr'
     }
     constructor( private translate: TranslateService,) { }
     //** dialogs */

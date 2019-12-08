@@ -1,0 +1,35 @@
+<loader [showIf]="request.onTheGo">
+
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title" >{{ 'modal.policyBenefit.title' | translate }}</h5>
+            <div class="row my-form">         
+
+                <div class="col-md-12">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th width="25%">{{'Benefit.BENEFIT'|translate}}</th>
+                                <th >{{'Benefit.EXPLANATION'|translate}}</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let item of benefits">
+                                <th>{{item.BENEFIT}}</th>
+                                <td>{{item.EXPLANATION}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="row">
+                <hr>
+
+                <button type="submit" class="btn btn-xs btn-primary float-right text-white"
+                    [disabled]="valid">{{ 'KAYDET' | translate }}</button>
+                <a class="btn btn-xs btn-warning float-right text-white mr-1"
+                    (click)="cancel()">{{ 'cancel' | translate }}</a>
+            </div>
+        </div>
+    </div>
+</loader>

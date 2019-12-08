@@ -20,103 +20,135 @@ import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 })
 export class ProductFormComponent implements OnInit {
   form: FormGroup;
-  partners$ : Observable<Partner[]>;
-  channels$ : Observable<Channel[]>;
-  benefitPacks$ : Observable<BenefitPack[]>
-  serviceType$ : Observable<ServiceType[]>
-  currencyies$ : Observable<Currency[]>
-  product$ : Observable<Product[]>
+  partners$ = [];
+  channels$= [];
+  benefitPacks$= [];
+  serviceType$= [];
+  currencyies$= [];
+  product$= [];
   productType = [];
   saleType = [];
-  edit=true;
-  constructor(private activeModal : NgbActiveModal,private request : RequestService , private storage : StoreService,private fb: FormBuilder,private route: ActivatedRoute, private location: Location    ) {
+  bussinesModel = [];
+  edit = true;
+  change = false;
+  initValue= {};
+  constructor(private activeModal: NgbActiveModal, private request: RequestService, private storage: StoreService, private fb: FormBuilder, private route: ActivatedRoute, private location: Location) {
     this.createForm();
   }
   createForm() {
     this.form = this.fb.group({
-      PRODUCT_ID : [''],
-      PRODUCT: [''],
-      BUSINESS_MODEL: [''],
-      BUSINESS_PARTNER_ID: [null,Validators.required],
-      PARTNER_CHANNEL_ID: [null,Validators.required],
-      BENEFIT_PACK_ID: [null,Validators.required],
-      SOLDBY: [''],
-      SERVICE_TYPE_ID: [null,Validators.required], //from ServiceType: value: SERVICE_TYPE_ID view: PREFIX + ' - '+SERVICE_TYPE where ACTIVE===true
-      POLICY_LENGHT_MONTHS: [''], // default: 12
-      REFUND_CANCEL_PERIOD_DAYS: [''],
-      PRODUCT_TYPE: [null,Validators.required], // enum: INDIVIDUAL || CORPORATE
-      WELCOME: [''], // default: false
-      RENEWAL: [''], // default: false
-      GUIDE: [''], // default: false
-      DUPLICATE_CONTROL: [''], // default: false
-      ACTIVE: [''], //default: true
-      NEW_COMMISSION_RATE: [''],
-      RENEWAL_COMMISSION_RATE: [''],
+      PRODUCT_ID: [null],
+      PRODUCT: [null],
+      BUSINESS_MODEL: [null],
+      BUSINESS_PARTNER_ID: [null, Validators.required],
+      PARTNER_CHANNEL_ID: [null, Validators.required],
+      BENEFIT_PACK_ID: [null, Validators.required],
+      SOLDBY: [null],
+      SERVICE_TYPE_ID: [null, Validators.required], //from ServiceType: value: SERVICE_TYPE_ID view: PREFIX + ' - '+SERVICE_TYPE where ACTIVE===true
+      POLICY_LENGHT_MONTHS: [null], // default: 12
+      REFUND_CANCEL_PERIOD_DAYS: [null],
+      PRODUCT_TYPE: [null, Validators.required], // enum: INDIVIDUAL || CORPORATE
+      WELCOME: [false], // default: false
+      RENEWAL: [false], // default: false
+      GUIDE: [false], // default: false
+      DUPLICATE_CONTROL: [false], // default: false
+      ACTIVE: [true], //default: true
+      NEW_COMMISSION_RATE: [null],
+      RENEWAL_COMMISSION_RATE: [null],
       MIGRATION_PRODUCT_ID: [null],
-      MIGRATION_DATE: [''],
-      EXPLANATION: [''], //sınırsız hatırlatma notları textarea
-      PRICE: [''],
-      CURRENCY: [null,Validators.required],//defaılt: TRY
-      OLD_PRODUCT_ID: [''],
-      OLD_CAMPAIGN_ID: [''],
-      PRODUCT_SALE_TYPE: [null,Validators.required],// enum: WHOLESALE || RETAIL
-      
+      MIGRATION_DATE: [null],
+      EXPLANATION: [null], //sınırsız hatırlatma notları textarea
+      PRICE: [null],
+      CURRENCY: [null, Validators.required],//defaılt: TRY
+      OLD_PRODUCT_ID: [null],
+      OLD_CAMPAIGN_ID: [null],
+      PRODUCT_SALE_TYPE: [null, Validators.required],// enum: WHOLESALE || RETAIL
+
     });
   }
   get validator() { return this.form.controls; }
 
   ngOnInit() {
-     /*this.edit = this.route.snapshot.paramMap.get('PRODUCT_ID') == null 
-     
-    if(!this.edit){
-      const routeProductId = +this.route.snapshot.paramMap.get('PRODUCT_ID');
-     
-      this.ProductService.getProduct(routeProductId).subscribe(Product=>{        
-        this.form.patchValue(Product);                    
-      })
-      // request search from http
-    }*/
-    this.productType = ["INDIVISUAL","CORPARATE"]
-    this.saleType = ["WHOLESALE","RETAIL"]
-    this.request.get( 'api/partners' ).subscribe((response)=>{
-      this.partners$  = response.data
+    /*this.edit = this.route.snapshot.paramMap.get('PRODUCT_ID') == null 
+    
+   if(!this.edit){
+     const routeProductId = +this.route.snapshot.paramMap.get('PRODUCT_ID');
+    
+     this.ProductService.getProduct(routeProductId).subscribe(Product=>{        
+       this.form.patchValue(Product);                    
+     })
+     // request search from http
+   }*/
+    this.productType = ["INDIVISUAL", "CORPARATE"]
+    this.saleType  = ["WHOLESALE", "RETAIL"]
+    this.bussinesModel = ["ACENCY", "SERVICE"]
+    this.request.get('api/partners').subscribe((response) => {
+      this.partners$ = response.data
     });
-    this.request.get( 'api/products' ).subscribe((response)=>{
+    this.request.get('api/products').subscribe((response) => {
       this.product$ = response.data
     });
-    this.channels$ = this.request.get( 'api/channels' );  
-    this.benefitPacks$ = this.request.get( 'api/benefitpacks' )
-    this.serviceType$ = this.request.get( 'api/servicetypes' )
-    this.currencyies$ = this.request.get( 'api/currencies' )
-    if(this.storage.product.selectedProduct !== null){
+    this.request.get('api/partnerchannels').subscribe((response) => {
+      this.channels$ = response.data
+    });
+    this.request.get('api/benefitpacks').subscribe((response) => {
+      this.benefitPacks$ = response.data
+    });
+    this.request.get('api/servicetypes').subscribe((response) => {
+      this.serviceType$ = response.data
+    });
+    this.request.get('api/currencies').subscribe((response) => {
+      this.currencyies$ = response.data
+    });
+    if (this.storage.product.selectedProduct !== null) {
       this.edit = false
-      this.form.patchValue(this.storage.product.products[this.storage.product.selectedProduct.index]);      
+      this.form.patchValue(this.storage.product.products[this.storage.product.selectedProduct.index]);
     }
+    this.initValue = this.form.value
+    console.log(this.form.value);
+    
+    this.onChanges()
   }
 
   goBack(): void {
     this.activeModal.dismiss();
   }
+  onChanges(): void {
+    this.form.valueChanges.subscribe(val => {    
+      this.change = (JSON.stringify(val) !== JSON.stringify(this.initValue))      
+    });
+  }
+  cancel(){
+    if(this.change){
+      this.storage.cancelDialog().then((result) => {
+        if (result.value) {
+          this.goBack()
+        }
+      })
+    }else {
+      this.goBack()
+    }
+  }
   save(): void {
-    if(!this.edit){
-        let hand = this.form.value;
-        hand.id = hand.PRODUCT_ID
-        this.request.update('api/product',hand).subscribe((response) => {
-          if(response){
-            this.storage.product.products[this.storage.product.selectedProduct.index] = hand;
-          }
-        });
-this.goBack();
-        this.form.reset()
-    }else{
-      this.request.post('api/product',this.form.value).subscribe((response)=>{
-        if(response){
+    if (!this.edit) {
+      let hand = this.form.value;
+      this.request.update('api/products/'+hand.PRODUCT_ID, hand).subscribe((response) => {
+        if (response) {
+          this.storage.product.products[this.storage.product.selectedProduct.index] = hand;
+          this.goBack();
+      this.form.reset()
+        }
+      });
+      
+    } else {
+      this.request.post('api/products', this.form.value).subscribe((response) => {
+        if (response) {
           this.storage.product.products.unshift(response);
           this.form.reset()
           this.goBack()
         }
-        
-      } );
+
+      });
     }
   }
 

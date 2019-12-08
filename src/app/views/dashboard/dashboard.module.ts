@@ -5,13 +5,15 @@ import { TranslateModule } from '@ngx-translate/core';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { DashboardComponent } from './dashboard.component';
 import { DashboardRoutingModule } from './dashboard-routing.module';
+import { SharedModule } from 'src/app/shared.module';
 
 @NgModule({
     imports: [
         CommonModule,
         DashboardRoutingModule,
         TranslateModule,
-        NgbModule
+        NgbModule,
+        SharedModule
     ],
     declarations: [DashboardComponent]
 

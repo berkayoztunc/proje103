@@ -68,9 +68,12 @@ export class BenefitPackComponent implements OnInit {
   delete(item, i): void {
     this.storage.deleteDialog().then((result) => {
       if (result.value) {
-        this.request.delete('api/benefitpacks/' + item.BENEFIT_PACK_ID).subscribe(() => {
-          this.storage.benefitPack.benefitPacks.splice(i, 1);
-          this.BenefitPacks = this.storage.benefitPack.benefitPacks
+        this.request.delete('api/benefitpacks/' + item.BENEFIT_PACK_ID).subscribe((response) => {
+          if(response){
+            this.storage.benefitPack.benefitPacks.splice(i, 1);
+            this.BenefitPacks = this.storage.benefitPack.benefitPacks
+          }
+         
         });
       }
     })

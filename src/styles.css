@@ -48,6 +48,11 @@ body{
 .breadcrumb{
   margin-bottom: 0px;
 }
+.form-group .form-control-sm{
+  height: 20px;
+  font-size: 15px;
+  padding: 2px;
+}
 
 /**
  Swicth css
@@ -135,6 +140,14 @@ input:checked + .slider:before {
 .modal-lg{
   max-width: 90%;
 }
+.modal-xl{
+  max-width: 50%;
+}
+/*.form-group >  label {
+      border-bottom: 1px solid #ced4da;
+      position: relative;
+      padding-top: 8px;
+}*/
 
 .modal-lg .form-group{
   margin-bottom: 0px;
@@ -147,4 +160,25 @@ input:checked + .slider:before {
 .table-scrool {
   overflow-y: scroll;
   height: 68vh;
+}
+.my-form{
+  max-height: 70vh;
+  overflow-y: scroll;
+}
+
+
+
+.fa-logo{
+  height: 70px;
+  width: 70px;
+  background-size: 70px;
+  background-image: url(./assets/fonts/logo.svg);
+}
+td{ max-width: 33% ;}
+
+.spacific{
+  white-space: nowrap;
+  overflow: hidden;
+  width: 55%;
+  text-overflow: ellipsis;
 }

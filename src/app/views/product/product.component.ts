@@ -5,6 +5,7 @@ import { RequestService } from 'src/app/services/request.service';
 import { StoreService } from 'src/app/services/store.service';
 import { NgbModal, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { ProductFormComponent } from './form/product-form.component';
+import { ItemsList } from '@ng-select/ng-select/lib/items-list';
 
 @Component({
   selector: 'app-Product',
@@ -42,12 +43,19 @@ export class ProductComponent implements OnInit {
   }  
   select(item,index){
     this.storage.product.selectedProduct = {item,index};
-    this.modalService.open(ProductFormComponent)
+    this.modalService.open(ProductFormComponent,{size:'xl'})
 
+  }
+  activation(item){
+    this.request.post('api/products/' + item.PRODUCT_ID, {ACTIVE : !item.ACTIVE}).subscribe((response)=>{
+      if(response){
+        item.ACTIVE = !item.ACTIVE;
+      }
+    })
   }
   create(){
     this.storage.product.selectedProduct = null;
-    this.modalService.open(ProductFormComponent,{size:"lg"})
+    this.modalService.open(ProductFormComponent,{size:'xl'})
   }
   searchProducts(): void {
     this.request.get( 'api/products' )

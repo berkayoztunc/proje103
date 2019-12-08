@@ -1,170 +1,163 @@
 <div class="card">
     <div class="card-body">
-        <h5 class="card-title" *ngIf="!edit">{{ 'modal.user.title.edit' | translate }}</h5>
-        <h5 class="card-title" *ngIf="edit">{{ 'modal.user.title.save' | translate }}</h5>
+        <h5 class="card-title" *ngIf="!edit">{{ 'modal.product.title.edit' | translate }}</h5>
+        <h5 class="card-title" *ngIf="edit">{{ 'modal.product.title.save' | translate }}</h5>
         <app-alert></app-alert>
+
         <form [formGroup]="form" (ngSubmit)="save()">
-            <input type="hidden" class="form-control form-control-sm" placeholder="PRODUCT_ID"
-                formControlName="PRODUCT_ID">
-            <div class="row">
-                <div class="col-md-4">
+            <div class="my-form">
+                <input type="hidden" class="form-control " formControlName="PRODUCT_ID">
 
-                    <div class="form-group">
-                        <label>{{ 'MIGRATION_PRODUCT_ID' | translate }} </label>
-                        <ng-select [items]="product$ | async" bindLabel="PRODUCT" bindValue="PRODUCT_ID"
-                             formControlName="MIGRATION_PRODUCT_ID">
-                        </ng-select>
-                    </div>
-                    <div class="form-group">
-                        <label>{{ 'PRODUCT_TYPE' | translate }} </label>
-                        <ng-select [items]="productType" bindLabel="name" bindValue="value" 
-                            formControlName="PRODUCT_TYPE">
-                        </ng-select>
-                    </div>
-                    <div class="form-group">
-                        <label>{{ 'CURRENCY' | translate }} </label>
-                        <ng-select [items]="currencyies$ | async" bindLabel="CURRENCY" bindValue="CURRENCY_ID"
-                            placeholder="Lütfen seçin" formControlName="CURRENCY">
-                        </ng-select>
-                    </div>
-                    <div class='form-group'>
-                        <label>{{ 'PRODUCT_SALE_TYPE' | translate }} </label>
 
-                        <ng-select [items]="saleType" bindLabel="name" bindValue="value" 
-                            formControlName="PRODUCT_SALE_TYPE">
-                        </ng-select>
+                <div class="form-group">
+                    <label>PRODUCT </label>
+                    <input type="text" class="form-control " formControlName="PRODUCT" name="PRODUCT">
+                </div>
+                <div class="form-group">
+                    <label>{{ 'POLICY_LENGHT_MONTHS' | translate }} </label>
+                    <input type="text" class="form-control " formControlName="POLICY_LENGHT_MONTHS"
+                        name="POLICY_LENGHT_MONTHS">
+                </div>
+                <div class='form-group'>
+                    <label>NEW_COMMISSION_RATE </label>
+                    <input type='number' class='form-control ' formControlName='NEW_COMMISSION_RATE'
+                        name='NEW_COMMISSION_RATE'>
+                </div>
+                <div class='form-group'>
+                    <label>RENEWAL_COMMISSION_RATE </label>
+                    <input type='number' class='form-control ' formControlName='RENEWAL_COMMISSION_RATE'
+                        name='RENEWAL_COMMISSION_RATE'>
+                </div>
+                <div class='form-group'>
+                    <label>MIGRATION_DATE </label>
+                    <input type='datetime' class='form-control ' formControlName='MIGRATION_DATE'
+                        name='MIGRATION_DATE'>
+                </div>
+                <div class='form-group'>
+                    <label>PRICE </label>
+                    <input type='number' class='form-control ' formControlName='PRICE' name='PRICE'>
+                </div>
 
-                    </div>
-                    <div class="form-group">
-                        <label>{{ 'PARTNER_CHANNEL_ID' | translate }} </label>
-                        <ng-select [items]="channels$ | async" bindLabel="CHANNEL" bindValue="CHANNEL_ID"
-                           formControlName="PARTNER_CHANNEL_ID">
+                <div class='form-group'>
+                    <label>OLD_PRODUCT_ID </label>
+                    <input type='text' class='form-control ' formControlName='OLD_PRODUCT_ID'
+                        name='OLD_PRODUCT_ID'>
+                </div>
 
-                        </ng-select>
-                    </div>
+                <div class='form-group'>
+                    <label>OLD_CAMPAIGN_ID </label>
+                    <input type='text' class='form-control ' formControlName='OLD_CAMPAIGN_ID'
+                        name='OLD_CAMPAIGN_ID'>
+                </div>
+                <div class='form-group'>
+                    <label>REFUND_CANCEL_PERIOD_DAYS </label>
+                    <input type='number' class='form-control '
+                        formControlName='REFUND_CANCEL_PERIOD_DAYS' name='REFUND_CANCEL_PERIOD_DAYS'>
+                </div>
 
-                    <div class="form-group">
-                        <label>{{ 'BUSINESS_PARTNER_ID' | translate }} </label>
-                        <ng-select [items]="partners$ | async" bindLabel="PARTNER" bindValue="PARTNER_ID"
-                             formControlName="BUSINESS_PARTNER_ID">
+                <div class="form-group">
+                    <label>{{ 'MIGRATION_PRODUCT_ID' | translate }} </label>
+                    <ng-select [items]="product$ " bindLabel="PRODUCT" bindValue="PRODUCT_ID"
+                        formControlName="MIGRATION_PRODUCT_ID">
+                    </ng-select>
+                </div>
+                <div class="form-group">
+                    <label>{{ 'PRODUCT_TYPE' | translate }} </label>
+                    <ng-select [items]="productType" bindLabel="name" bindValue="value" formControlName="PRODUCT_TYPE">
+                    </ng-select>
+                </div>
+                <div class="form-group">
+                    <label>{{ 'CURRENCY' | translate }} </label>
+                    <ng-select [items]="currencyies$ " bindLabel="CURRENCY" bindValue="PREFIX"
+                        formControlName="CURRENCY">
+                    </ng-select>
+                </div>
+                <div class='form-group'>
+                    <label>{{ 'PRODUCT_SALE_TYPE' | translate }} </label>
 
-                        </ng-select>
-                    </div>
-
-                    <div class="form-group">
-                        <label>{{ 'BENEFIT_PACK_ID' | translate }} </label>
-                        <ng-select [items]="benefitPacks$ | async" bindLabel="BENEFIT_PACK" bindValue="BENEFIT_PACK_ID"
-                             formControlName="BENEFIT_PACK_ID">
-
-                        </ng-select>
-                    </div>
-                    <div class="form-group">
-                        <label>{{ 'SOLDBY' | translate }} </label>
-                        <input type="text" class="form-control form-control-sm" placeholder="SOLDBY"
-                            formControlName="SOLDBY" name="SOLDBY">
-                    </div>
-                    <div class="form-group">
-                        <label>{{ 'SERVICE_TYPE_ID' | translate }} </label>
-                        <ng-select [items]="serviceType$ | async" bindLabel="SERVICE_TYPE" bindValue="SERVICE_TYPE_ID"
-                            formControlName="SERVICE_TYPE_ID">
-
-                        </ng-select>
-                    </div>
+                    <ng-select [items]="saleType" bindLabel="name" bindValue="value"
+                        formControlName="PRODUCT_SALE_TYPE">
+                    </ng-select>
 
                 </div>
-                <div class="col-md-4">
-                    <div class="form-group">
-                        <label>{{ 'POLICY_LENGHT_MONTHS' | translate }} </label>
-                        <input type="text" class="form-control form-control-sm" 
-                            formControlName="POLICY_LENGHT_MONTHS" name="POLICY_LENGHT_MONTHS">
-                    </div>
-                    <div class="form-group">
-                        <label>{{ 'BUSINESS_MODEL' | translate }} </label>
-                        <input type="text" class="form-control form-control-sm" 
-                            formControlName="BUSINESS_MODEL" name="BUSINESS_MODEL">
-                    </div>
-                    <div class="form-group">
-                        <label>BUSINESS_PARTNER_ID </label>
-                        <input type="text" class="form-control form-control-sm" placeholder="BUSINESS_PARTNER_ID"
-                            formControlName="BUSINESS_PARTNER_ID" name="BUSINESS_PARTNER_ID">
-                    </div>
-                    <div class="form-group">
-                        <label>PRODUCT </label>
-                        <input type="text" class="form-control form-control-sm" placeholder="CAPTION"
-                            formControlName="PRODUCT" name="PRODUCT">
-                    </div>
-                    <div class='form-group'>
-                        <label>NEW_COMMISSION_RATE </label>
-                        <input type='number' class='form-control form-control-sm' placeholder='NEW_COMMISSION_RATE'
-                            formControlName='NEW_COMMISSION_RATE' name='NEW_COMMISSION_RATE'>
-                    </div>
-                    <div class='form-group'>
-                        <label>RENEWAL_COMMISSION_RATE </label>
-                        <input type='number' class='form-control form-control-sm' placeholder='RENEWAL_COMMISSION_RATE'
-                            formControlName='RENEWAL_COMMISSION_RATE' name='RENEWAL_COMMISSION_RATE'>
-                    </div>
-                    <div class='form-group'><label>MIGRATION_DATE </label><input type='text'
-                            class='form-control form-control-sm' placeholder='MIGRATION_DATE'
-                            formControlName='MIGRATION_DATE' name='MIGRATION_DATE'>
-                    </div>
+                <div class="form-group">
+                    <label>{{ 'PARTNER_CHANNEL_ID' | translate }} </label>
+                    <ng-select [items]="channels$ " bindLabel="PARTNER_CHANNEL" bindValue="PARTNER_CHANNEL_ID"
+                        formControlName="PARTNER_CHANNEL_ID">
 
-                    <div class='form-group'>
-                        <label>PRICE </label>
-                        <input type='number' class='form-control form-control-sm' placeholder='PRICE'
-                            formControlName='PRICE' name='PRICE'>
-                    </div>
+                    </ng-select>
+                </div>
 
-                    <div class='form-group'>
-                        <label>OLD_PRODUCT_ID </label>
-                        <input type='text' class='form-control form-control-sm' placeholder='OLD_PRODUCT_ID'
-                            formControlName='OLD_PRODUCT_ID' name='OLD_PRODUCT_ID'>
-                    </div>
+                <div class="form-group">
+                    <label>{{ 'BUSINESS_PARTNER_ID' | translate }} </label>
+                    <ng-select [items]="partners$ " bindLabel="PARTNER" bindValue="PARTNER_ID"
+                        formControlName="BUSINESS_PARTNER_ID">
 
-                    <div class='form-group'>
-                        <label>OLD_CAMPAIGN_ID </label>
-                        <input type='text' class='form-control form-control-sm' placeholder='OLD_CAMPAIGN_ID'
-                            formControlName='OLD_CAMPAIGN_ID' name='OLD_CAMPAIGN_ID'>
-                    </div>
+                    </ng-select>
+                </div>
+
+                <div class="form-group">
+                    <label>{{ 'BENEFIT_PACK_ID' | translate }} </label>
+                    <ng-select [items]="benefitPacks$ " bindLabel="BENEFIT_PACK" bindValue="BENEFIT_PACK_ID"
+                        formControlName="BENEFIT_PACK_ID">
+
+                    </ng-select>
+                </div>
+                <div class="form-group">
+                    <label>{{ 'SOLDBY' | translate }} </label>
+                    <input type="text" class="form-control " formControlName="SOLDBY" name="SOLDBY">
+                </div>
+                <div class="form-group">
+                    <label>{{ 'SERVICE_TYPE_ID' | translate }} </label>
+                    <ng-select [items]="serviceType$" bindLabel="SERVICE_TYPE" bindValue="SERVICE_TYPE_ID"
+                        formControlName="SERVICE_TYPE_ID">
+
+                    </ng-select>
+                </div>
+                <div class="form-group">
+                    <label>{{ 'BUSINESS_MODEL' | translate }} </label>
+                    <ng-select [items]="bussinesModel" bindLabel="name" bindValue="value"
+                        formControlName="BUSINESS_MODEL">
+                    </ng-select>
 
                 </div>
-                <div class="col-md-4">
-                    <div class='form-group'>
-                        <label>EXPLANATION </label>
-                        <textarea name="" id="" cols="30" rows="10" class="form-control form-control-sm"
-                            placeholder="EXPLANATION" formControlName="EXPLANATION"></textarea>
-                    </div><label>SEÇİM </label>
+                <div class='form-group'>
+                    <label>EXPLANATION </label>
+                    <textarea name="" id="" cols="30" rows="10" class="form-control "
+                        placeholder="EXPLANATION" formControlName="EXPLANATION"></textarea>
+                </div><label>SEÇİM </label>
 
-                    <div class="form-check">
-                        <input type="checkbox" class="form-check-input" formControlName="WELCOME">
-                        <label class="form-check-label">WELCOME</label>
-                    </div>
-                    <div class="form-check">
-                        <input type="checkbox" class="form-check-input" formControlName="ACTIVE">
-                        <label class="form-check-label">ACTIVE</label>
-                    </div>
-                    <div class="form-check">
-                        <input type="checkbox" class="form-check-input" formControlName="RENEWAL">
-                        <label class="form-check-label">RENEWAL</label>
-                    </div>
-                    <div class="form-check">
-                        <input type="checkbox" class="form-check-input" formControlName="GUIDE">
-                        <label class="form-check-label">GUIDE</label>
-                    </div>
-                    <div class="form-check">
-                        <input type="checkbox" class="form-check-input" formControlName="DUPLICATE_CONTROL">
-                        <label class="form-check-label">DUPLICATE_CONTROL</label>
-                    </div>
-
+                <div class="form-check">
+                    <input type="checkbox" class="form-check-input" formControlName="WELCOME">
+                    <label class="form-check-label">WELCOME</label>
                 </div>
+                <div class="form-check">
+                    <input type="checkbox" class="form-check-input" formControlName="ACTIVE">
+                    <label class="form-check-label">ACTIVE</label>
+                </div>
+                <div class="form-check">
+                    <input type="checkbox" class="form-check-input" formControlName="RENEWAL">
+                    <label class="form-check-label">RENEWAL</label>
+                </div>
+                <div class="form-check">
+                    <input type="checkbox" class="form-check-input" formControlName="GUIDE">
+                    <label class="form-check-label">GUIDE</label>
+                </div>
+                <div class="form-check">
+                    <input type="checkbox" class="form-check-input" formControlName="DUPLICATE_CONTROL">
+                    <label class="form-check-label">DUPLICATE_CONTROL</label>
+                </div>
+
+
+
             </div>
 
-
-
-
-            <button type="submit" class="btn btn-primary float-right" *ngIf="!edit"
-                [disabled]="!form.valid">KAYDET</button>
-            <button type="submit" class="btn btn-success float-right" *ngIf="edit"
-                [disabled]="!form.valid">EKLE</button>
+            <button type="submit" class="btn btn-xs btn-primary float-right text-white" *ngIf="!edit"
+                [disabled]="!form.valid">{{ 'KAYDET' | translate }}</button>
+            <button type="submit" class="btn btn-xs btn-success float-right text-white" *ngIf="edit"
+                [disabled]="!form.valid">{{ 'EKLE' | translate }}</button>
+            <a class="btn btn-xs btn-warning float-right text-white mr-1"
+                (click)="cancel()">{{ 'cancel' | translate }}</a>
         </form>
     </div>
 </div>

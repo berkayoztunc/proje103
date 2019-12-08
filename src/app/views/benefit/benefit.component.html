@@ -20,32 +20,31 @@
         </div>
         <div class="row pt-3 table-scrool">
             <div class="col-12">
-                <table class="table">
+                <table class="table table-hover">
                     <thead class="bg-primary text-white">
                         <tr>
-                            <th>{{ 'Benefit.BENEFIT_ID' |translate}}</th>
-                            <th>{{'Benefit.BENEFIT'|translate}}</th>
-                            <th>{{'Benefit.EXPLANATION'|translate}}</th>
-                            <th>{{'Benefit.ACTIVE' | translate}}</th>
-                            <th>{{'Benefit.action'|translate}}</th>
+                            <th width="5%">{{ 'Benefit.BENEFIT_ID' |translate}}</th>
+                            <th width="25%">{{'Benefit.BENEFIT'|translate}}</th>
+                            <th class="spacific">{{'Benefit.EXPLANATION'|translate}}</th>
+                            <th width="5%" >{{'Benefit.ACTIVE' | translate}}</th>
+                            <th width="10%">{{'Benefit.action'|translate}}</th>
                         </tr>
                     </thead>
 
                     <tbody>
                         <tr *ngFor="let Benefit of Benefits; let i = index">
-                            <th scope="row">{{Benefit.BENEFIT_ID}}</th>
+                            <th scope="row" >{{Benefit.BENEFIT_ID}}</th>
                             <td>{{Benefit.BENEFIT}}</td>
-                            <td>{{Benefit.EXPLANATION}}</td>
+                            <td  appShowAll class="spacific"> {{Benefit.EXPLANATION}}</td>
                             <td>
                                 <i class="fas fa-check fa-2x text-success" *ngIf="Benefit.ACTIVE"></i>
                                 <i class="fas fa-times fa-2x text-danger" *ngIf="!Benefit.ACTIVE"></i>
 
                             </td>
-                            <td>
-                                <a class="btn btn-xs btn-warning " (click)="select(Benefit,i)"><i class="fas fa-edit"></i></a>
+                            <td >
+                                <button class="btn btn-xs btn-warning "  [disabled]="Benefit.USED"  (click)="select(Benefit,i)"><i class="fas fa-edit"></i></button>
                                 
-                                <a class="btn btn-xs btn-danger " (click)="delete(Benefit,i)"><i
-                                    class="fas fa-trash"></i></a>
+                                <button class="btn btn-xs btn-danger " [disabled]="Benefit.USED" (click)="delete(Benefit,i)"><i class="fas fa-trash"></i></button>
                             </td>
                         </tr>
                     </tbody>

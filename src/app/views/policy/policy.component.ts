@@ -3,6 +3,7 @@ import { Router, ActivatedRoute, NavigationEnd } from '@angular/router';
 import { RequestService } from 'src/app/services/request.service';
 import { StoreService } from 'src/app/services/store.service';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 
 @Component({
@@ -12,20 +13,43 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 })
 
 export class PolicyComponent implements OnInit {
+  searchData = [];
+  form:FormGroup;
   constructor(
     private route: ActivatedRoute,
     private router: Router,
     private request: RequestService,
-    private storage: StoreService,
+    public storage: StoreService,
     private modalService: NgbModal,
+    private fb: FormBuilder
   ) {
 
 
-
+    this.createForm();
   }
-
+  createForm() {
+    this.form = this.fb.group({
+      LAST_NAME: [null],
+      POLICY_NUMBER: [null],
+      EXTERNAL_POLICY_NUMBER: [null],
+      NATIONAL_ID: [null],
+      MOBILE_PHONE: [null],
+    });
+  }
+  get validator() { return this.form.controls; }
+  
+  info(){
+    let obj = Object.keys(this.storage.policy.selectedCustomer);
+    obj = obj.splice(0,obj.length -1);
+    return obj
+  }
+  infoPolicy(){
+    let obj = Object.keys(this.storage.policy.selectedPolicy);
+    obj = obj.splice(0,obj.length);
+    return obj
+  }
   ngOnInit() {
 
   }
-
+ 
 }

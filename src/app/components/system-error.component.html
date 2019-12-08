@@ -1,0 +1,16 @@
+<div class="card">
+    <div class="card-body">
+        <div class="row">
+            <ngx-json-viewer class="col-md-12" [json]="data" [expanded]="code"></ngx-json-viewer>
+
+        </div>
+        <hr>
+        <div class="row">
+            <div class="col-md-6 offset-6">
+                <a class="btn btn-info btn-xs text-white float-right mr-1" (click)="code = !code">İncele</a>
+                <a class="btn btn-success btn-xs text-white float-right mr-1" (click)="close()">Kapat</a>
+                <a class="btn btn-warning btn-xs text-white float-right mr-1" (click)="send()">Bildir</a>
+            </div>
+        </div>
+    </div>
+</div>

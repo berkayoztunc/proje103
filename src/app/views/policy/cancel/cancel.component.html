@@ -1,0 +1,60 @@
+<loader [showIf]="request.onTheGo">
+
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title" *ngIf="edit">{{ 'modal.explanation.title.save' | translate }}</h5>
+
+            <app-alert></app-alert>
+            <div class="row">
+                <div class="col-md-12">
+                    <form>
+
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1"
+                                value="option1" checked>
+                            <label class="form-check-label" for="exampleRadios1">
+                                Default radio
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2"
+                                value="option2">
+                            <label class="form-check-label" for="exampleRadios2">
+                                Second default radio
+                            </label>
+                        </div>
+                        <hr>
+                        <select class="form-control form-control-sm">
+                            <option>Small select</option>
+                        </select>
+                        <hr>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1"
+                                value="option1" checked>
+                            <label class="form-check-label" for="exampleRadios1">
+                                Default radio
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2"
+                                value="option2">
+                            <label class="form-check-label" for="exampleRadios2">
+                                Second default radio
+                            </label>
+                        </div>
+                    </form>
+                </div>
+
+                
+            </div>
+            <div class="row">
+                    <hr>
+
+                    <button type="submit" class="btn btn-xs btn-primary float-right text-white"
+                    [disabled]="valid">{{ 'KAYDET' | translate }}</button>
+                <a class="btn btn-xs btn-warning float-right text-white mr-1"
+                    (click)="cancel()">{{ 'cancel' | translate }}</a>
+            </div>
+        </div>
+    </div>
+</loader>

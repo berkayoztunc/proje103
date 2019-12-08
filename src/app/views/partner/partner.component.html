@@ -27,7 +27,7 @@
 
                     <tbody>
                         <tr *ngFor="let Partner of Partners; let i = index">
-                            <th scope="row">{{Partner.PARTNER_ID}}</th>
+                            <th scope="row" width="5%">{{Partner.PARTNER_ID}}</th>
                             <td>{{Partner.PARTNER}}</td>
                             <td>
                                 <i class="fas fa-check fa-2x text-success" *ngIf="Partner.ACTIVE"></i>

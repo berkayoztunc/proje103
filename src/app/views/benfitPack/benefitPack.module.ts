@@ -2,9 +2,9 @@ import { NgModule } from '@angular/core';
 import { BenefitPackComponent } from './benefitPack.component';
 import { CommonModule } from '@angular/common';
 import { BenefitPackRoutingModule } from './benefitPack-routing.module';
-import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { TranslateModule } from '@ngx-translate/core';
 import { BenefitPackBenefitsComponent } from './banefits/benefitPack-benefit.component';
+import { SharedModule } from 'src/app/shared.module';
 
 
 
@@ -13,8 +13,7 @@ import { BenefitPackBenefitsComponent } from './banefits/benefitPack-benefit.com
   imports: [
     CommonModule,
     TranslateModule,
-    FormsModule,
-    ReactiveFormsModule,
+    SharedModule,
     BenefitPackRoutingModule,
   ]
 })

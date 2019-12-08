@@ -31,7 +31,7 @@
 
                     <tbody>
                         <tr *ngFor="let Channel of Channels; let i = index">
-                            <th scope="row">{{Channel.PARTNER_CHANNEL_ID}}</th>
+                            <th scope="row" width="5%">{{Channel.PARTNER_CHANNEL_ID}}</th>
                             <td>{{Channel.PARTNER_CHANNEL}}</td>
                             <td>
                                 <i class="fas fa-check fa-2x text-success" *ngIf="Channel.ACTIVE"></i>

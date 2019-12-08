@@ -49,6 +49,11 @@ export class UserComponent implements OnInit {
   view(item) {
 
   }
+  unlock(item,i):void{
+    this.request.update('api/users/unlock/'+item.USER_ID,{EMAIL:item.EMAIL}).subscribe(()=>{
+
+    })
+  }
   create() {
     this.storage.user.selectedUser = null;
     this.modalService.open(UserFormComponent)

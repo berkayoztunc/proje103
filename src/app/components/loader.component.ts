@@ -3,9 +3,9 @@ import { Input, Component, Renderer2, ElementRef, ChangeDetectorRef } from '@ang
 @Component({
     selector: 'loader',
     template: `
-    <div id="blocker" class="blocker" *ngIf="showIf">
+    <div id="blocker" class="blocker" *ngIf="showIf ">
         <div class="fa-3x">
-            <i class="fas fa-spinner fa-spin"></i>
+            <div class="fa-logo fa-spin"></div>
         </div>
     </div>
     <ng-content class="loader"></ng-content>
@@ -24,9 +24,10 @@ import { Input, Component, Renderer2, ElementRef, ChangeDetectorRef } from '@ang
       width: 100%;
       height: 100%;
       z-index: 1500;
-      background-color: rgba(0,0,0,0.2);
-      opacity: 0.5;
+      padding:0.02px;
+      background-color: rgba(255,255,255,0.5);
     }
+    
   `],
 })
 export class LoaderComponent {

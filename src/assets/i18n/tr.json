@@ -1,10 +1,20 @@
 {
-    "BENEFIT_PACK_ID": "benefit paketleri",
-    "BUSINESS_PARTNER_ID": "İş ortağı partneri",
+    "BENEFIT_PACK_ID": "Kazanım paketi",
+    "BUSINESS_PARTNER_ID": "Partner",
+    "MIGRATION_PRODUCT_ID": "Birleştirilen ürün numarası",
+    "PARTNER_CHANNEL_ID": "Partner kanalı",
+    "PRODUCT_SALE_TYPE": "Ürün satış tipi",
+    "PRODUCT_TYPE": "Ürün tipi",
+    "EKLE": "Ekle",
+    "KAYDET": "Kaydet",
+    "SERVICE_TYPE_ID": "Servis Tipi",
+    "SOLDBY": "Satıcı",
+
+
     "Benefit": {
         "ACTIVE": "Aktif",
         "BENEFIT": "Benefit açıklaması",
-        "BENEFIT_ID": "Benefit ID",
+        "BENEFIT_ID": "#ID",
         "EXPLANATION": "Benefit",
         "action": "İşlemler",
         "email_ad_placeholser": "Benefit ile ara",
@@ -14,7 +24,7 @@
     "BenefitPack": {
         "ACTIVE": "Aktif",
         "BENEFIT_PACK": "Benefit paket adı",
-        "BENEFIT_PACK_ID": "Benefit Paket ID",
+        "BENEFIT_PACK_ID": "#ID",
         "action": "İşlemler",
         "benefist_button": "Benefits",
         "email_ad_placeholser": "Benefit paket adı ile ara",
@@ -25,7 +35,7 @@
     "CancelReason": {
         "ACTIVE": "Aktif",
         "CANCEL_REASON": "İptal nedeni",
-        "CANCEL_REASON_ID": "İptal nedene ID",
+        "CANCEL_REASON_ID": "#ID",
         "CANCEL_REASON_TYPE": "İptal nedeni tipi",
         "action": "İşlemler",
         "email_ad_placeholser": "İptal nedeni ile ara",
@@ -35,7 +45,7 @@
     "Channel": {
         "ACTIVE": "Aktif",
         "PARTNER_CHANNEL": "Kanal adı",
-        "PARTNER_CHANNEL_ID": "Kanal ID",
+        "PARTNER_CHANNEL_ID": "#ID",
         "action": "İşlemler",
         "email_ad_placeholser": "Kanal adı ile ara",
         "search": "Arama butonu",
@@ -45,7 +55,7 @@
         "ACTIVE": "Aktif",
         "CITY": "Şehir adı",
         "CITY_CODE": "Şehir Numarası",
-        "CITY_ID": "Şehir ID",
+        "CITY_ID": "#ID",
         "action": "İşlemler",
         "email_ad_placeholser": "Şehir adı ile ara",
         "search": "Arama butonu",
@@ -54,8 +64,8 @@
     "Country": {
         "ACTIVE": "Aktif",
         "COUNTRY": "Ülke adı",
-        "COUNTRY_ID": "Ülke ID",
         "COUNTRY_CODE": "Ülke kodu",
+        "COUNTRY_ID": "#ID",
         "PHONE_CODE": "Telefon kodu",
         "action": "İşlemler",
         "city_button": "Şehirler",
@@ -64,24 +74,21 @@
         "search_clear": "Arama temizle"
     },
     "Currency": {
+        "PREFIX" : "Kod",
         "ACTIVE": "Aktif",
         "CURRENCY": "Para birimi",
-        "CURRENCY_ID": "Para birimi ID",
+        "CURRENCY_ID": "#ID",
         "action": "İşlemler",
         "email_ad_placeholser": "Para birimi ile ara",
         "search": "Arama butonu",
         "search_clear": "Arama temizle"
     },
-    "EKLE": "Ekle",
-    "KAYDET": "Kaydet",
-    "MIGRATION_PRODUCT_ID": "Birleştirilen ürün numarası",
-    "PARTNER_CHANNEL_ID": "Partner kanalı",
-    "PRODUCT_SALE_TYPE": "Ürün satış tipi",
-    "PRODUCT_TYPE": "Ürün tipi",
+   
+   
     "Partner": {
         "ACTIVE": "Aktif",
         "PARTNER": "Partner adı",
-        "PARTNER_ID": "Partner ID",
+        "PARTNER_ID": "#ID",
         "action": "İşlemler",
         "email_ad_placeholser": "Partner adı ile ara",
         "search": "Arama butonu",
@@ -90,19 +97,19 @@
     "Role": {
         "ACTIVE": "Aktif",
         "ROLE": "Role Adı",
-        "ROLE_ID": "Role ID",
+        "ROLE_ID": "#ID",
         "action": "İşlemler",
         "email_ad_placeholser": "Role adı ile ara",
         "search": "Arama butonu",
         "search_clear": "Arama temizle"
     },
-    "SERVICE_TYPE_ID": "Servis tipi",
-    "SOLDBY": "Satıcı",
+   
+    "Search": "Ara",
     "ServiceType": {
         "ACTIVE": "Aktif",
         "PREFIX": "Açıklama",
         "SERVICE_TYPE": "Servis Tipi",
-        "SERVICE_TYPE_ID": "Servis tipi ID",
+        "SERVICE_TYPE_ID": "#ID",
         "action": "İşlemler",
         "email_ad_placeholser": "Serivis tipi adı ile ara",
         "search": "Arama butonu",
@@ -116,6 +123,7 @@
     "dialog_yes": "Evet",
     "form_change": "Form alanında bir değişiklik yaptınız, iptal etmek istediğinizden eminmisiniz ?",
     "menu": {
+        "city": "Şehirler",
         "benefit": "Kazanımlar",
         "benefitPack": "Kazanım paketleri",
         "cancelreason": "İptal nedenleri",
@@ -124,6 +132,7 @@
         "cruds": "Tanımlamalar",
         "currency": "Kurlar",
         "dashboard": "Platform",
+        "overview": "Poliçe işlemleri",
         "partner": "Partnerler",
         "password": {
             "newpassword": "Yeni şifre",
@@ -134,13 +143,25 @@
         "product": "Ürünler",
         "resetpassword": "Şifreni sıfırla",
         "role": "Roller",
+        "search": "Müşteri veya poliçe arama",
         "serviceType": "Servis Tipleri",
         "signout": "Güvenli çıkış",
+        "upload-csv": "Dosya yükle",
         "user": "Kullanıcı"
     },
     "modal": {
+        "policyBenefit" :{
+            "title" : "Kazanımlar"
+        },
+        "product" : {
+            "title": {
+                "save": "Ürün Ekle",
+                "edit" : "Ürün düzenle"
+            }
+        },
         "benefit": {
             "title": {
+                "edit" : "Kazanım düzenle",
                 "save": "Kazanım Ekle"
             }
         },
@@ -149,6 +170,24 @@
             "title": {
                 "edit": "Rol düzenle",
                 "save": "Rol ekle"
+            }
+        },
+        "channel": {
+            "title": {
+                "save" : "Partner kanal'ı ekle",
+                "edit": "Partner kanal'ı düzenle"
+            }
+        },
+        "cancelReason" : {
+            "title": {
+                "save" : "İptal nedeni ekle",
+                "edit": "İptal nedeni düzenle"
+            }
+        },
+        "partner":{
+            "title": {
+                "save" : "Partner  ekle",
+                "edit": "Partner  düzenle"
             }
         },
         "user": {
@@ -161,6 +200,43 @@
                 "edit": "Kullanıcı düzenle",
                 "save": "Kullanıcı ekle"
             }
+        }
+    },
+    "policy": {
+        "POLICY_ID": "POLİÇE ID",
+        "POLICY_NUMBER": "POLİÇE NUMARASI",
+        "RENEWAL_DATE": "YENİLEME ZAMANI",
+        "PREVIOUS_RENEWAL_DATE": "ÖNCEKİ YENİLEME ZAMANI",
+        "OLD_POLICY_ID": "ESKİ POLİÇE NUMARASI",
+        "ACTIVE": "AKTİF",
+        "ADDRESS": "ADRES",
+        "CUSTOMER_ID": "MÜŞTERİ NUMARASI",
+        "CUSTOMER_TYPE": "MÜŞTERİ TİPİ",
+        "C_DATE": "OLUŞTURULMA ZAMANI",
+        "DELETED": "SİLİNMİŞMİ",
+        "EMAIL": "EMAIL",
+        "EXPLANATION": "AÇIKLAMA",
+        "EXTERNAL_POLICY_NUMBER": "UZATMALI POLİÇE NUMARASI",
+        "FIRST_NAME": "AD",
+        "HOME_PHONE": "EV TELEFONU",
+        "LAST_NAME": "SOYAD",
+        "MOBILE_PHONE": "CEP TELEFONU",
+        "NATIONAL_ID": "TCKN",
+        "STATUS": "DURUMU",
+        "START_DATE": "BAŞLANGIÇ TARİHİ",
+        "WORK_PHONE": "İŞ TELEFONU",
+        "customer_info": "Müşteri bilgisi",
+        "national_id": "TCKN",
+        "number": "Poliçe numarası ",
+        "phone_number": "Telefon numarası",
+        "policy_info": "Poliçe detayı",
+        "reced_service_history": "Recent service history",
+        "search": {
+            "external_policy_number": "Ek poliçe numarası",
+            "last_name": "Soyad",
+            "mobile_phone": "Cep telefonu",
+            "national_id": "TCKN",
+            "policy_number": "Poliçe numarası"
         }
     },
     "product": {

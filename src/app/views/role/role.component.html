@@ -28,7 +28,7 @@
 
                     <tbody>
                         <tr *ngFor="let Role of Roles; let i = index">
-                            <th scope="row">{{Role.ROLE_ID}}</th>
+                            <th scope="row" width="5%">{{Role.ROLE_ID}}</th>
                             <td>{{Role.ROLE}}</td>
                             <td>
                                 <i class="fas fa-check fa-2x text-success" *ngIf="Role.ACTIVE"></i>
@@ -40,8 +40,6 @@
                                         class="fas fa-edit"></i></a>
                                 <a class="btn btn-xs btn-info text-white" (click)="viewPermission(Role)"><i
                                         class="fas fa-info-circle"></i> İzinler </a>
-                                <a class="btn btn-xs btn-info text-white" (click)="viewUser(Role)"><i
-                                        class="fas fa-info-circle"></i> Kullanıcılar </a>
                                 <a class="btn btn-xs btn-danger "(click)="delete(Role,i)"><i class="fas fa-trash"></i></a>
                             </td>
                         </tr>

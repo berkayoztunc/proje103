@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
 
-import { Observable, of } from 'rxjs';
+import { Observable, of, Subject } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
 
 import Swal from 'sweetalert2/dist/sweetalert2.js'
@@ -11,9 +11,10 @@ import { StoreService } from './store.service';
 @Injectable({ providedIn: 'root' })
 export class RequestService {
   error = null;
-  domain = 'http://192.168.1.24:9201/';
+  //domain = 'http://192.168.116.206:9201/';
+  domain = 'http://192.168.43.211:9201/';
   onTheGo = false;
-
+  systemError = new Subject();
   constructor(
     private http: HttpClient, private storage: StoreService) { }
 
@@ -99,32 +100,46 @@ export class RequestService {
   private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
       this.onTheGo = false
-      if (error.error) {
-        if (error.error.condition == 2010) {
-          this.error = error.error.message
-        } else if (error.error.condition == 2020) {
-          Swal.fire({
-            title: 'Error!',
-            text: error.error.message,
-            icon: 'error',
-          })
-        }
-      }
-
-      if (error.status == 400) {
-        this.error = error.error.message
-      } else {
-        Swal.fire({
-          title: 'Error!',
-          text: error.error.message,
-          icon: 'error',
-        })
+      switch (status) {
+        case '404':
+            Swal.fire({
+              title: 'Error!',
+              text: error.message,
+              icon: 'error',
+            })
+          break;
+        case '400':
+            this.error = error.error.message
+            break;  
+        case '403':
+            Swal.fire({
+              title: 'Error!',
+              text: error.message,
+              icon: 'error',
+            })
+          break;  
+        default:
+            this.condidationError(error.error)
+          break;
       }
 
       return of(result as T);
     };
   }
+  private condidationError(error){
 
+    switch (error.condition) {
+      case 2010:
+        this.error = error.message
+        break;
+      case 2020:
+          this.error = error
+          this.systemError.next(error)
+          break;
+      default:
+        break;
+    }
+  }
   /** Log a UserService message with the MessageService */
   private log(message: string) {
     console.log(message)

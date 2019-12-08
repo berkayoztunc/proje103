@@ -15,6 +15,7 @@ export class UserFormComponent implements OnInit {
   edit = true;
   change = false;
   initValue= {};
+  roles$ =  [];
   constructor(   
     private activeModal : NgbActiveModal,private request: RequestService, private storage: StoreService, private fb: FormBuilder, private route: ActivatedRoute, private location: Location) {
     this.createForm();
@@ -26,6 +27,7 @@ export class UserFormComponent implements OnInit {
       NAME: ['',Validators.required],
       EMAIL: ['', [Validators.email, Validators.required]],
       ACTIVE: [''],
+      ROLE_ID :[null,Validators.required]
     });
   }
   get validator() { return this.form.controls; }
@@ -36,6 +38,9 @@ export class UserFormComponent implements OnInit {
       this.edit = false
       this.form.patchValue(this.storage.user.users[this.storage.user.selectedUser.index]);
     }
+    this.request.get('api/roles').subscribe((response) => {
+      this.roles$ = response.data
+    });
     this.initValue = this.form.value
     this.onChanges()
   }
@@ -66,7 +71,6 @@ export class UserFormComponent implements OnInit {
         this.request.update('api/users/'+this.initValue['USER_ID'], hand).subscribe((response) => {
               this.storage.user.users[this.storage.user.selectedUser.index] = hand
               this.goBack()           
-           // if (response) {}
         });
       } else {
         this.request.post('api/users', this.form.value).subscribe((response) => {
