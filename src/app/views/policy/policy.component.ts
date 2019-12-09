@@ -4,6 +4,7 @@ import { RequestService } from 'src/app/services/request.service';
 import { StoreService } from 'src/app/services/store.service';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { CustomerComponent } from './customer/customer.component';
 
 
 @Component({
@@ -37,7 +38,9 @@ export class PolicyComponent implements OnInit {
     });
   }
   get validator() { return this.form.controls; }
-  
+  editCustomer(){
+    this.modalService.open(CustomerComponent)
+  }
   info(){
     let obj = Object.keys(this.storage.policy.selectedCustomer);
     obj = obj.splice(0,obj.length -1);

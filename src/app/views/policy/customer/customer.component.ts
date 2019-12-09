@@ -6,34 +6,31 @@ import { FormBuilder, FormGroup  } from '@angular/forms';
 
 
 @Component({
-  selector: 'app-policy-benefit',
-  templateUrl: './policy-benefit.component.html',
-  styleUrls: ['./policy-benefit.component.css'],
+  selector: 'app-custommer',
+  templateUrl: './customer.component.html',
+  styleUrls: ['./customer.component.css'],
 })
 
-export class PolicyBenefitComponent implements OnInit {
-  benefits = [];
+export class CustomerComponent implements OnInit {
+ 
   constructor(
     public request: RequestService,
     public storage: StoreService,
     private activeModal: NgbActiveModal,
+    private fb : FormBuilder
   ) {
 
   }
   
 
   ngOnInit(){
-    this.request.get('api/policy/benefits/'+this.storage.policy.selectedPolicy['POLICY_ID']).subscribe((response)=>{
-      if(response){
-        this.benefits = response.data
-      }
-    })
   }
   goBack(){
     this.activeModal.dismiss()
   }
   cancel() {
     this.goBack()
+
   }
   
  

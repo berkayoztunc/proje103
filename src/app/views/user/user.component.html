@@ -1,5 +1,6 @@
 <div class="card">
     <div class="card-body">
+            <loader [showIf]="request.onTheGo">
 
         <div class="row">
             <div class="col-md-6 ">
@@ -19,6 +20,7 @@
         </div>
         <div class="row pt-3 table-scrool">
             <div class="col-12">
+
                 <table class="table">
                     <thead class="bg-primary text-white">
                         <tr>
@@ -53,5 +55,6 @@
             </div>
 
         </div>
+        </loader>
     </div>
 </div>

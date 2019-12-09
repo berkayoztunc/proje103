@@ -71,14 +71,19 @@ export class ServiceTypeFormComponent implements OnInit {
     if (!this.edit) {
       let hand = this.form.value;
       this.request.update('api/servicetypes/'+ hand.SERVICE_TYPE_ID, hand).subscribe((response) => {
-        this.storage.serviceType.serviceTypes[this.storage.serviceType.selectedServiceType.index] = hand;
+        if(response){
+          this.storage.serviceType.serviceTypes[this.storage.serviceType.selectedServiceType.index] = hand;
+          this.goBack();
+          this.form.reset()
+        }
       });
-      this.goBack();
-      this.form.reset()
+      
     } else {
       this.request.post('api/servicetypes', this.form.value).subscribe((response) => {
-        this.storage.serviceType.serviceTypes.unshift(response.data[0]);
-        this.goBack()
+        if(response){
+          this.storage.serviceType.serviceTypes.unshift(response.data[0]);
+          this.goBack()
+        } 
       });
     }
   }

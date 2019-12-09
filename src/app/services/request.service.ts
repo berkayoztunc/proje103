@@ -12,7 +12,7 @@ import { StoreService } from './store.service';
 export class RequestService {
   error = null;
   //domain = 'http://192.168.116.206:9201/';
-  domain = 'http://192.168.117.251:9201/';
+  domain = 'http://192.168.1.183:9201/';
   //domain = 'http://192.168.43.211:9201/';
   onTheGo = false;
   systemError = new Subject();
@@ -33,7 +33,7 @@ export class RequestService {
       params: params,
     };
     return this.http.get(this.domain + url, options).pipe(
-      tap(_ => this.onTheGo = false),
+      tap(_ => this.onTheGo = !this.onTheGo),
       catchError(this.handleError<any>('get'))
     );
   }
@@ -53,7 +53,7 @@ export class RequestService {
       }),
     };
     return this.http.post(this.domain + url, param, options).pipe(
-      tap(_ => this.onTheGo = false),
+      tap(_ => this.onTheGo = !this.onTheGo),
       catchError(this.handleError<any>('post'))
     );
   }
@@ -70,7 +70,7 @@ export class RequestService {
       }),
     };
     return this.http.delete(this.domain + url, headerObj).pipe(
-      tap(_ => this.onTheGo = false),
+      tap(_ => this.onTheGo = !this.onTheGo),
       catchError(this.handleError<any>('delete'))
     );
   }
@@ -87,7 +87,7 @@ export class RequestService {
       }),
     };
     return this.http.put(this.domain + url, params, headerObj).pipe(
-      tap(_ => this.onTheGo = false),
+      tap(_ => this.onTheGo = !this.onTheGo),
       catchError(this.handleError<any>('update'))
     );
   }
@@ -110,7 +110,7 @@ export class RequestService {
             })
           break;
         case '400':
-            this.error = error.error.message
+            this.error = error.message
             break;  
         case '403':
             Swal.fire({
@@ -134,7 +134,8 @@ export class RequestService {
         this.error = error.message
         break;
       case 2020:
-          this.error = error
+          this.error = Object.assign({},error)
+          console.log(this.error);
           this.systemError.next(error)
           break;
       default:

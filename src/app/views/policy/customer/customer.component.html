@@ -1,0 +1,69 @@
+<loader [showIf]="request.onTheGo">
+
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">Müşteri bilgisi düzenle</h5>
+
+            <app-alert></app-alert>
+            <div class="input-group  input-group-sm mb-1">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="inputGroup-sizing-sm">Ad</span>
+                </div>
+                <input type="text" class="form-control" aria-label="Recipient's username"
+                    aria-describedby="button-addon2">
+                <div class="input-group-append">
+                    <button class="btn btn-outline-secondary" type="button" id="button-addon2">Güncelle</button>
+                </div>
+            </div>
+            <div class="input-group  input-group-sm mb-1">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="inputGroup-sizing-sm">Soyad</span>
+                </div>
+                <input type="text" class="form-control" aria-label="Recipient's username"
+                    aria-describedby="button-addon2">
+                <div class="input-group-append">
+                    <button class="btn btn-outline-secondary" type="button" id="button-addon2">Güncelle</button>
+                </div>
+            </div>
+            <div class="input-group  input-group-sm mb-1">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="inputGroup-sizing-sm">TCKN</span>
+                </div>
+                <input type="text" class="form-control" disabled aria-label="Recipient's username"
+                    aria-describedby="button-addon2">
+                <div class="input-group-append">
+                    <button class="btn btn-outline-secondary" type="button" id="button-addon2">Güncelle</button>
+                </div>
+            </div>
+            <div class="input-group  input-group-sm mb-1">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="inputGroup-sizing-sm">Mobil No</span>
+                </div>
+                <input type="text" class="form-control" aria-label="Recipient's username"
+                    aria-describedby="button-addon2">
+                <div class="input-group-append">
+                    <button class="btn btn-outline-secondary" type="button" id="button-addon2">Güncelle</button>
+                </div>
+            </div>
+
+            <div class="input-group  input-group-sm mb-1">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="inputGroup-sizing-sm">Ev No</span>
+                </div>
+                <input type="text" class="form-control" aria-label="Recipient's username"
+                    aria-describedby="button-addon2">
+                <div class="input-group-append">
+                    <button class="btn btn-outline-secondary" type="button" id="button-addon2">Güncelle</button>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>Adress bilgisi</label>
+                <textarea name="" id="" cols="30" rows="10" class="form-control"></textarea>
+            </div>
+
+            <a class="btn btn-xs btn-warning float-right text-white mr-1"
+                (click)="cancel()">{{ 'cancel' | translate }}</a>
+        </div>
+    </div>
+</loader>

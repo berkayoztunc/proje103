@@ -1,5 +1,5 @@
 {
-    "BENEFIT_PACK_ID": "Kazanım paketi",
+    "BENEFIT_PACK_ID": "Yarar paketi",
     "BUSINESS_PARTNER_ID": "Partner",
     "MIGRATION_PRODUCT_ID": "Birleştirilen ürün numarası",
     "PARTNER_CHANNEL_ID": "Partner kanalı",
@@ -118,19 +118,21 @@
     "active": "Aktif",
     "app_name": "Policy Platform",
     "cancel": "İptal",
-    "delete_item": "bir silme işlemi yapıyorsunuz, eminmisiniz ?",
+    "delete_item": "Bir silme işlemi yapıyorsunuz, emin misiniz ?",
     "dialog_no": "Hayır",
     "dialog_yes": "Evet",
-    "form_change": "Form alanında bir değişiklik yaptınız, iptal etmek istediğinizden eminmisiniz ?",
+    "form_change": "Kaydetmeden çıkmak için emin misiniz ?",
+    "success_info" : "İşleminiz başarılıdır",
+    "email_send": "Şifre sıfırlanıcak eminmisiniz ?",
     "menu": {
         "city": "Şehirler",
-        "benefit": "Kazanımlar",
-        "benefitPack": "Kazanım paketleri",
+        "benefit": "Yararlar",
+        "benefitPack": "Yarar paketleri",
         "cancelreason": "İptal nedenleri",
         "channel": "Kanallar",
         "country": "Ülkeler",
         "cruds": "Tanımlamalar",
-        "currency": "Kurlar",
+        "currency": "Para birimi",
         "dashboard": "Platform",
         "overview": "Poliçe işlemleri",
         "partner": "Partnerler",
@@ -150,8 +152,24 @@
         "user": "Kullanıcı"
     },
     "modal": {
+        "EXPLANATION" : "Bilgi verin",
+        "explanation" : {
+            "title" : "Açıklama Ekle"
+        },
         "policyBenefit" :{
-            "title" : "Kazanımlar"
+            "title" : "Yararlar"
+        },
+        "servicetype" : {
+            "title": {
+                "save": "Servis Tipi Ekle",
+                "edit" : "Servis Tipi düzenle"
+            }
+        },
+        "city": {
+            "title": {
+                "save": "Şehir Ekle",
+                "edit" : "Şehir düzenle"
+            }
         },
         "product" : {
             "title": {
@@ -161,8 +179,8 @@
         },
         "benefit": {
             "title": {
-                "edit" : "Kazanım düzenle",
-                "save": "Kazanım Ekle"
+                "edit" : "Yarar düzenle",
+                "save": "Yarar Ekle"
             }
         },
         "role": {
@@ -195,6 +213,7 @@
                 "email": "E-posta",
                 "validation": "E-posta alanı için geçerli bir e-posta girin"
             },
+            "role" : "Rol",
             "name": "Ad soyad",
             "title": {
                 "edit": "Kullanıcı düzenle",

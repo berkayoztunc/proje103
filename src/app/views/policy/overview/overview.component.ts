@@ -7,6 +7,7 @@ import { FormBuilder, FormGroup  } from '@angular/forms';
 import { ExplanationComponent } from '../explanation/explanation.component';
 import { CancelComponent } from '../cancel/cancel.component';
 import { PolicyBenefitComponent } from '../policyBenefits/policy-benefit.component';
+import { CustomerComponent } from '../customer/customer.component';
 
 
 @Component({
@@ -36,11 +37,17 @@ export class OverviewComponent implements OnInit {
   cancelOpen(){
     this.modalService.open(CancelComponent);
   }
+  reinsdate(){
+
+  }
+  customer(){
+    this.modalService.open(CustomerComponent)
+  }
   ngOnInit(){
     this.historyData = this.storage.policy.historys
-    this.getHisdtory();
+    this.getHistory();
   }
-  getHisdtory() : void{
+  getHistory() : void{
     this.request.get('api/policy/history/'+this.storage.policy.selectedPolicy['POLICY_ID']).subscribe((response)=>{
       this.historyData = this.storage.policy.historys =  response.data
     })

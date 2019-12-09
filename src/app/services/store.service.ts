@@ -76,14 +76,16 @@ export class StoreService {
     constructor( private translate: TranslateService,) { }
     //** dialogs */
 
-    cancelDialog(){
+    cancelDialog(val = null){
         return Swal.fire({
-            text: this.translate.translations[this.translate.currentLang]['form_change'],
+            text: val == null ? this.translate.translations[this.translate.currentLang]['form_change'] : val,
             icon: 'info',
             showCancelButton: true,
             confirmButtonColor: '#3085d6',
             cancelButtonColor: '#d33',
-            confirmButtonText:  this.translate.translations[this.translate.currentLang]['dialog_yes']
+            confirmButtonText:  this.translate.translations[this.translate.currentLang]['dialog_yes'],
+            cancelButtonText : this.translate.translations[this.translate.currentLang]['dialog_no']
+
           })
     }
     deleteDialog(){
@@ -95,6 +97,16 @@ export class StoreService {
             cancelButtonColor: '#d33',
             confirmButtonText:  this.translate.translations[this.translate.currentLang]['dialog_yes'],
             cancelButtonText : this.translate.translations[this.translate.currentLang]['dialog_no']
+          })
+    }
+    successDialog(){
+        return Swal.fire({
+            text: this.translate.translations[this.translate.currentLang]['success_info'],
+            icon: 'success',
+            showCancelButton: false,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText:  this.translate.translations[this.translate.currentLang]['dialog_yes'],
           })
     }
 }

@@ -34,7 +34,7 @@ export class BenefitFormComponent implements OnInit {
 
     if (this.storage.benefit.selectedBenefit != null) {
       this.edit = false
-      this.form.patchValue(this.storage.benefit.benefits[this.storage.benefit.selectedBenefit.index]);
+      this.form.patchValue(this.storage.benefit.selectedBenefit.item);
     }
     this.initValue = this.form.value
     this.onChanges()
@@ -63,7 +63,7 @@ export class BenefitFormComponent implements OnInit {
       let hand = this.form.value;
 
       this.request.update('api/benefits/' + hand.BENEFIT_ID, hand).subscribe(() => {
-        this.storage.benefit.benefits[this.storage.benefit.selectedBenefit.index] = hand
+        this.storage.benefit.benefits[this.storage.benefit.selectedBenefit.index] = hand        
         this.goBack()
       });
     } else {

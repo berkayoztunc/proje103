@@ -158,7 +158,6 @@ input:checked + .slider:before {
   font-size: 12px;
 }
 .table-scrool {
-  overflow-y: scroll;
   height: 68vh;
 }
 .my-form{
@@ -166,8 +165,15 @@ input:checked + .slider:before {
   overflow-y: scroll;
 }
 
-
-
+.modal-backdrop{
+  background-color: white !important;
+}
+.input-group-text {
+  width: 100%;
+}
+.input-group-prepend {
+  width: 20%;
+}
 .fa-logo{
   height: 70px;
   width: 70px;
@@ -181,4 +187,23 @@ td{ max-width: 33% ;}
   overflow: hidden;
   width: 55%;
   text-overflow: ellipsis;
+}
+
+
+
+tbody {
+  display:block;
+  height:64vh;
+  overflow:auto;
+}
+thead, tbody tr {
+  display:table;
+  width:100%;
+  table-layout:fixed;
+}
+thead {
+  width: calc( 100% - 1em )
+}
+table {
+  width:400px;
 }

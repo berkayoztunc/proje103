@@ -35,6 +35,7 @@ import { SystemErrorComponent } from './components/system-error.component';
 import { NgxJsonViewerModule } from 'ngx-json-viewer';
 import { PermissionDirective } from './directives/permission.directive';
 import { PolicyBenefitComponent } from './views/policy/policyBenefits/policy-benefit.component';
+import { CustomerComponent } from './views/policy/customer/customer.component';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, '/assets/i18n/', '.json');
@@ -43,6 +44,7 @@ export function HttpLoaderFactory(http: HttpClient) {
   declarations: [
     CancelComponent,
     PolicyBenefitComponent,
+    CustomerComponent,
     AppComponent,
     ExplanationComponent,
     UserFormComponent,
@@ -60,6 +62,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     ResetPasswordComponent,
   ],
   entryComponents : [
+    CustomerComponent,
     CancelComponent,
     PolicyBenefitComponent,
     ExplanationComponent,

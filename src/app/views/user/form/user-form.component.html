@@ -8,16 +8,16 @@
             <app-alert></app-alert>
 
             <form [formGroup]="form" (ngSubmit)="save()">
-                <input type="hidden" class="form-control" placeholder="NAME" formControlName="USER_ID">
+                <input type="hidden" class="form-control" formControlName="USER_ID">
 
                 <div class="form-group">
                     <label>{{ 'modal.user.name' | translate }} </label>
-                    <input type="text" class="form-control" placeholder="{{ 'modal.user.name' | translate }} "
+                    <input type="text" class="form-control" 
                         formControlName="NAME" name="NAME">
                 </div>
                 <div class="form-group">
                     <label>{{ 'modal.user.email.email' | translate }} </label>
-                    <input type="email" class="form-control" placeholder="{{ 'modal.user.email.email' | translate }}"
+                    <input type="email" class="form-control" 
                         formControlName="EMAIL">
                     <p *ngIf="validator.EMAIL.errors && validator.EMAIL.dirty">
                         {{ 'modal.user.email.validation' | translate }}</p>

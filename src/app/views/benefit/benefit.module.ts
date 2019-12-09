@@ -13,9 +13,7 @@ import { SharedModule } from 'src/app/shared.module';
   imports: [
     CommonModule,
     TranslateModule,
-    FormsModule,
     SharedModule,
-    ReactiveFormsModule,
     BenefitRoutingModule,
   ]
 })

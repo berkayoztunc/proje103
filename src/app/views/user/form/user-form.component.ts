@@ -36,7 +36,7 @@ export class UserFormComponent implements OnInit {
 
     if (this.storage.user.selectedUser !== null) {
       this.edit = false
-      this.form.patchValue(this.storage.user.users[this.storage.user.selectedUser.index]);
+      this.form.patchValue(this.storage.user.selectedUser.item);
     }
     this.request.get('api/roles').subscribe((response) => {
       this.roles$ = response.data

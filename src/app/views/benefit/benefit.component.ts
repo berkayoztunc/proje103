@@ -27,13 +27,13 @@ export class BenefitComponent implements OnInit {
 
   ngOnInit()  {
     if(this.tabelOnInit){
-      this.searchBenefits()
+      this.getBenefit()
     }
     this.Benefits = this.storage.benefit.benefits
   }
   searchClick(){
     if(this.search != ''){
-      this.Benefits = this.Benefits.filter((item) =>{
+      this.Benefits = this.storage.benefit.benefits.filter((item) =>{
         return item.BENEFIT.toLocaleLowerCase().search(this.search.toLocaleLowerCase()) >= 0 
       });
     }else{
@@ -48,8 +48,8 @@ export class BenefitComponent implements OnInit {
     this.storage.benefit.selectedBenefit = null;
     this.modalService.open(BenefitFormComponent)
   }
-  searchBenefits(): void {
-    this.request.get( 'api/benefits',{})
+  getBenefit(): void {
+    this.request.get( 'api/benefits')
     .subscribe(response => {
       this.Benefits = this.storage.benefit.benefits = response.data
     });

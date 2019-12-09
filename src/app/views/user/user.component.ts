@@ -4,6 +4,8 @@ import { RequestService } from 'src/app/services/request.service';
 import { StoreService } from 'src/app/services/store.service';
 import { NgbModal, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { UserFormComponent } from './form/user-form.component';
+import { TranslateService } from '@ngx-translate/core';
+import { ItemsList } from '@ng-select/ng-select/lib/items-list';
 @Component({
   selector: 'app-user',
   templateUrl: './user.component.html',
@@ -19,6 +21,7 @@ export class UserComponent implements OnInit {
     public request: RequestService,
     public storage: StoreService,
     private modalService: NgbModal,
+    private translate : TranslateService, 
     public activeModal: NgbActiveModal
   ) {
 
@@ -34,7 +37,7 @@ export class UserComponent implements OnInit {
   }
   searchClick() {
     if(this.search != ''){
-      this.users = this.users.filter((item) =>{
+      this.users = this.storage.user.users.filter((item) =>{
         return item.NAME.toLocaleLowerCase().search(this.search.toLocaleLowerCase()) >= 0 || item.EMAIL.toLocaleLowerCase().search(this.search.toLocaleLowerCase()) >= 0;
       });
     }else{
@@ -50,9 +53,14 @@ export class UserComponent implements OnInit {
 
   }
   unlock(item,i):void{
-    this.request.update('api/users/unlock/'+item.USER_ID,{EMAIL:item.EMAIL}).subscribe(()=>{
-
+    this.storage.cancelDialog(this.translate.translations[this.translate.currentLang]['email_send']).then((value)=>{
+      if(value.value){
+        this.request.update('api/users/unlock/'+item.USER_ID,{EMAIL:item.EMAIL}).subscribe(()=>{
+          this.storage.successDialog()
+      })
+      }
     })
+    
   }
   create() {
     this.storage.user.selectedUser = null;
@@ -61,7 +69,10 @@ export class UserComponent implements OnInit {
   searchUsers(): void {
     this.request.get( 'api/users')
       .subscribe(response => {
-        this.users = this.storage.user.users = response.data
+        this.users = this.storage.user.users = response.data.map((item,index)=>{
+          item[index] = index
+          return item;
+        })
       });
 
   }

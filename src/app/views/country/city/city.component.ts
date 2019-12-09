@@ -52,9 +52,11 @@ export class CityComponent implements OnInit {
     this.modalService.open(CityFormComponent)
   }
   searchCitys(): void {
-    this.request.get( 'api/cities' )
+    this.request.get( 'api/cities/'+this.storage.country.selectedCountry.item.COUNTRY_ID )
     .subscribe(response => {
-      this.cityies = this.storage.city.cityies = response.data   
+      if(response.data){
+        this.cityies = this.storage.city.cityies = response.data   
+      }
     });
 
   }

@@ -2,9 +2,9 @@ import { NgModule } from '@angular/core';
 import { UserComponent } from './user.component';
 import { CommonModule } from '@angular/common';
 import { UserRoutingModule } from './user-routing.module';
-import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { TranslateModule } from '@ngx-translate/core';
 import { NgSelectModule } from '@ng-select/ng-select';
+import { SharedModule } from 'src/app/shared.module';
 
 
 
@@ -12,10 +12,9 @@ import { NgSelectModule } from '@ng-select/ng-select';
   declarations: [UserComponent],
   imports: [
     CommonModule,
+    SharedModule,
     TranslateModule,
-    FormsModule,
     NgSelectModule,
-    ReactiveFormsModule,
     UserRoutingModule,
   ],
   
