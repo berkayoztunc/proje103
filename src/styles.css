@@ -1,8 +1,9 @@
 @import "~@ng-select/ng-select/themes/default.theme.css";
-body,html{
-  height:100%;
+body,
+html {
+  height: 100%;
 }
-.sidebar{
+.sidebar {
   height: 79vh;
   overflow-y: scroll;
   background-color: rgba(0, 0, 0, 0.1);
@@ -10,45 +11,46 @@ body,html{
 .components {
   padding: 10px;
 }
-.btn i{
-  color:  white !important;
+.btn i {
+  color: white !important;
 }
-.btn-xs{
+.btn-xs {
   padding: 0.1rem 0.2rem;
 }
-.table td, .table th {
-  padding: 2px  0 2px 0!important;
+.table td,
+.table th {
+  padding: 2px 0 2px 0 !important;
 }
-.table .btn{
+.table .btn {
   padding: 6px 6px;
   margin-left: 10px;
   font-size: 15px;
   line-height: 1;
 }
-.table .btn i{
- padding: 0px;
- font-size: 15px;
+.table .btn i {
+  padding: 0px;
+  font-size: 15px;
 }
 .table i {
   font-size: 14px;
 }
-body{
+body {
   font-weight: 300;
 }
 .green {
   color: green;
 }
-.red{
+.red {
   color: red;
 }
 .backs a {
-  text-decoration:  none;
+  text-decoration: none;
   color: black;
 }
-.breadcrumb{
+.breadcrumb {
   margin-bottom: 0px;
 }
-.form-group .form-control-sm{
+.form-group .form-control-sm {
   height: 20px;
   font-size: 15px;
   padding: 2px;
@@ -58,19 +60,19 @@ body{
  Swicth css
 **/
 
-
-
 /* The switch - the box around the slider */
 .switch {
   position: relative;
   display: inline-block;
   width: 40px;
   height: 20px;
-  float:right;
+  float: right;
 }
 
 /* Hide default HTML checkbox */
-.switch input {display:none;}
+.switch input {
+  display: none;
+}
 
 /* The slider */
 .slider {
@@ -81,8 +83,8 @@ body{
   right: 0;
   bottom: 0;
   background-color: #f44336;
-  -webkit-transition: .4s;
-  transition: .4s;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
 }
 
 .slider:before {
@@ -94,15 +96,15 @@ body{
   right: 2px;
   bottom: 3px;
   background-color: white;
-  -webkit-transition: .4s;
-  transition: .4s;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
 }
 
 input.default:checked + .slider {
   background-color: #444;
 }
 input.primary:checked + .slider {
-  background-color: #2196F3;
+  background-color: #2196f3;
 }
 input.success:checked + .slider {
   background-color: #8bc34a;
@@ -111,14 +113,14 @@ input.info:checked + .slider {
   background-color: #3de0f5;
 }
 input.warning:checked + .slider {
-  background-color: #FFC107;
+  background-color: #ffc107;
 }
 input.danger:checked + .slider {
   background-color: #f44336;
 }
 
 input:focus + .slider {
-  box-shadow: 0 0 1px #2196F3;
+  box-shadow: 0 0 1px #2196f3;
 }
 
 input:checked + .slider:before {
@@ -137,10 +139,10 @@ input:checked + .slider:before {
   border-radius: 50%;
 }
 
-.modal-lg{
+.modal-lg {
   max-width: 90%;
 }
-.modal-xl{
+.modal-xl {
   max-width: 50%;
 }
 /*.form-group >  label {
@@ -149,7 +151,7 @@ input:checked + .slider:before {
       padding-top: 8px;
 }*/
 
-.modal-lg .form-group{
+.modal-lg .form-group {
   margin-bottom: 0px;
 }
 
@@ -160,12 +162,12 @@ input:checked + .slider:before {
 .table-scrool {
   height: 68vh;
 }
-.my-form{
+.my-form {
   max-height: 70vh;
   overflow-y: scroll;
 }
 
-.modal-backdrop{
+.modal-backdrop {
   background-color: white !important;
 }
 .input-group-text {
@@ -174,36 +176,56 @@ input:checked + .slider:before {
 .input-group-prepend {
   width: 20%;
 }
-.fa-logo{
+.fa-logo {
   height: 70px;
   width: 70px;
   background-size: 70px;
   background-image: url(./assets/fonts/logo.svg);
 }
-td{ max-width: 33% ;}
+td {
+  max-width: 33%;
+}
 
-.spacific{
+.spacific {
   white-space: nowrap;
   overflow: hidden;
   width: 55%;
   text-overflow: ellipsis;
 }
 
+.tableFixHead {
+  overflow-y: auto;
+  height: 68vh;
+}
+.fa-stack[data-count]:after{
+  position:absolute;
+  right:0%;
+  top:1%;
+  content: attr(data-count);
+  font-size:30%;
+  padding:.6em;
+  border-radius:999px;
+  line-height:.75em;
+  color: white;
+  background:rgba(255,0,0,.85);
+  text-align:center;
+  min-width:2em;
+  font-weight:bold;
+}
+.tableFixHead table {
+  border-collapse: collapse;
+  width: 100%;
+}
 
+.tableFixHead th,
+.tableFixHead td {
+  padding: 8px 16px;
+}
 
-tbody {
-  display:block;
-  height:64vh;
-  overflow:auto;
-}
-thead, tbody tr {
-  display:table;
-  width:100%;
-  table-layout:fixed;
-}
-thead {
-  width: calc( 100% - 1em )
-}
-table {
-  width:400px;
+.tableFixHead th {
+  position: sticky;
+  z-index: 996;
+  top: 0;
+  background: #07689f!important;
+
 }

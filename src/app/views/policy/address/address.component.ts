@@ -6,14 +6,15 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 
 
 @Component({
-  selector: 'app-explanation',
-  templateUrl: './explanation.component.html',
-  styleUrls: ['./explanation.component.css'],
+  selector: 'app-address',
+  templateUrl: './address.component.html',
+  styleUrls: ['./address.component.css'],
 })
 
-export class ExplanationComponent implements OnInit {
+export class AdressComponent implements OnInit {
   historyData = [];
   form: FormGroup;
+  countries;
   constructor(
     public request: RequestService,
     public storage: StoreService,
@@ -25,11 +26,16 @@ export class ExplanationComponent implements OnInit {
   }
   createForm() {
     this.form = this.fb.group({
-      EXPLANATION: [null]
+      ADDRESS: [null],
+      CITY_ID: [null],
+      COUNTRY_ID: [null]
     });
   }
 
   ngOnInit() {
+    this.request.get('api/countries').subscribe((response) => {
+      this.countries = response.data;
+    });
   }
   goBack() {
     this.activeModal.dismiss();
@@ -42,9 +48,9 @@ export class ExplanationComponent implements OnInit {
     });
   }
   save(): void {
-    this.request.post('api/policy/explanation/' + this.storage.policy.selectedPolicy.POLICY_ID, this.form.value).subscribe((response) => {
+    this.request.post('api/policy/customer/update-address/' + this.storage.policy.selectedPolicy.POLICY_ID, this.form.value).subscribe((response) => {
       if (response) {
-        this.storage.policy.historys = response.data; // TODO ::: burayı düzelticeksin
+        //this.storage.policy.historys = response.data; // TODO ::: burayı düzelticeksin
         this.goBack();
         this.storage.successDialog()
       }

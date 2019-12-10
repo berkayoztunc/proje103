@@ -8,7 +8,7 @@
                 <img src="https://image.freepik.com/free-vector/mobile-login-concept-illustration_114360-135.jpg" class="img-fluid rounded" alt="">
             </div>
             <div class="col-lg-4">
-                    <loader  [showIf]="request.onTheGo">
+                    <loader >
                         <form class="login-form" name="form" (ngSubmit)="f.form.valid && login(f)" #f="ngForm" novalidate>
                         <div class="card mb-0">
                             <div class="card-body">

@@ -16,6 +16,10 @@ export class CurrencyFormComponent implements OnInit {
   edit = true;
   change = false;
   initValue = {};
+  item = this.storage.currency.currencyies;
+  selected = this.storage.currency.selectedCurrency;
+  url = 'api/currencies';
+  idFlag = 'CURRENCY_ID';
   constructor(private activeModal: NgbActiveModal, public request: RequestService, public storage: StoreService, private fb: FormBuilder, private route: ActivatedRoute, private location: Location) {
     this.createForm();
   }
@@ -30,27 +34,27 @@ export class CurrencyFormComponent implements OnInit {
   get validator() { return this.form.controls; }
 
   ngOnInit() {
-    if (this.storage.currency.selectedCurrency !== null) {
-      this.edit = false
-      this.form.patchValue(this.storage.currency.currencyies[this.storage.currency.selectedCurrency.index]);
+    if (this.selected != null) {
+      this.edit = false;
+      this.form.patchValue(this.selected.item);
     }
-    this.initValue = this.form.value
-    this.onChanges()
+    this.initValue = this.form.value;
+    this.onChanges();
   }
   cancel() {
     if (this.change) {
       this.storage.cancelDialog().then((result) => {
         if (result.value) {
-          this.goBack()
+          this.goBack();
         }
-      })
+      });
     } else {
-      this.goBack()
+      this.goBack();
     }
   }
   onChanges(): void {
     this.form.valueChanges.subscribe(val => {
-      this.change = (JSON.stringify(val) !== JSON.stringify(this.initValue))
+      this.change = (JSON.stringify(val) !== JSON.stringify(this.initValue));
     });
   }
   goBack(): void {
@@ -58,20 +62,19 @@ export class CurrencyFormComponent implements OnInit {
   }
   save(): void {
     if (!this.edit) {
-      let hand = this.form.value;
-      hand.id = hand.CURRENCY_ID
-      this.request.update('api/currencies/' + hand.CURRENCY_ID, hand).subscribe((response) => {
-        this.storage.currency.currencyies[this.storage.currency.selectedCurrency.index] = hand;
+      const hand = this.form.value;
+      hand.check = true;
+      this.request.update(this.url + '/' + hand[this.idFlag], hand).subscribe(() => {
+        this.item[this.selected.index] = hand;
         this.goBack();
-        this.form.reset()
       });
-
     } else {
-      this.request.post('api/currencies', this.form.value).subscribe((response) => {
+      this.request.post(this.url, this.form.value).subscribe((response) => {
         if (response) {
-          this.storage.currency.currencyies.unshift(response.data[0]);
-          this.form.reset()
-          this.goBack()
+          response.data[0].check = true;
+          this.item.unshift(response.data[0]);
+          this.form.reset();
+          this.goBack();
         }
       });
     }

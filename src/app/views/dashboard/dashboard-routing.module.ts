@@ -3,7 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { DashboardComponent } from './dashboard.component';
 
 const routes: Routes = [
-  { path: '', component: DashboardComponent ,children : 
+  { path: '', component: DashboardComponent , children :
     [
       { path: '', redirectTo: 'policy', pathMatch: 'full' },
       { path: 'benefit', loadChildren: () => import('../benefit/benefit.module').then(m => m.BenefitModule) },
@@ -17,11 +17,11 @@ const routes: Routes = [
       { path: 'role', loadChildren: () => import('../role/role.module').then(m => m.RoleModule) },
       { path: 'serviceType', loadChildren: () => import('../serviceType/serviceType.module').then(m => m.ServiceTypeModule) },
       { path: 'user', loadChildren: () => import('../user/user.module').then(m => m.UserModule) },
-      { path: 'policy', loadChildren: () => import('../policy/policy.module').then(m => m.PolicyModule)}, 
-      { path: 'upload-csv', loadChildren: () => import('../csvUpload/csv-upload.module').then(m => m.CsvUploadModule)}, 
+      { path: 'policy', loadChildren: () => import('../policy/policy.module').then(m => m.PolicyModule)},
+      { path: 'upload-csv', loadChildren: () => import('../csvUpload/csv-upload.module').then(m => m.CsvUploadModule)},
     ]
   },
-   
+
 ];
 
 @NgModule({

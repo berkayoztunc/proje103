@@ -1,104 +1,363 @@
 {
-    "BENEFIT_PACK_ID": "benefit paketleri",
-    "BUSINESS_MODEL": "İş modeli",
-    "BUSINESS_PARTNER_ID": "İş ortağı partneri",
-    "Benefit": "menu.benefit",
-    "CURRENCY": "Kur",
-    "EKLE": "Add",
-    "KAYDET": "Save",
-    "MIGRATION_PRODUCT_ID": "Birleştirilen ürün numarası",
-    "PARTNER_CHANNEL_ID": "Partner kanalı",
-    "POLICY_LENGHT_MONTHS": "Poliçe uzatma süresi",
-    "PRODUCT_SALE_TYPE": "Ürün satış tipi",
-    "PRODUCT_TYPE": "Ürün tipi",
-    "SERVICE_TYPE_ID": "Servis tipi",
-    "SOLDBY": "Satıcı",
-    "Search": "Search",
-    "active": "Aktive",
-    "app_name": "Policy Platform",
-    "breadcrumb": {
-        "dashboard": "Dashboard"
-    },
-    "breadcrump": {
-        "permissions": "Permissions",
-        "role": "Role"
-    },
-    "cancel": "Cancel",
-    "form_change": "Bir eğişiklik yaptınız, kaydetemeden çıkıcakmısınız ?",
-    "mamu": {
-        "cancelreason": "cancelReason"
-    },
-    "menu": {
-        "askPolicy": "Poliçe Sorgulama",
-        "benefit": "Benefit",
-        "benefitPack": "Benefit Pack",
-        "channel": "Channel",
-        "country": "Country",
-        "cruds": "Tanımlamalar",
-        "currency": "Currency",
-        "partner": "Partner",
-        "password": {
-            "newpassword": "New password",
-            "newpasswordrepead": "Confirim new password",
-            "oldpassword": "Old password"
-        },
-        "product": "Product",
-        "role": "Role",
-        "serviceType": "serviceType",
-        "user": "User"
-    },
-    "modal": {
-        "benefit": {
-            "title": {
-                "save": "Kazanım Ekle"
-            }
-        },
-        "role": {
-            "role": "Role"
-        },
-        "user": {
-            "email": {
-                "email": "Email",
-                "validation": "E-posta alanı için geçerli bir e-posta girin"
-            },
-            "name": "Name",
-            "title": {
-                "save": "Kullanıcı ekle"
-            }
-        }
-    },
-    "model": {
-        "user": {
-            "title": {
-                "edit": "Kullanıcı düzenle"
-            }
-        }
-    },
-    "policy": {
-        "EXTERNAL_POLICY_NUMBER": "policy.EXTERNAL_POLICY_NUMBER",
-        "START_DATE": "Start date",
-        "customer_addreses": "Müşteri adresi",
-        "customer_info": "Customer detail",
-        "national_id": "National ID",
-        "number": "Policy number",
-        "phone_number": "Phone Number",
-        "reced_service_history": "Recebt service history",
-        "seach": {
-            "policy_number": "Policy number"
-        },
-        "search": {
-            "external_policy_number": "External policy number",
-            "last_name": "Last name",
-            "mobile_phone": "Mobile phone",
-            "national_id": "National ID"
-        }
-    },
-    "save": "Save",
-    "search": "Search button",
-    "swal": {
-        "forgetpassword": {
-            "placeholder": "Email adress"
-        },
-        "okey": "Okey"
-    }
+	"BENEFIT_PACK_ID": "Utility package",
+	"BUSINESS_MODEL": "Business model",
+	"BUSINESS_PARTNER_ID": "İş ortağı partneri",
+	"Benefit": "Benefits",
+	"BenefitPack": {
+		"ACTIVE": "Active",
+		"BENEFIT_PACK": "Benefit package name",
+		"BENEFIT_PACK_ID": "Id",
+		"action": "Transactions",
+		"benefist_button": "Benefits",
+		"email_ad_placeholser": "Search by Benefit package name",
+		"search": "Search button",
+		"search_clear": "Search clear"
+	},
+	"CURRENCY": "Exchange Rate",
+	"CancelReason": {
+		"ACTIVE": "Active",
+		"CANCEL_REASON": "Cancellation Reason",
+		"CANCEL_REASON_ID": "Id",
+		"CANCEL_REASON_TYPE": "Cancellation Reason Type",
+		"action": "Transactions",
+		"email_ad_placeholser": "Search for cancellation",
+		"search": "Search button",
+		"search_clear": "Search clear"
+	},
+	"Channel": {
+		"ACTIVE": "Active",
+		"PARTNER_CHANNEL": "Channel name",
+		"PARTNER_CHANNEL_ID": "Id",
+		"action": "Transactions",
+		"email_ad_placeholser": "Search by channel name",
+		"search": "Search button",
+		"search_clear": "Search clear"
+	},
+	"City": {
+		"ACTIVE": "Active",
+		"CITY": "City name",
+		"CITY_CODE": "City Number",
+		"CITY_ID": "Id",
+		"action": "Transactions",
+		"email_ad_placeholser": "Search by city name",
+		"search": "Search button",
+		"search_clear": "Search clear"
+	},
+	"Country": {
+		"ACTIVE": "Active",
+		"COUNTRY": "Name of country",
+		"COUNTRY_CODE": "Country Code",
+		"COUNTRY_ID": "Id",
+		"PHONE_CODE": "Phone Code",
+		"action": "Transactions",
+		"city_button": "cities",
+		"email_ad_placeholser": "Search by country name",
+		"search": "Search button",
+		"search_clear": "Search clear"
+	},
+	"Currency": {
+		"ACTIVE": "Active",
+		"CURRENCY": "Currency unit",
+		"CURRENCY_ID": "Id",
+		"PREFIX": "Code",
+		"action": "Transactions",
+		"email_ad_placeholser": "Search by currency",
+		"search": "Search button",
+		"search_clear": "Search clear"
+	},
+	"EKLE": "Add",
+	"KAYDET": "Save",
+	"MIGRATION_PRODUCT_ID": "Migration product number",
+	"PARTNER_CHANNEL_ID": "Partner channel",
+	"POLICY_LENGHT_MONTHS": "Policy extension time",
+	"PRODUCT_SALE_TYPE": "Product sales type",
+	"PRODUCT_TYPE": "Product type",
+	"Partner": {
+		"ACTIVE": "Active",
+		"PARTNER": "Partner name",
+		"PARTNER_ID": "Id",
+		"action": "Transactions",
+		"email_ad_placeholser": "Search by partner name",
+		"search": "Search button",
+		"search_clear": "Search clear"
+	},
+	"Role": {
+		"ACTIVE": "Active",
+		"ROLE": "Role Name",
+		"ROLE_ID": "Id",
+		"action": "Transactions",
+		"email_ad_placeholser": "Search by role name",
+		"search": "Search button",
+		"search_clear": "Search clear"
+	},
+	"SERVICE_TYPE_ID": "Service type",
+	"SOLDBY": "Satıcı",
+	"Search": "Search",
+	"ServiceType": {
+		"ACTIVE": "Active",
+		"PREFIX": "Explanation",
+		"SERVICE_TYPE": "Service type",
+		"SERVICE_TYPE_ID": "Id",
+		"action": "Transactions",
+		"email_ad_placeholser": "Search by serivis type name",
+		"search": "Search button",
+		"search_clear": "Search clear"
+	},
+	"active": "Aktive",
+	"app_name": "Policy Platform",
+	"benefit": {
+		"ACTIVE": "Active",
+		"BENEFIT": "Benefit name",
+		"BENEFIT_ID": "Id",
+		"EXPLANATION": "Benefit Description",
+		"action": "Transactions",
+		"search": "Search button",
+		"search_clear": "Search clear",
+		"search_placeholder": "Search by name"
+	},
+	"breadcrumb": {
+		"dashboard": "Dashboard"
+	},
+	"breadcrump": {
+		"permissions": "Permissions",
+		"role": "Role"
+	},
+	"cancel": "Cancel",
+	"delete_item": "Are you making a deletion, are you sure?",
+	"dialog_no": "No",
+	"dialog_yes": "Yeah",
+	"email_send": "Are you sure the password will be reset?",
+	"form_change": "Are you sure to exit without saving?",
+	"menu": {
+		"askPolicy": "Policy search",
+		"benefit": "Benefit",
+		"benefitPack": "Benefit Pack",
+		"cancelReason": "Cancellation Reason Type",
+		"cancelreason": "Reasons for cancellation",
+		"channel": "Channel",
+		"city": "cities",
+		"country": "Country",
+		"cruds": "Definitions",
+		"currency": "Currency",
+		"dashboard": "Platform",
+		"overview": "Policy transactions",
+		"partner": "Partner",
+		"password": {
+			"newpassword": "New password",
+			"newpasswordrepead": "Confirim new password",
+			"oldpassword": "Old password"
+		},
+		"policy": "Policy Inquiry",
+		"product": "Product",
+		"resetpassword": "Reset Password",
+		"role": "Role",
+		"search": "Customer or policy search",
+		"serviceType": "Service types",
+		"signout": "Secure output",
+		"upload-csv": "Upload file",
+		"user": "User"
+	},
+	"modal": {
+		"EXPLANATION": "Give information",
+		"benefit": {
+			"title": {
+				"edit": "Edit utility",
+				"save": "Kazanım Ekle"
+			}
+		},
+		"benefitPack": {
+			"title": {
+				"edit": "Edit benefit package",
+				"save": "Add benefit pack"
+			}
+		},
+		"cancelReason": {
+			"title": {
+				"edit": "Edit cancellation reason",
+				"save": "Add cancellation reason"
+			}
+		},
+		"channel": {
+			"title": {
+				"edit": "Edit partner channel",
+				"save": "Add partner channel"
+			}
+		},
+		"city": {
+			"title": {
+				"edit": "Edit city",
+				"save": "Add City"
+			}
+		},
+		"country": {
+			"title": {
+				"save": "Add country"
+			}
+		},
+		"explanation": {
+			"title": "Add a description"
+		},
+		"partner": {
+			"title": {
+				"edit": "Edit partner",
+				"save": "Add partners"
+			}
+		},
+		"policyBenefit": {
+			"title": "Benefits"
+		},
+		"product": {
+			"title": {
+				"edit": "Edit Product",
+				"save": "Add product"
+			}
+		},
+		"role": {
+			"role": "Role",
+			"title": {
+				"edit": "Edit Role",
+				"save": "Add role"
+			}
+		},
+		"servicetype": {
+			"title": {
+				"edit": "Edit service type",
+				"save": "Add Service Type"
+			}
+		},
+		"user": {
+			"email": {
+				"email": "Email",
+				"validation": "Enter a valid email for the Email field"
+			},
+			"name": "Name",
+			"role": "Role",
+			"title": {
+				"edit": "Edit User",
+				"save": "Add user"
+			}
+		}
+	},
+	"model": {
+		"user": {
+			"title": {
+				"edit": "Edit User"
+			}
+		}
+	},
+	"policy": {
+		"ACTIVE": "Active",
+		"ADDRESS": "Address",
+		"CANCEL_RESON_SELECT": "Please select reason",
+		"CUSTOMER_ID": "customer number",
+		"CUSTOMER_TYPE": "Customer type",
+		"C_DATE": "Creation time",
+		"DELETED": "deleted the",
+		"EMAIL": "e-mail",
+		"EXPLANATION": "Explanation",
+		"EXTERNAL_POLICY_NUMBER": "External policy ID",
+		"FIRST_NAME": "Name",
+		"HOME_PHONE": "Home phone",
+		"LAST_NAME": "Surname",
+		"MOBILE_PHONE": "Mobile phone",
+		"NATIONAL_ID": "identification information of accounts",
+		"OLD_POLICY_ID": "OLD POLICY NUMBER",
+		"POLICY_ID": "Policy Id",
+		"POLICY_NUMBER": "Policy number",
+		"PREVIOUS_RENEWAL_DATE": "PREVIOUS RENEWAL TIME",
+		"PRODUCT_ID": "Product number",
+		"RENEWAL_DATE": "RENEWAL TIME",
+		"START_DATE": "Start date",
+		"STATUS": "Availability",
+		"WORK_PHONE": "Office phone",
+		"add_history": "Add note",
+		"benefit": "Policy benefits",
+		"cancel": "Cancel",
+		"customer_addreses": "Customer address",
+		"customer_info": "Customer detail",
+		"edit_customer_adress": "Update customer address",
+		"edit_customer_button": "Edit customer information",
+		"modal": {
+			"ADDRESS": "Address",
+			"EXPLANATION": "Explanation",
+			"customer": {
+				"edit": "Edit customer info"
+			}
+		},
+		"national_id": "National ID",
+		"number": "Policy number",
+		"phone_number": "Phone Number",
+		"policy_actions": "Policy actions",
+		"policy_info": "Policy Details",
+		"reced_service_history": "Policy transaction history",
+		"reinstate": "Reinstate",
+		"reset_history": "Update history",
+		"seach": {
+			"policy_number": "Policy number"
+		},
+		"search": {
+			"external_policy_number": "External policy number",
+			"last_name": "Last name",
+			"mobile_phone": "Mobile phone",
+			"national_id": "National ID",
+			"policy_number": "Policy number"
+		},
+		"search_not_found": "No search results found. Please edit your search criteria",
+		"service_button": "Open Policy"
+	},
+	"product": {
+		"ACTIVE": "Active",
+		"BENEFIT_PACK_ID": "Product benefit package",
+		"BUSINESS_MODEL": "Business model",
+		"BUSINESS_PARTNER_ID": "Product partner",
+		"CURRENCY": "Exchange Rate",
+		"DUPLICATE_CONTROL": "Copy control",
+		"EXPLANATION": "Explanation",
+		"GUIDE": "Expression",
+		"MIGRATION_DATE": "Merge date",
+		"MIGRATION_PRODUCT_ID": "Combined product",
+		"NEW_COMMISSION_RATE": "New commission rate",
+		"OLD_CAMPAIGN_ID": "Your old campaign number",
+		"OLD_PRODUCT_ID": "Old product number",
+		"PARTNER_CHANNEL_ID": "Product channel",
+		"POLICY_LENGHT_MONTHS": "Policy period of product",
+		"PRICE": "Price",
+		"PRODUCT": "Name of the product",
+		"PRODUCT_ID": "Product ID",
+		"PRODUCT_SALE_TYPE": "Product sales type",
+		"PRODUCT_TYPE": "Product type",
+		"REFUND_CANCEL_PERIOD_DAYS": "Cancellation period of the product",
+		"RENEWAL": "Regeneration",
+		"RENEWAL_COMMISSION_RATE": "Regeneration commission rate",
+		"SERVICE_TYPE_ID": "Product service type",
+		"SOLDBY": "Product sales way",
+		"WELCOME": "Welcome",
+		"action": "Transactions",
+		"check_boxes": "Selection",
+		"email_ad_placeholser": "Search by product name or number",
+		"search": "Search button",
+		"search_clear": "Search clear"
+	},
+	"save": "Save",
+	"search": "Search button",
+	"success_info": "Your transaction was successful",
+	"swal": {
+		"forgetpassword": {
+			"placeholder": "Email adress",
+			"title": "Please enter the e-mail address in the system"
+		},
+		"okey": "Okey"
+	},
+	"total_data": "Total Records",
+	"user": {
+		"action": "Transactions",
+		"active": "Active",
+		"add_new": "New",
+		"email": "Email",
+		"email_ad_placeholser": "search by name and email",
+		"id": "Id",
+		"name": "Name Surname",
+		"search": "Search button",
+		"search_clear": "Search clear"
+	}
 }

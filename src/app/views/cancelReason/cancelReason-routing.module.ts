@@ -3,8 +3,8 @@ import { Routes, RouterModule } from '@angular/router';
 import { CancelReasonComponent} from './cancelReason.component';
 const routes: Routes = [
     { path: '', component: CancelReasonComponent},
-    // { path: 'form', component :CancelReasonFormComponent },    
-]
+    // { path: 'form', component :CancelReasonFormComponent },
+];
 
 @NgModule({
     imports: [RouterModule.forChild(routes)],

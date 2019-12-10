@@ -11,7 +11,7 @@ import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({
     imports: [NgxJsonViewerModule, FormsModule, TranslateModule, ReactiveFormsModule, CommonModule],
-    declarations: [AlertComponent, LoaderComponent, SystemErrorComponent, PermissionDirective,ShowAllDirective],
+    declarations: [AlertComponent, LoaderComponent, SystemErrorComponent, PermissionDirective, ShowAllDirective],
     exports: [
         CommonModule,
         FormsModule,

@@ -12,39 +12,39 @@ import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 })
 
 export class ResetPasswordComponent {
-  form : FormGroup;
+  form: FormGroup;
   constructor(
     private translate: TranslateService,
     public request: RequestService,
     public storage: StoreService,
     private fb: FormBuilder,
-    private activeModal : NgbActiveModal
-  ){
+    private activeModal: NgbActiveModal
+  ) {
     this.createForm();
   }
   createForm() {
     this.form = this.fb.group({
-      PASSWORD: ['',Validators.required],
+      PASSWORD: ['', Validators.required],
       NEW_PASSWORD: ['', Validators.required],
-      CONIFIRM_PASSWORD: ['',Validators.required],
+      CONIFIRM_PASSWORD: ['', Validators.required],
     }, {validator: this.checkPasswords });
   }
-  save() : void {
-    this.request.update('api/users/change-password/'+this.storage.auth.user['USER_ID'],this.form.value).subscribe((response)=>{
-      if(response){
+  save(): void {
+    this.request.update('api/users/change-password/' + this.storage.auth.user.USER_ID, this.form.value).subscribe((response) => {
+      if (response) {
         this.storage.auth.user.PASSWORD_LOCKED = false;
         this.activeModal.dismiss();
       }
-    })
+    });
   }
-  close(){
+  close() {
     this.activeModal.dismiss();
   }
-  checkPasswords(group: FormGroup) { 
-  let pass = group.get('NEW_PASSWORD').value;
-  let old_password = group.get('PASSWORD').value;
-  let confirmPass = group.get('CONIFIRM_PASSWORD').value;
-  return pass === confirmPass ? pass === old_password ? { oldSame: true }  : null : { notSame: true }     
+  checkPasswords(group: FormGroup) {
+  const pass = group.get('NEW_PASSWORD').value;
+  const old_password = group.get('PASSWORD').value;
+  const confirmPass = group.get('CONIFIRM_PASSWORD').value;
+  return pass === confirmPass ? pass === old_password ? { oldSame: true }  : null : { notSame: true };
 }
- 
+
 }

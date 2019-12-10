@@ -1,86 +1,85 @@
-<loader [showIf]="request.onTheGo">
- 
-<div class="row m-1">
-  <div class="col-md-3 p-0">
-    <div class="card">
-      <div class="card-body">
-        <form [formGroup]="form" (ngSubmit)="search()">
-          <div class="form-group">
-            <label class="text-muted">{{ 'policy.search.last_name' | translate }}</label>
-            <input type="text" formControlName='LAST_NAME' name='LAST_NAME' class="form-control form-control-sm">
-            <label class="text-muted">{{ 'policy.search.policy_number' | translate }}</label>
+<loader>
 
-            <input type="text" formControlName='POLICY_NUMBER' name='POLICY_NUMBER'
-              class="form-control form-control-sm">
-            <label class="text-muted">{{ 'policy.search.external_policy_number' | translate }}</label>
-
-            <input type="text" formControlName='EXTERNAL_POLICY_NUMBER' name='EXTERNAL_POLICY_NUMBER'
-              class="form-control form-control-sm">
-            <label class="text-muted">{{ 'policy.search.national_id' | translate }}</label>
-
-            <input type="text" formControlName='NATIONAL_ID' name='NATIONAL_ID' class="form-control form-control-sm">
-            <label class="text-muted">{{ 'policy.search.mobile_phone' | translate }}</label>
-
-            <input type="text" formControlName='MOBILE_PHONE' name='MOBILE_PHONE' class="form-control form-control-sm">
-          </div>
-
-          <button type="submit" class="btn btn-primary btn-xs btn-block">{{ 'Search' | translate }}</button>
-        </form>
-        <hr>
-        <a class="btn btn-warning btn-xs btn-block text-white" (click)="clearForm()">{{ 'Temizle' | translate }}</a>
-
-      </div>
-    </div>
-
-
-
-  </div>
-  <div class="col-md-9 p-0 " *ngIf="searchData.length > 0">
-    <div class="card">
-      <div class="card-body">
-        <article class="list-group-item" *ngFor="let customer of searchData;let i = index">
-          <header class="filter-header">
-            <div data-toggle="collapse" [attr.data-target]="'#selected'+i" aria-expanded="false"
-              [attr.aria-controls]="'selected'+i" (click)="select(customer)">
-              <i class="icon-action fas fa-chevron-down"></i>
-              <h6 class="title">{{customer.FIRST_NAME}} {{customer.LAST_NAME}}
-              </h6>
-              <p class="text-muted">{{ 'policy.national_id' | translate }} : {{customer.NATIONAL_ID}} |
-                {{ 'policy.phone_number' | translate }} : {{customer.MOBILE_PHONE}}</p>
+  <div class="row m-1">
+    <div class="col-md-3 p-0">
+      <div class="card">
+        <div class="card-body">
+          <form [formGroup]="form" (ngSubmit)="search()">
+            <div class="form-group">
+              <label class="text-muted">{{ 'policy.search.policy_number' | translate }}</label>
+              <input maxlength="30" type="text" formControlName='POLICY_NUMBER' name='POLICY_NUMBER' placeholder="whildcard (%)" class="form-control form-control-sm">
+              <label  class="text-muted">{{ 'policy.search.national_id' | translate }}</label>
+              <input maxlength="25" type="text" formControlName='NATIONAL_ID' name='NATIONAL_ID' class="form-control form-control-sm">
+              <label  class="text-muted">{{ 'policy.search.last_name' | translate }}</label>
+              <input maxlength="100" type="text" formControlName='LAST_NAME' name='LAST_NAME' class="form-control form-control-sm">
+              <label class="text-muted">{{ 'policy.search.mobile_phone' | translate }}</label>
+              <input maxlength="30" type="text" formControlName='MOBILE_PHONE' name='MOBILE_PHONE' class="form-control form-control-sm">
+              <label class="text-muted">{{ 'policy.search.external_policy_number' | translate }}</label>
+              <input maxlength="30" type="text" formControlName='EXTERNAL_POLICY_NUMBER' name='EXTERNAL_POLICY_NUMBER' class="form-control form-control-sm">
             </div>
-          </header>
-          <div class="filter-content collapse" [id]="'selected'+i">
-            <div class="list-group">
-              <div class="list-group-item" *ngFor="let policies of customer.policy" (click)="selectPolicy(policies)">
-                <div>
+
+            <button type="submit" class="btn btn-primary btn-xs btn-block">{{ 'Search' | translate }}</button>
+          </form>
+          <hr>
+          <a class="btn btn-warning btn-xs btn-block text-white" (click)="clearForm()">{{ 'Temizle' | translate }}</a>
+
+        </div>
+      </div>
+
+
+
+    </div>
+    <div class="col-md-9 p-0 " *ngIf="searchData.length > 0">
+      <div class="card">
+        <div class="card-body">
+          <article class="list-group-item" *ngFor="let customer of searchData;let i = index">
+            <header class="filter-header">
+              <div data-toggle="collapse" [attr.data-target]="'#selected'+i" aria-expanded="false"
+                [attr.aria-controls]="'selected'+i" (click)="select(customer)">
+                <i class="icon-action fas fa-chevron-down"></i>
+                <h6 class="title">{{customer.FIRST_NAME}} {{customer.LAST_NAME}}
+                </h6>
+                <p class="text-muted">{{ 'policy.national_id' | translate }} : {{customer.NATIONAL_ID}} |
+                  {{ 'policy.phone_number' | translate }} : {{customer.MOBILE_PHONE}}</p>
+              </div>
+            </header>
+            <div class="filter-content collapse" [id]="'selected'+i">
+              <div class="list-group">
+                <div class="list-group-item" *ngFor="let policies of customer.policy" (click)="selectPolicy(policies)">
+                  <div>
                     <a class="float-right btn btn-info btn-xs text-white" (click)="goPolicy(policies)">
-                        servis
-                        <i class="fas fa-chevron-right"></i>
-                      </a>
-                  <p>
-                    <span class="badge badge-success" *ngIf="policies.STATUS == 'LIVE'">{{policies.STATUS}}</span>
-                    <span class="badge badge-warning" *ngIf="policies.STATUS != 'LIVE'">{{policies.STATUS}}</span>
-                    {{ 'policy.number' | translate }} : {{policies.POLICY_NUMBER}}
-                  </p>
-                  <p class="text-muted">{{ 'policy.EXTERNAL_POLICY_NUMBER' | translate }} :
-                    {{policies.EXTERNAL_POLICY_NUMBER}}
-                    <span class="float-rigth">{{ 'policy.START_DATE' | translate }} : {{policies.START_DATE}}</span>
-                  </p>
+                        {{ 'policy.service_button' | translate }}
+                      <i class="fas fa-chevron-right"></i>
+                    </a>
+                    <p>
+                      <span class="badge badge-success" *ngIf="policies.STATUS == 'LIVE'">{{policies.STATUS}}</span>
+                      <span class="badge badge-warning" *ngIf="policies.STATUS != 'LIVE'">{{policies.STATUS}}</span>
+                      {{ 'policy.number' | translate }} : {{policies.POLICY_NUMBER}}
+                    </p>
+                    <p class="text-muted">{{ 'policy.EXTERNAL_POLICY_NUMBER' | translate }} :
+                      {{policies.EXTERNAL_POLICY_NUMBER}}
+                      <span class="float-rigth">{{ 'policy.START_DATE' | translate }} : {{policies.START_DATE}}</span>
+                    </p>
 
 
-                  
+
+
+                  </div>
+
 
                 </div>
-
-
               </div>
+
             </div>
+          </article>
 
-          </div>
-        </article>
-
+        </div>
+      </div>
+    </div>
+    <div class="col-md-9 p-0" *ngIf="searchData.length == 0">
+      <div class="alert alert-info text-center">
+        {{'policy.search_not_found' | translate}}
       </div>
     </div>
   </div>
-</div>
 </loader>

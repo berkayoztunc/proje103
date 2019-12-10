@@ -9,13 +9,13 @@
                         <div class="input-group-append">
                             <a class="btn btn-primary btn-sm" (click)="searchClick()" [title]="'user.search' | translate"><i class="fas fa-search"></i></a>
                             <a class="btn btn-info btn-sm" (click)="search = ''; searchClick()" [title]="'user.search_clear' | translate"><i class="fas fa-eraser"></i></a>
-                            <a class="btn btn-success btn-sm" (click)="create()" [title]="'user.add_new' | translate"><i class="fas fa-plus"></i></a>
+                            <a *permissions="'service_type.create'" class="btn btn-success btn-sm" (click)="create()" [title]="'user.add_new' | translate"><i class="fas fa-plus"></i></a>
                         </div>
                 </div>
             </div>
         </div>
         <div class="row pt-3 table-scrool">
-            <div class="col-12">
+            <div class="col-12  tableFixHead">
                 <table class="table">
                     <thead class="bg-primary text-white">
                         <tr>
@@ -29,7 +29,7 @@
 
                     <tbody>
                         <tr *ngFor="let ServiceType of ServiceTypes; let i = index">
-                            <th scope="row" width="5%">{{ServiceType.SERVICE_TYPE_ID}}</th>
+                            <td scope="row" width="5%">{{ServiceType.SERVICE_TYPE_ID}}</td>
                             <td>{{ServiceType.SERVICE_TYPE}}</td>
                             <td>{{ServiceType.PREFIX}}</td>
                             <td>
@@ -38,9 +38,9 @@
 
                             </td>
                             <td>
-                                <a class="btn btn-xs btn-warning " (click)="select(ServiceType,i)"><i class="fas fa-edit"></i></a>
+                                <a *permissions="'service_type.update'"  class="btn btn-xs btn-warning " (click)="select(ServiceType,i)"><i class="fas fa-edit"></i></a>
                                 
-                                <a class="btn btn-xs btn-danger " (click)="delete(ServiceType,i)"><i
+                                <a *permissions="'service_type.delete'" class="btn btn-xs btn-danger " (click)="delete(ServiceType,i)"><i
                                         class="fas fa-trash"></i></a>
                             </td>
                         </tr>

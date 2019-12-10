@@ -12,22 +12,22 @@
                                 class="fas fa-search"></i></a>
                         <a class="btn btn-info btn-sm" (click)="search = ''; searchClick()"
                             [title]="'user.search_clear' | translate"><i class="fas fa-eraser"></i></a>
-                        <a class="btn btn-success btn-sm" (click)="create()" [title]="'user.add_new' | translate"><i
-                                class="fas fa-plus"></i></a>
+                        <a *permissions="'product.create'" class="btn btn-success btn-sm" (click)="create()"
+                            [title]="'user.add_new' | translate"><i class="fas fa-plus"></i></a>
                     </div>
                 </div>
             </div>
         </div>
-       
+
         <div class="row pt-3 table-scrool">
-            <div class="col-12">
+            <div class="col-12  tableFixHead">
                 <table class="table">
                     <thead class="bg-primary text-white">
                         <tr>
                             <th>{{ 'product.PRODUCT_ID' |translate}}</th>
                             <th>{{'product.PRODUCT'|translate}}</th>
                             <th>{{'product.PRODUCT_TYPE'|translate}}</th>
-                            <th>{{'product.BUSINESS_PARTNER_ID' | translate}}</th>
+                            <th>{{'product.PRICE' | translate}}</th>
                             <th>{{'product.BUSINESS_MODEL' | translate}}</th>
                             <th>{{'product.PRODUCT_SALE_TYPE' | translate}}</th>
                             <th>{{'product.ACTIVE' | translate}}</th>
@@ -36,21 +36,22 @@
                     </thead>
 
                     <tbody>
-                        <tr *ngFor="let product of Products; let i = index">
-                            <th scope="row" width="5%">{{product.PRODUCT_ID}}</th>
-                            <td>{{product.PRODUCT}}</td>
-                            <td>{{product.PRODUCT_TYPE}}</td>
-                            <td>{{product.BUSINESS_PARTNER_ID}}</td>
-                            <td>{{product.BUSINESS_MODEL}}</td>
-                            <td>{{product.PRODUCT_SALE_TYPE}}</td>
+                        <tr *ngFor="let item of data; let i = index" [ngClass]="{'d-none': !item.check }">
+                            <td scope="row" width="5%">{{item.PRODUCT_ID}}</td>
+                            <td>{{item.PRODUCT}}</td>
+                            <td>{{item.PRODUCT_TYPE}}</td>
+                            <td>{{item.PRICE}}</td>
+                            <td>{{item.BUSINESS_MODEL}}</td>
+                            <td>{{item.PRODUCT_SALE_TYPE}}</td>
                             <td>
-                                <i class="fas fa-check fa-2x text-success" *ngIf="product.ACTIVE"></i>
-                                <i class="fas fa-times fa-2x text-danger" *ngIf="!product.ACTIVE"></i>
+                                <i class="fas fa-check fa-2x text-success" *ngIf="item.ACTIVE"></i>
+                                <i class="fas fa-times fa-2x text-danger" *ngIf="!item.ACTIVE"></i>
                             </td>
                             <td>
-                                <a class="btn btn-xs btn-warning " (click)="select(product,i)"><i class="fas fa-edit"></i></a>
-                                <a class="btn btn-xs btn-success " (click)="activation(product,i)"><i class="fas fa-lock"></i></a>
-                                <a class="btn btn-xs btn-danger " (click)="delete(product,i)"><i class="fas fa-trash"></i></a>
+                                <a *permissions="'product.update'" class="btn btn-xs btn-warning "
+                                    (click)="select(item,i)"><i class="fas fa-edit"></i></a>
+                                <a *permissions="'product.delete'" class="btn btn-xs btn-danger "
+                                    (click)="delete(item,i)"><i class="fas fa-trash"></i></a>
                             </td>
                         </tr>
                     </tbody>

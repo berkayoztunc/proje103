@@ -1,4 +1,4 @@
-<loader [showIf]="request.onTheGo">
+<loader>
 
 <div class="card">
     <div class="card-body">
@@ -10,11 +10,11 @@
 
             <div class="form-group">
                 <label>{{'CancelReason.CANCEL_REASON' | translate}} </label>
-                <input type="text" class="form-control" placeholder="{{'CancelReason.CANCEL_REASON' | translate }}" formControlName="CANCEL_REASON" name="CANCEL_REASON">
+                <input maxlength="100" type="text" class="form-control" placeholder="{{'CancelReason.CANCEL_REASON' | translate }}" formControlName="CANCEL_REASON" name="CANCEL_REASON">
             </div>
             <div class="form-group">
                 <label>{{'CancelReason.CANCEL_REASON_TYPE' | translate}} </label>
-                <input type="text" class="form-control" placeholder="{{'CancelReason.CANCEL_REASON_TYPE' | translate}}" formControlName="CANCEL_REASON_TYPE" name="CANCEL_REASON_TYPE">
+                <input maxlength="50" type="text" class="form-control" placeholder="{{'CancelReason.CANCEL_REASON_TYPE' | translate}}" formControlName="CANCEL_REASON_TYPE" name="CANCEL_REASON_TYPE">
 
             </div>
             <div class="form-check">

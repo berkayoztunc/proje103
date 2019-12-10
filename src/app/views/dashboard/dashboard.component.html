@@ -1,89 +1,120 @@
-
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary " *ngIf="!storage.auth.user.PASSWORD_LOCKED">
-    <a class="navbar-brand" href="#">
-        {{ 'app_name' | translate }}
-      </a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-      
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav mr-auto">
-           
-            <li class="nav-item active">
-              <a class="nav-link" routerLink="policy/search">{{ 'menu.policy' | translate }}</a>
-            </li>
-            <li class="nav-item dropdown active">
-              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                {{ 'menu.cruds' | translate }}
-              </a>
-              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item"  *permissions="'benefit.create'" routerLink="benefit">{{ 'menu.benefit' | translate }}</a>
-                <a class="dropdown-item" routerLink="benefitPack">{{ 'menu.benefitPack' | translate }}</a>
-                <a class="dropdown-item" routerLink="cancelReason">{{ 'menu.cancelreason' | translate }}</a>
-                <a class="dropdown-item" routerLink="country">{{ 'menu.country' | translate }}</a>
-                <a class="dropdown-item" routerLink="partner">{{ 'menu.partner' | translate }}</a>
-                <a class="dropdown-item" routerLink="channel">{{ 'menu.channel' | translate }}</a>
-                <a class="dropdown-item" routerLink="currency">{{ 'menu.currency' | translate }}</a>
-                <a class="dropdown-item" routerLink="product">{{ 'menu.product' | translate }}</a>
-                <a class="dropdown-item" routerLink="role">{{ 'menu.role' | translate }}</a>
-                <a class="dropdown-item" routerLink="serviceType">{{ 'menu.serviceType' | translate }}</a>
-                <a class="dropdown-item" routerLink="user">{{ 'menu.user' | translate }}</a>
-              </div>
-            </li>
-            <li class="nav-item dropdown active">
-              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                {{ 'menu.upload-csv' | translate }}
-              </a>
-              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" routerLink="upload-csv">Poliçe yükle</a>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item" routerLink="upload-csv">Asset güncelle</a>
-                <a class="dropdown-item" routerLink="upload-csv">TCKN güncelle</a>
-                <a class="dropdown-item" routerLink="upload-csv">Müşteri güncelle</a>
-              </div>
-            </li>
-            
-          </ul>
-          <ul class="navbar-nav ml-auto">
-            <li class="nav-item dropdown active">
-                
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown2" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                     {{ storage.auth.user.NAME}}
-                  </a>
-                  <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown2">
-                    <a class="dropdown-item" (click)="passwordReset()">{{ 'menu.resetpassword' | translate }}</a>
-                    <a class="dropdown-item" (click)="signout()">{{ 'menu.signout' | translate }}</a>
-                  </div>
-            </li>
-            <li>
-                <a class="nav-link dropdown-toggle lang" href="#" id="navbarDropdown5" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    {{ storage.language.selectedLanguage}}
-                 </a>
-                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown5">
-                   <a class="dropdown-item lang" (click)="setLanguage(lang)" *ngFor="let lang of storage.language.allLanguage">{{lang}}</a>
-                 </div>
-            </li>
-          </ul>
+  <a class="navbar-brand" href="javascript:void()">
+    {{ 'app_name' | translate }}
+  </a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+
+      <li class="nav-item active">
+        <a class="nav-link" routerLink="policy/search">{{ 'menu.policy' | translate }}</a>
+      </li>
+      <li class="nav-item dropdown active">
+        <a class="nav-link dropdown-toggle" href="javascript:void()" id="navbarDropdown" role="button"
+          data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          {{ 'menu.cruds' | translate }}
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" *permissions="'benefit.create'"
+            routerLink="benefit">{{ 'menu.benefit' | translate }}</a>
+          <a class="dropdown-item" *permissions="'benefit_pack.create'"
+            routerLink="benefitPack">{{ 'menu.benefitPack' | translate }}</a>
+          <a class="dropdown-item" *permissions="'cancel_reason.create'"
+            routerLink="cancelReason">{{ 'menu.cancelreason' | translate }}</a>
+          <a class="dropdown-item" *permissions="'country.create'"
+            routerLink="country">{{ 'menu.country' | translate }}</a>
+          <a class="dropdown-item" *permissions="'partner.create'"
+            routerLink="partner">{{ 'menu.partner' | translate }}</a>
+          <a class="dropdown-item" *permissions="'partner_channel.create'"
+            routerLink="channel">{{ 'menu.channel' | translate }}</a>
+          <a class="dropdown-item" *permissions="'currency.create'"
+            routerLink="currency">{{ 'menu.currency' | translate }}</a>
+          <a class="dropdown-item" *permissions="'product.create'"
+            routerLink="product">{{ 'menu.product' | translate }}</a>
+          <a class="dropdown-item" *permissions="'role.create'" routerLink="role">{{ 'menu.role' | translate }}</a>
+          <a class="dropdown-item" *permissions="'service_type.create'"
+            routerLink="serviceType">{{ 'menu.serviceType' | translate }}</a>
+          <a class="dropdown-item" *permissions="'user.browse'" routerLink="user">{{ 'menu.user' | translate }}</a>
         </div>
-        
+      </li>
+      <li class="nav-item dropdown active">
+        <a class="nav-link dropdown-toggle" href="javascript:void()" id="navbarDropdown" role="button"
+          data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          {{ 'menu.upload-csv' | translate }}
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" routerLink="upload-csv">Poliçe yükle</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" routerLink="upload-csv">Asset güncelle</a>
+          <a class="dropdown-item" routerLink="upload-csv">TCKN güncelle</a>
+          <a class="dropdown-item" routerLink="upload-csv">Müşteri güncelle</a>
+        </div>
+      </li>
+
+    </ul>
+    <ul class="navbar-nav ml-auto">
+      <!--
+        <li class="nav-item dropdown active">
+            <a class="nav-link dropdown-toggle lang" href="javascript:void()" id="navbarDropdown2" role="button"
+              data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              
+              <span class="fa-stack fa-1x has-badge" [attr.data-count]="3">
+                  <i class="fas fa-cloud-upload-alt fa-stack-1x fa-inverse"></i>
+                </span>
+            </a>
+            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown2">
+              <a href="javascript:void()" class="dropdown-item lang"><i class="fas fa-spinner fa-spin text-success"></i> Müşteri batch </a>
+              <a href="javascript:void()" class="dropdown-item lang"><i class="fas fa-spinner fa-spin text-success"></i> Asset batch </a>
+              <a href="javascript:void()" class="dropdown-item lang"><i class="fas fa-times text-danger"></i> Asset batch </a>
+            </div>
+          </li>-->
+      <li class="nav-item dropdown active">
+
+        <a class="nav-link dropdown-toggle" href="javascript:void()" id="navbarDropdown2" role="button"
+          data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          {{ storage.auth.user.NAME}}
+        </a>
+        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown2">
+          <a href="javascript:void()" class="dropdown-item"
+            (click)="passwordReset()">{{ 'menu.resetpassword' | translate }}</a>
+          <a href="javascript:void()" class="dropdown-item" (click)="signout()">{{ 'menu.signout' | translate }}</a>
+        </div>
+      </li>
+      <li class="nav-item dropdown active">
+        <a class="nav-link dropdown-toggle lang" href="javascript:void()" id="navbarDropdown5" role="button"
+          data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          {{ storage.language.selectedLanguage}}
+        </a>
+        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown5">
+          <a href="javascript:void()" class="dropdown-item lang" (click)="setLanguage(lang)"
+            *ngFor="let lang of storage.language.allLanguage">{{lang}}</a>
+        </div>
+      </li>
+      
+    </ul>
+  </div>
+
+</nav>
+<div class="container-fuild" *ngIf="!storage.auth.user.PASSWORD_LOCKED">
+  <div class="row">
+    <div class="col-md-12">
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li [class]="i == fragment.length-1 ? 'breadcrumb-item active' : 'breadcrumb-item'"
+            *ngFor="let item of fragment ; let i = index">
+            <a [routerLink]="[item.url]" *ngIf="i != fragment.length-1">{{'menu.'+item.name | translate}} </a>
+            <span *ngIf="i == fragment.length-1">{{'menu.'+item.name | translate}}</span>
+          </li>
+        </ol>
       </nav>
-      <div class="container-fuild" *ngIf="!storage.auth.user.PASSWORD_LOCKED">
-          <div class="row">
-                <div class="col-md-12">
-                    <nav aria-label="breadcrumb">
-                        <ol class="breadcrumb">
-                          <li [class]="i == fragment.length-1 ? 'breadcrumb-item active' : 'breadcrumb-item'" *ngFor="let item of fragment ; let i = index">
-                            <a [routerLink]="[item.url]" *ngIf="i != fragment.length-1">{{'menu.'+item.name | translate}} </a>
-                            <span *ngIf="i == fragment.length-1">{{'menu.'+item.name | translate}}</span>
-                          </li>
-                        </ol>
-                        
-                  </nav>
-                    <div class="components p-1">
-                      
-                        <router-outlet></router-outlet>
-                    </div>
-                </div>
-          </div>
+      <div class="components p-1">
+
+        <router-outlet></router-outlet>
       </div>
+    </div>
+  </div>
+</div>

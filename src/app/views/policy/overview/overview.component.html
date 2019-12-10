@@ -1,37 +1,85 @@
-<loader [showIf]="request.onTheGo">
+<loader>
 
-  <div class="row m-1">
-    <a class="btn btn-info btn-xs m-2 col-3" (click)="explanationAdd()">Not Ekle</a>
-    <a class="btn btn-info btn-xs m-2 col-3" (click)="benefits()">Yaraları</a>
-    <a class="btn btn-danger btn-xs  m-2 col-3" (click)="cancelOpen()">İptal</a>
-    <a class="btn btn-success btn-xs m-2 col-3" (click)="reinsdate()">Yeniden kurmak</a>
-    <a class="btn btn-success btn-xs m-2 col-3" (click)="customer()">Müşteri bilgilerini düzenle</a>
-    <a class="btn btn-danger btn-xs  m-2 col-3" (click)="getHistory()">Geçmişi güncelle</a>
+  <div class="card mb-1">
+    <div class="card-body p-1">
+      <h6>{{ 'policy.policy_actions' | translate }}</h6>
+      <div class="row">
+        <div class="col-2">
+          <div class="card mb-0 bg-primary text-white" (click)="explanationAdd()">
+            <div class="card-body text-center">
+              <i class="fas fa-2x fa-history"></i>
+              <p>{{ 'policy.add_history' | translate }}</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-2">
+          <div class="card mb-0 bg-info text-white" (click)="benefits()">
+            <div class="card-body text-center">
+              <i class="fas fa-2x fa-life-ring"></i>
+              <p>{{ 'policy.benefit' | translate }}</p>
+            </div>
+          </div>
+        </div>
 
+        <div class="col-2">
+          <div class="card mb-0 bg-success text-white" (click)="reinsdate()">
+            <div class="card-body text-center">
+              <i class="fas fa-2x fa-sync"></i>
+              <p>{{ 'policy.reinstate' | translate }}</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-2">
+          <div class="card mb-0 bg-primary text-white" (click)="customer()">
+            <div class="card-body text-center">
+              <i class="fas fa-2x fa-user-cog"></i>
+              <p>{{ 'policy.edit_customer_button' | translate }}</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-2">
+            <div class="card mb-0 bg-primary text-white" (click)="addressChange()">
+              <div class="card-body text-center">
+                <i class="fas fa-2x fa-user-cog"></i>
+                <p>{{ 'policy.edit_customer_adress' | translate }}</p>
+              </div>
+            </div>
+          </div>
+        <div class="col-2">
+          <div class="card mb-0 bg-danger text-white" (click)="cancelOpen()">
+            <div class="card-body text-center">
+              <i class="fas fa-2x fa-times"></i>
+              <p>{{ 'policy.cancel' | translate }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
-  <div class="row m-1">
-
-    <div class="col-md-12 table-scrool">
+  <div class="card">
+    <div class="card-body p-0">
       <h6>{{ 'policy.reced_service_history' | translate }}</h6>
-      <table class="table table-striped ">
-        <thead>
-          <tr>
-            <th width="15%">Zaman</th>
-            <th width="15%">Yetkili</th>
-            <th width="20%">İşlem Tipi</th>
-            <th width="50%">Açıklama</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let history of historyData;let i = index">
-            <td width="15%">{{history.M_DATE | date:'short' }}</td>
-            <td width="15%">{{history.M_USER_NAME}}</td>
-            <td width="20%">{{history.AUDIT_TYPE}}</td>
-            <td width="50%">{{history.EXPLANATION}}</td>
-          </tr>
-        </tbody>
+      <div class="col-md-12 p-1 tableFixHead">
+        <table class="table table-striped ">
+          <thead class="bg-primary text-white">
+            <tr>
+              <th width="15%">Zaman</th>
+              <th width="15%">Yetkili</th>
+              <th width="20%">İşlem Tipi</th>
+              <th width="50%">Açıklama</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let history of storage.policy.historys;let i = index">
+              <td width="15%">{{history.M_DATE | date:'short' }}</td>
+              <td width="15%">{{history.M_USER_NAME}}</td>
+              <td width="20%">{{history.AUDIT_TYPE}}</td>
+              <td width="50%" appShowAll class="spacific">{{history.EXPLANATION}}</td>
+            </tr>
+          </tbody>
 
-      </table>
+        </table>
+      </div>
     </div>
   </div>
 </loader>

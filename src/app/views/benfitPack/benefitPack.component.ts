@@ -12,71 +12,70 @@ import { BenefitPackFormComponent } from './form/benefitPack-form.component';
   styleUrls: ['./BenefitPack.component.css']
 })
 export class BenefitPackComponent implements OnInit {
-  BenefitPacks : BenefitPack[];
-  BenefitPack : BenefitPack;
-  search= '';
+  data: BenefitPack[];
+  search = '';
   detail = false;
   tabelOnInit = true;
+  url = 'api/benefitpacks';
+  idFlag = 'BENEFIT_PACK_ID';
   constructor( private modalService: NgbModal,
-    public activeModal: NgbActiveModal,public request : RequestService , public storage : StoreService,private route : Router) {
+               public activeModal: NgbActiveModal, public request: RequestService , public storage: StoreService, private route: Router) {
 
   }
 
   ngOnInit() {
-    if(this.tabelOnInit){
-      this.searchBenefitPacks()
+    if (this.tabelOnInit) {
+      this.getData();
     }
-    this.BenefitPacks = this.storage.benefitPack.benefitPacks;
+    this.data = this.storage.benefitPack.benefitPacks;
 
   }
-  searchClick(){
-    if(this.search != ''){
-      this.BenefitPacks = this.BenefitPacks.filter((item) =>{
-        return item.BENEFIT_PACK.toLocaleLowerCase().search(this.search.toLocaleLowerCase()) >= 0 
-      });
-    }else{
-      this.BenefitPacks = this.storage.benefitPack.benefitPacks;
-    }
-  }  
-  select(item,index){
-    this.storage.benefitPack.selectedBenefitPack = {item,index};
-    this.modalService.open(BenefitPackFormComponent)
+  searchClick() {
+    this.storage.benefitPack.benefitPacks.filter((item) => {
+      const check = item.BENEFIT_PACK.toLocaleLowerCase().search(this.search.toLocaleLowerCase()) >= 0;
+      return item.check = check;
+    });
+  }
+  select(item, index) {
+    this.storage.benefitPack.selectedBenefitPack = {item, index};
+    this.modalService.open(BenefitPackFormComponent);
 
   }
-  viewBenefits(item){
+  viewBenefits(item) {
     this.storage.benefitPack.selectedBenefitPack = {item};
-
-    this.route.navigate(['dashboard/benefitPack/benefit'])
-
+    this.route.navigate(['dashboard/benefitPack/benefit']);
   }
-  delete2(){
-   
-  }
-  create(){
+  create() {
     this.storage.benefitPack.selectedBenefitPack = null;
     // burda modal açılıcak
-    this.modalService.open(BenefitPackFormComponent)
+    this.modalService.open(BenefitPackFormComponent);
 
   }
-  searchBenefitPacks(): void {
-    this.request.get( 'api/benefitpacks' )
+  getData(): void {
+    this.request.get(this.url )
     .subscribe(response => {
-      this.BenefitPacks = this.storage.benefitPack.benefitPacks = response.data
+      if(response){
+        this.data = this.storage.benefitPack.benefitPacks = response.data.map((item) => {
+          item.check = true;
+          return item;
+        });
+      }
+      console.log(this.data);
+      
     });
-
   }
   delete(item, i): void {
     this.storage.deleteDialog().then((result) => {
       if (result.value) {
-        this.request.delete('api/benefitpacks/' + item.BENEFIT_PACK_ID).subscribe((response) => {
-          if(response){
+        this.request.delete(this.url + '/' + item[this.idFlag]).subscribe((response) => {
+          if (response) {
             this.storage.benefitPack.benefitPacks.splice(i, 1);
-            this.BenefitPacks = this.storage.benefitPack.benefitPacks
+            this.data = this.storage.benefitPack.benefitPacks;
           }
-         
+
         });
       }
-    })
+    });
   }
 
 }

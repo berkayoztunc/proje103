@@ -12,59 +12,64 @@ import { BenefitFormComponent } from './form/benefit-form.component';
   styleUrls: ['./Benefit.component.css']
 })
 export class BenefitComponent implements OnInit {
-  Benefits : Benefit[];
-  Benefit : Benefit;
-  search= '';
+  data: Benefit[];
+  search = '';
   detail = false;
   tabelOnInit = true;
+  url = 'api/benefits';
+  idFlag = 'BENEFIT_ID';
+  formModalComponenet = BenefitFormComponent;
   constructor(
     private modalService: NgbModal,
     public activeModal: NgbActiveModal,
-    public request : RequestService,
-    public storage : StoreService) {
-
+    public request: RequestService,
+    public storage: StoreService) {
   }
 
-  ngOnInit()  {
-    if(this.tabelOnInit){
-      this.getBenefit()
+
+
+
+  ngOnInit() {
+
+    if (this.tabelOnInit) {
+      this.getData();
     }
-    this.Benefits = this.storage.benefit.benefits
+    this.data = this.storage.benefit.benefits;
   }
-  searchClick(){
-    if(this.search != ''){
-      this.Benefits = this.storage.benefit.benefits.filter((item) =>{
-        return item.BENEFIT.toLocaleLowerCase().search(this.search.toLocaleLowerCase()) >= 0 
-      });
-    }else{
-      this.Benefits = this.storage.benefit.benefits
-    }
-  }  
-  select(item,index){
-    this.storage.benefit.selectedBenefit = {item,index};
-    this.modalService.open(BenefitFormComponent)
-  }
-  create(){
-    this.storage.benefit.selectedBenefit = null;
-    this.modalService.open(BenefitFormComponent)
-  }
-  getBenefit(): void {
-    this.request.get( 'api/benefits')
-    .subscribe(response => {
-      this.Benefits = this.storage.benefit.benefits = response.data
+  searchClick() {
+    this.storage.benefit.benefits.map((item) => {
+      const check = item.BENEFIT.toLocaleLowerCase().search(this.search.toLocaleLowerCase()) >= 0;
+      return item.check = check;
     });
-
   }
- 
+  select(item, index) {
+    this.storage.benefit.selectedBenefit = { item, index };
+    this.modalService.open(this.formModalComponenet);
+  }
+  create() {
+    this.storage.benefit.selectedBenefit = null;
+    this.modalService.open(this.formModalComponenet);
+  }
+  getData(): void {
+    this.request.get(this.url)
+      .subscribe(response => {
+        if (response) {
+          this.data = this.storage.benefit.benefits = response.data.map((item) => {
+            item.check = true;
+            return item;
+          });
+        }
+      });
+  }
   delete(item, i): void {
     this.storage.deleteDialog().then((result) => {
       if (result.value) {
-        this.request.delete('api/benefits/' + item.BENEFIT_ID).subscribe(() => {
+        this.request.delete(this.url + '/' + item[this.idFlag]).subscribe(() => {
           this.storage.benefit.benefits.splice(i, 1);
-          this.Benefits = this.storage.benefit.benefits
+          this.data = this.storage.benefit.benefits;
         });
       }
-    })
+    });
   }
 
 }

@@ -4,9 +4,9 @@ import { CountryComponent} from './country.component';
 import { CityComponent } from './city/city.component';
 const routes: Routes = [
     { path: '', component: CountryComponent},
-    { path: 'city', component :CityComponent },    
-    //{ path: 'form', component :CountryFormComponent },    
-]
+    { path: 'city', component : CityComponent },
+    // { path: 'form', component :CountryFormComponent },
+];
 
 @NgModule({
     imports: [RouterModule.forChild(routes)],

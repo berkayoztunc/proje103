@@ -1,15 +1,16 @@
-<loader [showIf]="request.onTheGo">
+<loader>
 
     <div class="card">
         <div class="card-body">
-            <h5 class="card-title" >{{ 'modal.explanation.title.save' | translate }}</h5>
+            <h5 class="card-title" >{{ 'modal.explanation.title' | translate }}</h5>
 
             <app-alert></app-alert>
             <form [formGroup]="form" (ngSubmit)="save()">
                 <div class="form-group">
                     <label>{{'policy.modal.EXPLANATION'|translate}} </label>
-                    <textarea name="" id="" cols="30" rows="10" class="form-control" placeholder="{{'policy.modal.EXPLANATION'|translate}}" formControlName="EXPLANATION"></textarea>
+                    <textarea name="" id="" cols="30" rows="5" class="form-control" placeholder="{{'policy.modal.EXPLANATION'|translate}}" formControlName="EXPLANATION"></textarea>
                 </div>
+                <hr>
                 <button type="submit" class="btn btn-xs btn-primary float-right text-white" 
                     [disabled]="!form.valid">{{ 'KAYDET' | translate }}</button>
                 <a class="btn btn-xs btn-warning float-right text-white mr-1"

@@ -3,8 +3,8 @@ import { Routes, RouterModule } from '@angular/router';
 import { ServiceTypeComponent} from './serviceType.component';
 const routes: Routes = [
     { path: '', component: ServiceTypeComponent},
-    //{ path: 'form', component :ServiceTypeFormComponent },    
-]
+    // { path: 'form', component :ServiceTypeFormComponent },
+];
 
 @NgModule({
     imports: [RouterModule.forChild(routes)],

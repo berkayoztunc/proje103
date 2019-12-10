@@ -12,39 +12,69 @@ import { FormBuilder, FormGroup  } from '@angular/forms';
 })
 
 export class CancelComponent implements OnInit {
-  historyData = [];
-  form:FormGroup;
-  
+  reasonData = [];
+  form: FormGroup;
+  selectedType;
+  selectedReason;
+  grand;
   constructor(
     public request: RequestService,
     public storage: StoreService,
     private activeModal: NgbActiveModal,
-    private fb : FormBuilder
+    private fb: FormBuilder
   ) {
-    this.createForm()
+    this.createForm();
 
   }
-  createForm(){
-    this.form = this.fb.group({
-      EXPLANATION : [null]
+  createForm() {
+    
+  }
+
+  ngOnInit() {
+    this.request.get('api/cancelreasons/grouped').subscribe((response)=>{
+      this.reasonData = response.data
     })
   }
-
-  ngOnInit(){
-  }
-  goBack(){
-    this.activeModal.dismiss()
+  goBack() {
+    this.activeModal.dismiss();
   }
   cancel() {
     this.storage.cancelDialog().then((result) => {
       if (result.value) {
+        this.goBack();
+      }
+    });
+  }
+  save(): void {
+
+    let key = this.selectedType.CANCEL_REASON_TYPE
+    let model = {
+      CANCEL_REASON_ID : this.selectedReason,
+      REFUND_TYPE :this.grand
+    }
+    let url = '';
+    switch (key) {
+      case 'EXPIRY':
+        url = 'cancel-on-expiry';
+        break;
+      case 'IMMEDIATE':
+          url = 'cancel-immediately';
+        break;
+      case 'TURNAROUND':
+          url = 'cancel-turnaround';
+        break;
+      default:
+          url = 'cancel-turnaround';
+        break;
+    }
+    this.request.post('api/policy/' +url + '/' + this.storage.policy.selectedPolicy.POLICY_ID,model).subscribe((response)=>{
+      if(response){
+        this.storage.policy.historys = response.data    
         this.goBack()
+        this.storage.successDialog()
       }
     })
   }
-  save():void{
-    
-  }
- 
-  
+
+
 }

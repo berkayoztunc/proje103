@@ -11,29 +11,29 @@ import { StoreService } from 'src/app/services/store.service';
   styleUrls: ['./benefitPack-benefit.component.css']
 })
 export class BenefitPackBenefitsComponent implements OnInit {
-  search = ''
+  search = '';
   data = [];
   realData = [];
-  selectedPackData = []
+  selectedPackData = [];
   constructor(public request: RequestService, public storage: StoreService, private fb: FormBuilder, private route: ActivatedRoute, private location: Location) {
   }
 
   ngOnInit() {
-    this.getPackData()
+    this.getPackData();
     if (this.storage.benefitPack.selectedBenefitPack == null) {
       this.location.back();
     }
     console.log(this.storage.benefitPack.selectedBenefitPack.item.USED);
-    
-    //mocing
+
+    // mocing
 
   }
   add(item, index): void {
-    let model = {
+    const model = {
       BENEFIT_PACK_ID: this.storage.benefitPack.selectedBenefitPack.item.BENEFIT_PACK_ID,
       BENEFIT_ID: item.BENEFIT_ID,
       ORDER_NUMBER: this.selectedPackData ? this.selectedPackData.length + 1 : 0
-    }
+    };
     this.request.post('api/benefitpackbenefits', model)
       .subscribe((response) => {
         if (response) {
@@ -42,15 +42,15 @@ export class BenefitPackBenefitsComponent implements OnInit {
 
         }
 
-      })
+      });
   }
   updateOrder(item) {
-    let model = { BENEFIT_PACK_BENEFIT_ID: item.BENEFIT_PACK_BENEFIT_ID, ORDER_NUMBER: item.ORDER_NUMBER }
+    const model = { BENEFIT_PACK_BENEFIT_ID: item.BENEFIT_PACK_BENEFIT_ID, ORDER_NUMBER: item.ORDER_NUMBER };
     this.request.update('api/benefitpackbenefits/' + this.storage.benefitPack.selectedBenefitPack.item.BENEFIT_PACK_ID, model).subscribe((response) => {
-      if(response){
-        this.selectedPackData = response.data
+      if (response) {
+        this.selectedPackData = response.data;
       }
-    })
+    });
   }
   remove(item, index): void {
 
@@ -59,21 +59,21 @@ export class BenefitPackBenefitsComponent implements OnInit {
         if (response) {
           this.selectedPackData.splice(index, 1);
         }
-      })
+      });
   }
   searchClick(): void {
 
-    if(this.search != ''){
-      this.data = this.data.filter((item) =>{
-        return item.BENEFIT.toLocaleLowerCase().search(this.search.toLocaleLowerCase()) >= 0
+    if (this.search != '') {
+      this.data = this.data.filter((item) => {
+        return item.BENEFIT.toLocaleLowerCase().search(this.search.toLocaleLowerCase()) >= 0;
       });
       console.log(this.data);
-      
-    }else{
+
+    } else {
       this.getPackData();
     }
   }
- 
+
 
   getPackData(): void {
     this.request
@@ -81,10 +81,10 @@ export class BenefitPackBenefitsComponent implements OnInit {
       .subscribe((response) => {
         if (response) {
           this.selectedPackData = response.data[0].selected ?  response.data[0].selected  : [];
-          this.data = response.data[0].unselected
-          this.realData = Object.assign({},this.data)
+          this.data = response.data[0].unselected;
+          this.realData = Object.assign({}, this.data);
         }
-      })
+      });
   }
 
 

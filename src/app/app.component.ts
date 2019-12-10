@@ -12,18 +12,18 @@ import { SystemErrorComponent } from './components/system-error.component';
 })
 export class AppComponent {
   title = 'Tour of Heroes';
-  detail= [];
-  
-  constructor(private translate : TranslateService,config: NgbModalConfig,storage :StoreService,request :RequestService, modal : NgbModal){
+  detail = [];
+
+  constructor(private translate: TranslateService, config: NgbModalConfig, storage: StoreService, request: RequestService, modal: NgbModal) {
     translate.addLangs(storage.language.allLanguage);
     translate.use(storage.language.selectedLanguage);
     config.backdrop = 'static';
     config.keyboard = false;
-    request.systemError.subscribe(()=>{
-      modal.open(SystemErrorComponent)
-    })
+    request.systemError.subscribe(() => {
+      modal.open(SystemErrorComponent);
+    });
   }
-  keys(item){
+  keys(item) {
     return Object.keys(item);
   }
 }

@@ -11,58 +11,58 @@ import { CancelReasonFormComponent } from './form/cancelReason-form.component';
   styleUrls: ['./CancelReason.component.css']
 })
 export class CancelReasonComponent implements OnInit {
-  CancelReasons : CancelReason[];
-  CancelReason : CancelReason;
-  search= '';
+  data: CancelReason[];
+  search = '';
   detail = false;
   tabelOnInit = true;
+  url = 'api/cancelreasons';
+  idFlag = 'CANCEL_REASON_ID';
   constructor(
-    
     private modalService: NgbModal,
-    public activeModal: NgbActiveModal,public request : RequestService, public storage : StoreService) {
-
+    public activeModal: NgbActiveModal, public request: RequestService, public storage: StoreService) {
   }
 
   ngOnInit() {
-    if(this.tabelOnInit){
-      this.searchCancelReasons()
+    if (this.tabelOnInit) {
+      this.getData();
     }
-    this.CancelReasons = this.storage.cancelReason.cancelReasons;
+    this.data = this.storage.cancelReason.cancelReasons;
 
   }
-  searchClick(){
-    if(this.search != ''){
-      this.CancelReasons = this.CancelReasons.filter((item) =>{
-        return item.CANCEL_REASON.toLocaleLowerCase().search(this.search.toLocaleLowerCase()) >= 0
-      });
-    }else{
-      this.CancelReasons = this.storage.cancelReason.cancelReasons;
-    }
-  }  
-  select(item,index){
-    this.storage.cancelReason.selectedCancelReason = {item,index};
-    this.modalService.open(CancelReasonFormComponent)
-  }
-  create(){
-    this.storage.cancelReason.selectedCancelReason = null;
-    this.modalService.open(CancelReasonFormComponent)
-  }
-  searchCancelReasons(): void {
-    this.request.get( 'api/cancelreasons' )
-    .subscribe(response => {
-      this.CancelReasons = this.storage.cancelReason.cancelReasons = response.data
+  searchClick() {
+    this.storage.cancelReason.cancelReasons.map((item) => {
+      const check = item.CANCEL_REASON.toLocaleLowerCase().search(this.search.toLocaleLowerCase()) >= 0;      
+      return item.check = check;
     });
-
+  }
+  select(item, index) {
+    this.storage.cancelReason.selectedCancelReason = { item, index };
+    this.modalService.open(CancelReasonFormComponent);
+  }
+  create() {
+    this.storage.cancelReason.selectedCancelReason = null;
+    this.modalService.open(CancelReasonFormComponent);
+  }
+  getData(): void {
+    this.request.get(this.url)
+      .subscribe(response => {
+        if (response) {
+          this.data = this.storage.cancelReason.cancelReasons = response.data.map((item) => {
+            item.check = true;
+            return item;
+          });
+        }
+      });
   }
   delete(item, i): void {
     this.storage.deleteDialog().then((result) => {
       if (result.value) {
-        this.request.delete('api/cancelreasons/' + item.CANCEL_REASON_ID).subscribe(() => {
+        this.request.delete(this.url + '/' + item[this.idFlag]).subscribe(() => {
           this.storage.cancelReason.cancelReasons.splice(i, 1);
-          this.CancelReasons = this.storage.cancelReason.cancelReasons
+          this.data = this.storage.cancelReason.cancelReasons;
         });
       }
-    })
+    });
   }
 
 }

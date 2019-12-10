@@ -12,27 +12,27 @@ export class CsvUploadComponent {
   handData = [];
   header = [];
   code = false;
-  constructor(private papa: Papa,public ValidatorTranformatorService: ValidatorTranformatorService) {}
+  constructor(private papa: Papa, public ValidatorTranformatorService: ValidatorTranformatorService) {}
   fileProgress(fileInput: any) {
-    this.fileData = <File>fileInput.target.files[0];
+    this.fileData = fileInput.target.files[0] as File;
     this.preview();
-    
+
   }
   preview() {
-    var reader = new FileReader();      
-    reader.readAsText(this.fileData); 
-    reader.onload = (event) => { 
-      let data =  reader.result ;
-      let options = {
+    const reader = new FileReader();
+    reader.readAsText(this.fileData);
+    reader.onload = (event) => {
+      const data =  reader.result ;
+      const options = {
         header : true,
         complete: (result) => {
-          this.handData = this.ValidatorTranformatorService.validateWithTransform(result.data,"test")
-          this.errors = this.ValidatorTranformatorService.errorsbag(result.data,"test")          
+          this.handData = this.ValidatorTranformatorService.validateWithTransform(result.data, 'test');
+          this.errors = this.ValidatorTranformatorService.errorsbag(result.data, 'test');
           this.header = this.ValidatorTranformatorService.header;
         }
         // Add your options here
     };
-      this.papa.parse(data.toString(),options);
-    }
+      this.papa.parse(data.toString(), options);
+    };
   }
 }

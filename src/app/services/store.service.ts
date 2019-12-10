@@ -1,112 +1,115 @@
 import { Injectable } from '@angular/core';
-import Swal from 'sweetalert2/dist/sweetalert2.js'
+import Swal from 'sweetalert2/dist/sweetalert2.js';
 import { TranslateService } from '@ngx-translate/core';
+import { NULL_EXPR } from '@angular/compiler/src/output/output_ast';
 @Injectable({ providedIn: 'root' })
 export class StoreService {
-    
+
 
     policy = {
         searchData : [],
         selectedCustomer : null,
         selectedPolicy : null,
-        historys : []
-    }
+        historys : [],
+        inPolicy : false,
+    };
     auth = {
         token : '',
         user : {
+            USER_ID : null,
             NAME: '',
             PASSWORD_LOCKED : false
         },
         permissions : {
         },
-        mapedPermissions :[] 
-    }
+        mapedPermissions : []
+    };
     benefit =  {
         benefits: [],
         selectedBenefit: null
-    }
+    };
     benefitPack =  {
         benefitPacks: [],
         selectedBenefitPack: null
-    }
-    cancelReason= {
+    };
+    cancelReason = {
         cancelReasons: [],
         selectedCancelReason: null
-    }
-    city ={
+    };
+    city = {
         cityies: [],
         selectedCity: null
-    }
-    country=  {
+    };
+    country =  {
         countrys: [],
         selectedCountry: null,
-    }
-    partner= {
+    };
+    partner = {
         partners: [],
         selectedPartner: null
-    }
-    product= {
+    };
+    product = {
         products: [],
         selectedProduct: null
-    }
-    role= {
+    };
+    role = {
         roles: [],
         selectedRole: null
-    }
-    serviceType= {
+    };
+    serviceType = {
         serviceTypes: [],
         selectedServiceType: null
-    }
-    user= {
+    };
+    user = {
         users: [],
         selectedUser: null
-    }
+    };
     channel = {
         channels : [],
         selectedChannel : null,
-    }
+    };
     currency = {
         currencyies : [],
         selectedCurrency : null
-    }
+    };
     language = {
-        allLanguage : ['en','tr'],
+        allLanguage : ['en', 'tr'],
         selectedLanguage : 'tr'
-    }
-    constructor( private translate: TranslateService,) { }
-    //** dialogs */
+    };
+    constructor( private translate: TranslateService, ) { }
+    // ** dialogs */
 
-    cancelDialog(val = null){
+    cancelDialog(val = null) {
         return Swal.fire({
-            text: val == null ? this.translate.translations[this.translate.currentLang]['form_change'] : val,
+            text: val == null ? this.translate.translations[this.translate.currentLang].form_change : val,
             icon: 'info',
             showCancelButton: true,
             confirmButtonColor: '#3085d6',
             cancelButtonColor: '#d33',
-            confirmButtonText:  this.translate.translations[this.translate.currentLang]['dialog_yes'],
-            cancelButtonText : this.translate.translations[this.translate.currentLang]['dialog_no']
+            confirmButtonText:  this.translate.translations[this.translate.currentLang].dialog_yes,
+            cancelButtonText : this.translate.translations[this.translate.currentLang].dialog_no
 
-          })
+          });
     }
-    deleteDialog(){
+    deleteDialog() {
         return Swal.fire({
-            text: this.translate.translations[this.translate.currentLang]['delete_item'],
+            text: this.translate.translations[this.translate.currentLang].delete_item,
             icon: 'warning',
             showCancelButton: true,
             confirmButtonColor: '#3085d6',
             cancelButtonColor: '#d33',
-            confirmButtonText:  this.translate.translations[this.translate.currentLang]['dialog_yes'],
-            cancelButtonText : this.translate.translations[this.translate.currentLang]['dialog_no']
-          })
+            confirmButtonText:  this.translate.translations[this.translate.currentLang].dialog_yes,
+            cancelButtonText : this.translate.translations[this.translate.currentLang].dialog_no
+          });
     }
-    successDialog(){
+    successDialog() {
         return Swal.fire({
-            text: this.translate.translations[this.translate.currentLang]['success_info'],
+            text: this.translate.translations[this.translate.currentLang].success_info,
             icon: 'success',
             showCancelButton: false,
             confirmButtonColor: '#3085d6',
             cancelButtonColor: '#d33',
-            confirmButtonText:  this.translate.translations[this.translate.currentLang]['dialog_yes'],
-          })
+            confirmButtonText:  this.translate.translations[this.translate.currentLang].dialog_yes,
+          });
     }
 }

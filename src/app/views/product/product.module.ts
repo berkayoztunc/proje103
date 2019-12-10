@@ -6,6 +6,7 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { TranslateModule } from '@ngx-translate/core';
 
 import { NgSelectModule } from '@ng-select/ng-select';
+import { SharedModule } from 'src/app/shared.module';
 
 
 @NgModule({
@@ -13,9 +14,9 @@ import { NgSelectModule } from '@ng-select/ng-select';
   imports: [
     CommonModule,
     TranslateModule,
-    FormsModule,
     NgSelectModule,
-    ReactiveFormsModule,
+    SharedModule,
+
     ProductRoutingModule,
   ]
 })

@@ -4,21 +4,27 @@
         <div class="row">
             <div class="col-md-6 ">
                 <div class="input-group">
-                        <input type="text" class="form-control form-control-sm" [placeholder]="'user.email_ad_placeholser' | translate" required [(ngModel)]="search">
+                        <input type="text" class="form-control form-control-sm" [placeholder]="'Partner.email_ad_placeholser' | translate" required [(ngModel)]="search">
                         <div class="input-group-append">
                             <a class="btn btn-primary btn-sm" (click)="searchClick()" [title]="'user.search' | translate"><i class="fas fa-search"></i></a>
                             <a class="btn btn-info btn-sm" (click)="search = ''; searchClick()" [title]="'user.search_clear' | translate"><i class="fas fa-eraser"></i></a>
-                            <a class="btn btn-success btn-sm" (click)="create()" [title]="'user.add_new' | translate"><i class="fas fa-plus"></i></a>
+                            <a *permissions="'partner.create'"  class="btn btn-success btn-sm" (click)="create()" [title]="'user.add_new' | translate"><i class="fas fa-plus"></i></a>
                         </div>
                 </div>
             </div>
+            <div class="col-md-4">
+                    <app-alert></app-alert>
+                </div>
+            <div class="col-md-2">
+                <p class="text-muted text-right">{{ 'total_data' | translate }} : {{data.length}}</p>
+            </div>
         </div>
         <div class="row pt-3 table-scrool">
-            <div class="col-12">
+            <div class="col-12  tableFixHead">
                 <table class="table">
                     <thead class="bg-primary text-white">
                         <tr>
-                            <th>{{ 'Partner.PARTNER_ID' |translate}}</th>
+                            <th  width="5%">{{ 'Partner.PARTNER_ID' |translate}}</th>
                             <th>{{'Partner.PARTNER'|translate}}</th>
                             <th>{{'Partner.ACTIVE' | translate}}</th>
                             <th>{{'Partner.action'|translate}}</th>
@@ -26,19 +32,17 @@
                     </thead>
 
                     <tbody>
-                        <tr *ngFor="let Partner of Partners; let i = index">
-                            <th scope="row" width="5%">{{Partner.PARTNER_ID}}</th>
-                            <td>{{Partner.PARTNER}}</td>
+                        <tr *ngFor="let item of data; let i = index" [ngClass]="{'d-none': !item.check }">
+                            <td >{{item.PARTNER_ID}}</td>
+                            <td>{{item.PARTNER}}</td>
                             <td>
-                                <i class="fas fa-check fa-2x text-success" *ngIf="Partner.ACTIVE"></i>
-                                <i class="fas fa-times fa-2x text-danger" *ngIf="!Partner.ACTIVE"></i>
+                                <i class="fas fa-check fa-2x text-success" *ngIf="item.ACTIVE"></i>
+                                <i class="fas fa-times fa-2x text-danger" *ngIf="!item.ACTIVE"></i>
 
                             </td>
                             <td>
-                                    <a class="btn btn-xs btn-warning " (click)="select(Partner,i)"><i
-                                        class="fas fa-edit"></i></a>
-                                <a class="btn btn-xs btn-danger " (click)="delete(Partner,i)"><i
-                                        class="fas fa-trash"></i></a>
+                                <a  *permissions="'partner.update'"  class="btn btn-xs btn-warning " (click)="select(item,i)"><i class="fas fa-edit"></i></a>
+                                <a  *permissions="'partner.delete'"  class="btn btn-xs btn-danger " (click)="delete(item,i)"><i class="fas fa-trash"></i></a>
                             </td>
                         </tr>
                     </tbody>

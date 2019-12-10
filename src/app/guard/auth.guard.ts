@@ -4,7 +4,7 @@ import {StoreService} from '../services/store.service';
 @Injectable()
 export class AuthGuard implements CanActivate {
 
-    constructor(private router: Router,public storage : StoreService) { }
+    constructor(private router: Router, public storage: StoreService) { }
 
     canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
         // let parentPath = route.routeConfig.path;
@@ -13,7 +13,7 @@ export class AuthGuard implements CanActivate {
           this.router.navigate(['/login'], { queryParams: { returnUrl: state.url }});
           return false;
         }
-        
+
         // not logged in so redirect to login page with the return url
         this.router.navigate(['/login'], { queryParams: { returnUrl: state.url }});
         return false;

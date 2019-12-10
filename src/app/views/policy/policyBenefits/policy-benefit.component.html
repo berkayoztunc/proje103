@@ -1,16 +1,16 @@
-<loader [showIf]="request.onTheGo">
+<loader>
 
     <div class="card">
         <div class="card-body">
-            <h5 class="card-title" >{{ 'modal.policyBenefit.title' | translate }}</h5>
+            <h5 class="card-title" >{{ 'modal.policyBenefit.title' | translate }} ({{benefits.length}})</h5>
             <div class="row my-form">         
 
                 <div class="col-md-12">
                     <table class="table table-striped">
                         <thead>
                             <tr>
-                                <th width="25%">{{'Benefit.BENEFIT'|translate}}</th>
-                                <th >{{'Benefit.EXPLANATION'|translate}}</th>
+                                <th width="25%">{{'benefit.BENEFIT'|translate}}</th>
+                                <th >{{'benefit.EXPLANATION'|translate}}</th>
                             </tr>
                         </thead>
                         <tbody>

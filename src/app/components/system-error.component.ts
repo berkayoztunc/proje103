@@ -10,20 +10,20 @@ import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 export class SystemErrorComponent implements OnInit {
     code = false;
     data = [];
-    constructor(private request : RequestService,private active : NgbActiveModal) { 
-        this.data =request.error;
+    constructor(private request: RequestService, private active: NgbActiveModal) {
+        this.data = request.error;
     }
 
     ngOnInit() {
-        this.data =this.request.error;        
+        this.data = this.request.error;
     }
-    close(){
+    close() {
         this.active.dismiss();
     }
-    send(){
+    send() {
 
     }
-    ngOnDestroy(){
-        this.request.error = null
+    ngOnDestroy() {
+        this.request.error = null;
     }
 }

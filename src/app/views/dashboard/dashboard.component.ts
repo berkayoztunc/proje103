@@ -16,7 +16,7 @@ import { TranslateService } from '@ngx-translate/core';
 export class DashboardComponent implements OnInit {
   fragment = [];
   constructor(
-    private translate : TranslateService,
+    private translate: TranslateService,
     private route: ActivatedRoute,
     private router: Router,
     public request: RequestService,
@@ -26,43 +26,44 @@ export class DashboardComponent implements OnInit {
 
     router.events.pipe(filter(event => event instanceof NavigationEnd))
       .subscribe((item) => {
-        let hand = router.url.split('/');
-        let bla = [];
+        const hand = router.url.split('/');
+        const bla = [];
         hand.forEach((item, index) => {
           bla.push({
             name: hand[index + 1] ? hand[index + 1] : item,
             url: hand[index + 1] ? (bla[index - 1] ? bla[index - 1].url : item) + '/' + hand[index + 1] : null
-          })
-        })
+          });
+        });
         bla.pop();
-        this.fragment = bla
+        this.fragment = bla;
 
-      })
+      });
 
   }
 
   ngOnInit() {
-    if(this.storage.auth.user.PASSWORD_LOCKED){
+    if (this.storage.auth.user.PASSWORD_LOCKED) {
       this.modalService.open(ResetPasswordComponent);
     }
   }
-  setLanguage(lang){
-    this.storage.language.selectedLanguage = lang
+  setLanguage(lang) {
+    this.storage.language.selectedLanguage = lang;
     this.translate.use(lang);
   }
   passwordReset() {
     this.modalService.open(ResetPasswordComponent);
   }
   signout() {
-    this.router.navigate(['login'])
+    this.router.navigate(['login']);
     this.storage.auth = {
       token: '',
       user: {
+        USER_ID : null,
         NAME: '',
         PASSWORD_LOCKED : false
       },
       permissions: {},
       mapedPermissions : []
-    }
+    };
   }
 }

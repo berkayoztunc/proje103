@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { ServiceTypeRoutingModule } from './serviceType-routing.module';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { TranslateModule } from '@ngx-translate/core';
+import { SharedModule } from 'src/app/shared.module';
 
 
 
@@ -12,8 +13,7 @@ import { TranslateModule } from '@ngx-translate/core';
   imports: [
     CommonModule,
     TranslateModule,
-    FormsModule,
-    ReactiveFormsModule,
+    SharedModule,
     ServiceTypeRoutingModule,
   ]
 })

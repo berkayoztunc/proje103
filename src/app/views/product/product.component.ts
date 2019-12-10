@@ -13,54 +13,56 @@ import { ItemsList } from '@ng-select/ng-select/lib/items-list';
   styleUrls: ['./Product.component.css']
 })
 export class ProductComponent implements OnInit {
-  Products : Product[];
-  Product : Product;
-  search= '';
+  data: Product[];
+  search = '';
   tabelOnInit = true;
   constructor(
     private modalService: NgbModal,
     public activeModal: NgbActiveModal,
-    public request : RequestService,public storage : StoreService,private route : Router) {
+    public request: RequestService, public storage: StoreService, private route: Router) {
 
   }
 
   ngOnInit() {
-    if(this.tabelOnInit){
-      this.searchProducts()
+    if (this.tabelOnInit) {
+      this.searchProducts();
     }
-    this.Products = this.storage.product.products;
+    this.data = this.storage.product.products;
 
   }
-  searchClick(){
-    if(this.search != ''){
-      this.Products = this.Products.filter((item) =>{
-        return item.PRODUCT.toLocaleLowerCase().search(this.search.toLocaleLowerCase()) >= 0 
-      });
-    }else{
-      this.Products = this.storage.user.users
-    }
-    
-  }  
-  select(item,index){
-    this.storage.product.selectedProduct = {item,index};
-    this.modalService.open(ProductFormComponent,{size:'xl'})
+  searchClick() {
+    this.storage.product.products.map((item) => {
+      const check = item.PRODUCT.toLocaleLowerCase().search(this.search.toLocaleLowerCase()) >= 0;
+      return item.check = check;
+    });
 
   }
-  activation(item){
-    this.request.post('api/products/' + item.PRODUCT_ID, {ACTIVE : !item.ACTIVE}).subscribe((response)=>{
-      if(response){
+  select(item, index) {
+    this.storage.product.selectedProduct = {item, index};
+    this.modalService.open(ProductFormComponent, {size: 'xl'});
+
+  }
+  activation(item) {
+    this.request.post('api/products/' + item.PRODUCT_ID, {ACTIVE : !item.ACTIVE}).subscribe((response) => {
+      if (response) {
         item.ACTIVE = !item.ACTIVE;
       }
-    })
+    });
   }
-  create(){
+  create() {
     this.storage.product.selectedProduct = null;
-    this.modalService.open(ProductFormComponent,{size:'xl'})
+    this.modalService.open(ProductFormComponent, {size: 'xl'});
   }
   searchProducts(): void {
     this.request.get( 'api/products' )
     .subscribe(response => {
-      this.Products = this.storage.product.products = response.data     
+      if (response) {
+
+        this.data = this.storage.product.products = response.data.map((item) => {
+          item.check = true;
+          return item;
+        });
+      }
     });
 
   }
@@ -69,10 +71,10 @@ export class ProductComponent implements OnInit {
       if (result.value) {
         this.request.delete('api/products/' + item.PRODUCT_ID).subscribe(() => {
           this.storage.product.products.splice(i, 1);
-          this.Products = this.storage.product.products
+          this.data = this.storage.product.products;
         });
       }
-    })
+    });
   }
 
 }

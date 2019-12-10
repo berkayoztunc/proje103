@@ -34,17 +34,14 @@
 }
 
 
-.table-fixed tbody {
-    height: 300px;
-    overflow-y: auto;
-    width: 100%;
+table {
+    table-layout: fixed;
 }
 
-.table-fixed thead,
-.table-fixed tbody,
-.table-fixed tr,
-.table-fixed td,
-.table-fixed th {
-    display: block;
+.card-body .text-center {
+    height: 75px;
+    font-size: 12px;
+    font-weight: bold;
+    padding: 15px 2px 0px 2px;
+    cursor: pointer;
 }
-

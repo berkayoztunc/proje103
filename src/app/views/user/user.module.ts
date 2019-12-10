@@ -12,11 +12,11 @@ import { SharedModule } from 'src/app/shared.module';
   declarations: [UserComponent],
   imports: [
     CommonModule,
-    SharedModule,
     TranslateModule,
     NgSelectModule,
+    SharedModule,
     UserRoutingModule,
   ],
-  
+
 })
 export class UserModule { }

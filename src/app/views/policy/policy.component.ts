@@ -15,7 +15,7 @@ import { CustomerComponent } from './customer/customer.component';
 
 export class PolicyComponent implements OnInit {
   searchData = [];
-  form:FormGroup;
+  form: FormGroup;
   constructor(
     private route: ActivatedRoute,
     private router: Router,
@@ -38,21 +38,21 @@ export class PolicyComponent implements OnInit {
     });
   }
   get validator() { return this.form.controls; }
-  editCustomer(){
-    this.modalService.open(CustomerComponent)
+  editCustomer() {
+    this.modalService.open(CustomerComponent);
   }
-  info(){
+  info() {
     let obj = Object.keys(this.storage.policy.selectedCustomer);
-    obj = obj.splice(0,obj.length -1);
-    return obj
+    obj = obj.splice(0, obj.length - 1);
+    return obj;
   }
-  infoPolicy(){
+  infoPolicy() {
     let obj = Object.keys(this.storage.policy.selectedPolicy);
-    obj = obj.splice(0,obj.length);
-    return obj
+    obj = obj.splice(0, obj.length);
+    return obj;
   }
   ngOnInit() {
 
   }
- 
+
 }

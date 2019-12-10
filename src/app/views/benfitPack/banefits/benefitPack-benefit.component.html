@@ -22,7 +22,7 @@
                 <br>
                 <ul class="list-group">
                     <li class="list-group-item p-1" *ngFor="let item of data ; let i = index">
-                        <button  [disabled]="storage.benefitPack.selectedBenefitPack.item.USED" class="btn btn-success btn-xs float-right" (click)="add(item,i)">
+                        <button *permissions="'benefit_pack.add_benefit'"  [disabled]="storage.benefitPack.selectedBenefitPack.item.USED" class="btn btn-success btn-xs float-right" (click)="add(item,i)">
                             <i class="fas fa-plus "></i>
                         </button>
                         <p data-toggle="collapse" [attr.data-target]="'#list'+i" aria-expanded="false"
@@ -43,7 +43,7 @@
             <div class="card-body">
                 <ul class="list-group">
                     <li class="list-group-item p-1" *ngFor="let item of selectedPackData ; let i = index">
-                        <button [disabled]="storage.benefitPack.selectedBenefitPack.item.USED" class="btn btn-danger btn-xs float-right" (click)="remove(item,i) ">
+                        <button *permissions="'benefit_pack.remove_benefit'"  [disabled]="storage.benefitPack.selectedBenefitPack.item.USED" class="btn btn-danger btn-xs float-right" (click)="remove(item,i) ">
                             <i class="fas fa-trash "></i>
                         </button>
                         <div class="input-group w-100">

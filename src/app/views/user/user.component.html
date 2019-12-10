@@ -1,6 +1,6 @@
 <div class="card">
     <div class="card-body">
-            <loader [showIf]="request.onTheGo">
+            <loader>
 
         <div class="row">
             <div class="col-md-6 ">
@@ -12,14 +12,14 @@
                                 class="fas fa-search"></i></a>
                         <a class="btn btn-info btn-sm" (click)="search = ''; searchClick()"
                             [title]="'user.search_clear' | translate"><i class="fas fa-eraser"></i></a>
-                        <a class="btn btn-success btn-sm" (click)="create()" [title]="'user.add_new' | translate"><i
+                        <a class="btn btn-success btn-sm" (click)="create()" *permissions="'user.create'" [title]="'user.add_new' | translate"><i
                                 class="fas fa-plus"></i></a>
                     </div>
                 </div>
             </div>
         </div>
         <div class="row pt-3 table-scrool">
-            <div class="col-12">
+            <div class="col-12  tableFixHead">
 
                 <table class="table">
                     <thead class="bg-primary text-white">
@@ -32,8 +32,8 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr *ngFor="let user of users, let i = index">
-                            <th scope="row">{{user.USER_ID}}</th>
+                        <tr *ngFor="let user of users, let i = index" [ngClass]="{'d-none': !user.check }">
+                            <td scope="row" width="5%">{{user.USER_ID}}</td>
                             <td>{{user.NAME}}</td>
                             <td>{{user.EMAIL}}</td>
                             <td>
@@ -42,9 +42,9 @@
 
                             </td>
                             <td>
-                                <a class="btn btn-xs btn-warning " (click)="select(user,i)"><i
+                                <a class="btn btn-xs btn-warning " *permissions="'user.update'" (click)="select(user,i)"><i
                                         class="fas fa-edit"></i></a>
-                                <a class="btn btn-xs btn-danger " (click)="delete(user,i)"><i
+                                <a class="btn btn-xs btn-danger " *permissions="'user.delete'" (click)="delete(user,i)"><i
                                         class="fas fa-trash"></i></a>
                                         <a class="btn btn-xs btn-warning " (click)="unlock(user,i)"><i
                                             class="fas fa-key"></i></a>

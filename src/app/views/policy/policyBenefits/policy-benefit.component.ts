@@ -20,22 +20,22 @@ export class PolicyBenefitComponent implements OnInit {
   ) {
 
   }
-  
 
-  ngOnInit(){
-    this.request.get('api/policy/benefits/'+this.storage.policy.selectedPolicy['POLICY_ID']).subscribe((response)=>{
-      if(response){
-        this.benefits = response.data
+
+  ngOnInit() {
+    this.request.get('api/policy/benefits/' + this.storage.policy.selectedPolicy.POLICY_ID).subscribe((response) => {
+      if (response) {
+        this.benefits = response.data;
       }
-    })
+    });
   }
-  goBack(){
-    this.activeModal.dismiss()
+  goBack() {
+    this.activeModal.dismiss();
   }
   cancel() {
-    this.goBack()
+    this.goBack();
   }
-  
- 
-  
+
+
+
 }

@@ -14,65 +14,62 @@ import { ItemsList } from '@ng-select/ng-select/lib/items-list';
 export class UserComponent implements OnInit {
   users: User[];
   user: User;
-  search= '';
+  search = '';
   detail = false;
   tabelOnInit = true;
   constructor(
     public request: RequestService,
     public storage: StoreService,
     private modalService: NgbModal,
-    private translate : TranslateService, 
+    private translate: TranslateService,
     public activeModal: NgbActiveModal
   ) {
 
   }
 
-  ngOnInit():void {
+  ngOnInit(): void {
     if (this.tabelOnInit) {
-      this.searchUsers()
+      this.getUsers();
     }
     this.users = this.storage.user.users;
 
 
   }
   searchClick() {
-    if(this.search != ''){
-      this.users = this.storage.user.users.filter((item) =>{
-        return item.NAME.toLocaleLowerCase().search(this.search.toLocaleLowerCase()) >= 0 || item.EMAIL.toLocaleLowerCase().search(this.search.toLocaleLowerCase()) >= 0;
-      });
-    }else{
-      this.users = this.storage.user.users
-    }
-    
+    this.storage.user.users.map((item) => {
+      const check = item.NAME.toLocaleLowerCase().search(this.search.toLocaleLowerCase()) >= 0 || item.EMAIL.toLocaleLowerCase().search(this.search.toLocaleLowerCase()) >= 0;
+      return item.check = check;
+    });
+
+
+
   }
   select(item, index) {
     this.storage.user.selectedUser = { item, index };
-    this.modalService.open(UserFormComponent)
+    this.modalService.open(UserFormComponent);
   }
-  view(item) {
-
-  }
-  unlock(item,i):void{
-    this.storage.cancelDialog(this.translate.translations[this.translate.currentLang]['email_send']).then((value)=>{
-      if(value.value){
-        this.request.update('api/users/unlock/'+item.USER_ID,{EMAIL:item.EMAIL}).subscribe(()=>{
-          this.storage.successDialog()
-      })
+  unlock(item, i): void {
+    this.storage.cancelDialog(this.translate.translations[this.translate.currentLang].email_send).then((value) => {
+      if (value.value) {
+        this.request.update('api/users/unlock/' + item.USER_ID, {EMAIL: item.EMAIL}).subscribe(() => {
+          this.storage.successDialog();
+      });
       }
-    })
-    
+    });
+
   }
   create() {
     this.storage.user.selectedUser = null;
-    this.modalService.open(UserFormComponent)
+    this.modalService.open(UserFormComponent);
   }
-  searchUsers(): void {
+  getUsers(): void {
     this.request.get( 'api/users')
       .subscribe(response => {
-        this.users = this.storage.user.users = response.data.map((item,index)=>{
-          item[index] = index
+        this.storage.user.users = response.data.map((item, index) => {
+          item.check = true;
           return item;
-        })
+        });
+        this.users = this.storage.user.users;
       });
 
   }
@@ -81,10 +78,9 @@ export class UserComponent implements OnInit {
       if (result.value) {
         this.request.delete('api/users/' + item.USER_ID).subscribe(() => {
           this.storage.user.users.splice(i, 1);
-          this.users = this.storage.user.users
         });
       }
-    })
+    });
   }
 
 }

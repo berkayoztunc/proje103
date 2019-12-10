@@ -12,58 +12,61 @@ import { PartnerFormComponent } from './form/partner-form.component';
   styleUrls: ['./partner.component.css']
 })
 export class PartnerComponent implements OnInit {
-  Partners : Partner[];
-  Partner : Partner;
-  search= '';
+  data: Partner[];
+  search = '';
   detail = false;
   tabelOnInit = true;
+  url = 'api/partners';
+  idFlag = 'PARTNER_ID';
   constructor( private modalService: NgbModal,
-    public activeModal: NgbActiveModal,public request : RequestService,public storage : StoreService,private route : Router) {
+               public activeModal: NgbActiveModal, public request: RequestService, public storage: StoreService, private route: Router) {
 
   }
 
   ngOnInit() {
-    if(this.tabelOnInit){
-      this.searchPartners()
+    if (this.tabelOnInit) {
+      this.searchPartners();
     }
-    this.Partners = this.storage.partner.partners;
+    this.data = this.storage.partner.partners;
 
   }
-  searchClick(){
-    if(this.search != ''){
-      this.Partners = this.Partners.filter((item) =>{
-        return item.PARTNER.toLocaleLowerCase().search(this.search.toLocaleLowerCase()) >= 0 
-      });
-    }else{
-      this.Partners = this.storage.partner.partners;
-    }
-  }  
-  select(item,index){
-    this.storage.partner.selectedPartner = {item,index};
-   
-    this.modalService.open(PartnerFormComponent)
+  searchClick() {
+    this.storage.partner.partners.map((item) => {
+      const check = item.PARTNER.toLocaleLowerCase().search(this.search.toLocaleLowerCase()) >= 0;
+      return item.check = check;
+    });
+  }
+  select(item, index) {
+    this.storage.partner.selectedPartner = {item, index};
+
+    this.modalService.open(PartnerFormComponent);
 
   }
-  create(){
+  create() {
     this.storage.partner.selectedPartner = null;
-    this.modalService.open(PartnerFormComponent)
+    this.modalService.open(PartnerFormComponent);
   }
   searchPartners(): void {
-    this.request.get( 'api/partners' )
+    this.request.get( this.url )
     .subscribe(response => {
-      this.Partners = this.storage.partner.partners = response.data
+      if (response) {
+        this.data = this.storage.partner.partners= response.data.map((item) => {
+          item.check = true;
+          return item;
+        });
+      }
     });
 
   }
   delete(item, i): void {
     this.storage.deleteDialog().then((result) => {
       if (result.value) {
-        this.request.delete('api/partners/' + item.PARTNER_ID).subscribe(() => {
+        this.request.delete(this.url+'/' + item['PARTNER_ID']).subscribe(() => {
           this.storage.partner.partners.splice(i, 1);
-          this.Partners = this.storage.partner.partners
+          this.data = this.storage.partner.partners;
         });
       }
-    })
+    });
   }
 
 }

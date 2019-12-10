@@ -4,8 +4,8 @@ import { PartnerComponent} from './partner.component';
 import { PartnerFormComponent } from './form/partner-form.component';
 const routes: Routes = [
     { path: '', component: PartnerComponent},
-    //{ path: 'form', component :PartnerFormComponent },    
-]
+    // { path: 'form', component :PartnerFormComponent },
+];
 
 @NgModule({
     imports: [RouterModule.forChild(routes)],

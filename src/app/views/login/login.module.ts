@@ -15,10 +15,10 @@ import { SharedModule } from 'src/app/shared.module';
         LoginRoutingModule,
         TranslateModule,
         NgbModule,
-        
+
     ],
     declarations: [LoginComponent],
-    
+
 })
 export class LoginModule {
 }

@@ -11,14 +11,20 @@
                                 class="fas fa-search"></i></a>
                         <a class="btn btn-info btn-sm" (click)="search = ''; searchClick()"
                             [title]="'user.search_clear' | translate"><i class="fas fa-eraser"></i></a>
-                        <a class="btn btn-success btn-sm" (click)="create()" [title]="'user.add_new' | translate"><i
-                                class="fas fa-plus"></i></a>
+                        <a *permissions="'cancel_reason.create'" class="btn btn-success btn-sm" (click)="create()"
+                            [title]="'user.add_new' | translate"><i class="fas fa-plus"></i></a>
                     </div>
                 </div>
             </div>
+            <div class="col-md-4">
+                <app-alert></app-alert>
+            </div>
+            <div class="col-md-2">
+                <p class="text-muted text-right">{{ 'total_data' | translate }} : {{data.length}}</p>
+            </div>
         </div>
         <div class="row pt-3 table-scrool">
-            <div class="col-12">
+            <div class="col-12  tableFixHead">
                 <table class="table">
                     <thead class="bg-primary text-white">
                         <tr>
@@ -31,21 +37,23 @@
                     </thead>
 
                     <tbody>
-                        <tr *ngFor="let CancelReason of CancelReasons; let i = index">
-                            <th scope="row" width="5%">{{CancelReason.CANCEL_REASON_ID}}</th>
-                            <td>{{CancelReason.CANCEL_REASON}}</td>
-                            <td>{{CancelReason.CANCEL_REASON_TYPE}}</td>
+                        <tr *ngFor="let item of data; let i = index" [ngClass]="{'d-none': !item.check }">
+                            <td scope="row" width="5%">{{item.CANCEL_REASON_ID}}</td>
+                            <td>{{item.CANCEL_REASON}}</td>
+                            <td>{{item.CANCEL_REASON_TYPE}}</td>
                             <td>
-                                <i class="fas fa-check fa-2x text-success" *ngIf="CancelReason.ACTIVE"></i>
-                                <i class="fas fa-times fa-2x text-danger" *ngIf="!CancelReason.ACTIVE"></i>
+                                <i class="fas fa-check fa-2x text-success" *ngIf="item.ACTIVE"></i>
+                                <i class="fas fa-times fa-2x text-danger" *ngIf="!item.ACTIVE"></i>
 
                             </td>
                             <td>
-                                <a class="btn btn-xs btn-warning " (click)="select(CancelReason,i)"><i
-                                        class="fas fa-edit"></i></a>
+                                <a class="btn btn-xs btn-warning " *permissions="'cancel_reason.update'"
+                                    (click)="select(item,i)">
+                                    <i class="fas fa-edit"></i></a>
 
-                                <a class="btn btn-xs btn-danger " (click)="delete(CancelReason,i)"><i
-                                        class="fas fa-trash"></i></a> </td>
+                                <a class="btn btn-xs btn-danger " *permissions="'cancel_reason.delete'"
+                                    (click)="delete(item,i)">
+                                    <i class="fas fa-trash"></i></a> </td>
                         </tr>
                     </tbody>
                 </table>

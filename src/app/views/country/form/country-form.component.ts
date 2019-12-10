@@ -16,6 +16,11 @@ export class CountryFormComponent implements OnInit {
   edit = true;
   change = false;
   initValue = {};
+  // ** crud stumb ** //
+  item = this.storage.country.countrys;
+  selected = this.storage.country.selectedCountry;
+  url = 'api/countries';
+  idFlag = 'COUNTRY_ID';
   constructor(public activeModal: NgbActiveModal, public request: RequestService, public storage: StoreService, private fb: FormBuilder, private route: ActivatedRoute, private location: Location) {
     this.createForm();
   }
@@ -32,29 +37,27 @@ export class CountryFormComponent implements OnInit {
   get validator() { return this.form.controls; }
 
   ngOnInit() {
-
-
-    if (this.storage.country.selectedCountry !== null) {
-      this.edit = false
-      this.form.patchValue(this.storage.country.countrys[this.storage.country.selectedCountry.index]);
+    if (this.selected != null) {
+      this.edit = false;
+      this.form.patchValue(this.selected.item);
     }
-    this.initValue = this.form.value
-    this.onChanges()
+    this.initValue = this.form.value;
+    this.onChanges();
   }
   cancel() {
     if (this.change) {
       this.storage.cancelDialog().then((result) => {
         if (result.value) {
-          this.goBack()
+          this.goBack();
         }
-      })
+      });
     } else {
-      this.goBack()
+      this.goBack();
     }
   }
   onChanges(): void {
     this.form.valueChanges.subscribe(val => {
-      this.change = (JSON.stringify(val) !== JSON.stringify(this.initValue))
+      this.change = (JSON.stringify(val) !== JSON.stringify(this.initValue));
     });
   }
   goBack(): void {
@@ -62,18 +65,19 @@ export class CountryFormComponent implements OnInit {
   }
   save(): void {
     if (!this.edit) {
-      let hand = this.form.value;
-      this.request.update('api/countries/' + hand.COUNTRY_ID, hand).subscribe((response) => {
-        this.storage.country.countrys[this.storage.country.selectedCountry.index] = hand;
-        this.goBack()
-        this.form.reset()
+      const hand = this.form.value;
+      hand.check = true;
+      this.request.update(this.url + '/' + hand[this.idFlag], hand).subscribe(() => {
+        this.item[this.selected.index] = hand;
+        this.goBack();
       });
-
     } else {
-      this.request.post('api/countries', this.form.value).subscribe((response) => {
+      this.request.post(this.url, this.form.value).subscribe((response) => {
         if (response) {
-          this.storage.country.countrys.unshift(response.data[0]);
-          this.goBack()
+          response.data[0].check = true;
+          this.item.unshift(response.data[0]);
+          this.form.reset();
+          this.goBack();
         }
       });
     }

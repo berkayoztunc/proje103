@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { ServiceTypeFormComponent } from './serviceType-form.component';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { SharedModule } from 'src/app/shared.module';
 
 
 
@@ -10,6 +11,7 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
   imports: [
     CommonModule,
     FormsModule,
+    SharedModule,
     ReactiveFormsModule
 
   ]

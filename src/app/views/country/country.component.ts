@@ -12,61 +12,64 @@ import { CountryFormComponent } from './form/country-form.component';
   styleUrls: ['./country.component.css']
 })
 export class CountryComponent implements OnInit {
-  countrys : Country[];
-  Country : Country;
-  search= '';
+  data: Country[];
+  search = '';
   detail = false;
   tabelOnInit = true;
+  url = 'api/countries';
+  idFlag = 'COUNTRY_ID';
   constructor( private modalService: NgbModal,
-    public activeModal: NgbActiveModal,public request : RequestService,public storage : StoreService, private route : Router) {
+               public activeModal: NgbActiveModal, public request: RequestService, public storage: StoreService, private route: Router) {
 
   }
 
   ngOnInit() {
-    if(this.tabelOnInit){
-      this.searchCountrys()
+    if (this.tabelOnInit) {
+      this.searchCountrys();
     }
-    this.countrys = this.storage.country.countrys;
+    this.data = this.storage.country.countrys;
 
   }
-  searchClick(){
-    if(this.search != ''){
-      this.countrys = this.countrys.filter((item) =>{
-        return item.COUNTRY.toLocaleLowerCase().search(this.search.toLocaleLowerCase()) >= 0
-      });
-    }else{
-      this.countrys = this.storage.country.countrys;
-    }
-  }  
-  select(item,index){
-    this.storage.country.selectedCountry = {item ,index};
-    this.modalService.open(CountryFormComponent)
+  searchClick() {
+    this.storage.country.countrys.map((item) => {
+      const check = item.COUNTRY.toLocaleLowerCase().search(this.search.toLocaleLowerCase()) >= 0;
+      return item.check = check;
+    });
   }
-  view(item){
+  select(item, index) {
+    this.storage.country.selectedCountry = {item , index};
+    this.modalService.open(CountryFormComponent);
+  }
+  view(item) {
     this.storage.country.selectedCountry = {item};
-    this.route.navigate(['dashboard/country/city'])
+    this.route.navigate(['dashboard/country/city']);
   }
-  create(){
+  create() {
     this.storage.country.selectedCountry = null;
-    this.modalService.open(CountryFormComponent)
+    this.modalService.open(CountryFormComponent);
 
   }
   searchCountrys(): void {
-    this.request.get( 'api/countries' )
+    this.request.get( this.url )
     .subscribe(response => {
-      this.countrys = this.storage.country.countrys = response.data 
+      if (response) {
+        this.data = this.storage.country.countrys = response.data.map((item) => {
+          item.check = true;
+          return item;
+        });
+      }
     });
 
   }
   delete(item, i): void {
     this.storage.deleteDialog().then((result) => {
       if (result.value) {
-        this.request.delete('api/countries/' + item.COUNTRY_ID).subscribe(() => {
+        this.request.delete(this.url+'/' + item[this.idFlag]).subscribe(() => {
           this.storage.country.countrys.splice(i, 1);
-          this.countrys = this.storage.country.countrys 
+          this.data = this.storage.country.countrys;
         });
       }
-    })
+    });
   }
 
 }

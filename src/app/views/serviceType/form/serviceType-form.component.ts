@@ -30,38 +30,38 @@ export class ServiceTypeFormComponent implements OnInit {
   get validator() { return this.form.controls; }
 
   ngOnInit() {
-    /*this.edit = this.route.snapshot.paramMap.get('BENEFIT_ID') == null 
-    
+    /*this.edit = this.route.snapshot.paramMap.get('BENEFIT_ID') == null
+
    if(!this.edit){
      const routeServiceTypeId = +this.route.snapshot.paramMap.get('BENEFIT_ID');
-    
-     this.storage.serviceType.getServiceType(routeServiceTypeId).subscribe(ServiceType=>{        
-       this.form.patchValue(ServiceType);                    
+
+     this.storage.serviceType.getServiceType(routeServiceTypeId).subscribe(ServiceType=>{
+       this.form.patchValue(ServiceType);
      })
      // request search from http
    }*/
 
     if (this.storage.serviceType.selectedServiceType !== null) {
-      this.edit = false
+      this.edit = false;
       this.form.patchValue(this.storage.serviceType.serviceTypes[this.storage.serviceType.selectedServiceType.index]);
     }
-    this.initValue = this.form.value
-    this.onChanges()
+    this.initValue = this.form.value;
+    this.onChanges();
   }
   cancel() {
     if (this.change) {
       this.storage.cancelDialog().then((result) => {
         if (result.value) {
-          this.goBack()
+          this.goBack();
         }
-      })
+      });
     } else {
-      this.goBack()
+      this.goBack();
     }
   }
   onChanges(): void {
     this.form.valueChanges.subscribe(val => {
-      this.change = (JSON.stringify(val) !== JSON.stringify(this.initValue))
+      this.change = (JSON.stringify(val) !== JSON.stringify(this.initValue));
     });
   }
   goBack(): void {
@@ -69,21 +69,21 @@ export class ServiceTypeFormComponent implements OnInit {
   }
   save(): void {
     if (!this.edit) {
-      let hand = this.form.value;
-      this.request.update('api/servicetypes/'+ hand.SERVICE_TYPE_ID, hand).subscribe((response) => {
-        if(response){
+      const hand = this.form.value;
+      this.request.update('api/servicetypes/' + hand.SERVICE_TYPE_ID, hand).subscribe((response) => {
+        if (response) {
           this.storage.serviceType.serviceTypes[this.storage.serviceType.selectedServiceType.index] = hand;
           this.goBack();
-          this.form.reset()
+          this.form.reset();
         }
       });
-      
+
     } else {
       this.request.post('api/servicetypes', this.form.value).subscribe((response) => {
-        if(response){
+        if (response) {
           this.storage.serviceType.serviceTypes.unshift(response.data[0]);
-          this.goBack()
-        } 
+          this.goBack();
+        }
       });
     }
   }

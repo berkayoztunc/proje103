@@ -1,0 +1,34 @@
+<loader>
+
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">{{ 'modal.explanation.title' | translate }}</h5>
+
+            <app-alert></app-alert>
+            <form [formGroup]="form" (ngSubmit)="save()">
+                <div class="form-group">
+                    <label>{{'policy.modal.ADDRESS'|translate}} </label>
+                    <textarea name="" id="" cols="30" rows="5" class="form-control"
+                        placeholder="{{'policy.modal.ADDRESS'|translate}}" formControlName="ADDRESS"></textarea>
+                </div>
+                <div class="form-group">
+                    <label>{{ 'policy.CUSTOMER' | translate }} </label>
+                    <ng-select [items]="countries" bindLabel="COUNTRy" bindValue="COUNTRY_ID"
+                        formControlName="COUNTRY_ID">
+                    </ng-select>
+                </div>
+                <div class="form-group">
+                    <label>{{ 'policy.CITY' | translate }} </label>
+                    <ng-select [items]="cities" bindLabel="CITY" bindValue="CITY_ID"
+                        formControlName="CITY_ID">
+                    </ng-select>
+                </div>
+                <hr>
+                <button type="submit" class="btn btn-xs btn-primary float-right text-white"
+                    [disabled]="!form.valid">{{ 'KAYDET' | translate }}</button>
+                <a class="btn btn-xs btn-warning float-right text-white mr-1"
+                    (click)="cancel()">{{ 'cancel' | translate }}</a>
+            </form>
+        </div>
+    </div>
+</loader>

@@ -9,7 +9,7 @@ import { SharedModule } from 'src/app/shared.module';
 
 
 @NgModule({
-  declarations: [BenefitPackComponent,BenefitPackBenefitsComponent],
+  declarations: [BenefitPackComponent, BenefitPackBenefitsComponent],
   imports: [
     CommonModule,
     TranslateModule,

@@ -1,69 +1,53 @@
-<loader [showIf]="request.onTheGo">
+<loader>
 
     <div class="card">
         <div class="card-body">
-            <h5 class="card-title">Müşteri bilgisi düzenle</h5>
+            <h5 class="card-title">{{'policy.modal.customer.edit' | translate}}</h5>
 
             <app-alert></app-alert>
-            <div class="input-group  input-group-sm mb-1">
-                <div class="input-group-prepend">
-                    <span class="input-group-text" id="inputGroup-sizing-sm">Ad</span>
+            <form [formGroup]="form" (ngSubmit)="save()">
+                <div class="form-group" >
+                    <label>{{'policy.FIRST_NAME'|translate}} </label>
+                    <input maxlength="200" type="text" class="form-control"
+                        placeholder="{{'policy.FIRST_NAME'|translate}}" formControlName="FIRST_NAME" name="FIRST_NAME">
                 </div>
-                <input type="text" class="form-control" aria-label="Recipient's username"
-                    aria-describedby="button-addon2">
-                <div class="input-group-append">
-                    <button class="btn btn-outline-secondary" type="button" id="button-addon2">Güncelle</button>
+                <div class="form-group">
+                    <label>{{'policy.LAST_NAME'|translate}} </label>
+                    <input maxlength="200" type="text" class="form-control"
+                        placeholder="{{'policy.LAST_NAME'|translate}}" formControlName="LAST_NAME" name="LAST_NAME">
                 </div>
-            </div>
-            <div class="input-group  input-group-sm mb-1">
-                <div class="input-group-prepend">
-                    <span class="input-group-text" id="inputGroup-sizing-sm">Soyad</span>
+                <div class="form-group">
+                    <label>{{'policy.MOBILE_PHONE'|translate}} </label>
+                    <input maxlength="200" type="text" class="form-control"
+                        placeholder="{{'policy.MOBILE_PHONE'|translate}}" formControlName="MOBILE_PHONE"
+                        name="MOBILE_PHONE">
                 </div>
-                <input type="text" class="form-control" aria-label="Recipient's username"
-                    aria-describedby="button-addon2">
-                <div class="input-group-append">
-                    <button class="btn btn-outline-secondary" type="button" id="button-addon2">Güncelle</button>
+                <div class="form-group">
+                    <label>{{'policy.WORK_PHONE'|translate}} </label>
+                    <input maxlength="200" type="text" class="form-control"
+                        placeholder="{{'policy.WORK_PHONE'|translate}}" formControlName="WORK_PHONE" name="WORK_PHONE">
                 </div>
-            </div>
-            <div class="input-group  input-group-sm mb-1">
-                <div class="input-group-prepend">
-                    <span class="input-group-text" id="inputGroup-sizing-sm">TCKN</span>
+                <div class="form-group">
+                    <label>{{'policy.HOME_PHONE'|translate}} </label>
+                    <input maxlength="200" type="text" class="form-control"
+                        placeholder="{{'policy.HOME_PHONE'|translate}}" formControlName="HOME_PHONE" name="HOME_PHONE">
                 </div>
-                <input type="text" class="form-control" disabled aria-label="Recipient's username"
-                    aria-describedby="button-addon2">
-                <div class="input-group-append">
-                    <button class="btn btn-outline-secondary" type="button" id="button-addon2">Güncelle</button>
+                <div class="form-group">
+                    <label>{{'policy.EMAIL'|translate}} </label>
+                    <input maxlength="200" type="email" class="form-control"
+                        placeholder="{{'policy.EMAIL'|translate}}" formControlName="EMAIL" name="EMAIL">
                 </div>
-            </div>
-            <div class="input-group  input-group-sm mb-1">
-                <div class="input-group-prepend">
-                    <span class="input-group-text" id="inputGroup-sizing-sm">Mobil No</span>
-                </div>
-                <input type="text" class="form-control" aria-label="Recipient's username"
-                    aria-describedby="button-addon2">
-                <div class="input-group-append">
-                    <button class="btn btn-outline-secondary" type="button" id="button-addon2">Güncelle</button>
-                </div>
-            </div>
-
-            <div class="input-group  input-group-sm mb-1">
-                <div class="input-group-prepend">
-                    <span class="input-group-text" id="inputGroup-sizing-sm">Ev No</span>
-                </div>
-                <input type="text" class="form-control" aria-label="Recipient's username"
-                    aria-describedby="button-addon2">
-                <div class="input-group-append">
-                    <button class="btn btn-outline-secondary" type="button" id="button-addon2">Güncelle</button>
-                </div>
-            </div>
-
-            <div class="form-group">
-                <label>Adress bilgisi</label>
-                <textarea name="" id="" cols="30" rows="10" class="form-control"></textarea>
-            </div>
-
-            <a class="btn btn-xs btn-warning float-right text-white mr-1"
-                (click)="cancel()">{{ 'cancel' | translate }}</a>
+                <div class="form-group">
+                        <label>{{ 'policy.CUSTOMER_TYPE' | translate }} </label>
+                        <ng-select [items]="customerType" bindLabel="name" bindValue="value" formControlName="CUSTOMER_TYPE">
+                        </ng-select>
+                    </div>
+                <hr>
+                <button type="submit" class="btn btn-xs btn-primary float-right text-white"
+                    [disabled]="!form.valid">{{ 'KAYDET' | translate }}</button>
+                <a class="btn btn-xs btn-warning float-right text-white mr-1"
+                    (click)="cancel()">{{ 'cancel' | translate }}</a>
+            </form>
         </div>
     </div>
 </loader>

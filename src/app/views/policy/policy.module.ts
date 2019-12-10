@@ -17,7 +17,7 @@ import { SharedModule } from 'src/app/shared.module';
         NgbModule,
         SharedModule
     ],
-    declarations: [PolicyComponent,SearchComponent,OverviewComponent]
+    declarations: [PolicyComponent, SearchComponent, OverviewComponent]
 
 })
 export class PolicyModule {}

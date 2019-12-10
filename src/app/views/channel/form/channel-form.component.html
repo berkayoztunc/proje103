@@ -1,4 +1,4 @@
-<loader [showIf]="request.onTheGo">
+<loader>
 
     <div class="card">
         <div class="card-body">
@@ -11,7 +11,7 @@
 
                 <div class="form-group">
                     <label>{{'Channel.PARTNER_CHANNEL'|translate}} </label>
-                    <input type="text" class="form-control" placeholder="{{'Channel.PARTNER_CHANNEL'|translate}}" formControlName="PARTNER_CHANNEL"
+                    <input maxlength="50" type="text" class="form-control" placeholder="{{'Channel.PARTNER_CHANNEL'|translate}}" formControlName="PARTNER_CHANNEL"
                         name="PARTNER_CHANNEL">
                 </div>
                 <div class="form-check">

@@ -15,41 +15,45 @@ export class PartnerFormComponent implements OnInit {
   form: FormGroup;
   edit = true;
   change = false;
-  initValue= {};
-  constructor(private activeModal : NgbActiveModal,public request: RequestService, public storage: StoreService, private fb: FormBuilder, private route: ActivatedRoute, private location: Location) {
+  initValue = {};
+  item = this.storage.partner.partners;
+  selected = this.storage.partner.selectedPartner;
+  url = 'api/partners';
+  idFlag = 'PARTNER_ID';
+  constructor(private activeModal: NgbActiveModal, public request: RequestService, public storage: StoreService, private fb: FormBuilder, private route: ActivatedRoute, private location: Location) {
     this.createForm();
   }
   createForm() {
     this.form = this.fb.group({
       PARTNER_ID: [''],
-      PARTNER: ['',Validators.required],
+      PARTNER: ['', Validators.required],
       ACTIVE: [''],
     });
   }
   get validator() { return this.form.controls; }
 
   ngOnInit() {
-    if (this.storage.partner.selectedPartner !== null) {
-      this.edit = false
-      this.form.patchValue(this.storage.partner.partners[this.storage.partner.selectedPartner.index]);
+    if (this.selected != null) {
+      this.edit = false;
+      this.form.patchValue(this.selected.item);
     }
-    this.initValue = this.form.value
-    this.onChanges()
+    this.initValue = this.form.value;
+    this.onChanges();
   }
-  cancel(){
-    if(this.change){
+  cancel() {
+    if (this.change) {
       this.storage.cancelDialog().then((result) => {
         if (result.value) {
-          this.goBack()
+          this.goBack();
         }
-      })
-    }else {
-      this.goBack()
+      });
+    } else {
+      this.goBack();
     }
   }
   onChanges(): void {
-    this.form.valueChanges.subscribe(val => {    
-      this.change = (JSON.stringify(val) !== JSON.stringify(this.initValue))      
+    this.form.valueChanges.subscribe(val => {
+      this.change = (JSON.stringify(val) !== JSON.stringify(this.initValue));
     });
   }
   goBack(): void {
@@ -57,16 +61,19 @@ export class PartnerFormComponent implements OnInit {
   }
   save(): void {
     if (!this.edit) {
-      let hand = this.form.value;
-      this.request.update('api/partners/'+hand.PARTNER_ID, hand).subscribe((response) => {
-          this.storage.partner.partners[this.storage.partner.selectedPartner.index] = hand;
-          this.goBack();
+      const hand = this.form.value;
+      hand.check = true;
+      this.request.update(this.url + '/' + hand[this.idFlag], hand).subscribe(() => {
+        this.item[this.selected.index] = hand;
+        this.goBack();
       });
     } else {
-      this.request.post('api/partners', this.form.value).subscribe((response) => {
+      this.request.post(this.url, this.form.value).subscribe((response) => {
         if (response) {
-          this.storage.partner.partners.unshift(response.data[0]);
-          this.goBack()
+          response.data[0].check = true;
+          this.item.unshift(response.data[0]);
+          this.form.reset();
+          this.goBack();
         }
       });
     }

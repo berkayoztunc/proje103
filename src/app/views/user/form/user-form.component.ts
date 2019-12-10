@@ -14,20 +14,20 @@ export class UserFormComponent implements OnInit {
   form: FormGroup;
   edit = true;
   change = false;
-  initValue= {};
+  initValue = {};
   roles$ =  [];
-  constructor(   
-    private activeModal : NgbActiveModal,public request: RequestService, public storage: StoreService, private fb: FormBuilder, private route: ActivatedRoute, private location: Location) {
+  constructor(
+    private activeModal: NgbActiveModal, public request: RequestService, public storage: StoreService, private fb: FormBuilder, private route: ActivatedRoute, private location: Location) {
     this.createForm();
   }
   createForm() {
-    
+
     this.form = this.fb.group({
       USER_ID: [''],
-      NAME: ['',Validators.required],
+      NAME: ['', Validators.required],
       EMAIL: ['', [Validators.email, Validators.required]],
       ACTIVE: [''],
-      ROLE_ID :[null,Validators.required]
+      ROLE_ID : [null, Validators.required]
     });
   }
   get validator() { return this.form.controls; }
@@ -35,30 +35,30 @@ export class UserFormComponent implements OnInit {
   ngOnInit() {
 
     if (this.storage.user.selectedUser !== null) {
-      this.edit = false
+      this.edit = false;
       this.form.patchValue(this.storage.user.selectedUser.item);
     }
     this.request.get('api/roles').subscribe((response) => {
-      this.roles$ = response.data
+      this.roles$ = response.data;
     });
-    this.initValue = this.form.value
-    this.onChanges()
+    this.initValue = this.form.value;
+    this.onChanges();
   }
 
-  cancel(){
-    if(this.change){
+  cancel() {
+    if (this.change) {
       this.storage.cancelDialog().then((result) => {
         if (result.value) {
-          this.goBack()
+          this.goBack();
         }
-      })
-    }else {
-      this.goBack()
+      });
+    } else {
+      this.goBack();
     }
   }
   onChanges(): void {
-    this.form.valueChanges.subscribe(val => {    
-      this.change = (JSON.stringify(val) !== JSON.stringify(this.initValue))      
+    this.form.valueChanges.subscribe(val => {
+      this.change = (JSON.stringify(val) !== JSON.stringify(this.initValue));
     });
   }
   goBack(): void {
@@ -67,16 +67,18 @@ export class UserFormComponent implements OnInit {
   save(): void {
     if (this.form.valid) {
       if (!this.edit) {
-        let hand = this.form.value;
-        this.request.update('api/users/'+this.initValue['USER_ID'], hand).subscribe((response) => {
-              this.storage.user.users[this.storage.user.selectedUser.index] = hand
-              this.goBack()           
+        const hand = this.form.value;
+        hand.check = true;
+        this.request.update('api/users/' + this.storage.user.selectedUser.USER_ID, hand).subscribe((response) => {
+              this.storage.user.users[this.storage.user.selectedUser.index] = hand;
+              this.goBack();
         });
       } else {
         this.request.post('api/users', this.form.value).subscribe((response) => {
           if (response) {
+            response.data[0].check = true;
             this.storage.user.users.unshift(response.data[0]);
-            this.goBack()
+            this.goBack();
           }
         });
       }

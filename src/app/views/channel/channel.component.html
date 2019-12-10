@@ -5,8 +5,8 @@
             <div class="col-md-6 ">
                 <div class="input-group">
                     <input type="text" class="form-control form-control-sm"
-                        [placeholder]="'user.email_ad_placeholser' | translate" required [(ngModel)]="search">
-                    <div class="input-group-append">
+                        [placeholder]="'Channel.email_ad_placeholser' | translate" required [(ngModel)]="search">
+                        <div class="input-group-append">
                         <a class="btn btn-primary btn-sm" (click)="searchClick()" [title]="'user.search' | translate"><i
                                 class="fas fa-search"></i></a>
                         <a class="btn btn-info btn-sm" (click)="search = ''; searchClick()"
@@ -16,9 +16,15 @@
                     </div>
                 </div>
             </div>
+            <div class="col-md-4">
+                    <app-alert></app-alert>
+                </div>
+                <div class="col-md-2">
+                    <p class="text-muted text-right">{{ 'total_data' | translate }} : {{data.length}}</p>
+                </div>
         </div>
         <div class="row pt-3 table-scrool">
-            <div class="col-12">
+            <div class="col-12  tableFixHead">
                 <table class="table">
                     <thead class="bg-primary text-white">
                         <tr>
@@ -30,19 +36,18 @@
                     </thead>
 
                     <tbody>
-                        <tr *ngFor="let Channel of Channels; let i = index">
-                            <th scope="row" width="5%">{{Channel.PARTNER_CHANNEL_ID}}</th>
-                            <td>{{Channel.PARTNER_CHANNEL}}</td>
+                        <tr *ngFor="let item of data; let i = index" [ngClass]="{'d-none': !item.check }">
+                            <td scope="row" width="5%">{{item.PARTNER_CHANNEL_ID}}</td>
+                            <td>{{item.PARTNER_CHANNEL}}</td>
                             <td>
-                                <i class="fas fa-check fa-2x text-success" *ngIf="Channel.ACTIVE"></i>
-                                <i class="fas fa-times fa-2x text-danger" *ngIf="!Channel.ACTIVE"></i>
+                                <i class="fas fa-check fa-2x text-success" *ngIf="item.ACTIVE"></i>
+                                <i class="fas fa-times fa-2x text-danger" *ngIf="!item.ACTIVE"></i>
 
                             </td>
                             <td>
-                                <a class="btn btn-xs btn-warning " (click)="select(Channel,i)"><i
-                                        class="fas fa-edit"></i></a>
+                                <a class="btn btn-xs btn-warning " (click)="select(item,i)"><i class="fas fa-edit"></i></a>
                                
-                                <a class="btn btn-xs btn-danger " (click)="delete(Channel,i)"><i class="fas fa-trash"></i></a>
+                                <a class="btn btn-xs btn-danger " (click)="delete(item,i)"><i class="fas fa-trash"></i></a>
                             </td>
                         </tr>
                     </tbody>

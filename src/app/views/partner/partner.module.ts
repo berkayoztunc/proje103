@@ -5,6 +5,7 @@ import { PartnerRoutingModule } from './partner-routing.module';
 import { PartnerFormComponent } from './form/partner-form.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { TranslateModule } from '@ngx-translate/core';
+import { SharedModule } from 'src/app/shared.module';
 
 
 
@@ -16,6 +17,7 @@ import { TranslateModule } from '@ngx-translate/core';
     FormsModule,
     ReactiveFormsModule,
     PartnerRoutingModule,
+    SharedModule
   ]
 })
 export class PartnerModule { }

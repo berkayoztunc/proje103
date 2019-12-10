@@ -12,60 +12,60 @@ import { ServiceTypeFormComponent } from './form/serviceType-form.component';
   styleUrls: ['./serviceType.component.css']
 })
 export class ServiceTypeComponent implements OnInit {
-  ServiceTypes : ServiceType[];
-  ServiceType : ServiceType;
-  search= '';
+  ServiceTypes: ServiceType[];
+  ServiceType: ServiceType;
+  search = '';
   detail = false;
   tabelOnInit = true;
   constructor(private modalService: NgbModal,
-    public activeModal: NgbActiveModal,public request :RequestService , public storage : StoreService,private route : Router) {
+              public activeModal: NgbActiveModal, public request: RequestService , public storage: StoreService, private route: Router) {
 
   }
 
   ngOnInit() {
-    if(this.tabelOnInit){
-      this.searchServiceTypes()
+    if (this.tabelOnInit) {
+      this.searchServiceTypes();
     }
     this.ServiceTypes = this.storage.serviceType.serviceTypes;
 
   }
-  searchClick(){
-    if(this.search != ''){
-      this.ServiceTypes = this.ServiceTypes.filter((item) =>{
+  searchClick() {
+    if (this.search != '') {
+      this.ServiceTypes = this.ServiceTypes.filter((item) => {
         return item.SERVICE_TYPE.toLocaleLowerCase().search(this.search.toLocaleLowerCase()) >= 0 || item.PREFIX.toLocaleLowerCase().search(this.search.toLocaleLowerCase()) >= 0;
       });
-    }else{
+    } else {
       this.ServiceTypes = this.storage.serviceType.serviceTypes;
     }
-  }  
-  select(item,index){
-    this.storage.serviceType.selectedServiceType = {item,index};
-    this.modalService.open(ServiceTypeFormComponent)
+  }
+  select(item, index) {
+    this.storage.serviceType.selectedServiceType = {item, index};
+    this.modalService.open(ServiceTypeFormComponent);
 
   }
-  create(){
+  create() {
     this.storage.serviceType.selectedServiceType = null;
-    this.modalService.open(ServiceTypeFormComponent)
+    this.modalService.open(ServiceTypeFormComponent);
 
   }
   searchServiceTypes(): void {
     this.request.get( 'api/servicetypes' )
     .subscribe(response => {
-      if(response){
-        this.ServiceTypes = this.storage.serviceType.serviceTypes =response.data 
+      if (response) {
+        this.ServiceTypes = this.storage.serviceType.serviceTypes = response.data;
       }
     });
 
   }
-  delete(item,i): void {
+  delete(item, i): void {
     this.storage.deleteDialog().then((result) => {
       if (result.value) {
         this.request.delete('api/servicetypes/' + item.SERVICE_TYPE_ID).subscribe(() => {
           this.storage.serviceType.serviceTypes.splice(i, 1);
-          this.ServiceTypes = this.storage.serviceType.serviceTypes
+          this.ServiceTypes = this.storage.serviceType.serviceTypes;
         });
       }
-    })
+    });
   }
 
 }

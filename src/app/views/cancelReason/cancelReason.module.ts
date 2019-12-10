@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { CancelReasonRoutingModule } from './cancelReason-routing.module';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { TranslateModule } from '@ngx-translate/core';
+import { SharedModule } from 'src/app/shared.module';
 
 
 
@@ -13,7 +14,7 @@ import { TranslateModule } from '@ngx-translate/core';
     CommonModule,
     TranslateModule,
     FormsModule,
-    ReactiveFormsModule,
+    SharedModule,
     CancelReasonRoutingModule,
   ]
 })

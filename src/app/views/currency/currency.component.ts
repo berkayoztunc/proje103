@@ -12,46 +12,47 @@ import { CurrencyFormComponent } from './form/currency-form.component';
   styleUrls: ['./currency.component.css']
 })
 export class CurrencyComponent implements OnInit {
-  Currencys : Currency[];
-  Currency : Currency;
-  search= '';
+  data: Currency[];
+  search = '';
   detail = false;
   tabelOnInit = true;
   constructor(private modalService: NgbModal,
-    public activeModal: NgbActiveModal,public request : RequestService,public storage : StoreService,private route : Router) {
+              public activeModal: NgbActiveModal, public request: RequestService, public storage: StoreService, private route: Router) {
 
   }
 
   ngOnInit() {
-    if(this.tabelOnInit){
-      this.searchCurrencys()
+    if (this.tabelOnInit) {
+      this.searchCurrencys();
     }
-    this.Currencys = this.storage.currency.currencyies;
+    this.data = this.storage.currency.currencyies;
 
   }
-  searchClick(){
-    if(this.search != ''){
-      this.Currencys = this.Currencys.filter((item) =>{
-        return item.CURRENCY.toLocaleLowerCase().search(this.search.toLocaleLowerCase()) >= 0 || item.PREFIX.toLocaleLowerCase().search(this.search.toLocaleLowerCase()) >= 0;
-      });
-    }else{
-      this.Currencys = this.storage.currency.currencyies
-    }
-  }  
-  select(item,index){
-    this.storage.currency.selectedCurrency = {item,index};
-    this.modalService.open(CurrencyFormComponent)
+  searchClick() {
+    this.storage.currency.currencyies.map((item) => {
+      const check = item.CURRENCY.toLocaleLowerCase().search(this.search.toLocaleLowerCase()) >= 0;
+      return item.check = check;
+    });
+  }
+  select(item, index) {
+    this.storage.currency.selectedCurrency = {item, index};
+    this.modalService.open(CurrencyFormComponent);
 
   }
-  create(){
+  create() {
     this.storage.currency.selectedCurrency = null;
-    this.modalService.open(CurrencyFormComponent)
+    this.modalService.open(CurrencyFormComponent);
 
   }
   searchCurrencys(): void {
     this.request.get( 'api/currencies' )
     .subscribe(response => {
-      this.Currencys = this.storage.currency.currencyies = response.data
+      if (response) {
+        this.data = this.storage.currency.currencyies = response.data.map((item) => {
+          item.check = true;
+          return item;
+        });
+      }
     });
 
   }
@@ -60,10 +61,10 @@ export class CurrencyComponent implements OnInit {
       if (result.value) {
         this.request.delete('api/currencies/' + item.CURRENCY_ID).subscribe(() => {
           this.storage.currency.currencyies.splice(i, 1);
-          this.Currencys = this.storage.currency.currencyies
+          this.data = this.storage.currency.currencyies;
         });
       }
-    })
+    });
   }
 
 }

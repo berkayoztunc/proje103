@@ -12,58 +12,60 @@ import { ChannelFormComponent } from './form/channel-form.component';
   styleUrls: ['./channel.component.css']
 })
 export class ChannelComponent implements OnInit {
-  Channels : Channel[];
-  Channel : Channel;
-  search='';
+  data: Channel[];
+  search = '';
   detail = false;
   tabelOnInit = true;
+  url = 'api/partnerchannels';
+  idFlag = 'PARTNER_CHANNEL_ID';
   constructor(private modalService: NgbModal,
-    public activeModal: NgbActiveModal,public request : RequestService,public storage : StoreService,private route : Router) {
+    public activeModal: NgbActiveModal, public request: RequestService, public storage: StoreService, private route: Router) {
 
   }
 
   ngOnInit() {
-    if(this.tabelOnInit){
-      this.searchChannels()
+    if (this.tabelOnInit) {
+      this.searchChannels();
     }
-    this.Channels = this.storage.channel.channels;
+    this.data = this.storage.channel.channels;
 
   }
-  searchClick(){
-    if(this.search != ''){
-      this.Channels = this.Channels.filter((item) =>{
-        return item.PARTNER_CHANNEL.toLocaleLowerCase().search(this.search.toLocaleLowerCase()) >= 0 
-      });
-    }else{
-      this.Channels = this.storage.channel.channels;
-    }
-    this.searchChannels();
-  }  
-  select(item,index){
-    this.storage.channel.selectedChannel = {item,index};
-    this.modalService.open(ChannelFormComponent)
+  searchClick() {
+    this.storage.channel.channels.map((item) => {
+      const check = item.PARTNER_CHANNEL.toLocaleLowerCase().search(this.search.toLocaleLowerCase()) >= 0;
+      return item.check = check;
+    });    
+  }
+  select(item, index) {
+    this.storage.channel.selectedChannel = { item, index };
+    this.modalService.open(ChannelFormComponent);
 
   }
-  create(){
+  create() {
     this.storage.channel.selectedChannel = null;
-    this.modalService.open(ChannelFormComponent)
+    this.modalService.open(ChannelFormComponent);
   }
   searchChannels(): void {
-    this.request.get('api/partnerchannels')
-    .subscribe(response => {
-      this.Channels = this.storage.channel.channels = response.data
-    });
+    this.request.get(this.url)
+      .subscribe(response => {
+        if (response) {
+          this.data = this.storage.channel.channels = response.data.map((item) => {
+            item.check = true;
+            return item;
+          });
+        }
+      });
 
   }
   delete(item, i): void {
     this.storage.deleteDialog().then((result) => {
       if (result.value) {
-        this.request.delete('api/users/' + item.PARTNER_CHANNEL_ID).subscribe(() => {
-          this.storage.channel.channels .splice(i, 1);
-          this.Channels = this.storage.channel.channels 
+        this.request.delete(this.url + '/' + item[this.idFlag]).subscribe(() => {
+          this.storage.channel.channels.splice(i, 1);
+          this.data = this.storage.channel.channels;
         });
       }
-    })
+    });
   }
 
 }

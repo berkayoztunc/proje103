@@ -8,6 +8,7 @@ import { ExplanationComponent } from '../explanation/explanation.component';
 import { CancelComponent } from '../cancel/cancel.component';
 import { PolicyBenefitComponent } from '../policyBenefits/policy-benefit.component';
 import { CustomerComponent } from '../customer/customer.component';
+import { AdressComponent } from '../address/address.component';
 
 
 @Component({
@@ -19,8 +20,7 @@ import { CustomerComponent } from '../customer/customer.component';
 export class OverviewComponent implements OnInit {
   historyData = [];
   constructor(
-    private route: ActivatedRoute,
-    private router: Router,
+   
     public request: RequestService,
     public storage: StoreService,
     private modalService: NgbModal,
@@ -28,29 +28,33 @@ export class OverviewComponent implements OnInit {
 
 
   }
-  benefits(){
-    this.modalService.open(PolicyBenefitComponent,{size:'lg'});
+  benefits() {
+    this.modalService.open(PolicyBenefitComponent, {size: 'lg'});
   }
-  explanationAdd(){
+  explanationAdd() {
     this.modalService.open(ExplanationComponent);
   }
-  cancelOpen(){
+  cancelOpen() {
     this.modalService.open(CancelComponent);
   }
-  reinsdate(){
-
+  reinsdate() {
+    this.storage.successDialog()
   }
-  customer(){
-    this.modalService.open(CustomerComponent)
+  addressChange(){
+    this.modalService.open(AdressComponent)
   }
-  ngOnInit(){
-    this.historyData = this.storage.policy.historys
+  customer() {
+    this.modalService.open(CustomerComponent);
+  }
+  ngOnInit() {
     this.getHistory();
   }
-  getHistory() : void{
-    this.request.get('api/policy/history/'+this.storage.policy.selectedPolicy['POLICY_ID']).subscribe((response)=>{
-      this.historyData = this.storage.policy.historys =  response.data
-    })
+  getHistory(): void {
+    this.request.get('api/policy/history/' + this.storage.policy.selectedPolicy.POLICY_ID).subscribe((response) => {
+      if(response){
+        this.storage.policy.historys = response.data;
+      }
+    });
   }
-  
+
 }

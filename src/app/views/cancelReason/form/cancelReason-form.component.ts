@@ -12,13 +12,19 @@ import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
   styleUrls: ['./CancelReason-form.component.css']
 })
 export class CancelReasonFormComponent implements OnInit {
+  constructor(private activeModal: NgbActiveModal, public request: RequestService, public storage: StoreService, private fb: FormBuilder, private route: ActivatedRoute, private location: Location) {
+    this.createForm();
+  }
+  get validator() { return this.form.controls; }
   form: FormGroup;
   edit = true;
   change = false;
   initValue = {};
-  constructor(private activeModal: NgbActiveModal, public request: RequestService, public storage: StoreService, private fb: FormBuilder, private route: ActivatedRoute, private location: Location) {
-    this.createForm();
-  }
+  // ** crud stumb ** //
+  item = this.storage.benefit.benefits;
+  selected = this.storage.benefit.selectedBenefit;
+  url = 'api/cancelreasons';
+  idFlag = 'CANCEL_REASON_ID';
   createForm() {
     this.form = this.fb.group({
       CANCEL_REASON_ID: [''],
@@ -27,32 +33,28 @@ export class CancelReasonFormComponent implements OnInit {
       ACTIVE: [''],
     });
   }
-  get validator() { return this.form.controls; }
-
   ngOnInit() {
-
-
-    if (this.storage.cancelReason.selectedCancelReason !== null) {
-      this.edit = false
-      this.form.patchValue(this.storage.cancelReason.cancelReasons[this.storage.cancelReason.selectedCancelReason.index]);
+    if (this.selected != null) {
+      this.edit = false;
+      this.form.patchValue(this.selected.item);
     }
-    this.initValue = this.form.value
-    this.onChanges()
+    this.initValue = this.form.value;
+    this.onChanges();
   }
   cancel() {
     if (this.change) {
       this.storage.cancelDialog().then((result) => {
         if (result.value) {
-          this.goBack()
+          this.goBack();
         }
-      })
+      });
     } else {
-      this.goBack()
+      this.goBack();
     }
   }
   onChanges(): void {
     this.form.valueChanges.subscribe(val => {
-      this.change = (JSON.stringify(val) !== JSON.stringify(this.initValue))
+      this.change = (JSON.stringify(val) !== JSON.stringify(this.initValue));
     });
   }
   goBack(): void {
@@ -60,19 +62,19 @@ export class CancelReasonFormComponent implements OnInit {
   }
   save(): void {
     if (!this.edit) {
-      let hand = this.form.value;
-      this.request.update('api/cancelreasons/' + hand.CANCEL_REASON_ID, hand).subscribe((response) => {
-        this.storage.cancelReason.cancelReasons[this.storage.cancelReason.selectedCancelReason.index] = hand;
+      const hand = this.form.value;
+      hand.check = true;
+      this.request.update(this.url + '/' + hand[this.idFlag], hand).subscribe(() => {
+        this.item[this.selected.index] = hand;
         this.goBack();
-        this.form.reset()
       });
-
     } else {
-      this.request.post('api/cancelreasons', this.form.value).subscribe((response) => {
+      this.request.post(this.url, this.form.value).subscribe((response) => {
         if (response) {
-          this.storage.cancelReason.cancelReasons.unshift(response.data[0]);
-          this.form.reset()
-          this.goBack()
+          response.data[0].check = true;
+          this.item.unshift(response.data[0]);
+          this.form.reset();
+          this.goBack();
         }
       });
     }

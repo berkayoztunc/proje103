@@ -4,8 +4,8 @@ import { CurrencyComponent} from './currency.component';
 import { CurrencyFormComponent } from './form/currency-form.component';
 const routes: Routes = [
     { path: '', component: CurrencyComponent},
-    //{ path: 'form', component :CurrencyFormComponent },    
-]
+    // { path: 'form', component :CurrencyFormComponent },
+];
 
 @NgModule({
     imports: [RouterModule.forChild(routes)],

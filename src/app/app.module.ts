@@ -1,7 +1,7 @@
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA }       from '@angular/core';
 import { BrowserModule }  from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule }    from '@angular/forms';
-import { HttpClientModule ,HttpClient}    from '@angular/common/http';
+import { HttpClientModule , HttpClient}    from '@angular/common/http';
 import { CommonModule} from '@angular/common';
 
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
@@ -10,7 +10,7 @@ import { InMemoryDataService }  from './in-memory-data.service';
 import { AppRoutingModule }     from './app-routing.module';
 
 import { AppComponent }from './app.component';
-import {TranslateModule,TranslateLoader} from '@ngx-translate/core';
+import {TranslateModule, TranslateLoader} from '@ngx-translate/core';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 import { NgSelectModule } from '@ng-select/ng-select';
 import {NgbModule, NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
@@ -33,9 +33,9 @@ import { ExplanationComponent } from './views/policy/explanation/explanation.com
 import { CancelComponent } from './views/policy/cancel/cancel.component';
 import { SystemErrorComponent } from './components/system-error.component';
 import { NgxJsonViewerModule } from 'ngx-json-viewer';
-import { PermissionDirective } from './directives/permission.directive';
 import { PolicyBenefitComponent } from './views/policy/policyBenefits/policy-benefit.component';
 import { CustomerComponent } from './views/policy/customer/customer.component';
+import { AdressComponent } from './views/policy/address/address.component';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, '/assets/i18n/', '.json');
@@ -43,6 +43,7 @@ export function HttpLoaderFactory(http: HttpClient) {
 @NgModule({
   declarations: [
     CancelComponent,
+    AdressComponent,
     PolicyBenefitComponent,
     CustomerComponent,
     AppComponent,
@@ -63,6 +64,7 @@ export function HttpLoaderFactory(http: HttpClient) {
   ],
   entryComponents : [
     CustomerComponent,
+    AdressComponent,
     CancelComponent,
     PolicyBenefitComponent,
     ExplanationComponent,
@@ -99,9 +101,9 @@ export function HttpLoaderFactory(http: HttpClient) {
         deps: [HttpClient]
      }
     }),
-    
+
   ],
-  providers : [NgbActiveModal,AuthGuard],
+  providers : [NgbActiveModal, AuthGuard],
   bootstrap: [ AppComponent ]
 })
 export class AppModule { }

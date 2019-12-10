@@ -4,11 +4,11 @@ import { BenefitPackComponent} from './benefitPack.component';
 import { BenefitPackBenefitsComponent } from './banefits/benefitPack-benefit.component';
 const routes: Routes = [
     { path: '', component: BenefitPackComponent},
-    //{ path: 'form', component :BenefitPackFormComponent },    
-    { path: 'benefit', component :BenefitPackBenefitsComponent },    
-   
+    // { path: 'form', component :BenefitPackFormComponent },
+    { path: 'benefit', component : BenefitPackBenefitsComponent },
 
-]
+
+];
 
 @NgModule({
     imports: [RouterModule.forChild(routes)],

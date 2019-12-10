@@ -4,15 +4,15 @@ import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
 import { Observable, of, Subject } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
 
-import Swal from 'sweetalert2/dist/sweetalert2.js'
+import Swal from 'sweetalert2/dist/sweetalert2.js';
 import { StoreService } from './store.service';
 
 
 @Injectable({ providedIn: 'root' })
 export class RequestService {
   error = null;
-  //domain = 'http://192.168.116.206:9201/';
-  domain = 'http://192.168.1.183:9201/';
+  // domain = 'http://192.168.116.206:9201/';
+   domain = 'http://192.168.118.210:9201/';
   //domain = 'http://192.168.43.211:9201/';
   onTheGo = false;
   systemError = new Subject();
@@ -26,14 +26,14 @@ export class RequestService {
     const options = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
-        "Accept": 'application/json',
+        Accept: 'application/json',
         'Access-Control-Allow-Headers': '*',
-        "authorization": this.storage.auth.token
+        authorization: this.storage.auth.token
       }),
-      params: params,
+      params,
     };
     return this.http.get(this.domain + url, options).pipe(
-      tap(_ => this.onTheGo = !this.onTheGo),
+      tap(_ => this.onTheGo =  false),
       catchError(this.handleError<any>('get'))
     );
   }
@@ -53,7 +53,7 @@ export class RequestService {
       }),
     };
     return this.http.post(this.domain + url, param, options).pipe(
-      tap(_ => this.onTheGo = !this.onTheGo),
+      tap(_ => this.onTheGo =  false),
       catchError(this.handleError<any>('post'))
     );
   }
@@ -70,7 +70,7 @@ export class RequestService {
       }),
     };
     return this.http.delete(this.domain + url, headerObj).pipe(
-      tap(_ => this.onTheGo = !this.onTheGo),
+      tap(_ => this.onTheGo =  false),
       catchError(this.handleError<any>('delete'))
     );
   }
@@ -87,7 +87,7 @@ export class RequestService {
       }),
     };
     return this.http.put(this.domain + url, params, headerObj).pipe(
-      tap(_ => this.onTheGo = !this.onTheGo),
+      tap(_ => this.onTheGo =  false),
       catchError(this.handleError<any>('update'))
     );
   }
@@ -100,43 +100,46 @@ export class RequestService {
    */
   private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
-      this.onTheGo = false
+      this.onTheGo = false;
+      const status = error.status;
+
       switch (status) {
-        case '404':
+        case 404:
             Swal.fire({
               title: 'Error!',
               text: error.message,
               icon: 'error',
-            })
-          break;
-        case '400':
-            this.error = error.message
-            break;  
-        case '403':
+            });
+            break;
+        case 400:
+
+            this.error = error.error.message;
+            break;
+        case 403:
             Swal.fire({
               title: 'Error!',
               text: error.message,
               icon: 'error',
-            })
-          break;  
+            });
+            break;
         default:
-            this.condidationError(error.error)
-          break;
+            this.condidationError(error.error);
+            break;
       }
 
       return of(result as T);
     };
   }
-  private condidationError(error){
+  private condidationError(error) {
 
     switch (error.condition) {
       case 2010:
-        this.error = error.message
+        this.error = error.message;
         break;
       case 2020:
-          this.error = Object.assign({},error)
+          this.error = Object.assign({}, error);
           console.log(this.error);
-          this.systemError.next(error)
+          this.systemError.next(error);
           break;
       default:
         break;
@@ -144,6 +147,6 @@ export class RequestService {
   }
   /** Log a UserService message with the MessageService */
   private log(message: string) {
-    console.log(message)
+    console.log(message);
   }
 }

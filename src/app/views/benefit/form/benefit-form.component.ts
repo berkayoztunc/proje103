@@ -13,13 +13,20 @@ import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
   styleUrls: ['./Benefit-form.component.css']
 })
 export class BenefitFormComponent implements OnInit {
+
+  constructor(private activeModal: NgbActiveModal, public request: RequestService, public storage: StoreService, private fb: FormBuilder, private route: ActivatedRoute, private location: Location) {
+    this.createForm();
+  }
+  get validator() { return this.form.controls; }
   form: FormGroup;
   edit = true;
   change = false;
   initValue = {};
-  constructor(private activeModal: NgbActiveModal, public request: RequestService, public storage: StoreService, private fb: FormBuilder, private route: ActivatedRoute, private location: Location) {
-    this.createForm();
-  }
+  // ** crud stumb ** //
+  item = this.storage.benefit.benefits;
+  selected = this.storage.benefit.selectedBenefit;
+  url = 'api/benefits';
+  idFlag = 'BENEFIT_ID';
   createForm() {
     this.form = this.fb.group({
       BENEFIT_ID: [''],
@@ -28,31 +35,29 @@ export class BenefitFormComponent implements OnInit {
       ACTIVE: [''],
     });
   }
-  get validator() { return this.form.controls; }
 
   ngOnInit() {
-
-    if (this.storage.benefit.selectedBenefit != null) {
-      this.edit = false
-      this.form.patchValue(this.storage.benefit.selectedBenefit.item);
+    if (this.selected != null) {
+      this.edit = false;
+      this.form.patchValue(this.selected.item);
     }
-    this.initValue = this.form.value
-    this.onChanges()
+    this.initValue = this.form.value;
+    this.onChanges();
   }
   cancel() {
     if (this.change) {
       this.storage.cancelDialog().then((result) => {
         if (result.value) {
-          this.goBack()
+          this.goBack();
         }
-      })
+      });
     } else {
-      this.goBack()
+      this.goBack();
     }
   }
   onChanges(): void {
     this.form.valueChanges.subscribe(val => {
-      this.change = (JSON.stringify(val) !== JSON.stringify(this.initValue))
+      this.change = (JSON.stringify(val) !== JSON.stringify(this.initValue));
     });
   }
   goBack(): void {
@@ -60,17 +65,20 @@ export class BenefitFormComponent implements OnInit {
   }
   save(): void {
     if (!this.edit) {
-      let hand = this.form.value;
-
-      this.request.update('api/benefits/' + hand.BENEFIT_ID, hand).subscribe(() => {
-        this.storage.benefit.benefits[this.storage.benefit.selectedBenefit.index] = hand        
-        this.goBack()
+      const hand = this.form.value;
+      hand.check = true;
+      this.request.update(this.url + '/' + hand[this.idFlag], hand).subscribe(() => {
+        this.item[this.selected.index] = hand;
+        this.goBack();
       });
     } else {
-      this.request.post('api/benefits', this.form.value).subscribe((response) => {
-        this.storage.benefit.benefits.unshift(response.data[0]);
-        this.form.reset()
-        this.goBack()
+      this.request.post(this.url, this.form.value).subscribe((response) => {
+        if (response) {
+          response.data[0].check = true;
+          this.item.unshift(response.data[0]);
+          this.form.reset();
+          this.goBack();
+        }
       });
     }
   }

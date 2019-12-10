@@ -3,9 +3,9 @@ import { Routes, RouterModule } from '@angular/router';
 import { BenefitComponent} from './benefit.component';
 const routes: Routes = [
     { path: '', component: BenefitComponent},
-   
 
-]
+
+];
 
 @NgModule({
     imports: [RouterModule.forChild(routes)],

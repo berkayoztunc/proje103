@@ -9,13 +9,13 @@
                         <div class="input-group-append">
                             <a class="btn btn-primary btn-sm" (click)="searchClick()" [title]="'user.search' | translate"><i class="fas fa-search"></i></a>
                             <a class="btn btn-info btn-sm" (click)="search = ''; searchClick()" [title]="'user.search_clear' | translate"><i class="fas fa-eraser"></i></a>
-                            <a class="btn btn-success btn-sm" (click)="create()" [title]="'user.add_new' | translate"><i class="fas fa-plus"></i></a>
+                            <a *permissions="'role.create'" class="btn btn-success btn-sm" (click)="create()" [title]="'user.add_new' | translate"><i class="fas fa-plus"></i></a>
                         </div>
                 </div>
             </div>
         </div>
         <div class="row pt-3 table-scrool">
-            <div class="col-12">
+            <div class="col-12  tableFixHead">
                 <table class="table">
                     <thead class="bg-primary text-white">
                         <tr>
@@ -28,7 +28,7 @@
 
                     <tbody>
                         <tr *ngFor="let Role of Roles; let i = index">
-                            <th scope="row" width="5%">{{Role.ROLE_ID}}</th>
+                            <td scope="row" width="5%">{{Role.ROLE_ID}}</td>
                             <td>{{Role.ROLE}}</td>
                             <td>
                                 <i class="fas fa-check fa-2x text-success" *ngIf="Role.ACTIVE"></i>
@@ -36,11 +36,11 @@
 
                             </td>
                             <td>
-                                <a class="btn btn-xs btn-warning " (click)="select(Role,i)"><i
+                                <a *permissions="'role.update'" class="btn btn-xs btn-warning " (click)="select(Role,i)"><i
                                         class="fas fa-edit"></i></a>
-                                <a class="btn btn-xs btn-info text-white" (click)="viewPermission(Role)"><i
+                                <a *permissions="'permission.browse'" class="btn btn-xs btn-info text-white" (click)="viewPermission(Role)"><i
                                         class="fas fa-info-circle"></i> İzinler </a>
-                                <a class="btn btn-xs btn-danger "(click)="delete(Role,i)"><i class="fas fa-trash"></i></a>
+                                <a *permissions="'role.delete'" class="btn btn-xs btn-danger "(click)="delete(Role,i)"><i class="fas fa-trash"></i></a>
                             </td>
                         </tr>
                     </tbody>

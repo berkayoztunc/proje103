@@ -14,8 +14,8 @@ import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 export class RoleFormComponent implements OnInit {
   form: FormGroup;
   edit = true;
-  initValue = {}
-  change = false
+  initValue = {};
+  change = false;
   constructor(private activeModal: NgbActiveModal, public request: RequestService, public storage: StoreService, private fb: FormBuilder, private route: ActivatedRoute, private location: Location) {
     this.createForm();
   }
@@ -30,27 +30,27 @@ export class RoleFormComponent implements OnInit {
 
   ngOnInit() {
     if (this.storage.role.selectedRole !== null) {
-      this.edit = false
+      this.edit = false;
       this.form.patchValue(this.storage.role.roles[this.storage.role.selectedRole.index]);
     }
-    this.initValue = this.form.value
-    this.onChanges()
+    this.initValue = this.form.value;
+    this.onChanges();
   }
 
   cancel() {
     if (this.change) {
       this.storage.cancelDialog().then((result) => {
         if (result.value) {
-          this.goBack()
+          this.goBack();
         }
-      })
+      });
     } else {
-      this.goBack()
+      this.goBack();
     }
   }
   onChanges(): void {
     this.form.valueChanges.subscribe(val => {
-      this.change = (JSON.stringify(val) !== JSON.stringify(this.initValue))
+      this.change = (JSON.stringify(val) !== JSON.stringify(this.initValue));
     });
   }
   goBack(): void {
@@ -58,19 +58,19 @@ export class RoleFormComponent implements OnInit {
   }
   save(): void {
     if (!this.edit) {
-      let hand = this.form.value;
-      hand.id = hand.ROLE_ID
+      const hand = this.form.value;
+      hand.id = hand.ROLE_ID;
       this.request.update('api/roles/' + hand.ROLE_ID, hand).subscribe((response) => {
         this.storage.role.roles[this.storage.role.selectedRole.index] = hand;
         this.goBack();
-        this.form.reset()
+        this.form.reset();
       });
 
     } else {
       this.request.post('api/roles', this.form.value).subscribe((response) => {
         if (response) {
           this.storage.role.roles.unshift(response.data[0]);
-          this.goBack()
+          this.goBack();
         }
 
       });

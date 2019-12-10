@@ -13,7 +13,7 @@ import { StoreService } from 'src/app/services/store.service';
 export class RolePermissionSyncComponent implements OnInit {
   form: FormGroup;
   data  = [];
-  constructor(public request : RequestService, public storage : StoreService,private fb: FormBuilder,private route: ActivatedRoute, private location: Location    ) {
+  constructor(public request: RequestService, public storage: StoreService, private fb: FormBuilder, private route: ActivatedRoute, private location: Location    ) {
     this.createForm();
   }
   createForm() {
@@ -23,52 +23,51 @@ export class RolePermissionSyncComponent implements OnInit {
   }
   get allItems(): FormArray {
     return this.form.get('items') as FormArray;
- } 
+ }
 
   getControls(frmGrp: FormGroup, key: string) {
-    return (<FormArray>frmGrp.controls[key]).controls;
+    return (frmGrp.controls[key] as FormArray).controls;
   }
   ngOnInit() {
-    
-    if(this.storage.role.selectedRole == null){
-      this.goBack()
-    }
-    else{
+
+    if (this.storage.role.selectedRole == null) {
+      this.goBack();
+    } else {
       /*
       this.request.get('api/rolePermission',{
               ROLE_ID : this.storage.role.selectedRole.item.ROLE_ID
           })
       */
-      this.request.get( 'api/roles/permissions/'+this.storage.role.selectedRole.item.ROLE_ID ).subscribe((response)=>{
-        this.data = response.data; //this.transformer() 
-        response.data.forEach((o, i) => {  
-          const control =  this.fb.group({check : o.check,key:o.key})
-          this.allItems.push(control);  
+      this.request.get( 'api/roles/permissions/' + this.storage.role.selectedRole.item.ROLE_ID ).subscribe((response) => {
+        this.data = response.data; // this.transformer()
+        response.data.forEach((o, i) => {
+          const control =  this.fb.group({check : o.check, key: o.key});
+          this.allItems.push(control);
         });
-        this.form.patchValue({items:response.data})
-        
-      })
+        this.form.patchValue({items: response.data});
+
+      });
     }
   }
-  transformer(item){
-    let hand = [];
-    item.forEach((item,index)=>{
-      let permissionSplit = item.key.split('.')
-      if(!hand[permissionSplit[0]]){
-        hand[permissionSplit[0]] = []
+  transformer(item) {
+    const hand = [];
+    item.forEach((item, index) => {
+      const permissionSplit = item.key.split('.');
+      if (!hand[permissionSplit[0]]) {
+        hand[permissionSplit[0]] = [];
       }
-      hand[permissionSplit[0]].push(item)
-    })    
-    return hand
+      hand[permissionSplit[0]].push(item);
+    });
+    return hand;
   }
 
   goBack(): void {
     this.location.back();
   }
   save(): void {
-      this.request.update('api/roles/permissions/'+this.storage.role.selectedRole.item.ROLE_ID , {PERMISSIONS : JSON.stringify(this.form.value.items)}).subscribe(()=>{
-        this.goBack()
-      })
+      this.request.update('api/roles/permissions/' + this.storage.role.selectedRole.item.ROLE_ID , {PERMISSIONS : JSON.stringify(this.form.value.items)}).subscribe(() => {
+        this.goBack();
+      });
   }
 
 }

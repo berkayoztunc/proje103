@@ -1,4 +1,4 @@
-<loader [showIf]="request.onTheGo">
+<loader>
 
 <div class="card">
     <div class="card-body">
@@ -10,12 +10,12 @@
                 <input type="hidden" class="form-control" placeholder="BENEFIT_ID" formControlName="BENEFIT_ID">
 
             <div class="form-group">
-                <label>{{'Benefit.BENEFIT'|translate}} </label>
-                <input type="text" class="form-control" placeholder="{{'Benefit.BENEFIT'|translate}}" formControlName="BENEFIT" name="BENEFIT">
+                <label>{{'benefit.BENEFIT'|translate}} </label>
+                <input  type="text" class="form-control" formControlName="BENEFIT" name="BENEFIT">
             </div>
             <div class="form-group">
-                <label>{{'Benefit.EXPLANATION'|translate}} </label>
-                <textarea name="" id="" cols="30" rows="10" class="form-control" placeholder="{{'Benefit.EXPLANATION'|translate}}" formControlName="EXPLANATION"></textarea>
+                <label>{{'benefit.EXPLANATION'|translate}} </label>
+                <textarea maxlength="250" name="" id="" cols="30" rows="10" class="form-control"  formControlName="EXPLANATION"></textarea>
             </div>
             <div class="form-check">
                     <input type="checkbox" class="form-check-input " id="exampleCheck1" formControlName="ACTIVE">
