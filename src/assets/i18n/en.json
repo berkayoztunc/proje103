@@ -11,7 +11,8 @@
 		"benefist_button": "Benefits",
 		"email_ad_placeholser": "Search by Benefit package name",
 		"search": "Search button",
-		"search_clear": "Search clear"
+		"search_clear": "Search clear",
+		"search_placeholder": "Search by Benefit"
 	},
 	"CURRENCY": "Exchange Rate",
 	"CancelReason": {
@@ -171,6 +172,11 @@
 				"save": "Add benefit pack"
 			}
 		},
+		"cancel": {
+			"title": {
+				"save": "Cancellation"
+			}
+		},
 		"cancelReason": {
 			"title": {
 				"edit": "Edit cancellation reason",
@@ -248,7 +254,10 @@
 	"policy": {
 		"ACTIVE": "Active",
 		"ADDRESS": "Address",
+		"ADDRESS_ID": "Address id",
 		"CANCEL_RESON_SELECT": "Please select reason",
+		"CITY": "City",
+		"COUNTRY": "Country",
 		"CUSTOMER_ID": "customer number",
 		"CUSTOMER_TYPE": "Customer type",
 		"C_DATE": "Creation time",
@@ -340,6 +349,7 @@
 	},
 	"save": "Save",
 	"search": "Search button",
+	"selected": "Selected",
 	"success_info": "Your transaction was successful",
 	"swal": {
 		"forgetpassword": {
@@ -349,6 +359,7 @@
 		"okey": "Okey"
 	},
 	"total_data": "Total Records",
+	"unselected": "Not included",
 	"user": {
 		"action": "Transactions",
 		"active": "Active",

@@ -14,6 +14,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 export class AdressComponent implements OnInit {
   historyData = [];
   form: FormGroup;
+  cities;
   countries;
   constructor(
     public request: RequestService,
@@ -37,6 +38,16 @@ export class AdressComponent implements OnInit {
       this.countries = response.data;
     });
   }
+  cityGet(){
+    if(this.form.value['COUNTRY_ID']){
+      this.request.get('api/cities/'+this.form.value['COUNTRY_ID']).subscribe((response) => {
+        this.cities = response.data;
+      });
+    }else{
+      this.cities = [];
+    }
+   
+  }
   goBack() {
     this.activeModal.dismiss();
   }
@@ -48,9 +59,11 @@ export class AdressComponent implements OnInit {
     });
   }
   save(): void {
-    this.request.post('api/policy/customer/update-address/' + this.storage.policy.selectedPolicy.POLICY_ID, this.form.value).subscribe((response) => {
+    let hand = this.form.value
+    hand['POLICY_ID'] = this.storage.policy.selectedPolicy.POLICY_ID;
+    this.request.post('api/policy/customer/update-address/' + this.storage.policy.selectedCustomer.ADDRESS_ID, hand).subscribe((response) => {
       if (response) {
-        //this.storage.policy.historys = response.data; // TODO ::: burayı düzelticeksin
+        this.storage.policy.historys = response.data; 
         this.goBack();
         this.storage.successDialog()
       }

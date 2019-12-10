@@ -229,3 +229,8 @@ td {
   background: #07689f!important;
 
 }
+
+
+.modal-content .btn.btn-xs{
+    width: 20% !important;
+}

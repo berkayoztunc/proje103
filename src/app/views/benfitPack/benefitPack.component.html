@@ -48,9 +48,9 @@
 
                             </td>
                             <td>
-                                <a class="btn btn-xs btn-warning "  (click)="select(item,i)"><i class="fas fa-edit"></i></a>
-                                <a class="btn btn-xs btn-info text-white"  (click)="viewBenefits(item)">{{'BenefitPack.benefist_button' | translate}}</a>
-                                <a class="btn btn-xs btn-danger " (click)="delete(item,i)" *permissions="'benefit_pack.delete'"><i class="fas fa-trash"></i></a>
+                                <button [disabled]="item.USED" class="btn btn-xs btn-warning "  (click)="select(item,i)"><i class="fas fa-edit"></i></button>
+                                <button  class="btn btn-xs btn-info text-white"  (click)="viewBenefits(item)">{{'BenefitPack.benefist_button' | translate}}</button>
+                                <button [disabled]="item.USED" class="btn btn-xs btn-danger " (click)="delete(item,i)" *permissions="'benefit_pack.delete'"><i class="fas fa-trash"></i></button>
                             </td>
                         </tr>
                     </tbody>

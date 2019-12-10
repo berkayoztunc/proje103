@@ -8,13 +8,13 @@
             <form [formGroup]="form" (ngSubmit)="save()">
                 <div class="form-group">
                     <label>{{'policy.modal.ADDRESS'|translate}} </label>
-                    <textarea name="" id="" cols="30" rows="5" class="form-control"
+                    <textarea maxlength="500" name="" id="" cols="30" rows="5" class="form-control"
                         placeholder="{{'policy.modal.ADDRESS'|translate}}" formControlName="ADDRESS"></textarea>
                 </div>
                 <div class="form-group">
-                    <label>{{ 'policy.CUSTOMER' | translate }} </label>
-                    <ng-select [items]="countries" bindLabel="COUNTRy" bindValue="COUNTRY_ID"
-                        formControlName="COUNTRY_ID">
+                    <label>{{ 'policy.COUNTRY' | translate }} </label>
+                    <ng-select [items]="countries" bindLabel="COUNTRY" bindValue="COUNTRY_ID"
+                        formControlName="COUNTRY_ID" (change)="cityGet()">
                     </ng-select>
                 </div>
                 <div class="form-group">

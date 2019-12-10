@@ -48,10 +48,10 @@
                                 <i class="fas fa-times fa-2x text-danger" *ngIf="!item.ACTIVE"></i>
                             </td>
                             <td>
-                                <a *permissions="'product.update'" class="btn btn-xs btn-warning "
-                                    (click)="select(item,i)"><i class="fas fa-edit"></i></a>
-                                <a *permissions="'product.delete'" class="btn btn-xs btn-danger "
-                                    (click)="delete(item,i)"><i class="fas fa-trash"></i></a>
+                                <button *permissions="'product.update'" [disabled]="item.USED" class="btn btn-xs btn-warning "
+                                    (click)="select(item,i)"><i class="fas fa-edit"></i></button>
+                                <button *permissions="'product.delete'" [disabled]="item.USED" class="btn btn-xs btn-danger "
+                                    (click)="delete(item,i)"><i class="fas fa-trash"></i></button>
                             </td>
                         </tr>
                     </tbody>

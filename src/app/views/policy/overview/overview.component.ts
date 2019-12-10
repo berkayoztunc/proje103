@@ -38,7 +38,12 @@ export class OverviewComponent implements OnInit {
     this.modalService.open(CancelComponent);
   }
   reinsdate() {
-    this.storage.successDialog()
+    this.request.get('api/policy/reinstate/'+this.storage.policy.selectedPolicy.POLICY_ID).subscribe((response)=>{
+      if(response){
+        this.storage.policy.historys = response.data;
+        this.storage.successDialog()
+      }
+    })
   }
   addressChange(){
     this.modalService.open(AdressComponent)

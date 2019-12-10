@@ -11,7 +11,8 @@
 		"benefist_button": "Benefits",
 		"email_ad_placeholser": "Benefit paket adı ile ara",
 		"search": "Arama butonu",
-		"search_clear": "Arama temizle"
+		"search_clear": "Arama temizle",
+		"search_placeholder": "Benefit paketi ismi ile ara"
 	},
 	"CURRENCY": "Kur",
 	"CancelReason": {
@@ -171,6 +172,11 @@
 				"save": "Yarar paketi ekle"
 			}
 		},
+		"cancel": {
+			"title": {
+				"save": "İptal işlemleri"
+			}
+		},
 		"cancelReason": {
 			"title": {
 				"edit": "İptal nedeni düzenle",
@@ -248,7 +254,10 @@
 	"policy": {
 		"ACTIVE": "AKTİF",
 		"ADDRESS": "ADRES",
+		"ADDRESS_ID": "Adress numarası",
 		"CANCEL_RESON_SELECT": "Lütfen nedeni seçiniz",
+		"CITY": "Şehir",
+		"COUNTRY": "Ülke",
 		"CUSTOMER_ID": "MÜŞTERİ NUMARASI",
 		"CUSTOMER_TYPE": "MÜŞTERİ TİPİ",
 		"C_DATE": "OLUŞTURULMA ZAMANI",
@@ -340,6 +349,7 @@
 	},
 	"save": "Kaydet",
 	"search": "Arama",
+	"selected": "Seçililer",
 	"success_info": "İşleminiz başarılıdır",
 	"swal": {
 		"forgetpassword": {
@@ -349,6 +359,7 @@
 		"okey": "Tamam"
 	},
 	"total_data": "Toplam kayıt",
+	"unselected": "Dahil olmayanlar",
 	"user": {
 		"action": "İşlemler",
 		"active": "Aktif",

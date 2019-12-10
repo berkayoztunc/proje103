@@ -1,32 +1,36 @@
 <div class="row">
     <div class="col-md-12">
-            <app-alert></app-alert>
+        <app-alert></app-alert>
 
     </div>
-        <div class="col-md-6">
+    <div class="col-md-6">
         <div class="card">
             <div class="card-body">
+                <h5 class="card-title">{{'unselected'|translate}}</h5>
+
                 <div class="input-group">
 
-                    <input type="text" class="form-control" [placeholder]="'Benefit.email_ad_placeholser' | translate"
+                    <input type="text" class="form-control" [placeholder]="'benefit.search_placeholder' | translate"
                         required [(ngModel)]="search">
                     <div class="input-group-append">
 
-                        <a class="btn btn-primary" (click)="searchClick()" [title]="'Benefit.search' | translate"><i
+                        <a class="btn btn-primary" (click)="searchClick()" [title]="'benefit.search' | translate"><i
                                 class="fas fa-search"></i></a>
                         <a class="btn btn-info" (click)="search = '';searchClick()"
-                            [title]="'Benefit.search_clear' | translate"><i class="fas fa-eraser"></i></a>
+                            [title]="'benefit.search_clear' | translate"><i class="fas fa-eraser"></i></a>
 
                     </div>
                 </div>
                 <br>
                 <ul class="list-group">
                     <li class="list-group-item p-1" *ngFor="let item of data ; let i = index">
-                        <button *permissions="'benefit_pack.add_benefit'"  [disabled]="storage.benefitPack.selectedBenefitPack.item.USED" class="btn btn-success btn-xs float-right" (click)="add(item,i)">
+                        <button *permissions="'benefit_pack.add_benefit'"
+                            [disabled]="storage.benefitPack.selectedBenefitPack.item.USED"
+                            class="btn btn-success btn-xs float-right" (click)="add(item,i)">
                             <i class="fas fa-plus "></i>
                         </button>
                         <p data-toggle="collapse" [attr.data-target]="'#list'+i" aria-expanded="false"
-                            [attr.aria-controls]="'list'+i" class="p-0 m-0"> {{item.BENEFIT}}   ,#{{item.BENEFIT_ID}}</p>
+                            [attr.aria-controls]="'list'+i" class="p-0 m-0"> {{item.BENEFIT}} ,#{{item.BENEFIT_ID}}</p>
                         <div class="collapse" [id]="'list'+i">
                             <p class="p-0">{{item.EXPLANATION}}</p>
                         </div>
@@ -41,20 +45,26 @@
     <div class="col-md-6">
         <div class="card">
             <div class="card-body">
+                    <h5 class="card-title">{{storage.benefitPack.selectedBenefitPack.item.BENEFIT_PACK}} | {{'selected'|translate}}</h5>
+
                 <ul class="list-group">
                     <li class="list-group-item p-1" *ngFor="let item of selectedPackData ; let i = index">
-                        <button *permissions="'benefit_pack.remove_benefit'"  [disabled]="storage.benefitPack.selectedBenefitPack.item.USED" class="btn btn-danger btn-xs float-right" (click)="remove(item,i) ">
+                        <button *permissions="'benefit_pack.remove_benefit'"
+                            [disabled]="storage.benefitPack.selectedBenefitPack.item.USED"
+                            class="btn btn-danger btn-xs float-right" (click)="remove(item,i) ">
                             <i class="fas fa-trash "></i>
                         </button>
                         <div class="input-group w-100">
-                            <input type="number" [(ngModel)]="item.ORDER_NUMBER" class="form-control form-control-sm" placeholder="Sıra" aria-describedby="button-addon2">
+                            <input type="number" maxlength="5" [(ngModel)]="item.ORDER_NUMBER" class="form-control form-control-sm"
+                                placeholder="Sıra" aria-describedby="button-addon2">
                             <div class="input-group-append">
-                                <button class="btn btn-warning btn-xs " type="button"
-                                    id="button-addon2"><i class="fas fa-save" (click)="updateOrder(item)"></i></button>
+                                <button class="btn btn-warning btn-xs " type="button" id="button-addon2"><i
+                                        class="fas fa-save" (click)="updateOrder(item)"></i></button>
                             </div>
                         </div>
                         <p data-toggle="collapse" [attr.data-target]="'#selected'+i" aria-expanded="false"
-                            [attr.aria-controls]="'selected'+i" class="p-0 m-0">{{item.BENEFIT}},  #{{item.BENEFIT_ID}}</p>
+                            [attr.aria-controls]="'selected'+i" class="p-0 m-0">{{item.BENEFIT}}, #{{item.BENEFIT_ID}}
+                        </p>
                         <div class="collapse" [id]="'selected'+i">
                             <p>{{item.EXPLANATION}}</p>
                         </div>
