@@ -7,7 +7,10 @@
     float: right;
     font-size: 80%;
 }
-
+.filter-header{
+    border-bottom: 1px solid #07689f7d;
+    margin-bottom: 10px;
+}
 .list-group-item .title {
     margin-top: 5px;
     margin-bottom: 12px;
@@ -15,6 +18,7 @@
 }
 .list-group-item{
     padding :5px;
+    border-radius: 6px;
 }
 .list-group-item .table td, .table th{
     font-size: 12px;;
@@ -34,8 +38,10 @@
 }
 
 .ppl{
+    color: black !important;
     border-bottom: 0.3px solid rgba(0,0,0,0.4);
 }
-.cpl{
-    color: black !important;
+a.btn.btn-xs.text-white{
+    font-size: 14px !important;
 }
+

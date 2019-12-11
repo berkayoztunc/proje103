@@ -12,8 +12,8 @@ import { StoreService } from './store.service';
 export class RequestService {
   error = null;
   // domain = 'http://192.168.116.206:9201/';
-   domain = 'http://192.168.118.210:9201/';
-  //domain = 'http://192.168.43.211:9201/';
+   //domain = 'http://192.168.118.210:9201/';
+  domain = 'http://192.168.43.211:9201/';
   onTheGo = false;
   systemError = new Subject();
   constructor(

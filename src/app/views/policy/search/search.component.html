@@ -4,24 +4,29 @@
     <div class="col-md-3 p-0">
       <div class="card">
         <div class="card-body">
-          <form [formGroup]="form" (ngSubmit)="search()">
+          <form [formGroup]="form" (ngSubmit)="search()" autocomplete="off">
             <div class="form-group">
               <label class="text-muted">{{ 'policy.search.policy_number' | translate }}</label>
-              <input maxlength="30" type="text" formControlName='POLICY_NUMBER' name='POLICY_NUMBER' placeholder="whildcard (%)" class="form-control form-control-sm">
+              <input minlength="5" maxlength="30" type="text" formControlName='POLICY_NUMBER' name='POLICY_NUMBER' placeholder="%" class="form-control form-control-sm">
               <label  class="text-muted">{{ 'policy.search.national_id' | translate }}</label>
               <input maxlength="25" type="text" formControlName='NATIONAL_ID' name='NATIONAL_ID' class="form-control form-control-sm">
               <label  class="text-muted">{{ 'policy.search.last_name' | translate }}</label>
-              <input maxlength="100" type="text" formControlName='LAST_NAME' name='LAST_NAME' class="form-control form-control-sm">
+              <input maxlength="100" type="text" formControlName='LAST_NAME' name='LAST_NAME' placeholder="%" class="form-control form-control-sm">
               <label class="text-muted">{{ 'policy.search.mobile_phone' | translate }}</label>
               <input maxlength="30" type="text" formControlName='MOBILE_PHONE' name='MOBILE_PHONE' class="form-control form-control-sm">
               <label class="text-muted">{{ 'policy.search.external_policy_number' | translate }}</label>
-              <input maxlength="30" type="text" formControlName='EXTERNAL_POLICY_NUMBER' name='EXTERNAL_POLICY_NUMBER' class="form-control form-control-sm">
+              <input minlength="5" maxlength="30" type="text" formControlName='EXTERNAL_POLICY_NUMBER' name='EXTERNAL_POLICY_NUMBER' placeholder="%" class="form-control form-control-sm">
             </div>
-
-            <button type="submit" class="btn btn-primary btn-xs btn-block">{{ 'Search' | translate }}</button>
+            <button type="submit" class="btn btn-primary btn-xs btn-block"
+            [disabled]="form.pristine || (form.value.LAST_NAME.length == 0 && form.value.POLICY_NUMBER.length == 0 && form.value.EXTERNAL_POLICY_NUMBER.length == 0 && form.value.NATIONAL_ID.length == 0 && form.value.MOBILE_PHONE.length == 0 )"
+            
+            >{{ 'Search' | translate }}</button>
           </form>
           <hr>
-          <a class="btn btn-warning btn-xs btn-block text-white" (click)="clearForm()">{{ 'Temizle' | translate }}</a>
+          <button class="btn btn-warning btn-xs btn-block text-white" (click)="clearForm()" 
+          
+          
+          >{{ 'Temizle' | translate }}</button>
 
         </div>
       </div>
@@ -29,7 +34,7 @@
 
 
     </div>
-    <div class="col-md-9 p-0 " *ngIf="searchData.length > 0">
+    <div class="col-md-9 p-0 " *ngIf="searchData.length > 0 && searchData.length < 10">
       <div class="card">
         <div class="card-body">
           <article class="list-group-item" *ngFor="let customer of searchData;let i = index">
@@ -57,8 +62,8 @@
                       {{ 'policy.number' | translate }} : {{policies.POLICY_NUMBER}}
                     </p>
                     <p class="text-muted">{{ 'policy.EXTERNAL_POLICY_NUMBER' | translate }} :
-                      {{policies.EXTERNAL_POLICY_NUMBER}}
-                      <span class="float-rigth">{{ 'policy.START_DATE' | translate }} : {{policies.START_DATE}}</span>
+                      {{policies.EXTERNAL_POLICY_NUMBER}} |
+                      <span class="float-rigth">{{ 'policy.START_DATE' | translate }} : {{policies.START_DATE | date:'dd/MM/yyyy'}}</span>
                     </p>
 
 
@@ -76,10 +81,10 @@
         </div>
       </div>
     </div>
-    <div class="col-md-9 p-0" *ngIf="searchData.length == 0">
-      <div class="alert alert-info text-center">
-        {{'policy.search_not_found' | translate}}
-      </div>
+
+    <div class="col-md-9 p-0" >
+      <app-alert></app-alert>
     </div>
+   
   </div>
 </loader>

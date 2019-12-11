@@ -15,6 +15,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 export class SearchComponent implements OnInit {
   searchData = [];
   form: FormGroup;
+  isSearched= false;
   constructor(
     private route: ActivatedRoute,
     private router: Router,
@@ -22,12 +23,11 @@ export class SearchComponent implements OnInit {
     public storage: StoreService,
     private fb: FormBuilder
   ) {
-
-
     this.createForm();
   }
   select(item) {
     this.storage.policy.selectedCustomer = item;
+    this.storage.policy.selectedPolicy = null
   }
   selectPolicy(item) {
     this.storage.policy.selectedPolicy = item;
@@ -43,19 +43,28 @@ export class SearchComponent implements OnInit {
     this.storage.policy.selectedPolicy = null;
     this.storage.policy.inPolicy = false;
     this.searchData = [];
+    this.isSearched = false;
+    this.createForm();
   }
   createForm() {
     this.form = this.fb.group({
-      LAST_NAME: [null],
-      POLICY_NUMBER: [null],
-      EXTERNAL_POLICY_NUMBER: [null],
-      NATIONAL_ID: [null],
-      MOBILE_PHONE: [null],
+      LAST_NAME: [''],
+      POLICY_NUMBER: [''],
+      EXTERNAL_POLICY_NUMBER: [''],
+      NATIONAL_ID: [''],
+      MOBILE_PHONE: [''],
     });
+  }
+  get LAST_NAME() {
+    return this.form.get('LAST_NAME'); 
+   }
+  get MOBILE_PHONE() {
+   return this.form.get('MOBILE_PHONE'); 
   }
   get validator() { return this.form.controls; }
 
   ngOnInit() {
+    
     if (this.storage.policy.inPolicy) {
       this.searchData = this.storage.policy.searchData;
     } else {
@@ -63,14 +72,21 @@ export class SearchComponent implements OnInit {
     }
   }
   search() {
+    this.storage.policy.selectedCustomer = null;
+    this.storage.policy.selectedPolicy = null;
+    this.storage.policy.inPolicy = false;
+    this.searchData = [];
+    this.isSearched = false;
     this.request.post('api/policy/search', this.form.value).subscribe((response) => {
+      this.isSearched = true;
 
-      if (response.data) {
+      if (response) {
         this.storage.policy.searchData = response.data;
         this.searchData = response.data;
+        this.request.error = null;
       } else {
+        this.searchData = []
         this.request.onTheGo = false;
-
       }
 
     });

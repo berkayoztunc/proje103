@@ -54,7 +54,7 @@ export class CustomerComponent implements OnInit {
   }
   save(): void {
     let hand = this.form.value
-    hand['CUSTOMER_ID'] = this.storage.policy.selectedPolicy['CUSTOMER_ID']
+    hand['CUSTOMER_ID'] = this.storage.policy.selectedCustomer['CUSTOMER_ID']
     
     this.request.update('api/customers/' + this.storage.policy.selectedPolicy.POLICY_ID , this.form.value).subscribe((response) => {  
       if(response){

@@ -26,7 +26,7 @@ export class UserFormComponent implements OnInit {
       USER_ID: [''],
       NAME: ['', Validators.required],
       EMAIL: ['', [Validators.email, Validators.required]],
-      ACTIVE: [''],
+      ACTIVE: [false],
       ROLE_ID : [null, Validators.required]
     });
   }
@@ -69,7 +69,9 @@ export class UserFormComponent implements OnInit {
       if (!this.edit) {
         const hand = this.form.value;
         hand.check = true;
-        this.request.update('api/users/' + this.storage.user.selectedUser.USER_ID, hand).subscribe((response) => {
+        console.log(hand.ACTIVE);
+        
+        this.request.update('api/users/' + this.storage.user.selectedUser.item.USER_ID, hand).subscribe((response) => {
               this.storage.user.users[this.storage.user.selectedUser.index] = hand;
               this.goBack();
         });

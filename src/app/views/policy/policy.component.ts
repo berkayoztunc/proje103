@@ -5,6 +5,8 @@ import { StoreService } from 'src/app/services/store.service';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CustomerComponent } from './customer/customer.component';
+import { AdressComponent } from './address/address.component';
+import { ExternalComponent } from './external/external.component';
 
 
 @Component({
@@ -43,13 +45,24 @@ export class PolicyComponent implements OnInit {
   }
   info() {
     let obj = Object.keys(this.storage.policy.selectedCustomer);
-    obj = obj.splice(0, obj.length - 1);
+    obj = obj.splice(0, obj.length - 4);
     return obj;
   }
   infoPolicy() {
     let obj = Object.keys(this.storage.policy.selectedPolicy);
+    obj = obj.splice(0, obj.length-2);
+    return obj;
+  }
+  infoPolicyProducty(){
+    let obj = Object.keys(this.storage.policy.selectedPolicy.product[0]);
     obj = obj.splice(0, obj.length);
     return obj;
+  }
+  externalChange(){
+    this.modalService.open(ExternalComponent);
+  }
+  addressChange(){
+    this.modalService.open(AdressComponent)
   }
   ngOnInit() {
 

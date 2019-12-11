@@ -1,11 +1,11 @@
 <div class="row m-0 p-0">
-  <div class="col-md-8 p-0">
-      <router-outlet></router-outlet>     
-      
+  <div class="col-md-9 p-0">
+    <router-outlet></router-outlet>
+
   </div>
-  <div class="col-md-4 p-0 sidebar"*ngIf="storage.policy.selectedCustomer" >
-    <div class="list-group filter-wrap" >
-      <article class="list-group-item" *ngIf="storage.policy.selectedPolicy">
+  <div class="col-md-3 p-0 sidebar" *ngIf="storage.policy.selectedCustomer">
+    <div class="list-group filter-wrap">
+      <article class="list-group-item m-1" *ngIf="storage.policy.selectedPolicy">
         <header class="filter-header">
           <a href="#" data-toggle="collapse" data-target="#collapse2" aria-expanded="true" class="">
             <i class="icon-action fa fa-chevron-down"></i>
@@ -15,11 +15,32 @@
         <div class="filter-content collapse show" id="collapse2">
           <div *ngFor="let infoPolicy of infoPolicy()">
             <p class="text-muted cpl ">{{'policy.' +infoPolicy | translate}}</p>
-            <p class="text-muted ppl">{{storage.policy.selectedPolicy[infoPolicy]}}</p>
+            <p class="text-muted ppl">{{storage.policy.selectedPolicy[infoPolicy] | dateOverview}}</p>
           </div>
-        </div> <!-- collapse -filter-content  .// -->
+        </div>
+        <div class="row m-0" *permissions="'policy.external_policy_number'">
+          <div class="col-md-6 p-2">
+            <a class="btn  btn-xs btn-primary text-white"  (click)="externalChange()"
+              *ngIf="storage.policy.selectedPolicy" >{{ 'policy.EXTERNAL_POLICY_NUMBER' | translate }}</a>
+          </div>
+        </div>
       </article>
-      <article class="list-group-item mt-2" >
+
+      <article class="list-group-item m-1" *ngIf="storage.policy.selectedPolicy">
+        <header class="filter-header">
+          <a href="#" data-toggle="collapse" data-target="#collapse4" aria-expanded="true" class="">
+            <i class="icon-action fa fa-chevron-down"></i>
+            <h6 class="title">{{ 'policy.product_info' | translate }} </h6>
+          </a>
+        </header>
+        <div class="filter-content collapse show" id="collapse4">
+          <div *ngFor="let infoProduct of infoPolicyProducty()">
+            <p class="text-muted cpl ">{{'policy.' +infoProduct | translate}}</p>
+            <p class="text-muted ppl">{{storage.policy.selectedPolicy.product[0][infoProduct]}}</p>
+          </div>
+        </div>
+      </article>
+      <article class="list-group-item m-1">
         <header class="filter-header">
           <a href="#" data-toggle="collapse" data-target="#collapse1" aria-expanded="true" class="">
             <i class="icon-action fa fa-chevron-down"></i>
@@ -32,7 +53,16 @@
             <p class="text-muted ppl ">{{storage.policy.selectedCustomer[info]}}</p>
           </div>
         </div> <!-- collapse -filter-content  .// -->
-        <a class="btn btn-block btn-info text-white" (click)="editCustomer()">{{ 'policy.edit_customer_button' | translate }}</a>
+        <div class="row m-0">
+          <div class="col-md-6 p-2">
+            <a class="btn btn-xs btn-info text-white" (click)="editCustomer()"
+              *ngIf="storage.policy.selectedPolicy">{{ 'policy.edit_customer_button' | translate }}</a>
+          </div>
+          <div class="col-md-6 p-2">
+            <a class="btn  btn-xs btn-primary text-white" (click)="addressChange()"
+              *ngIf="storage.policy.selectedPolicy">{{ 'policy.edit_customer_adress' | translate }}</a>
+          </div>
+        </div>
 
       </article>
 

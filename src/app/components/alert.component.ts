@@ -10,9 +10,8 @@ export class AlertComponent implements OnInit {
     constructor(public request: RequestService) { }
 
     ngOnInit() {
-        console.log(this.request.error);
 
-     }
+    }
     ngOnDestroy() {
         this.request.error = null;
     }

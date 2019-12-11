@@ -1,0 +1,22 @@
+<loader>
+
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">{{ 'modal.external.title' | translate }}</h5>
+
+            <app-alert></app-alert>
+            <form [formGroup]="form" (ngSubmit)="save()">
+                <div class="form-group">
+                    <label>{{'policy.EXTERNAL_POLICY_NUMBER'|translate}} </label>
+                    <input maxlength="200" type="text" class="form-control"
+                        placeholder="{{'policy.EXTERNAL_POLICY_NUMBER'|translate}}" formControlName="EXTERNAL_POLICY_NUMBER" name="EXTERNAL_POLICY_NUMBER">
+                </div>
+                <hr>
+                <button type="submit" class="btn btn-xs btn-primary float-right text-white"
+                    [disabled]="!form.valid">{{ 'KAYDET' | translate }}</button>
+                <a class="btn btn-xs btn-warning float-right text-white mr-1"
+                    (click)="cancel()">{{ 'cancel' | translate }}</a>
+            </form>
+        </div>
+    </div>
+</loader>

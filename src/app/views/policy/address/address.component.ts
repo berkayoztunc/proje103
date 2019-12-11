@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { RequestService } from 'src/app/services/request.service';
 import { StoreService } from 'src/app/services/store.service';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 
 @Component({
@@ -29,7 +29,7 @@ export class AdressComponent implements OnInit {
     this.form = this.fb.group({
       ADDRESS: [null],
       CITY_ID: [null],
-      COUNTRY_ID: [null]
+      COUNTRY_ID: [1,Validators.required]
     });
   }
 
@@ -37,6 +37,12 @@ export class AdressComponent implements OnInit {
     this.request.get('api/countries').subscribe((response) => {
       this.countries = response.data;
     });
+    this.form.patchValue({
+      'ADDRESS' : this.storage.policy.selectedCustomer.ADDRESS,
+      "CITY_ID"  : this.storage.policy.selectedCustomer.CITY_ID,
+      "COUNTRY_ID": this.storage.policy.selectedCustomer.COUNTRY_ID, 
+    })
+    this.cityGet();
   }
   cityGet(){
     if(this.form.value['COUNTRY_ID']){

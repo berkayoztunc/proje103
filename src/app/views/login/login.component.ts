@@ -15,7 +15,7 @@ import * as jwt_decode from 'jwt-decode';
 export class LoginComponent implements OnInit {
   model: any = {
     email: 'ilhan@tema.com.tr',
-    password: 'Tema0100',
+    password: 'Tema01001',
     application: 'pp'
   };
   loading = false;
@@ -44,9 +44,13 @@ export class LoginComponent implements OnInit {
               this.storage.auth.token = resp.token;
               const tokenParse = jwt_decode(this.storage.auth.token);
               this.storage.auth.permissions = resp.data;
-              this.storage.auth.mapedPermissions = resp.data.map((item) => {
-                return item.PERMISSION;
-              });
+              this.storage.auth.mapedPermissions = [];
+              if(resp.data){
+                this.storage.auth.mapedPermissions = resp.data.map((item) => {
+                  return item.PERMISSION;
+                });
+              }
+              
               this.storage.auth.user = tokenParse.user;
 
               this.router.navigate(['../dashboard']);

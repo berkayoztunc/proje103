@@ -3,55 +3,56 @@
     <div class="card">
         <div class="card-body">
             <h5 class="card-title">{{ 'modal.cancel.title.save' | translate }}</h5>
-
+            <hr>
             <app-alert></app-alert>
             <div class="row">
                 <div class="col-md-12">
+                    <h6>{{ 'policy.cancels.option' | translate}}</h6>
+                    <div class="form-check" *ngFor="let option of reasonData">
+                        <input class="form-check-input" type="radio" name="typeRadio"
+                            id="radio-{{option.CANCEL_REASON_TYPE}}" [(ngModel)]="selectedType" [value]="option">
+                        <label class="form-check-label"
+                            for="radio-{{option.id}}">{{    'policy.'+option.CANCEL_REASON_TYPE | translate}}
+                        </label>
+                    </div>
+                    <hr>
+                </div>
+                <div class="col-md-12">
+                    <h6>{{ 'policy.cancels.reason' | translate}}</h6>
+                    <div class="form-group">
+                        <label>{{'policy.CANCEL_RESON_SELECT'|translate}} </label>
+                        <select class="form-control form-control-sm" [(ngModel)]="selectedReason" *ngIf="selectedType">
+                            <option *ngFor="let items of selectedType.CANCEL_REASONS" [value]="items.CANCEL_REASON_ID">
+                                {{items.CANCEL_REASON}}</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="form-group" *ngIf="selectedType && selectedType.CANCEL_REASON_TYPE === 'IMMEDIATE'">
 
-                        <div class="form-check" *ngFor="let option of reasonData">
-                            <input class="form-check-input" 
-                            type="radio" 
-                            name="typeRadio" 
-                            id="radio-{{option.CANCEL_REASON_TYPE}}" 
-                            [(ngModel)]="selectedType"
-                            [value]="option">
-                            <label class="form-check-label" for="radio-{{option.id}}">{{option.CANCEL_REASON_TYPE}}
+                        <div class="form-check">
+                            <input class="form-check-input" [(ngModel)]="grand" type="radio" name="timeRadio"
+                                id="exampleRadios1" value="Full">
+                            <label class="form-check-label" for="exampleRadios1">
+                                {{'policy.FULL'|translate}}
                             </label>
                         </div>
-                        <hr>
-                        <div class="form-group">
-                            <label>{{'policy.CANCEL_RESON_SELECT'|translate}} </label>
-                            <select class="form-control form-control-sm" [(ngModel)]="selectedReason" *ngIf="selectedType">
-                                <option *ngFor="let items of selectedType.CANCEL_REASONS"  [value]="items.CANCEL_REASON_ID">
-                                    {{items.CANCEL_REASON}}</option>
-                            </select>
+                        <div class="form-check">
+                            <input class="form-check-input" [(ngModel)]="grand" type="radio" name="timeRadio"
+                                id="exampleRadios2" value="Pro-rata">
+                            <label class="form-check-label" for="exampleRadios2">
+                                {{'policy.PRORATA'|translate}}
+                            </label>
                         </div>
-                        <hr>
-                        <div class="form-group" *ngIf="selectedType && selectedType.CANCEL_REASON_TYPE === 'IMMEDIATE'">
-
-                            <div class="form-check">
-                                <input class="form-check-input"  [(ngModel)]="grand" type="radio" name="timeRadio" id="exampleRadios1" value="Full" >
-                                <label class="form-check-label" for="exampleRadios1">
-                                    FULL
-                                </label>
-                            </div>
-                            <div class="form-check">
-                                <input class="form-check-input" [(ngModel)]="grand"  type="radio" name="timeRadio" id="exampleRadios2" value="Pro-rata">
-                                <label class="form-check-label" for="exampleRadios2">
-                                    PRO-RATA  
-                                </label>
-                            </div>
-                        </div>
-
+                    </div>
                 </div>
 
 
             </div>
-            <div class="row">
-                <hr>
-                <a class="btn btn-xs btn-warning float-right text-white mr-1" (click)="cancel()">{{ 'cancel' | translate }}</a>
-                <button type="submit" class="btn btn-xs btn-primary float-right text-white" (click)="save()">{{ 'KAYDET' | translate }}</button>
-            </div>
+            <hr>
+            <button type="submit" class="btn btn-xs btn-primary float-right text-white" (click)="save()">{{ 'KAYDET' | translate }}</button>
+            <button class="btn btn-xs btn-warning float-right text-white mr-1" (click)="cancel()">{{ 'cancel' | translate }}</button>
         </div>
     </div>
+   
 </loader>

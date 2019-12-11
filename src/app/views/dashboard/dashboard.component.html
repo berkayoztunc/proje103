@@ -13,7 +13,7 @@
       <li class="nav-item active">
         <a class="nav-link" routerLink="policy/search">{{ 'menu.policy' | translate }}</a>
       </li>
-      <li class="nav-item dropdown active">
+      <li  *permissions="'defination.browse'" class="nav-item dropdown active">
         <a class="nav-link dropdown-toggle" href="javascript:void()" id="navbarDropdown" role="button"
           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           {{ 'menu.cruds' | translate }}
@@ -38,10 +38,12 @@
           <a class="dropdown-item" *permissions="'role.create'" routerLink="role">{{ 'menu.role' | translate }}</a>
           <a class="dropdown-item" *permissions="'service_type.create'"
             routerLink="serviceType">{{ 'menu.serviceType' | translate }}</a>
+          <a class="dropdown-item" *permissions="'auidit_type.create'"
+            routerLink="auditType">{{ 'menu.auditType' | translate }}</a>
           <a class="dropdown-item" *permissions="'user.browse'" routerLink="user">{{ 'menu.user' | translate }}</a>
         </div>
       </li>
-      <li class="nav-item dropdown active">
+      <li *permissions="'batch.browse'" class="nav-item dropdown active">
         <a class="nav-link dropdown-toggle" href="javascript:void()" id="navbarDropdown" role="button"
           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           {{ 'menu.upload-csv' | translate }}

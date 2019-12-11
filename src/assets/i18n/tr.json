@@ -1,8 +1,8 @@
 {
-	"BENEFIT_PACK_ID": "Yarar paketi",
+	"BENEFIT_PACK_ID": "Teminat paketi",
 	"BUSINESS_MODEL": "İş modeli",
 	"BUSINESS_PARTNER_ID": "Partner",
-	"Benefit": "Yararlar",
+	"Benefit": "Teminatlar",
 	"BenefitPack": {
 		"ACTIVE": "Aktif",
 		"BENEFIT_PACK": "Benefit paket adı",
@@ -106,15 +106,21 @@
 	},
 	"active": "Aktif",
 	"app_name": "Policy Platform",
+	"auditType": {
+		"AUDIT_TYPE": "Denetim tipi",
+		"AUDIT_TYPE_ID": "ID",
+		"EXPLANATION": "Açıklama",
+		"action": "İşlemler"
+	},
 	"benefit": {
 		"ACTIVE": "Aktif",
-		"BENEFIT": "Yarar adı ",
+		"BENEFIT": "Teminat adı ",
 		"BENEFIT_ID": "ID",
-		"EXPLANATION": "Yarar açıklaması",
+		"EXPLANATION": "Teminat açıklaması",
 		"action": "İşlemler",
 		"search": "Arama butonu",
 		"search_clear": "Arama temizle",
-		"search_placeholder": "Yarar adı ile ara"
+		"search_placeholder": "Teminat adı ile ara"
 	},
 	"breadcrumb": {
 		"dashboard": "Yönetim"
@@ -123,16 +129,25 @@
 		"permissions": "İzinler",
 		"role": "Roller"
 	},
-	"cancel": "İptal",
+	"cancel": "Vazgeç",
 	"delete_item": "Bir silme işlemi yapıyorsunuz, emin misiniz ?",
 	"dialog_no": "Hayır",
 	"dialog_yes": "Evet",
 	"email_send": "Şifre sıfırlanıcak eminmisiniz ?",
+	"error": {
+		"M-4001": "Yetkisiz işlem",
+		"M-4002": "E-mail veya şifre hatalı",
+		"M-4008": "Hesabınız kitlenmiştir, lütfen bir yetkiliden yardım alın",
+		"M-4015": "Çok falza kayıt geldi lütfen kriterleri kontrol edin",
+		"M-4016": "Arama sonucu bulunamadı. Lütfen arama kriterleriniz düzenleyin"
+	},
 	"form_change": "Kaydetmeden çıkmak için emin misiniz ?",
+	"kapat": "Kapat",
 	"menu": {
 		"askPolicy": "Poliçe sorgulama",
-		"benefit": "Yararlar",
-		"benefitPack": "Yarar paketleri",
+		"auditType": "Denetim tipi",
+		"benefit": "Teminatlar",
+		"benefitPack": "Teminat paketleri",
 		"cancelReason": "İptal nedenleri",
 		"cancelreason": "İptal nedenleri",
 		"channel": "Kanallar",
@@ -148,6 +163,7 @@
 			"newpasswordrepead": "Tekrar yeni şifre",
 			"oldpassword": "Eski şifre"
 		},
+		"permission": "İzinler",
 		"policy": "Poliçe Sorgulama",
 		"product": "Ürünler",
 		"resetpassword": "Şifreni sıfırla",
@@ -160,21 +176,29 @@
 	},
 	"modal": {
 		"EXPLANATION": "Bilgi verin",
+		"address": {
+			"title": "Adres güncelle"
+		},
+		"audittype": {
+			"title": {
+				"edit": "Açıklama düzenle"
+			}
+		},
 		"benefit": {
 			"title": {
-				"edit": "Yarar düzenle",
-				"save": "Yarar Ekle"
+				"edit": "Teminat düzenle",
+				"save": "Teminat Ekle"
 			}
 		},
 		"benefitPack": {
 			"title": {
-				"edit": "Yarar paketi düzenle",
-				"save": "Yarar paketi ekle"
+				"edit": "Teminat paketi düzenle",
+				"save": "Teminat paketi ekle"
 			}
 		},
 		"cancel": {
 			"title": {
-				"save": "İptal işlemleri"
+				"save": "Poliçe iptal seçenekleri"
 			}
 		},
 		"cancelReason": {
@@ -203,6 +227,9 @@
 		"explanation": {
 			"title": "Açıklama Ekle"
 		},
+		"external": {
+			"title": "Ek poliçe numarası güncelle"
+		},
 		"partner": {
 			"title": {
 				"edit": "Partner  düzenle",
@@ -210,7 +237,7 @@
 			}
 		},
 		"policyBenefit": {
-			"title": "Yararlar"
+			"title": "Teminatlar"
 		},
 		"product": {
 			"title": {
@@ -258,30 +285,46 @@
 		"CANCEL_RESON_SELECT": "Lütfen nedeni seçiniz",
 		"CITY": "Şehir",
 		"COUNTRY": "Ülke",
+		"CURRENCY": "Kur",
 		"CUSTOMER_ID": "MÜŞTERİ NUMARASI",
 		"CUSTOMER_TYPE": "MÜŞTERİ TİPİ",
 		"C_DATE": "OLUŞTURULMA ZAMANI",
 		"DELETED": "SİLİNMİŞMİ",
 		"EMAIL": "EMAIL",
+		"EXPIRY": "Vade sonu iptal",
 		"EXPLANATION": "AÇIKLAMA",
-		"EXTERNAL_POLICY_NUMBER": "UZATMALI POLİÇE NUMARASI",
+		"EXTERNAL_POLICY_NUMBER": "Ek poliçe numarası",
 		"FIRST_NAME": "AD",
+		"FULL": "Full iptal",
 		"HOME_PHONE": "EV TELEFONU",
+		"IMMEDIATE": "Hemen iptal",
 		"LAST_NAME": "SOYAD",
 		"MOBILE_PHONE": "CEP TELEFONU",
 		"NATIONAL_ID": "TCKN",
 		"OLD_POLICY_ID": "ESKİ POLİÇE NUMARASI",
+		"PARTNER": "İş ortağı",
+		"PARTNER_CHANNEL": "İş ortakları",
 		"POLICY_ID": "POLİÇE ID",
 		"POLICY_NUMBER": "POLİÇE NUMARASI",
 		"PREVIOUS_RENEWAL_DATE": "ÖNCEKİ YENİLEME ZAMANI",
+		"PRICE": "Fiyat",
+		"PRODUCT": "Ürün adı",
 		"PRODUCT_ID": "Ürün numarası",
+		"PRORATA": "Kısmi vadeli iptal",
 		"RENEWAL_DATE": "YENİLEME ZAMANI",
+		"SERVICE_TYPE": "Servis tipi",
+		"SOLDBY": "Tarafından satılan",
 		"START_DATE": "BAŞLANGIÇ TARİHİ",
 		"STATUS": "DURUMU",
+		"TURNAROUND": "Geri kazanım",
 		"WORK_PHONE": "İŞ TELEFONU",
 		"add_history": "Not ekle",
-		"benefit": "Poliçe yararları",
-		"cancel": "İptal",
+		"benefit": "Poliçe Teminatlerı",
+		"cancel": "Poliçe iptal",
+		"cancels": {
+			"option": "İptal seçenekleri",
+			"reason": "İptal sebebi"
+		},
 		"customer_addreses": "Müşteri adresi",
 		"customer_info": "Müşteri bilgisi",
 		"edit_customer_adress": "Müşteri adresi güncelle",
@@ -295,9 +338,10 @@
 		},
 		"national_id": "TCKN",
 		"number": "Poliçe numarası ",
-		"phone_number": "Telefon numarası",
+		"phone_number": "Cep telefonu",
 		"policy_actions": "Poliçe aksiyonları",
 		"policy_info": "Poliçe detayı",
+		"product_info": "Ürün detayı",
 		"reced_service_history": "Poliçede yapılan işlem geçmişi",
 		"reinstate": "Yeniden canlandır",
 		"reset_history": "Geçmişi güncelle",
@@ -312,6 +356,7 @@
 			"policy_number": "Poliçe numarası"
 		},
 		"search_not_found": "Arama sonucu bulunamadı. Lütfen arama kriterleriniz düzenleyin",
+		"search_to_many": "Çok falza kayıt geldi lütfen kriterleri kontrol edin",
 		"service_button": "Poliçeyi Aç"
 	},
 	"product": {
@@ -348,6 +393,7 @@
 		"search_clear": "Arama temizle"
 	},
 	"save": "Kaydet",
+	"save_password": "Şifre sıfırla",
 	"search": "Arama",
 	"selected": "Seçililer",
 	"success_info": "İşleminiz başarılıdır",

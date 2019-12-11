@@ -106,6 +106,12 @@
 	},
 	"active": "Aktive",
 	"app_name": "Policy Platform",
+	"auditType": {
+		"AUDIT_TYPE": "Audit type",
+		"AUDIT_TYPE_ID": "ID",
+		"EXPLANATION": "Explanation",
+		"action": "Actions"
+	},
 	"benefit": {
 		"ACTIVE": "Active",
 		"BENEFIT": "Benefit name",
@@ -128,9 +134,18 @@
 	"dialog_no": "No",
 	"dialog_yes": "Yeah",
 	"email_send": "Are you sure the password will be reset?",
+	"error": {
+		"M-4001": "",
+		"M-4002": "",
+		"M-4008": "",
+		"M-4015": "",
+		"M-4016": ""
+	},
 	"form_change": "Are you sure to exit without saving?",
+	"kapat": "Close",
 	"menu": {
 		"askPolicy": "Policy search",
+		"auditType": "Audit type",
 		"benefit": "Benefit",
 		"benefitPack": "Benefit Pack",
 		"cancelReason": "Cancellation Reason Type",
@@ -148,6 +163,7 @@
 			"newpasswordrepead": "Confirim new password",
 			"oldpassword": "Old password"
 		},
+		"permission": "Permits",
 		"policy": "Policy Inquiry",
 		"product": "Product",
 		"resetpassword": "Reset Password",
@@ -160,6 +176,14 @@
 	},
 	"modal": {
 		"EXPLANATION": "Give information",
+		"address": {
+			"title": "Update Address"
+		},
+		"audittype": {
+			"title": {
+				"edit": "Edit description"
+			}
+		},
 		"benefit": {
 			"title": {
 				"edit": "Edit utility",
@@ -174,7 +198,7 @@
 		},
 		"cancel": {
 			"title": {
-				"save": "Cancellation"
+				"save": "Policy cancellation options"
 			}
 		},
 		"cancelReason": {
@@ -202,6 +226,9 @@
 		},
 		"explanation": {
 			"title": "Add a description"
+		},
+		"external": {
+			"title": "Update additional policy number"
 		},
 		"partner": {
 			"title": {
@@ -258,30 +285,46 @@
 		"CANCEL_RESON_SELECT": "Please select reason",
 		"CITY": "City",
 		"COUNTRY": "Country",
+		"CURRENCY": "Exchange Rate",
 		"CUSTOMER_ID": "customer number",
 		"CUSTOMER_TYPE": "Customer type",
 		"C_DATE": "Creation time",
 		"DELETED": "deleted the",
 		"EMAIL": "e-mail",
+		"EXPIRY": "Expiry Cancellation",
 		"EXPLANATION": "Explanation",
-		"EXTERNAL_POLICY_NUMBER": "External policy ID",
+		"EXTERNAL_POLICY_NUMBER": "External policy number",
 		"FIRST_NAME": "Name",
+		"FULL": "Full cancellation",
 		"HOME_PHONE": "Home phone",
+		"IMMEDIATE": "Cancel immediately",
 		"LAST_NAME": "Surname",
 		"MOBILE_PHONE": "Mobile phone",
 		"NATIONAL_ID": "identification information of accounts",
 		"OLD_POLICY_ID": "OLD POLICY NUMBER",
+		"PARTNER": "business partner",
+		"PARTNER_CHANNEL": "Work partners",
 		"POLICY_ID": "Policy Id",
 		"POLICY_NUMBER": "Policy number",
 		"PREVIOUS_RENEWAL_DATE": "PREVIOUS RENEWAL TIME",
+		"PRICE": "Price",
+		"PRODUCT": "Name of the product",
 		"PRODUCT_ID": "Product number",
+		"PRORATA": "Pro-rata cancellation",
 		"RENEWAL_DATE": "RENEWAL TIME",
+		"SERVICE_TYPE": "Service type",
+		"SOLDBY": "Sold By",
 		"START_DATE": "Start date",
 		"STATUS": "Availability",
+		"TURNAROUND": "Regain",
 		"WORK_PHONE": "Office phone",
 		"add_history": "Add note",
 		"benefit": "Policy benefits",
-		"cancel": "Cancel",
+		"cancel": "Policy cancellation",
+		"cancels": {
+			"option": "Cancel options",
+			"reason": "Reason for cancellation"
+		},
 		"customer_addreses": "Customer address",
 		"customer_info": "Customer detail",
 		"edit_customer_adress": "Update customer address",
@@ -295,9 +338,10 @@
 		},
 		"national_id": "National ID",
 		"number": "Policy number",
-		"phone_number": "Phone Number",
+		"phone_number": "Mobile phone",
 		"policy_actions": "Policy actions",
 		"policy_info": "Policy Details",
+		"product_info": "Product details",
 		"reced_service_history": "Policy transaction history",
 		"reinstate": "Reinstate",
 		"reset_history": "Update history",
@@ -312,6 +356,7 @@
 			"policy_number": "Policy number"
 		},
 		"search_not_found": "No search results found. Please edit your search criteria",
+		"search_to_many": "Please check your criteria",
 		"service_button": "Open Policy"
 	},
 	"product": {
@@ -348,6 +393,7 @@
 		"search_clear": "Search clear"
 	},
 	"save": "Save",
+	"save_password": "Reset Password",
 	"search": "Search button",
 	"selected": "Selected",
 	"success_info": "Your transaction was successful",

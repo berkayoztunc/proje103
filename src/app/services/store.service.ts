@@ -13,6 +13,10 @@ export class StoreService {
         historys : [],
         inPolicy : false,
     };
+    auditType = {
+        auditTypes : [],
+        selectedAuditType : null
+    }
     auth = {
         token : '',
         user : {

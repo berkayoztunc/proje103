@@ -45,3 +45,10 @@ table {
     padding: 15px 2px 0px 2px;
     cursor: pointer;
 }
+.desabled.card-body {
+    cursor: none;
+}
+.desabled {
+    background-color: rgba(245, 245, 245, 1);
+    opacity: .4;
+ }

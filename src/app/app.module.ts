@@ -36,14 +36,24 @@ import { NgxJsonViewerModule } from 'ngx-json-viewer';
 import { PolicyBenefitComponent } from './views/policy/policyBenefits/policy-benefit.component';
 import { CustomerComponent } from './views/policy/customer/customer.component';
 import { AdressComponent } from './views/policy/address/address.component';
+import { ExternalComponent } from './views/policy/external/external.component';
+import { AuditTypeFormComponent } from './views/auditType/form/auditType-form.component';
+
+import { registerLocaleData } from '@angular/common';
+import localtr from '@angular/common/locales/tr';
+import localeTrExtra from '@angular/common/locales/extra/tr'
+
+registerLocaleData(localtr, 'tr-TR', localeTrExtra);
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, '/assets/i18n/', '.json');
 }
 @NgModule({
   declarations: [
+    ExternalComponent,
     CancelComponent,
     AdressComponent,
+    AuditTypeFormComponent,
     PolicyBenefitComponent,
     CustomerComponent,
     AppComponent,
@@ -63,7 +73,9 @@ export function HttpLoaderFactory(http: HttpClient) {
     ResetPasswordComponent,
   ],
   entryComponents : [
+    ExternalComponent,
     CustomerComponent,
+    AuditTypeFormComponent,
     AdressComponent,
     CancelComponent,
     PolicyBenefitComponent,

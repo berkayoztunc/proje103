@@ -21,8 +21,8 @@
           </div>
         </div>
 
-        <div class="col-2">
-          <div class="card mb-0 bg-success text-white" (click)="reinsdate()">
+        <div class="col-2" [class]="storage.policy.selectedPolicy.STATUS != 'LIVE' ? 'col-2' : 'desabled col-2'">
+          <div class="card mb-0 bg-success text-white" (click)="reinsdate()" *permissions="'policy.external_policy_number'">
             <div class="card-body text-center">
               <i class="fas fa-2x fa-sync"></i>
               <p>{{ 'policy.reinstate' | translate }}</p>
@@ -45,10 +45,10 @@
               </div>
             </div>
           </div>
-        <div class="col-2">
+        <div  [class]="storage.policy.selectedPolicy.STATUS != 'LIVE' ? 'desabled col-2' : 'col-2'">
           <div class="card mb-0 bg-danger text-white" (click)="cancelOpen()">
             <div class="card-body text-center">
-              <i class="fas fa-2x fa-times"></i>
+              <i class="fas fa-2x fa-file-excel"></i>
               <p>{{ 'policy.cancel' | translate }}</p>
             </div>
           </div>
@@ -71,7 +71,7 @@
           </thead>
           <tbody>
             <tr *ngFor="let history of storage.policy.historys;let i = index">
-              <td width="15%">{{history.M_DATE | date:'short' }}</td>
+              <td width="15%">{{history.M_DATE | date:'dd/MM/yyyy hh:mm' }}</td>
               <td width="15%">{{history.M_USER_NAME}}</td>
               <td width="20%">{{history.AUDIT_TYPE}}</td>
               <td width="50%" appShowAll class="spacific">{{history.EXPLANATION}}</td>

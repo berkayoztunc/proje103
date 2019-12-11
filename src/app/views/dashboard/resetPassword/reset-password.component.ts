@@ -27,7 +27,7 @@ export class ResetPasswordComponent {
       PASSWORD: ['', Validators.required],
       NEW_PASSWORD: ['', Validators.required],
       CONIFIRM_PASSWORD: ['', Validators.required],
-    }, {validator: this.checkPasswords });
+    }, { validator: this.checkPasswords });
   }
   save(): void {
     this.request.update('api/users/change-password/' + this.storage.auth.user.USER_ID, this.form.value).subscribe((response) => {
@@ -37,14 +37,14 @@ export class ResetPasswordComponent {
       }
     });
   }
-  close() {
+  cancel() {
     this.activeModal.dismiss();
   }
   checkPasswords(group: FormGroup) {
-  const pass = group.get('NEW_PASSWORD').value;
-  const old_password = group.get('PASSWORD').value;
-  const confirmPass = group.get('CONIFIRM_PASSWORD').value;
-  return pass === confirmPass ? pass === old_password ? { oldSame: true }  : null : { notSame: true };
-}
+    const pass = group.get('NEW_PASSWORD').value;
+    const old_password = group.get('PASSWORD').value;
+    const confirmPass = group.get('CONIFIRM_PASSWORD').value;
+    return pass === confirmPass ? pass === old_password ? { oldSame: true } : null : { notSame: true };
+  }
 
 }

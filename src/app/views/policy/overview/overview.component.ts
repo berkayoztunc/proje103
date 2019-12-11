@@ -35,15 +35,21 @@ export class OverviewComponent implements OnInit {
     this.modalService.open(ExplanationComponent);
   }
   cancelOpen() {
-    this.modalService.open(CancelComponent);
+    if(this.storage.policy.selectedPolicy.STATUS =='LIVE'){
+      this.modalService.open(CancelComponent);
+    }
   }
   reinsdate() {
-    this.request.get('api/policy/reinstate/'+this.storage.policy.selectedPolicy.POLICY_ID).subscribe((response)=>{
-      if(response){
-        this.storage.policy.historys = response.data;
-        this.storage.successDialog()
-      }
-    })
+    if(this.storage.policy.selectedPolicy.STATUS != 'LIVE'){
+      this.request.get('api/policy/reinstate/'+this.storage.policy.selectedPolicy.POLICY_ID).subscribe((response)=>{
+        if(response){
+          this.storage.policy.historys = response.data;
+          this.storage.successDialog()
+        }
+      })
+    }
+
+    
   }
   addressChange(){
     this.modalService.open(AdressComponent)

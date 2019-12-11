@@ -42,6 +42,7 @@ export class ProductComponent implements OnInit {
     this.modalService.open(ProductFormComponent, {size: 'xl'});
 
   }
+  
   activation(item) {
     this.request.post('api/products/' + item.PRODUCT_ID, {ACTIVE : !item.ACTIVE}).subscribe((response) => {
       if (response) {

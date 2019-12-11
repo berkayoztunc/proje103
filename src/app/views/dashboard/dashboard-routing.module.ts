@@ -18,6 +18,7 @@ const routes: Routes = [
       { path: 'serviceType', loadChildren: () => import('../serviceType/serviceType.module').then(m => m.ServiceTypeModule) },
       { path: 'user', loadChildren: () => import('../user/user.module').then(m => m.UserModule) },
       { path: 'policy', loadChildren: () => import('../policy/policy.module').then(m => m.PolicyModule)},
+      { path: 'auditType', loadChildren: () => import('../auditType/serviceType.module').then(m => m.auditTypeModule)},
       { path: 'upload-csv', loadChildren: () => import('../csvUpload/csv-upload.module').then(m => m.CsvUploadModule)},
     ]
   },

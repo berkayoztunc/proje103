@@ -1,0 +1,31 @@
+<div class="card">
+    <div class="card-body">
+        <div class="row pt-3 table-scrool">
+            <div class="col-12  tableFixHead">
+                <table class="table">
+                    <thead class="bg-primary text-white">
+                        <tr>
+                            <th>{{ 'auditType.AUDIT_TYPE_ID' |translate}}</th>
+                            <th>{{'auditType.AUDIT_TYPE' | translate}}</th>
+                            <th>{{'auditType.EXPLANATION'|translate}}</th>
+                            <th>{{'auditType.action'|translate}}</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <tr *ngFor="let auditType of data; let i = index">
+                            <td scope="row" width="5%">{{auditType.AUDIT_TYPE_ID}}</td>
+                            <td>{{auditType.AUDIT_TYPE}}</td>
+                            <td>{{auditType.EXPLANATION}}</td>
+                            <td>
+                                <a *permissions="'audit_type.update'" class="btn btn-xs btn-warning "
+                                    (click)="select(auditType,i)"><i class="fas fa-edit"></i></a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+    </div>
+</div>
