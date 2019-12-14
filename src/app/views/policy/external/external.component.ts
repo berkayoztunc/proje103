@@ -48,6 +48,7 @@ export class ExternalComponent implements OnInit {
     this.request.update('api/policy/external-policy-number/' + this.storage.policy.selectedPolicy.POLICY_ID, this.form.value).subscribe((response) => {
       if (response) {
         this.storage.policy.historys = response.data;
+        this.storage.policy.selectedPolicy.EXTERNAL_POLICY_NUMBER = this.form.value.EXTERNAL_POLICY_NUMBER
         this.goBack();
         this.storage.successDialog()
       }

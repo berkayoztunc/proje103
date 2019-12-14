@@ -6,7 +6,7 @@
         <div class="card-body">
           <form [formGroup]="form" (ngSubmit)="search()" autocomplete="off">
             <div class="form-group">
-              <label class="text-muted">{{ 'policy.search.policy_number' | translate }}</label>
+              <label class="text-muted" (click)="c()">{{ 'policy.search.policy_number' | translate }}</label>
               <input minlength="5" maxlength="30" type="text" formControlName='POLICY_NUMBER' name='POLICY_NUMBER'
                 placeholder="%" class="form-control form-control-sm">
               <label class="text-muted">{{ 'policy.search.national_id' | translate }}</label>

@@ -93,7 +93,6 @@ export class RequestService {
   uploadPost(url, params):Observable<any>{
 
     let formData = new FormData();
-    console.log(params);
     
     formData.append('FILE', params.file);
     formData.append('FILE_NAME', params.file_name);
@@ -158,15 +157,11 @@ export class RequestService {
         break;
       case 2020:
           this.error = Object.assign({}, error);
-          console.log(this.error);
           this.systemError.next(error);
           break;
       default:
         break;
     }
   }
-  /** Log a UserService message with the MessageService */
-  private log(message: string) {
-    console.log(message);
-  }
+ 
 }

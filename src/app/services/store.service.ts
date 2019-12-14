@@ -117,7 +117,7 @@ export class StoreService {
             showCancelButton: false,
             confirmButtonColor: '#3085d6',
             cancelButtonColor: '#d33',
-            confirmButtonText:  this.translate.translations[this.translate.currentLang].dialog_yes,
+            confirmButtonText:  this.translate.translations[this.translate.currentLang].dialog_okey,
           });
     }
 }

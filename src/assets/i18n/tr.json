@@ -143,6 +143,7 @@
 	"delete_item": "Bir silme işlemi yapıyorsunuz, emin misiniz ?",
 	"dialog_no": "Hayır",
 	"dialog_yes": "Evet",
+	"dialog_okey" : "Tamam",
 	"email_send": "Şifre sıfırlanıcak eminmisiniz ?",
 	"error": {
 		"M-4001": "Yetkisiz işlem",

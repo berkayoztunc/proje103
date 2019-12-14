@@ -47,7 +47,7 @@
                     "type" : "date"
                 },
                 "EXTERNAL_POLICY_NUMBER": {
-                    "validation":"required|max:30",
+                    "validation":"max:30",
                     "type":"string"
                 },
                 "PRODUCT_ID": {
@@ -138,6 +138,23 @@
                 "CITY_CODE" : {
                     "validation":"required|max:10",
                     "type":"string"
+                }
+            }
+        },
+        "cancel-policy" : {
+            "colm" : ["POLICY_NUMBER","CANCEL_DATE","CANCEL_REASON"],
+            "rule" : {
+                "POLICY_NUMBER" : {
+                    "validation" : "required|max:100|min:3",
+                    "type" : "string"
+                },
+                "CANCEL_DATE": {
+                    "validation":"required|date:dd/mm/yyyy",
+                    "type":"date"
+                },
+                "CANCEL_REASON" : {
+                    "validation":"required|number",
+                    "type":"integer"
                 }
             }
         }

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { Papa } from 'ngx-papaparse';
 import { ValidatorTranformatorService } from 'src/app/services/validator-tranformator.service';
 import { ActivatedRoute } from '@angular/router';
@@ -10,7 +10,7 @@ import { StoreService } from 'src/app/services/store.service';
   templateUrl: './csv-upload.component.html',
   styleUrls: ['./cvs-upload.component.css']
 }) 
-export class CsvUploadComponent {
+export class CsvUploadComponent implements OnInit {
   fileData: File = null;
   fileError = null;
   handData = [];
@@ -18,19 +18,26 @@ export class CsvUploadComponent {
   code = false;
   rawData = null;
   uploadSuccess = false;
+  element = null;
+  type = null;
   formGroup = this.fb.group({
     file: [null],
     file_name : [''],
     file_type  : [''],
   });
   constructor(private storage : StoreService,private fb: FormBuilder,private request :RequestService,private papa: Papa, public ValidatorTranformatorService: ValidatorTranformatorService,private route: ActivatedRoute) {}
+  ngOnInit(){
+   this.clear;
+  }
+  
   fileProgress(event) {
-    let type = this.route.snapshot.paramMap.get("type")
+    this.type  = this.route.snapshot.paramMap.get("type")
+    this.element = event.target;
     this.fileData = event.target.files[0]
     this.preview();
     this.formGroup.patchValue({
       file: this.fileData,
-      file_type : type,
+      file_type : this.type,
       file_name : this.fileData.name 
     });    
   }
@@ -43,6 +50,15 @@ export class CsvUploadComponent {
       }
     });
   }
+  clear(){
+    this.uploadSuccess = false;
+    this.rawData = null;
+    this.handData = [];
+    this.fileError = null
+    this.header = [];
+    this.element.files = null;
+    this.element.value = null;
+  }
   send(){
     let type = this.route.snapshot.paramMap.get("type")
     let data = JSON.stringify(this.rawData);
@@ -54,8 +70,11 @@ export class CsvUploadComponent {
     });
   }
   preview() {
-    let type = this.route.snapshot.paramMap.get("type")
+    this.request.error = null;
+    this.clear();
+    this.type = this.route.snapshot.paramMap.get("type")
     const reader = new FileReader();
+    
     reader.readAsText(this.fileData);
     reader.onload = (event) => {
         const data =  reader.result ;
@@ -63,8 +82,8 @@ export class CsvUploadComponent {
           header : true,
           complete: (result) => {
             this.uploadSuccess = true;
-            this.handData = this.ValidatorTranformatorService.validateWithTransform(result.data, type);
-            this.fileError = this.ValidatorTranformatorService.errorsbag(result.data, type);            
+            this.handData = this.ValidatorTranformatorService.validateWithTransform(result.data, this.type);
+            this.fileError = this.ValidatorTranformatorService.errorsbag(result.data, this.type);            
             this.header = this.ValidatorTranformatorService.header;
           }
       };

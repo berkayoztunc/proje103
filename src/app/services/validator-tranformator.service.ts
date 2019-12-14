@@ -50,9 +50,7 @@ export class ValidatorTranformatorService {
                 }
                 data[i][shcmaType.colm[j]] = handColum;
               } else{
-                this.request.error = "M-6001"
-                console.log(data[i],shcmaType.colm[j] , handColum);
-                
+                this.request.error = "M-6001"                
                 throw "Beklenmedik dosya";
                 
               }
@@ -188,7 +186,7 @@ export class ValidatorTranformatorService {
     }
   }
    required(key, value, param, row) {
-      if (value == null || value == undefined ) {
+      if (value == null || value == undefined || value == '') {
         return {
           title : 'Zorunlu alan',
           valid : false,

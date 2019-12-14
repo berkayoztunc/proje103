@@ -17,7 +17,6 @@ export class DateOverviewPipe implements PipeTransform {
         var res = patt.test(date);
         if(res){
             let transformer = new Date(date);
-            console.log(transformer);
             let dater = new DatePipe("tr-TR").transform(transformer,'dd/MM/yyy');
             return dater
         }

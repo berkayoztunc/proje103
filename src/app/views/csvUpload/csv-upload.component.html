@@ -4,9 +4,11 @@
 
     <div class="card">
       <div class="card-body">
+        <div class="card-title">
+        </div>
         <div class="row">
           <div class="col-3">
-            <div class="custom-file">
+            <div class="custom-file">            
               <input type="file" class="custom-file-input form-control-sm" id="validatedCustomFile" required
                 (change)="fileProgress($event)" accept="text/csv">
               <label class="custom-file-label" for="validatedCustomFile">{{ 'upload.pleaceholder' | translate }}</label>
@@ -19,9 +21,12 @@
             <b>Toplam satır</b>: <span
               class="badge badge-primary text-white ">{{handData ? handData.length : '0'}}</span>
             <b (click)="send()">Toplam hata</b>: <span class="badge badge-danger text-white">{{fileError ? fileError.length : 0 }}</span>
-            <a (click)="code = !code" class="btn btn-warning float-right text-white btn-xs" data-toggle="tooltip" data-placement="right" title="JSON view">
+            <a (click)="code = !code" class="btn btn-warning mr-1 float-right text-white btn-xs" >
               <i class="fas fa-code" *ngIf="!code"></i>
               <i class="fas fa-list" *ngIf="code"></i>
+            </a>
+            <a (click)="clear()" *ngIf="uploadSuccess" class="btn btn-danger mr-1 float-right text-white btn-xs">
+              <i class="fas fa-trash" ></i>
             </a>
             <button *ngIf="fileError && fileError.length == 0 && uploadSuccess" type="submit"
               class="btn btn-success float-right text-white btn-xs mr-1"
