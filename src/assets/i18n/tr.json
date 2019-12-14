@@ -130,6 +130,16 @@
 		"role": "Roller"
 	},
 	"cancel": "Vazgeç",
+	"cancelReason": {
+		"ACTIVE": "Aktif",
+		"CANCEL_REASON": "İptal nedeni",
+		"CANCEL_REASON_ID": "ID",
+		"CANCEL_REASON_TYPE": "İptal nedeni tipi",
+		"action": "İşlemler",
+		"email_ad_placeholser": "İptal nedeni ile ara",
+		"search": "Arama butonu",
+		"search_clear": "Arama temizle"
+	},
 	"delete_item": "Bir silme işlemi yapıyorsunuz, emin misiniz ?",
 	"dialog_no": "Hayır",
 	"dialog_yes": "Evet",
@@ -137,25 +147,35 @@
 	"error": {
 		"M-4001": "Yetkisiz işlem",
 		"M-4002": "E-mail veya şifre hatalı",
+		"M-4003": "E-mail veya şifre hatalı",
+		"M-4007": "Önceki şifrenizle eşleşen bir şifre girdiniz, lütfen yeni bir şifre girin",
 		"M-4008": "Hesabınız kitlenmiştir, lütfen bir yetkiliden yardım alın",
-		"M-4015": "Çok falza kayıt geldi lütfen kriterleri kontrol edin",
-		"M-4016": "Arama sonucu bulunamadı. Lütfen arama kriterleriniz düzenleyin"
+		"M-4015": "Çok fazla kayıt geldi lütfen kriterleri kontrol edin",
+		"M-4016": "Arama sonucu bulunamadı. Lütfen arama kriterleriniz düzenleyin",
+		"M-6001": "Beklenmedik dosya"
 	},
 	"form_change": "Kaydetmeden çıkmak için emin misiniz ?",
 	"kapat": "Kapat",
 	"menu": {
 		"askPolicy": "Poliçe sorgulama",
+		"asset_update": "Asset güncelle",
 		"auditType": "Denetim tipi",
 		"benefit": "Teminatlar",
 		"benefitPack": "Teminat paketleri",
+		"cancel-policy": "Poliçe iptal et",
 		"cancelReason": "İptal nedenleri",
+		"cancel_policy": "Poliçe iptal",
 		"cancelreason": "İptal nedenleri",
 		"channel": "Kanallar",
 		"city": "Şehirler",
 		"country": "Ülkeler",
+		"create-policy": "Poliçe ekle",
 		"cruds": "Tanımlamalar",
 		"currency": "Para birimi",
+		"customer_update": "Müşteri güncelle",
+		"customer_update (2)": "Müşteri güncelle",
 		"dashboard": "Platform",
+		"external_policy_number": "Ek poliçe numarası güncelle",
 		"overview": "Poliçe işlemleri",
 		"partner": "Partnerler",
 		"password": {
@@ -166,12 +186,19 @@
 		"permission": "İzinler",
 		"policy": "Poliçe Sorgulama",
 		"product": "Ürünler",
+		"renew-policy": "Poliçe yenileme ",
+		"renew_policy": "Poliçe yenile",
 		"resetpassword": "Şifreni sıfırla",
 		"role": "Roller",
 		"search": "Müşteri veya poliçe arama",
 		"serviceType": "Servis Tipleri",
 		"signout": "Güvenli çıkış",
+		"update-asset": "Dosya yükle",
+		"update-customer": "Müşteri bilgisi güncelle",
+		"update-external-policy-number": "Ek poliçe numarası güncelle",
 		"upload-csv": "Dosya yükle",
+		"upload_policy": "Poliçe yükle",
+		"uploads": "Yüklemelerim",
 		"user": "Kullanıcı"
 	},
 	"modal": {
@@ -198,7 +225,7 @@
 		},
 		"cancel": {
 			"title": {
-				"save": "Poliçe iptal seçenekleri"
+				"save": "Poliçe iptal"
 			}
 		},
 		"cancelReason": {
@@ -264,6 +291,9 @@
 				"validation": "E-posta alanı için geçerli bir e-posta girin"
 			},
 			"name": "Ad soyad",
+			"password": {
+				"validation": "Şifre uyumlu değil"
+			},
 			"role": "Rol",
 			"title": {
 				"edit": "Kullanıcı düzenle",
@@ -303,7 +333,7 @@
 		"NATIONAL_ID": "TCKN",
 		"OLD_POLICY_ID": "ESKİ POLİÇE NUMARASI",
 		"PARTNER": "İş ortağı",
-		"PARTNER_CHANNEL": "İş ortakları",
+		"PARTNER_CHANNEL": "Kanal",
 		"POLICY_ID": "POLİÇE ID",
 		"POLICY_NUMBER": "POLİÇE NUMARASI",
 		"PREVIOUS_RENEWAL_DATE": "ÖNCEKİ YENİLEME ZAMANI",
@@ -327,8 +357,8 @@
 		},
 		"customer_addreses": "Müşteri adresi",
 		"customer_info": "Müşteri bilgisi",
-		"edit_customer_adress": "Müşteri adresi güncelle",
-		"edit_customer_button": "Müşteri bilgileri düzenle",
+		"edit_customer_adress": "Adresi güncelle",
+		"edit_customer_button": "Bilgileri düzenle",
 		"modal": {
 			"ADDRESS": "Adres",
 			"EXPLANATION": "Açıklama",
@@ -396,6 +426,16 @@
 	"save_password": "Şifre sıfırla",
 	"search": "Arama",
 	"selected": "Seçililer",
+	"serviceType": {
+		"ACTIVE": "Aktif",
+		"PREFIX": "Açıklama",
+		"SERVICE_TYPE": "Servis Tipi",
+		"SERVICE_TYPE_ID": "ID",
+		"action": "İşlemler",
+		"email_ad_placeholser": "Serivis tipi adı ile ara",
+		"search": "Arama butonu",
+		"search_clear": "Arama temizle"
+	},
 	"success_info": "İşleminiz başarılıdır",
 	"swal": {
 		"forgetpassword": {
@@ -406,6 +446,20 @@
 	},
 	"total_data": "Toplam kayıt",
 	"unselected": "Dahil olmayanlar",
+	"upload": {
+		"pleaceholder": "Lütfen bir dosya seçin",
+		"run": "Çalıştır",
+		"upload": "Dosya yükle"
+	},
+	"uploads": {
+		"BATCHE_ID": "ID",
+		"BATCHE_TYPE": "Toplu iş tipi",
+		"ERROR_COUNT": "Toplam hata",
+		"ERROR_FILE": "Hatalı kayıt dosyası",
+		"TOTAL_COUNT": "Toplam kayıt",
+		"UPDATED_FILE": "Yüklenmiş kaynak",
+		"title": "Yüklemeler"
+	},
 	"user": {
 		"action": "İşlemler",
 		"active": "Aktif",
@@ -414,7 +468,72 @@
 		"email_ad_placeholser": "ad ve email ile ara",
 		"id": "ID",
 		"name": "Ad soyad",
+		"role": "Rolü",
 		"search": "Arama butonu",
 		"search_clear": "Arama temizle"
+	},
+	"permisions": {
+		"audit_type.create": "Denetim tipi listele",
+		"audit_type.delete": "Denetim tipi sil",
+		"audit_type.update": "Denetim tipi güncelle",
+		"batch.browse": "Sorgu yükleme",
+		"benefit.create": "Teminat oluştur",
+		"benefit.delete": "Teminat sil ",
+		"benefit.edit": "Teminat düzenle",
+		"benefit.update": "Teminat güncelle",
+		"benefit_pack.add_benefit": "Teminat paketi teminat ekle",
+		"benefit_pack.benefit.sync": "Teminat paketi teminat eşleştir",
+		"benefit_pack.browse": "Teminat paketi listele",
+		"benefit_pack.create": "Teminat paketi oluştur",
+		"benefit_pack.delete": "Teminat paketi sil",
+		"benefit_pack.remove_benefit": "Teminat paketi teminat çıkart",
+		"benefit_pack.update": "Teminat paketi güncelle",
+		"cancel_reason.browse": "İptal nedenleri listele",
+		"cancel_reason.create": "İptal nedenleri oluştur",
+		"cancel_reason.delete": "İptal nedenleri sil",
+		"cancel_reason.update": "İptal nedenleri güncelle",
+		"city.browse": "Şehir listele",
+		"city.create": "Şehir oluştur",
+		"city.delete": "Şehir sil",
+		"city.update": "Şehir güncelle",
+		"country.browse": "Ülke listele",
+		"country.create": "Ülke oluştur",
+		"country.delete": "Ülke sil",
+		"country.update": "Ülke güncelle",
+		"currency.create": "Kur oluştur",
+		"currency.delete": "Kur sil",
+		"currency.update": "Kur güncelle",
+		"defination.browse": "Tanımlama incele",
+		"lang.change": "Dil değiştir",
+		"partner.create": "Ortak oluştur",
+		"partner.delete": "Ortak sil",
+		"partner.update": "Ortak güncelle",
+		"partner_channel.create": "Ortak kanalı oluştur",
+		"partner_channel.delete": "Ortak kanalı sil",
+		"partner_channel.update": "ortak kanalı güncelle",
+		"permission.browse": "İzinler incele",
+		"permission.update": "İzinler güncelle",
+		"policy.external_policy_number": "Poliçe uzatmalı poliçe numarası ekleme",
+		"policy.reinstate": "Poliçe yeniden canlandır",
+		"policy.customer.update": "Müşteri güncelle",
+		"policy.customer.adress.update": "Müşteri adresi güncelle",
+		"Yeniden canlandır": "sil",
+		"product.browse": "Ürün incele",
+		"product.create": "Ürün oluştur",
+		"product.delete": "Ürün sil",
+		"product.update": "Ürün güncelle",
+		"role.browse": "Rol incele",
+		"role.create": "Rol oluştur",
+		"role.delete": "Rol sil",
+		"role.update": "Rol güncelle",
+		"service_type.browse": "Servis tipi incele",
+		"service_type.create": "Servis tipi oluştur",
+		"service_type.delete": "Servis tipi sil",
+		"service_type.update": "Servis tipi güncelle",
+		"user.browse": "Kullanıcı incele",
+		"user.change_password": "Kullanıcı şifre sıfırla",
+		"user.create": "Kullanıcı oluştur",
+		"user.delete": "Kullanıcı sil",
+		"user.update": "Kullanıcı güncelle"
 	}
 }

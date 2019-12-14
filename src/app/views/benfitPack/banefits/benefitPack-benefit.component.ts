@@ -23,10 +23,6 @@ export class BenefitPackBenefitsComponent implements OnInit {
     if (this.storage.benefitPack.selectedBenefitPack == null) {
       this.location.back();
     }
-    console.log(this.storage.benefitPack.selectedBenefitPack.item.USED);
-
-    // mocing
-
   }
   add(item, index): void {
     const model = {
@@ -67,8 +63,6 @@ export class BenefitPackBenefitsComponent implements OnInit {
       this.data = this.data.filter((item) => {
         return item.BENEFIT.toLocaleLowerCase().search(this.search.toLocaleLowerCase()) >= 0;
       });
-      console.log(this.data);
-
     } else {
       this.getPackData();
     }

@@ -1,9 +1,9 @@
-<loader>
+<loader class="child">
 
     <div class="card">
         <div class="card-body">
             <h5 class="card-title">{{'policy.modal.customer.edit' | translate}}</h5>
-
+            <hr>
             <app-alert></app-alert>
             <form [formGroup]="form" (ngSubmit)="save()">
                 <div class="form-group" >
@@ -42,6 +42,12 @@
                         <ng-select [items]="customerType" bindLabel="name" bindValue="value" formControlName="CUSTOMER_TYPE">
                         </ng-select>
                     </div>
+                    <div class="form-group">
+                            <label>{{'policy.EXPLANATION'|translate}} </label>
+                            <input maxlength="200" type="text" class="form-control"
+                                placeholder="{{'policy.EXPLANATION'|translate}}" formControlName="EXPLANATION"
+                                name="EXPLANATION">
+                        </div>
                 <hr>
                 <button type="submit" class="btn btn-xs btn-primary float-right text-white"
                     [disabled]="!form.valid">{{ 'KAYDET' | translate }}</button>

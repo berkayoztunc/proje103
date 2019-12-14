@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import * as moment from 'moment';
+import { RequestService } from './request.service';
 
 @Injectable({
   providedIn: 'root'
@@ -8,7 +9,7 @@ import * as moment from 'moment';
 export class ValidatorTranformatorService {
   shema;
   header = [];
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient,private request : RequestService) {
 
     this.getJSON().subscribe(data => {
       this.shema = data;
@@ -40,35 +41,43 @@ export class ValidatorTranformatorService {
       for (let i = 0; i < data.length; i++) {
           for (let j = 0; j < shcmaType.colm.length; j++) {
               let handColum = data[i][shcmaType.colm[j]];
-              handColum = this.typeBinder(handColum, shcmaType.rule[shcmaType.colm[j]].type);
-              if (shcmaType.rule[shcmaType.colm[j]].hasOwnProperty('former')) {
-                // let fn = new ("value",shcmaType.rule[shcmaType.colm[j]].former);
-                // handColum = fn(handColum)
+              
+              if(handColum !== undefined){                                
+                handColum = this.typeBinder(handColum, shcmaType.rule[shcmaType.colm[j]]);
+                if (shcmaType.rule[shcmaType.colm[j]].hasOwnProperty('former')) {
+                  // let fn = new ("value",shcmaType.rule[shcmaType.colm[j]].former);
+                  // handColum = fn(handColum)
+                }
+                data[i][shcmaType.colm[j]] = handColum;
+              } else{
+                this.request.error = "M-6001"
+                console.log(data[i],shcmaType.colm[j] , handColum);
+                
+                throw "Beklenmedik dosya";
+                
               }
-              data[i][shcmaType.colm[j]] = handColum;
           }
       }
       return data;
   }
-   typeBinder(value, type) {
-      const fn = type.split(':');
-      switch (fn[0]) {
+   typeBinder(value, row) {
+      switch (row.type) {
         case 'string':
           return value.toString();
           break;
         case 'integer':
-
             if (value.charAt(',') > 0) {
               value = value.replace(',', '.');
             }
             if (!isNaN(value)) {
               return parseFloat(value);
-
             }
             return value;
             break;
-        case 'date':
-            return moment(value, fn[1], true);
+        case 'date':     
+            let start = row.validation.indexOf('date');
+            let format = row.validation.substr(start+5,row.validation.length).split('|')[0];
+            return moment(value,format, true).format(format);
             break;
         default:
           return value.toString();
@@ -90,13 +99,14 @@ export class ValidatorTranformatorService {
         } else {
           fn = func[0];
           param = null;
-        }
+        }        
         const info = this[fn](key, value, param, satir);
         if (!info.valid) {
           validationArray.push(info);
         }
 
       }
+      
       return validationArray;
   }
    validateWithTransform(data, type) {
@@ -104,7 +114,6 @@ export class ValidatorTranformatorService {
       // ŞEMA KULLANIMI
       const shcmaType = this.shema.fileType[type];
       this.header = this.shema.fileType[type].colm;
-
       // ŞEMA KULLANIMI
 
       for (let i = 0; i < convertedData.length; i++) {
@@ -161,7 +170,9 @@ export class ValidatorTranformatorService {
     }
   }
    date(key, value, param, row) {
+    
     const a = moment(value, param, true);
+    
     if (a.isValid()) {
       return {
         title : null,

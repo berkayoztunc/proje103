@@ -12,8 +12,7 @@ import { NgbModal, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
   styleUrls: ['./role.component.css']
 })
 export class RoleComponent implements OnInit {
-  Roles: Role[];
-  Role: Role;
+  data=  [];
   search = '';
   detail = false;
   tabelOnInit = true;
@@ -26,18 +25,18 @@ export class RoleComponent implements OnInit {
 
   ngOnInit() {
     if (this.tabelOnInit) {
-      this.searchRoles();
+      this.getData();
     }
-    this.Roles = this.storage.role.roles;
+    this.data = this.storage.role.roles;
   }
   searchClick() {
-    if (this.search != '') {
-      this.Roles = this.Roles.filter((item) => {
-        return item.ROLE.toLocaleLowerCase().search(this.search.toLocaleLowerCase()) >= 0;
-      });
-    } else {
-      this.Roles = this.storage.role.roles;
-    }
+    this.storage.role.roles.map((item) => {
+      const check = item.ROLE.toLocaleLowerCase().search(this.search.toLocaleLowerCase()) >= 0;
+      return item.check = check;
+    });
+  }
+  refresh(){
+    this.getData()
   }
   select(item, index) {
     this.storage.role.selectedRole = {item, index};
@@ -52,10 +51,13 @@ export class RoleComponent implements OnInit {
     this.storage.role.selectedRole = null;
     this.modalService.open(RoleFormComponent);
   }
-  searchRoles(): void {
+  getData(): void {
     this.request.get( 'api/roles' )
     .subscribe(response => {
-      this.Roles = this.storage.role.roles = response.data;
+      this.data = this.storage.role.roles = response.data.map((item) => {
+        item.check = true;
+        return item;
+      });
     });
 
   }
@@ -65,7 +67,7 @@ export class RoleComponent implements OnInit {
       if (result.value) {
         this.request.delete('api/roles/' + item.ROLE_ID).subscribe(() => {
           this.storage.role.roles.splice(i, 1);
-          this.Roles = this.storage.role.roles;
+          this.data = this.storage.role.roles;
         });
       }
     });

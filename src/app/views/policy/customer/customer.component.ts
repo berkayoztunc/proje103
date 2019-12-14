@@ -33,7 +33,8 @@ export class CustomerComponent implements OnInit {
       HOME_PHONE : [null],
       EMAIL : [null],
       CUSTOMER_TYPE : [null],
-      ACTIVE : true
+      ACTIVE : true,
+      EXPLANATION : [null]
     });
   }
 
@@ -55,8 +56,8 @@ export class CustomerComponent implements OnInit {
   save(): void {
     let hand = this.form.value
     hand['CUSTOMER_ID'] = this.storage.policy.selectedCustomer['CUSTOMER_ID']
-    
-    this.request.update('api/customers/' + this.storage.policy.selectedPolicy.POLICY_ID , this.form.value).subscribe((response) => {  
+    let policy_id=  this.storage.policy.selectedPolicy == null ? this.storage.policy.selectedCustomer.policy[0].POLICY_ID : this.storage.policy.selectedPolicy.POLICY_ID;
+    this.request.update('api/customers/' + policy_id , this.form.value).subscribe((response) => {  
       if(response){
         this.storage.policy.historys = response.data    
         this.storage.policy.selectedCustomer['FIRST_NAME'] = this.form.value['FIRST_NAME']
@@ -66,6 +67,7 @@ export class CustomerComponent implements OnInit {
         this.storage.policy.selectedCustomer['HOME_PHONE'] = this.form.value['HOME_PHONE']
         this.storage.policy.selectedCustomer['EMAIL'] = this.form.value['EMAIL']
         this.storage.policy.selectedCustomer['CUSTOMER_TYPE'] = this.form.value['CUSTOMER_TYPE']
+        this.storage.policy.selectedCustomer['EXPLANATION'] = this.form.value['EXPLANATION']
         this.goBack();
         this.storage.successDialog()
       }

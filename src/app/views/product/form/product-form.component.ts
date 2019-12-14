@@ -32,6 +32,12 @@ export class ProductFormComponent implements OnInit {
   edit = true;
   change = false;
   initValue = {};
+  // ** crud stumb ** //
+  item = this.storage.benefit.benefits;
+  selected = this.storage.benefit.selectedBenefit;
+  url = 'api/benefits';
+  idFlag = 'BENEFIT_ID';
+  
   constructor(private activeModal: NgbActiveModal, public request: RequestService, public storage: StoreService, private fb: FormBuilder, private route: ActivatedRoute, private location: Location) {
     this.createForm();
   }

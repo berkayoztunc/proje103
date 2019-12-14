@@ -12,6 +12,22 @@
             </div>
           </div>
         </div>
+        <div class="col-2" *permissions="'policy.customer.update'">
+          <div class="card mb-0 bg-primary text-white" (click)="customer()">
+            <div class="card-body text-center">
+              <i class="fas fa-2x fa-user-cog"></i>
+              <p>{{ 'policy.edit_customer_button' | translate }}</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-2" *permissions="'policy.customer.adress.update'">
+          <div class="card mb-0 bg-primary text-white" (click)="addressChange()">
+            <div class="card-body text-center">
+              <i class="fas fa-2x fa-user-cog"></i>
+              <p>{{ 'policy.edit_customer_adress' | translate }}</p>
+            </div>
+          </div>
+        </div>
         <div class="col-2">
           <div class="card mb-0 bg-info text-white" (click)="benefits()">
             <div class="card-body text-center">
@@ -20,33 +36,18 @@
             </div>
           </div>
         </div>
-
-        <div class="col-2" [class]="storage.policy.selectedPolicy.STATUS != 'LIVE' ? 'col-2' : 'desabled col-2'">
-          <div class="card mb-0 bg-success text-white" (click)="reinsdate()" *permissions="'policy.external_policy_number'">
+        <div class="col-2" *permissions="'policy.reinstate'"
+          [class]="storage.policy.selectedPolicy.STATUS != 'LIVE' && renewControl() ? 'col-2' : 'desabled col-2'">
+          <div class="card mb-0 bg-success text-white" (click)="reinsdate()">
             <div class="card-body text-center">
               <i class="fas fa-2x fa-sync"></i>
               <p>{{ 'policy.reinstate' | translate }}</p>
             </div>
           </div>
         </div>
-        <div class="col-2">
-          <div class="card mb-0 bg-primary text-white" (click)="customer()">
-            <div class="card-body text-center">
-              <i class="fas fa-2x fa-user-cog"></i>
-              <p>{{ 'policy.edit_customer_button' | translate }}</p>
-            </div>
-          </div>
-        </div>
-        <div class="col-2">
-            <div class="card mb-0 bg-primary text-white" (click)="addressChange()">
-              <div class="card-body text-center">
-                <i class="fas fa-2x fa-user-cog"></i>
-                <p>{{ 'policy.edit_customer_adress' | translate }}</p>
-              </div>
-            </div>
-          </div>
-        <div  [class]="storage.policy.selectedPolicy.STATUS != 'LIVE' ? 'desabled col-2' : 'col-2'">
-          <div class="card mb-0 bg-danger text-white" (click)="cancelOpen()">
+
+        <div [class]="storage.policy.selectedPolicy.STATUS != 'LIVE' ? 'desabled col-2' : 'col-2'">
+          <div class="card mb-0 bg-warning text-white" (click)="cancelOpen()">
             <div class="card-body text-center">
               <i class="fas fa-2x fa-file-excel"></i>
               <p>{{ 'policy.cancel' | translate }}</p>

@@ -59,9 +59,7 @@ export class BenefitPackComponent implements OnInit {
           item.check = true;
           return item;
         });
-      }
-      console.log(this.data);
-      
+      }      
     });
   }
   delete(item, i): void {

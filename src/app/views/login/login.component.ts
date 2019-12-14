@@ -52,8 +52,8 @@ export class LoginComponent implements OnInit {
               }
               
               this.storage.auth.user = tokenParse.user;
-
-              this.router.navigate(['../dashboard']);
+              
+             this.router.navigate(['dashboard/policy/']);
             }
           });
     }

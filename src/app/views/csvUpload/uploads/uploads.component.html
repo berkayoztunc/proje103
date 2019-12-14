@@ -1,0 +1,31 @@
+<div class="card">
+    <div class="card-body">
+        <div class="row pt-3 table-scrool">
+            <h3>{{ 'uploads.title' | translate }}</h3>
+            <div class="col-12  tableFixHead">
+                <table class="table">
+                    <thead class="bg-primary text-white">
+                        <tr>
+                            <th>{{ 'uploads.BATCHE_ID' |translate}}</th>
+                            <th>{{'uploads.BATCHE_TYPE'|translate}}</th>
+                            <th>{{'uploads.UPDATED_FILE'|translate}}</th>
+                            <th>{{'uploads.ERROR_FILE' | translate}}</th>
+                            <th>{{'uploads.TOTAL_COUNT'|translate}}</th>
+                            <th>{{'uploads.ERROR_COUNT'|translate}}</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let item of data; let i = index">
+                            <td scope="row">{{item.BATCH_ID}}</td>
+                            <td>{{item.BATCH_TYPE}}</td>
+                            <td><a target="_blank" href="{{item.UPDATED_FILE}}">Dosya</a></td>
+                            <td><a target="_blank" href="{{item.ERROR_FILE}}">Dosya</a></td>
+                            <td>{{item.TOTAL_COUNT}}</td>
+                            <td>{{item.ERROR_COUNT}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

@@ -68,9 +68,7 @@ export class UserFormComponent implements OnInit {
     if (this.form.valid) {
       if (!this.edit) {
         const hand = this.form.value;
-        hand.check = true;
-        console.log(hand.ACTIVE);
-        
+        hand.check = true;        
         this.request.update('api/users/' + this.storage.user.selectedUser.item.USER_ID, hand).subscribe((response) => {
               this.storage.user.users[this.storage.user.selectedUser.index] = hand;
               this.goBack();

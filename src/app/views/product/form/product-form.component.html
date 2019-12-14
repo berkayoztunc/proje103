@@ -2,6 +2,7 @@
     <div class="card-body">
         <h5 class="card-title" *ngIf="!edit">{{ 'modal.product.title.edit' | translate }}</h5>
         <h5 class="card-title" *ngIf="edit">{{ 'modal.product.title.save' | translate }}</h5>
+        <hr>
         <app-alert></app-alert>
 
         <form [formGroup]="form" (ngSubmit)="save()">
@@ -10,7 +11,7 @@
 
 
                 <div class="form-group">
-                    <label>PRODUCT </label>
+                    <label>{{'PRODUCT' | translate}} </label>
                     <input maxlength="100" type="text" class="form-control " formControlName="PRODUCT" name="PRODUCT">
                 </div>
                 <div class="form-group">
@@ -58,12 +59,12 @@
                     </ng-select>
                 </div>
                 <div class='form-group'>
-                    <label>{{'product.NEW_COMMISSION_RATE | translate'}} </label>
+                    <label>{{'product.NEW_COMMISSION_RATE' | translate}} </label>
                     <input type='number' class='form-control ' formControlName='NEW_COMMISSION_RATE'
                         name='NEW_COMMISSION_RATE'>
                 </div>
                 <div class='form-group'>
-                    <label>{{'product.RENEWAL_COMMISSION_RATE | translate'}} </label>
+                    <label>{{'product.RENEWAL_COMMISSION_RATE' | translate}} </label>
                     <input type='number' class='form-control ' formControlName='RENEWAL_COMMISSION_RATE'
                         name='RENEWAL_COMMISSION_RATE'>
                 </div>
@@ -107,7 +108,7 @@
                     <textarea name="" id="" cols="30" rows="4" class="form-control " placeholder="EXPLANATION"
                         formControlName="EXPLANATION"></textarea>
                 </div>
-                <label>{{ 'product.check_boxes' | translate }}  </label>ß
+                <label>{{ 'product.check_boxes' | translate }}  </label>
                 <div class="form-check">
                     <input type="checkbox" class="form-check-input" formControlName="WELCOME">
                     <label class="form-check-label">WELCOME</label>
@@ -132,7 +133,7 @@
 
 
             </div>
-
+            <hr>
             <button type="submit" class="btn btn-xs btn-primary float-right text-white" *ngIf="!edit"
                 [disabled]="!form.valid">{{ 'KAYDET' | translate }}</button>
             <button type="submit" class="btn btn-xs btn-success float-right text-white" *ngIf="edit"

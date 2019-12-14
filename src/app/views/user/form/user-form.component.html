@@ -1,10 +1,11 @@
-<loader>
+<loader class="child">
         
     <div class="card">
     <div class="card-body">
 
             <h5 class="card-title" *ngIf="!edit">{{ 'modal.user.title.edit' | translate }}</h5>
             <h5 class="card-title" *ngIf="edit">{{ 'modal.user.title.save' | translate }}</h5>
+            <hr>
             <app-alert></app-alert>
 
             <form [formGroup]="form" (ngSubmit)="save()">
@@ -33,6 +34,7 @@
                     <input type="checkbox" class="form-check-input " id="exampleCheck1" formControlName="ACTIVE">
                     <label class="form-check-label" for="exampleCheck1 ">{{ 'active' | translate }}</label>
                 </div>
+                <hr>
                 <button type="submit" class="btn btn-xs btn-primary float-right text-white" *ngIf="!edit"
                     [disabled]="!form.valid">{{ 'KAYDET' | translate }}</button>
                 <button type="submit" class="btn btn-xs btn-success float-right text-white" *ngIf="edit"

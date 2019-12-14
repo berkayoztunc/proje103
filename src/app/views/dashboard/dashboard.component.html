@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary " *ngIf="!storage.auth.user.PASSWORD_LOCKED">
-  <a class="navbar-brand" href="javascript:void()">
+  <a class="navbar-brand" routerLink="/dashboard">
     {{ 'app_name' | translate }}
   </a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
@@ -19,28 +19,24 @@
           {{ 'menu.cruds' | translate }}
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" *permissions="'benefit.create'"
-            routerLink="benefit">{{ 'menu.benefit' | translate }}</a>
-          <a class="dropdown-item" *permissions="'benefit_pack.create'"
-            routerLink="benefitPack">{{ 'menu.benefitPack' | translate }}</a>
-          <a class="dropdown-item" *permissions="'cancel_reason.create'"
-            routerLink="cancelReason">{{ 'menu.cancelreason' | translate }}</a>
-          <a class="dropdown-item" *permissions="'country.create'"
-            routerLink="country">{{ 'menu.country' | translate }}</a>
-          <a class="dropdown-item" *permissions="'partner.create'"
-            routerLink="partner">{{ 'menu.partner' | translate }}</a>
-          <a class="dropdown-item" *permissions="'partner_channel.create'"
-            routerLink="channel">{{ 'menu.channel' | translate }}</a>
-          <a class="dropdown-item" *permissions="'currency.create'"
-            routerLink="currency">{{ 'menu.currency' | translate }}</a>
-          <a class="dropdown-item" *permissions="'product.create'"
-            routerLink="product">{{ 'menu.product' | translate }}</a>
-          <a class="dropdown-item" *permissions="'role.create'" routerLink="role">{{ 'menu.role' | translate }}</a>
-          <a class="dropdown-item" *permissions="'service_type.create'"
-            routerLink="serviceType">{{ 'menu.serviceType' | translate }}</a>
-          <a class="dropdown-item" *permissions="'auidit_type.create'"
-            routerLink="auditType">{{ 'menu.auditType' | translate }}</a>
+            <a class="dropdown-item" *permissions="'product.create'" routerLink="product">{{ 'menu.product' | translate }}</a>
+            <a class="dropdown-item" *permissions="'benefit_pack.create'"routerLink="benefitPack">{{ 'menu.benefitPack' | translate }}</a>
+          <a class="dropdown-item" *permissions="'benefit.create'"routerLink="benefit">{{ 'menu.benefit' | translate }}</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" *permissions="'partner.create'" routerLink="partner">{{ 'menu.partner' | translate }}</a>
+          <a class="dropdown-item" *permissions="'partner_channel.create'" routerLink="channel">{{ 'menu.channel' | translate }}</a>
+          <a class="dropdown-item" *permissions="'service_type.create'" routerLink="serviceType">{{ 'menu.serviceType' | translate }}</a>
+          <a class="dropdown-item" *permissions="'cancel_reason.create'" routerLink="cancelReason">{{ 'menu.cancelreason' | translate }}</a>
+
+       
+          <div class="dropdown-divider"></div>
+
+          <a class="dropdown-item" *permissions="'country.create'"routerLink="country">{{ 'menu.country' | translate }}</a>
+          <a class="dropdown-item" *permissions="'currency.create'" routerLink="currency">{{ 'menu.currency' | translate }}</a>
+          <a class="dropdown-item" *permissions="'auidit_type.create'" routerLink="auditType">{{ 'menu.auditType' | translate }}</a>
+          <div class="dropdown-divider"></div>
           <a class="dropdown-item" *permissions="'user.browse'" routerLink="user">{{ 'menu.user' | translate }}</a>
+          <a class="dropdown-item" *permissions="'role.create'" routerLink="role">{{ 'menu.role' | translate }}</a>
         </div>
       </li>
       <li *permissions="'batch.browse'" class="nav-item dropdown active">
@@ -49,11 +45,15 @@
           {{ 'menu.upload-csv' | translate }}
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" routerLink="upload-csv">Poliçe yükle</a>
+          <a class="dropdown-item" routerLink="upload-csv/create-policy">{{ 'menu.create-policy' | translate }}</a>
           <div class="dropdown-divider"></div>
-          <a class="dropdown-item" routerLink="upload-csv">Asset güncelle</a>
-          <a class="dropdown-item" routerLink="upload-csv">TCKN güncelle</a>
-          <a class="dropdown-item" routerLink="upload-csv">Müşteri güncelle</a>
+          <a class="dropdown-item" routerLink="upload-csv/update-external-policy-number">{{ 'menu.update-external-policy-number' | translate }}</a>
+          <a class="dropdown-item" routerLink="upload-csv/update-asset">{{ 'menu.update-asset' | translate }}</a>
+          <a class="dropdown-item" routerLink="upload-csv/update-customer">{{ 'menu.update-customer' | translate }}</a>
+          <a class="dropdown-item" routerLink="upload-csv/cancel-policy">{{ 'menu.cancel-policy' | translate }}</a>
+          <a class="dropdown-item" routerLink="upload-csv/renew-policy">{{ 'menu.renew-policy' | translate }}</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" routerLink="upload-csv">Yükleme geçmişim</a>
         </div>
       </li>
 
@@ -78,7 +78,7 @@
 
         <a class="nav-link dropdown-toggle" href="javascript:void()" id="navbarDropdown2" role="button"
           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          {{ storage.auth.user.NAME}}
+          {{ storage.auth.user.NAME}} ({{ storage.auth.user.ROLE}})
         </a>
         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown2">
           <a href="javascript:void()" class="dropdown-item"
@@ -86,7 +86,7 @@
           <a href="javascript:void()" class="dropdown-item" (click)="signout()">{{ 'menu.signout' | translate }}</a>
         </div>
       </li>
-      <li class="nav-item dropdown active">
+      <li class="nav-item dropdown active" *permissions="'lang.change'">
         <a class="nav-link dropdown-toggle lang" href="javascript:void()" id="navbarDropdown5" role="button"
           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           {{ storage.language.selectedLanguage}}

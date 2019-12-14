@@ -1,9 +1,9 @@
-<loader>
+<loader class="child">
 
     <div class="card">
         <div class="card-body">
             <h5 class="card-title">{{ 'modal.address.title' | translate }}</h5>
-
+            <hr>
             <app-alert></app-alert>
             <form [formGroup]="form" (ngSubmit)="save()">
                 <div class="form-group">
@@ -14,13 +14,13 @@
                 <div class="form-group">
                     <label>{{ 'policy.COUNTRY' | translate }} </label>
                     <ng-select [items]="countries" bindLabel="COUNTRY" bindValue="COUNTRY_ID"
-                        formControlName="COUNTRY_ID" (change)="cityGet()">
+                        formControlName="COUNTRY_ID" (change)="countryChange($event)">
                     </ng-select>
                 </div>
                 <div class="form-group">
                     <label>{{ 'policy.CITY' | translate }} </label>
                     <ng-select [items]="cities" bindLabel="CITY" bindValue="CITY_ID"
-                        formControlName="CITY_ID">
+                        formControlName="CITY_ID" (change)="cityChange($event)">
                     </ng-select>
                 </div>
                 <hr>

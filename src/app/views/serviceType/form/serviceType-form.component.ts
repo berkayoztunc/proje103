@@ -16,6 +16,11 @@ export class ServiceTypeFormComponent implements OnInit {
   edit = true;
   initValue = {};
   change = false;
+  // ** crud stumb ** //
+  item = this.storage.serviceType.selectedServiceType;
+  selected = this.storage.serviceType.selectedServiceType;
+  url = 'api/serviceType';
+  idFlag = 'SERVICE_TYPE_ID';
   constructor(private activeModal: NgbActiveModal, public request: RequestService, public storage: StoreService, private fb: FormBuilder, private route: ActivatedRoute, private location: Location) {
     this.createForm();
   }
@@ -30,20 +35,9 @@ export class ServiceTypeFormComponent implements OnInit {
   get validator() { return this.form.controls; }
 
   ngOnInit() {
-    /*this.edit = this.route.snapshot.paramMap.get('BENEFIT_ID') == null
-
-   if(!this.edit){
-     const routeServiceTypeId = +this.route.snapshot.paramMap.get('BENEFIT_ID');
-
-     this.storage.serviceType.getServiceType(routeServiceTypeId).subscribe(ServiceType=>{
-       this.form.patchValue(ServiceType);
-     })
-     // request search from http
-   }*/
-
-    if (this.storage.serviceType.selectedServiceType !== null) {
+    if (this.selected != null) {
       this.edit = false;
-      this.form.patchValue(this.storage.serviceType.serviceTypes[this.storage.serviceType.selectedServiceType.index]);
+      this.form.patchValue(this.selected.item);
     }
     this.initValue = this.form.value;
     this.onChanges();
@@ -70,18 +64,17 @@ export class ServiceTypeFormComponent implements OnInit {
   save(): void {
     if (!this.edit) {
       const hand = this.form.value;
-      this.request.update('api/servicetypes/' + hand.SERVICE_TYPE_ID, hand).subscribe((response) => {
-        if (response) {
-          this.storage.serviceType.serviceTypes[this.storage.serviceType.selectedServiceType.index] = hand;
-          this.goBack();
-          this.form.reset();
-        }
+      hand.check = true;
+      this.request.update(this.url + '/' + hand[this.idFlag], hand).subscribe(() => {
+        this.item[this.selected.index] = hand;
+        this.goBack();
       });
-
     } else {
-      this.request.post('api/servicetypes', this.form.value).subscribe((response) => {
+      this.request.post(this.url, this.form.value).subscribe((response) => {
         if (response) {
-          this.storage.serviceType.serviceTypes.unshift(response.data[0]);
+          response.data[0].check = true;
+          this.item.unshift(response.data[0]);
+          this.form.reset();
           this.goBack();
         }
       });

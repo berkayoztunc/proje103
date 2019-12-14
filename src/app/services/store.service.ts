@@ -12,7 +12,11 @@ export class StoreService {
         selectedPolicy : null,
         historys : [],
         inPolicy : false,
+        searchQuery  : null,
     };
+    uploaded = {
+        id : null
+    }
     auditType = {
         auditTypes : [],
         selectedAuditType : null
@@ -106,9 +110,9 @@ export class StoreService {
             cancelButtonText : this.translate.translations[this.translate.currentLang].dialog_no
           });
     }
-    successDialog() {
+    successDialog(val = null) {
         return Swal.fire({
-            text: this.translate.translations[this.translate.currentLang].success_info,
+            text: val == null ? this.translate.translations[this.translate.currentLang].success_info : val,
             icon: 'success',
             showCancelButton: false,
             confirmButtonColor: '#3085d6',

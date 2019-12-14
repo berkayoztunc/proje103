@@ -16,6 +16,8 @@ export class AdressComponent implements OnInit {
   form: FormGroup;
   cities;
   countries;
+  selectedCity = null;
+  selectedCountry = null;
   constructor(
     public request: RequestService,
     public storage: StoreService,
@@ -42,6 +44,7 @@ export class AdressComponent implements OnInit {
       "CITY_ID"  : this.storage.policy.selectedCustomer.CITY_ID,
       "COUNTRY_ID": this.storage.policy.selectedCustomer.COUNTRY_ID, 
     })
+    
     this.cityGet();
   }
   cityGet(){
@@ -52,7 +55,14 @@ export class AdressComponent implements OnInit {
     }else{
       this.cities = [];
     }
-   
+  }
+  countryChange($event)
+  {
+    this.selectedCountry = $event
+    this.cityGet()
+  }
+  cityChange($event){    
+    this.selectedCity = $event;
   }
   goBack() {
     this.activeModal.dismiss();
@@ -65,11 +75,17 @@ export class AdressComponent implements OnInit {
     });
   }
   save(): void {
-    let hand = this.form.value
-    hand['POLICY_ID'] = this.storage.policy.selectedPolicy.POLICY_ID;
+    let hand = this.form.value    
+    hand['POLICY_ID'] = this.storage.policy.selectedPolicy == null ? this.storage.policy.selectedCustomer.policy[0].POLICY_ID : this.storage.policy.selectedPolicy.POLICY_ID;
     this.request.post('api/policy/customer/update-address/' + this.storage.policy.selectedCustomer.ADDRESS_ID, hand).subscribe((response) => {
       if (response) {
         this.storage.policy.historys = response.data; 
+        this.storage.policy.selectedCustomer.ADDRESS = this.form.value['ADDRESS'];
+        this.storage.policy.selectedCustomer.COUNTRY = this.selectedCountry ? this.selectedCountry.COUNTRY : this.storage.policy.selectedCustomer.COUNTRY ;
+        this.storage.policy.selectedCustomer.COUNTRY_ID = this.selectedCountry ? this.selectedCountry.COUNTRY_ID : this.storage.policy.selectedCustomer.COUNTRY_ID ;
+        this.storage.policy.selectedCustomer.CITY = this.selectedCity ? this.selectedCity.CITY :this.storage.policy.selectedCustomer.CITY ;
+        this.storage.policy.selectedCustomer.CITY_ID = this.selectedCity ? this.selectedCity.CITY_ID :this.storage.policy.selectedCustomer.CITY_ID ;
+     
         this.goBack();
         this.storage.successDialog()
       }

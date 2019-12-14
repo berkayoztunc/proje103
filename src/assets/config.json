@@ -1,40 +1,148 @@
 {
     "fileType" :{ 
-        "test" : {
-          "colm" : ["name","email","surname","adress","price","created_at"],
-          "rule" : {
-              "name" : {
-                  "validation" : "required|max:100|min:3",
-                  "type" : "string"
-              },
-              "email": {
-                  "validation":"email|max:255",
-                  "type":"string"
-  
-              },
-              "surname" : {
-                  "validation":"required|min:3|max:100",
-                  "type" : "string"
-  
-              },
-              "adress" : {
-                  "validation" : "required|min:10|max:300",
-                  "type" : "string"
-              },
-              "price" :{
-                  "validation" : "required|number|max:300",
-                  "type" : "integer",
-                  "former": "return value * 100"
-
-              },
-              "created_at": {
-                "validation" : "required|date:YYYYmmDD",
-                "type" : "date:YYYYmmDD"
-              }
-          }
-      }
+        "update-asset" : {
+            "colm" : ["POLICY_NUMBER","ASSET"],
+            "rule" : {
+                "POLICY_NUMBER" : {
+                    "validation" : "required|max:30|min:3",
+                    "type" : "string"
+                },
+                "ASSET": {
+                    "validation":"required|max:100",
+                    "type":"string"
+                }
+            }
+        },
+        "update-external-policy-number" : {
+            "colm" : ["POLICY_NUMBER","EXTERNAL_POLICY_NUMBER"],
+            "rule" : {
+                "POLICY_NUMBER" : {
+                    "validation" : "required|max:100|min:3",
+                    "type" : "string"
+                },
+                "EXTERNAL_POLICY_NUMBER": {
+                    "validation":"required|max:30",
+                    "type":"string"
+                }
+            } 
+        },
+        "renew-policy" : {
+            "colm" : ["POLICY_NUMBER","COLLECTION_DATE"],
+            "rule" : {
+                "POLICY_NUMBER" : {
+                    "validation" : "required|max:100|min:3",
+                    "type" : "string"
+                },
+                "COLLECTION_DATE": {
+                    "validation":"required|date:dd/mm/yyyy",
+                    "type":"date"
+                }
+            }
+        },
+        "create-policy" : {
+            "colm" : ["START_DATE","EXTERNAL_POLICY_NUMBER","PRODUCT_ID","CUSTOMER_TYPE","NATIONAL_ID","FIRST_NAME","LAST_NAME","MOBILE_PHONE","WORK_PHONE","HOME_PHONE","EMAIL","ADDRESS","CITY_CODE"],
+            "rule" : {
+                "START_DATE" : {
+                    "validation" : "required|date:DD/MM/YYYY",
+                    "type" : "date"
+                },
+                "EXTERNAL_POLICY_NUMBER": {
+                    "validation":"required|max:30",
+                    "type":"string"
+                },
+                "PRODUCT_ID": {
+                    "validation":"required|max:30",
+                    "type":"string"
+                },
+                "CUSTOMER_TYPE" :{
+                    "validation":"required|max:15",
+                    "type":"string"
+                },
+                "NATIONAL_ID" : {
+                    "validation":"required|max:20",
+                    "type":"string"
+                },
+                "FIRST_NAME" : {
+                    "validation":"required|max:100",
+                    "type":"string"
+                },
+                "LAST_NAME": {
+                    "validation":"required|max:100",
+                    "type":"string"
+                },
+                "MOBILE_PHONE" : {
+                    "validation":"required|max:30",
+                    "type":"string"
+                },
+                "WORK_PHONE":{
+                    "validation":"max:30",
+                    "type":"string"
+                },
+                "HOME_PHONE" :{
+                    "validation":"max:30",
+                    "type":"string"
+                }, 
+                "EMAIL" :{
+                    "validation":"max:100",
+                    "type":"string"
+                }, 
+                "ADDRESS" : {
+                    "validation":"required|max:100",
+                    "type":"string"
+                },
+                "CITY_CODE" : {
+                    "validation":"required|max:10",
+                    "type":"string"
+                }
+            }
+        },
+        "update-customer" : {
+            "colm" : ["POLICY_NUMBER","CUSTOMER_TYPE","FIRST_NAME","LAST_NAME","MOBILE_PHONE","WORK_PHONE","HOME_PHONE","EMAIL","ADDRESS","CITY_CODE"],
+            "rule" : {
+                "POLICY_NUMBER": {
+                    "validation":"required|max:30",
+                    "type":"string"
+                },
+                "CUSTOMER_TYPE" :{
+                    "validation":"required|max:15",
+                    "type":"string"
+                },
+                "FIRST_NAME" : {
+                    "validation":"required|max:100",
+                    "type":"string"
+                },
+                "LAST_NAME": {
+                    "validation":"required|max:100",
+                    "type":"string"
+                },
+                "MOBILE_PHONE" : {
+                    "validation":"required|max:30",
+                    "type":"string"
+                },
+                "WORK_PHONE":{
+                    "validation":"max:30",
+                    "type":"string"
+                },
+                "HOME_PHONE" :{
+                    "validation":"max:30",
+                    "type":"string"
+                }, 
+                "EMAIL" :{
+                    "validation":"max:100",
+                    "type":"string"
+                }, 
+                "ADDRESS" : {
+                    "validation":"required|max:100",
+                    "type":"string"
+                },
+                "CITY_CODE" : {
+                    "validation":"required|max:10",
+                    "type":"string"
+                }
+            }
+        }
     },
-    "updated_at" : "11/11/2019",
+    "updated_at" : "12/12/2019",
     "update_staff" :"berkay",
-    "version" : "0.0.1"
+    "version" : "0.0.2"
   }

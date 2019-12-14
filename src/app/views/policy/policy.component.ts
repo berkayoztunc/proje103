@@ -45,12 +45,12 @@ export class PolicyComponent implements OnInit {
   }
   info() {
     let obj = Object.keys(this.storage.policy.selectedCustomer);
-    obj = obj.splice(0, obj.length - 4);
+    obj = obj.splice(0, obj.length);
     return obj;
   }
   infoPolicy() {
     let obj = Object.keys(this.storage.policy.selectedPolicy);
-    obj = obj.splice(0, obj.length-2);
+    obj = obj.splice(0, obj.length);
     return obj;
   }
   infoPolicyProducty(){
@@ -66,6 +66,13 @@ export class PolicyComponent implements OnInit {
   }
   ngOnInit() {
 
+  }
+  ngOnDestroy(){
+    this.storage.policy.selectedCustomer = null;
+    this.storage.policy.selectedPolicy = null;
+    this.storage.policy.inPolicy = false;
+    this.storage.policy.searchQuery  = null;
+    this.searchData = [];
   }
 
 }

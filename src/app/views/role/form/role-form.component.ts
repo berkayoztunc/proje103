@@ -60,6 +60,8 @@ export class RoleFormComponent implements OnInit {
     if (!this.edit) {
       const hand = this.form.value;
       hand.id = hand.ROLE_ID;
+      hand.check = true;
+
       this.request.update('api/roles/' + hand.ROLE_ID, hand).subscribe((response) => {
         this.storage.role.roles[this.storage.role.selectedRole.index] = hand;
         this.goBack();
@@ -70,6 +72,7 @@ export class RoleFormComponent implements OnInit {
       this.request.post('api/roles', this.form.value).subscribe((response) => {
         if (response) {
           this.storage.role.roles.unshift(response.data[0]);
+          response.data[0].check = true;
           this.goBack();
         }
 

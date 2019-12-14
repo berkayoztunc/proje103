@@ -13,15 +13,31 @@
           </a>
         </header>
         <div class="filter-content collapse show" id="collapse2">
-          <div *ngFor="let infoPolicy of infoPolicy()">
-            <p class="text-muted cpl ">{{'policy.' +infoPolicy | translate}}</p>
-            <p class="text-muted ppl">{{storage.policy.selectedPolicy[infoPolicy] | dateOverview}}</p>
+          <div>
+            <p class="text-muted cpl ">{{'policy.POLICY_NUMBER' | translate}}</p>
+            <p class="text-muted ppl">{{storage.policy.selectedPolicy['POLICY_NUMBER']}}</p>
+          </div>
+          <div>
+            <p class="text-muted cpl ">{{'policy.STATUS' | translate}}</p>
+            <p class="text-muted ppl">{{storage.policy.selectedPolicy['STATUS']}}</p>
+          </div>
+          <div>
+            <p class="text-muted cpl ">{{'policy.START_DATE' | translate}}</p>
+            <p class="text-muted ppl">{{storage.policy.selectedPolicy['START_DATE'] | dateOverview}}</p>
+          </div>
+          <div>
+            <p class="text-muted cpl ">{{'policy.RENEWAL_DATE' | translate}}</p>
+            <p class="text-muted ppl">{{storage.policy.selectedPolicy['RENEWAL_DATE'] | dateOverview}}</p>
+          </div>
+          <div>
+            <p class="text-muted cpl ">{{'policy.EXTERNAL_POLICY_NUMBER' | translate}}</p>
+            <p class="text-muted ppl">{{storage.policy.selectedPolicy['EXTERNAL_POLICY_NUMBER'] | dateOverview}}</p>
           </div>
         </div>
         <div class="row m-0" *permissions="'policy.external_policy_number'">
-          <div class="col-md-6 p-2">
-            <a class="btn  btn-xs btn-primary text-white"  (click)="externalChange()"
-              *ngIf="storage.policy.selectedPolicy" >{{ 'policy.EXTERNAL_POLICY_NUMBER' | translate }}</a>
+          <div class="col-md-6 offset-3 p-2">
+            <a class="btn btn-block  btn-xs btn-primary text-white" (click)="externalChange()"
+              *ngIf="storage.policy.selectedPolicy">{{ 'policy.EXTERNAL_POLICY_NUMBER' | translate }}</a>
           </div>
         </div>
       </article>
@@ -34,9 +50,34 @@
           </a>
         </header>
         <div class="filter-content collapse show" id="collapse4">
-          <div *ngFor="let infoProduct of infoPolicyProducty()">
-            <p class="text-muted cpl ">{{'policy.' +infoProduct | translate}}</p>
-            <p class="text-muted ppl">{{storage.policy.selectedPolicy.product[0][infoProduct]}}</p>
+          <div>
+            <p class="text-muted cpl ">{{'policy.PRODUCT' | translate}}</p>
+            <p class="text-muted ppl">{{storage.policy.selectedPolicy.product[0]['PRODUCT']}}</p>
+          </div>
+          <div>
+            <p class="text-muted cpl ">{{'policy.SERVICE_TYPE' | translate}}</p>
+            <p class="text-muted ppl">{{storage.policy.selectedPolicy.product[0]['SERVICE_TYPE']}}</p>
+          </div>
+          <div>
+            <p class="text-muted cpl ">{{'policy.PARTNER_CHANNEL' | translate}}</p>
+            <p class="text-muted ppl">{{storage.policy.selectedPolicy.product[0]['PARTNER_CHANNEL']}}</p>
+          </div>
+          <div>
+            <p class="text-muted cpl ">{{'policy.PARTNER' | translate}}</p>
+            <p class="text-muted ppl">{{storage.policy.selectedPolicy.product[0]['PARTNER']}}</p>
+          </div>
+          <div>
+            <p class="text-muted cpl ">{{'policy.SOLDBY' | translate}}</p>
+            <p class="text-muted ppl">{{storage.policy.selectedPolicy.product[0]['SOLDBY']}}</p>
+          </div>
+          <div>
+            <p class="text-muted cpl ">{{'policy.PRICE' | translate}}</p>
+            <p class="text-muted ppl">
+              {{storage.policy.selectedPolicy.product[0]['PRICE'] | currency:'TRY':'symbol-narrow':'1.2-2':'tr-TR'}}</p>
+          </div>
+          <div>
+            <p class="text-muted cpl ">{{'policy.CURRENCY' | translate}}</p>
+            <p class="text-muted ppl">{{storage.policy.selectedPolicy.product[0]['CURRENCY']}}</p>
           </div>
         </div>
       </article>
@@ -48,19 +89,63 @@
           </a>
         </header>
         <div class="filter-content collapse show" id="collapse1">
-          <div *ngFor="let info of info()">
-            <p class="text-muted cpl">{{'policy.' +info | translate}}</p>
-            <p class="text-muted ppl ">{{storage.policy.selectedCustomer[info]}}</p>
+          <div>
+            <p class="text-muted cpl">{{'policy.FIRST_NAME'| translate }}</p>
+            <p class="text-muted ppl ">{{storage.policy.selectedCustomer['FIRST_NAME']}}</p>
           </div>
-        </div> <!-- collapse -filter-content  .// -->
+          <div>
+            <p class="text-muted cpl">{{'policy.LAST_NAME' | translate }}</p>
+            <p class="text-muted ppl ">{{storage.policy.selectedCustomer['LAST_NAME']}}</p>
+          </div>
+          <div>
+            <p class="text-muted cpl">{{'policy.NATIONAL_ID' | translate }}</p>
+            <p class="text-muted ppl ">{{storage.policy.selectedCustomer['NATIONAL_ID']}}</p>
+          </div>
+          <div>
+            <p class="text-muted cpl">{{'policy.CUSTOMER_TYPE'  | translate}}</p>
+            <p class="text-muted ppl ">{{storage.policy.selectedCustomer['CUSTOMER_TYPE']}}</p>
+          </div>
+          <div>
+            <p class="text-muted cpl">{{'policy.MOBILE_PHONE'  | translate}}</p>
+            <p class="text-muted ppl ">{{storage.policy.selectedCustomer['MOBILE_PHONE']}}</p>
+          </div>
+          <div>
+            <p class="text-muted cpl">{{'policy.WORK_PHONE' | translate }}</p>
+            <p class="text-muted ppl ">{{storage.policy.selectedCustomer['WORK_PHONE']}}</p>
+          </div>
+          <div>
+            <p class="text-muted cpl">{{'policy.HOME_PHONE' | translate }}</p>
+            <p class="text-muted ppl ">{{storage.policy.selectedCustomer['HOME_PHONE']}}</p>
+          </div>
+          <div>
+            <p class="text-muted cpl">{{'policy.EMAIL'  | translate}}</p>
+            <p class="text-muted ppl ">{{storage.policy.selectedCustomer['EMAIL']}}</p>
+          </div>
+          <div>
+            <p class="text-muted cpl">{{'policy.EXPLANATION' | translate }}</p>
+            <p class="text-muted ppl ">{{storage.policy.selectedCustomer['EXPLANATION']}}</p>
+          </div>
+          <div>
+            <p class="text-muted cpl">{{'policy.ADDRESS'| translate  }}</p>
+            <p class="text-muted ppl ">{{storage.policy.selectedCustomer['ADDRESS']}}</p>
+          </div>
+          <div>
+            <p class="text-muted cpl">{{'policy.CITY'  | translate}}</p>
+            <p class="text-muted ppl ">{{storage.policy.selectedCustomer['CITY']}}</p>
+          </div>
+          <div>
+            <p class="text-muted cpl">{{'policy.COUNTRY'| translate  }}</p>
+            <p class="text-muted ppl ">{{storage.policy.selectedCustomer['COUNTRY']}}</p>
+          </div>
+        </div>
         <div class="row m-0">
-          <div class="col-md-6 p-2">
-            <a class="btn btn-xs btn-info text-white" (click)="editCustomer()"
-              *ngIf="storage.policy.selectedPolicy">{{ 'policy.edit_customer_button' | translate }}</a>
+          <div class="col-md-5 offset-1 p-2">
+            <a class="btn btn-xs btn-block btn-info text-white"
+              (click)="editCustomer()">{{ 'policy.edit_customer_button' | translate }}</a>
           </div>
-          <div class="col-md-6 p-2">
-            <a class="btn  btn-xs btn-primary text-white" (click)="addressChange()"
-              *ngIf="storage.policy.selectedPolicy">{{ 'policy.edit_customer_adress' | translate }}</a>
+          <div class="col-md-5 p-2">
+            <a class="btn  btn-xs btn-block btn-primary text-white"
+              (click)="addressChange()">{{ 'policy.edit_customer_adress' | translate }}</a>
           </div>
         </div>
 

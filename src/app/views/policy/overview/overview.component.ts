@@ -39,11 +39,19 @@ export class OverviewComponent implements OnInit {
       this.modalService.open(CancelComponent);
     }
   }
+  renewControl(){
+    let now = Date();
+    let date = Date.parse(now);
+    let dateRenewal = Date.parse(this.storage.policy.selectedPolicy['RENEWAL_DATE']);
+   
+    return date <= dateRenewal;    
+  }
   reinsdate() {
     if(this.storage.policy.selectedPolicy.STATUS != 'LIVE'){
       this.request.get('api/policy/reinstate/'+this.storage.policy.selectedPolicy.POLICY_ID).subscribe((response)=>{
         if(response){
           this.storage.policy.historys = response.data;
+          this.storage.policy.selectedPolicy.STATUS  = 'LIVE'
           this.storage.successDialog()
         }
       })

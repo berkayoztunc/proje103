@@ -53,7 +53,7 @@ export class CityComponent implements OnInit {
   searchCitys(): void {
     this.request.get( this.url+'/' + this.storage.country.selectedCountry.item.COUNTRY_ID )
     .subscribe(response => {
-      if (response) {
+      if (response && response.data != null) {
         this.data = this.storage.city.cityies = response.data.map((item) => {
           item.check = true;
           return item;

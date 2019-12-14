@@ -1,63 +1,69 @@
-<div class="row">
-  <div class="col-6">
-    <div class="custom-file">
-      <input type="file" class="custom-file-input form-control-sm" id="validatedCustomFile" required
-        (change)="fileProgress($event)">
-      <label class="custom-file-label" for="validatedCustomFile">Lütfen csv Dosyanı seçin</label>
-      <div class="invalid-feedback">Example invalid custom file feedback</div>
+<loader>
+  <form [formGroup]="formGroup" novalidate (ngSubmit)="sendFile()">
 
-    </div>
 
-   
-  </div>
-  <div class="col-6">
-
-    <b>Toplam satır</b>: <span class="badge badge-primary text-white ">{{handData.length}}</span>
-    <b> Toplam hata</b>: <span class="badge badge-danger text-white">{{errors.length}}</span>
-    <a (click)="code = !code" class="btn btn-warning float-right text-white btn-xs">
-        <i class="fas fa-code" *ngIf="!code"></i>
-        <i class="fas fa-list" *ngIf="code"></i>
-    </a>
-    <a class="btn btn-success float-right text-white btn-xs">Yükle</a>
-    
-  </div>
-</div>
-<hr>
-
-<div class="row">
-  <div class="col-12" *ngIf="code">
-    <code>
-    <pre>
-{{handData |json}}
-    </pre>
-  </code>
-  </div>
-  <div class="col-12" *ngIf="!code">
     <div class="card">
       <div class="card-body">
-        <table class="table" *ngIf="handData.length > 0">
-          <thead>
-            <tr>
-              <th>ID</th>
-              <th scope="col" *ngFor="let item of header">{{item}}</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr *ngFor="let item of handData; let i = index ">
-              <td>{{i}}</td>
-              <td scope="col" *ngFor="let keys of header;">
-                <ng-template #tipContent>
-                  <p *ngFor="let validation of item[keys].validation"> {{validation.msg}}</p>
-                </ng-template>
-                <p placement="top" [ngbTooltip]="tipContent" *ngIf="item[keys].hasOwnProperty('validation')">
-                  {{item[keys].value}} <b class="red">*</b></p>
-                <p *ngIf="!item[keys].hasOwnProperty('validation')">{{item[keys].value}} </p>
-              </td>
-            </tr>
-          </tbody>
-        </table>
+        <div class="row">
+          <div class="col-3">
+            <div class="custom-file">
+              <input type="file" class="custom-file-input form-control-sm" id="validatedCustomFile" required
+                (change)="fileProgress($event)" accept="text/csv">
+              <label class="custom-file-label" for="validatedCustomFile">{{ 'upload.pleaceholder' | translate }}</label>
+            </div>
+          </div>
+          <div class="col-3">
+            <app-alert></app-alert>
+          </div>
+          <div class="col-6 " *ngIf="handData">
+            <b>Toplam satır</b>: <span
+              class="badge badge-primary text-white ">{{handData ? handData.length : '0'}}</span>
+            <b (click)="send()">Toplam hata</b>: <span class="badge badge-danger text-white">{{fileError ? fileError.length : 0 }}</span>
+            <a (click)="code = !code" class="btn btn-warning float-right text-white btn-xs" data-toggle="tooltip" data-placement="right" title="JSON view">
+              <i class="fas fa-code" *ngIf="!code"></i>
+              <i class="fas fa-list" *ngIf="code"></i>
+            </a>
+            <button *ngIf="fileError && fileError.length == 0 && uploadSuccess" type="submit"
+              class="btn btn-success float-right text-white btn-xs mr-1"
+              [disabled]="formGroup.invalid || formGroup.prestine"> {{ 'upload.upload' | translate }}</button>
+
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </form>
+  <div class="row tableFixHead">
+    <div class="col-12" *ngIf="code">
+      <ngx-json-viewer class="col-md-12" [json]="handData" [expanded]="true"></ngx-json-viewer>
+    </div>
+    <div class="col-12" *ngIf="!code">
+      <div class="card">
+        <div class="card-body ">
+          <table class="table" *ngIf="handData.length > 0">
+            <thead class="bg-primary text-white">
+              <tr>
+                <th width="5%">ID</th>
+                <th scope="col" width="5%" *ngFor="let item of header">{{item}}</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let item of handData; let i = index ">
+                <td>{{i}}</td>
+                <td scope="col" *ngFor="let keys of header;">
+                  <ng-template #tipContent>
+                    <p *ngFor="let validation of item[keys].validation"> {{validation.msg}}</p>
+                  </ng-template>
+                  <p placement="top" [ngbTooltip]="tipContent" *ngIf="item[keys].hasOwnProperty('validation')">
+                    {{item[keys].value}} <b class="red">*</b></p>
+                  <p *ngIf="!item[keys].hasOwnProperty('validation')">{{item[keys].value}} </p>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
+
   </div>
-  
-</div>
+</loader>

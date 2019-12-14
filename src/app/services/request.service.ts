@@ -11,9 +11,10 @@ import { StoreService } from './store.service';
 @Injectable({ providedIn: 'root' })
 export class RequestService {
   error = null;
-  // domain = 'http://192.168.116.206:9201/';
-   //domain = 'http://192.168.118.210:9201/';
-  domain = 'http://192.168.43.211:9201/';
+  //domain = 'http://192.168.116.206:9201/';
+  //domain = 'http://192.168.118.210:9201/';
+  domain = 'http://192.168.115.118:9201/';
+  //domain = 'http://192.168.43.211:9201/';
   onTheGo = false;
   systemError = new Subject();
   constructor(
@@ -80,13 +81,31 @@ export class RequestService {
     this.onTheGo = true;
     const headerObj = {
       headers: new HttpHeaders({
-        'Content-Type': 'application/json',
-        Accept: 'application/json',
         'Access-Control-Allow-Headers': '*',
         authorization: this.storage.auth ? this.storage.auth.token : null
       }),
     };
     return this.http.put(this.domain + url, params, headerObj).pipe(
+      tap(_ => this.onTheGo =  false),
+      catchError(this.handleError<any>('update'))
+    );
+  }
+  uploadPost(url, params):Observable<any>{
+
+    let formData = new FormData();
+    console.log(params);
+    
+    formData.append('FILE', params.file);
+    formData.append('FILE_NAME', params.file_name);
+    formData.append('BATCH_TYPE' ,params.file_type);    
+    this.onTheGo = true;
+    const headerObj = {
+      headers: new HttpHeaders({
+        'Access-Control-Allow-Headers': '*',
+        authorization: this.storage.auth ? this.storage.auth.token : null
+      }),
+    };
+    return this.http.post(this.domain +url, formData, headerObj).pipe(
       tap(_ => this.onTheGo =  false),
       catchError(this.handleError<any>('update'))
     );
@@ -112,9 +131,10 @@ export class RequestService {
             });
             break;
         case 400:
-
-            this.error = error.error.message;
-            break;
+            if(error.error.condition){
+              this.error = error.error.message;
+              break;
+            }
         case 403:
             Swal.fire({
               title: 'Error!',

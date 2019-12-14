@@ -7,26 +7,27 @@
           <form [formGroup]="form" (ngSubmit)="search()" autocomplete="off">
             <div class="form-group">
               <label class="text-muted">{{ 'policy.search.policy_number' | translate }}</label>
-              <input minlength="5" maxlength="30" type="text" formControlName='POLICY_NUMBER' name='POLICY_NUMBER' placeholder="%" class="form-control form-control-sm">
-              <label  class="text-muted">{{ 'policy.search.national_id' | translate }}</label>
-              <input maxlength="25" type="text" formControlName='NATIONAL_ID' name='NATIONAL_ID' class="form-control form-control-sm">
-              <label  class="text-muted">{{ 'policy.search.last_name' | translate }}</label>
-              <input maxlength="100" type="text" formControlName='LAST_NAME' name='LAST_NAME' placeholder="%" class="form-control form-control-sm">
+              <input minlength="5" maxlength="30" type="text" formControlName='POLICY_NUMBER' name='POLICY_NUMBER'
+                placeholder="%" class="form-control form-control-sm">
+              <label class="text-muted">{{ 'policy.search.national_id' | translate }}</label>
+              <input maxlength="25" type="text" formControlName='NATIONAL_ID' name='NATIONAL_ID'
+                class="form-control form-control-sm">
+              <label class="text-muted">{{ 'policy.search.last_name' | translate }}</label>
+              <input maxlength="100" type="text" formControlName='LAST_NAME' name='LAST_NAME' placeholder="%"
+                class="form-control form-control-sm">
               <label class="text-muted">{{ 'policy.search.mobile_phone' | translate }}</label>
-              <input maxlength="30" type="text" formControlName='MOBILE_PHONE' name='MOBILE_PHONE' class="form-control form-control-sm">
+              <input maxlength="30" type="text" formControlName='MOBILE_PHONE' name='MOBILE_PHONE'
+                class="form-control form-control-sm">
               <label class="text-muted">{{ 'policy.search.external_policy_number' | translate }}</label>
-              <input minlength="5" maxlength="30" type="text" formControlName='EXTERNAL_POLICY_NUMBER' name='EXTERNAL_POLICY_NUMBER' placeholder="%" class="form-control form-control-sm">
+              <input minlength="5" maxlength="30" type="text" formControlName='EXTERNAL_POLICY_NUMBER'
+                name='EXTERNAL_POLICY_NUMBER' placeholder="%" class="form-control form-control-sm">
             </div>
             <button type="submit" class="btn btn-primary btn-xs btn-block"
-            [disabled]="form.pristine || (form.value.LAST_NAME.length == 0 && form.value.POLICY_NUMBER.length == 0 && form.value.EXTERNAL_POLICY_NUMBER.length == 0 && form.value.NATIONAL_ID.length == 0 && form.value.MOBILE_PHONE.length == 0 )"
-            
-            >{{ 'Search' | translate }}</button>
+              [disabled]="form.pristine || (form.value.LAST_NAME.length == 0 && form.value.POLICY_NUMBER.length == 0 && form.value.EXTERNAL_POLICY_NUMBER.length == 0 && form.value.NATIONAL_ID.length == 0 && form.value.MOBILE_PHONE.length == 0 )">{{ 'Search' | translate }}</button>
           </form>
           <hr>
-          <button class="btn btn-warning btn-xs btn-block text-white" (click)="clearForm()" 
-          
-          
-          >{{ 'Temizle' | translate }}</button>
+          <button class="btn btn-warning btn-xs btn-block text-white"
+            (click)="clearForm()">{{ 'Temizle' | translate }}</button>
 
         </div>
       </div>
@@ -53,7 +54,7 @@
                 <div class="list-group-item" *ngFor="let policies of customer.policy" (click)="selectPolicy(policies)">
                   <div>
                     <a class="float-right btn btn-info btn-xs text-white" (click)="goPolicy(policies)">
-                        {{ 'policy.service_button' | translate }}
+                      {{ 'policy.service_button' | translate }}
                       <i class="fas fa-chevron-right"></i>
                     </a>
                     <p>
@@ -61,30 +62,23 @@
                       <span class="badge badge-warning" *ngIf="policies.STATUS != 'LIVE'">{{policies.STATUS}}</span>
                       {{ 'policy.number' | translate }} : {{policies.POLICY_NUMBER}}
                     </p>
-                    <p class="text-muted">{{ 'policy.EXTERNAL_POLICY_NUMBER' | translate }} :
-                      {{policies.EXTERNAL_POLICY_NUMBER}} |
-                      <span class="float-rigth">{{ 'policy.START_DATE' | translate }} : {{policies.START_DATE | date:'dd/MM/yyyy'}}</span>
+                    <p class="text-muted">{{ 'policy.EXTERNAL_POLICY_NUMBER' | translate }} : {{policies.EXTERNAL_POLICY_NUMBER}} |
+                      <span class="float-rigth">{{ 'policy.START_DATE' | translate }} :
+                        {{policies.START_DATE | date:'dd/MM/yyyy'}}</span>
+                      <span class="float-rigth"> | {{policies.product[0].PARTNER}}</span>
                     </p>
-
-
-
-
                   </div>
-
-
                 </div>
               </div>
-
             </div>
           </article>
-
         </div>
       </div>
     </div>
 
-    <div class="col-md-9 p-0" >
+    <div class="col-md-9 p-0">
       <app-alert></app-alert>
     </div>
-   
+
   </div>
 </loader>

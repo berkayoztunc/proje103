@@ -130,32 +130,52 @@
 		"role": "Role"
 	},
 	"cancel": "Cancel",
+	"cancelReason": {
+		"ACTIVE": "Active",
+		"CANCEL_REASON": "Cancellation Reason",
+		"CANCEL_REASON_ID": "ID",
+		"CANCEL_REASON_TYPE": "Cancellation Reason Type",
+		"action": "Transactions",
+		"email_ad_placeholser": "Search for cancellation",
+		"search": "Search button",
+		"search_clear": "Search clear"
+	},
 	"delete_item": "Are you making a deletion, are you sure?",
 	"dialog_no": "No",
 	"dialog_yes": "Yeah",
 	"email_send": "Are you sure the password will be reset?",
 	"error": {
-		"M-4001": "",
-		"M-4002": "",
-		"M-4008": "",
-		"M-4015": "",
-		"M-4016": ""
+		"M-4001": "Unauthorized operation",
+		"M-4002": "E-mail or password incorrect",
+		"M-4003": "E-mail or password incorrect",
+		"M-4007": "You have entered a password that matches your previous password, please enter a new one",
+		"M-4008": "Your account is locked, please get help from an authority",
+		"M-4015": "Too many records arrived please check your criteria",
+		"M-4016": "No search results found. Please edit your search criteria",
+		"M-6001": "Unexpected file"
 	},
 	"form_change": "Are you sure to exit without saving?",
 	"kapat": "Close",
 	"menu": {
 		"askPolicy": "Policy search",
+		"asset_update": "Asset güncelle",
 		"auditType": "Audit type",
 		"benefit": "Benefit",
 		"benefitPack": "Benefit Pack",
+		"cancel-policy": "Cancel policy",
 		"cancelReason": "Cancellation Reason Type",
+		"cancel_policy": "Policy cancellation",
 		"cancelreason": "Reasons for cancellation",
 		"channel": "Channel",
 		"city": "cities",
 		"country": "Country",
+		"create-policy": "Add policy",
 		"cruds": "Definitions",
 		"currency": "Currency",
+		"customer_update": "Müşteri güncelle",
+		"customer_update (2)": "Müşteri güncelle",
 		"dashboard": "Platform",
+		"external_policy_number": "Ek poliçe numarası güncelle",
 		"overview": "Policy transactions",
 		"partner": "Partner",
 		"password": {
@@ -166,12 +186,19 @@
 		"permission": "Permits",
 		"policy": "Policy Inquiry",
 		"product": "Product",
+		"renew-policy": "Policy renewal",
+		"renew_policy": "Poliçe yenile",
 		"resetpassword": "Reset Password",
 		"role": "Role",
 		"search": "Customer or policy search",
 		"serviceType": "Service types",
 		"signout": "Secure output",
+		"update-asset": "Upload file",
+		"update-customer": "Update Customer Information",
+		"update-external-policy-number": "Extrenal policy number",
 		"upload-csv": "Upload file",
+		"upload_policy": "Poliçe yükle",
+		"uploads": "My Uploads",
 		"user": "User"
 	},
 	"modal": {
@@ -198,7 +225,7 @@
 		},
 		"cancel": {
 			"title": {
-				"save": "Policy cancellation options"
+				"save": "Policy cancellation"
 			}
 		},
 		"cancelReason": {
@@ -264,6 +291,9 @@
 				"validation": "Enter a valid email for the Email field"
 			},
 			"name": "Name",
+			"password": {
+				"validation": "Password not compatible"
+			},
 			"role": "Role",
 			"title": {
 				"edit": "Edit User",
@@ -303,7 +333,7 @@
 		"NATIONAL_ID": "identification information of accounts",
 		"OLD_POLICY_ID": "OLD POLICY NUMBER",
 		"PARTNER": "business partner",
-		"PARTNER_CHANNEL": "Work partners",
+		"PARTNER_CHANNEL": "Channel",
 		"POLICY_ID": "Policy Id",
 		"POLICY_NUMBER": "Policy number",
 		"PREVIOUS_RENEWAL_DATE": "PREVIOUS RENEWAL TIME",
@@ -327,8 +357,8 @@
 		},
 		"customer_addreses": "Customer address",
 		"customer_info": "Customer detail",
-		"edit_customer_adress": "Update customer address",
-		"edit_customer_button": "Edit customer information",
+		"edit_customer_adress": "Update address",
+		"edit_customer_button": "Edit  information",
 		"modal": {
 			"ADDRESS": "Address",
 			"EXPLANATION": "Explanation",
@@ -396,6 +426,16 @@
 	"save_password": "Reset Password",
 	"search": "Search button",
 	"selected": "Selected",
+	"serviceType": {
+		"ACTIVE": "Active",
+		"PREFIX": "Explanation",
+		"SERVICE_TYPE": "Service type",
+		"SERVICE_TYPE_ID": "ID",
+		"action": "Transactions",
+		"email_ad_placeholser": "Search by serivis type name",
+		"search": "Search button",
+		"search_clear": "Search clear"
+	},
 	"success_info": "Your transaction was successful",
 	"swal": {
 		"forgetpassword": {
@@ -406,6 +446,20 @@
 	},
 	"total_data": "Total Records",
 	"unselected": "Not included",
+	"upload": {
+		"pleaceholder": "Please select a file",
+		"run": "Run query",
+		"upload": "Upload"
+	},
+	"uploads": {
+		"BATCHE_ID": "ID",
+		"BATCHE_TYPE": "Batch type",
+		"ERROR_COUNT": "Total error",
+		"ERROR_FILE": "Incorrect registration file",
+		"TOTAL_COUNT": "Total Records",
+		"UPDATED_FILE": "Uploaded file",
+		"title": "Uploads"
+	},
 	"user": {
 		"action": "Transactions",
 		"active": "Active",
@@ -414,6 +468,7 @@
 		"email_ad_placeholser": "search by name and email",
 		"id": "Id",
 		"name": "Name Surname",
+		"role": "Role",
 		"search": "Search button",
 		"search_clear": "Search clear"
 	}

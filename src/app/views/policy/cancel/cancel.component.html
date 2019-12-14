@@ -9,7 +9,7 @@
                 <div class="col-md-12">
                     <h6>{{ 'policy.cancels.option' | translate}}</h6>
                     <div class="form-check" *ngFor="let option of reasonData">
-                        <input class="form-check-input" type="radio" name="typeRadio"
+                        <input class="form-check-input" type="radio"  name="option" (change)="typeChange($event)"
                             id="radio-{{option.CANCEL_REASON_TYPE}}" [(ngModel)]="selectedType" [value]="option">
                         <label class="form-check-label"
                             for="radio-{{option.id}}">{{    'policy.'+option.CANCEL_REASON_TYPE | translate}}
@@ -28,20 +28,13 @@
                     </div>
                 </div>
                 <div class="col-md-12">
-                    <div class="form-group" *ngIf="selectedType && selectedType.CANCEL_REASON_TYPE === 'IMMEDIATE'">
+                    <div class="form-group" *ngIf="selectedType && selectedType.CANCEL_REASON_TYPE === 'IMMEDIATE'" >
 
-                        <div class="form-check">
-                            <input class="form-check-input" [(ngModel)]="grand" type="radio" name="timeRadio"
-                                id="exampleRadios1" value="Full">
-                            <label class="form-check-label" for="exampleRadios1">
-                                {{'policy.FULL'|translate}}
-                            </label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" [(ngModel)]="grand" type="radio" name="timeRadio"
-                                id="exampleRadios2" value="Pro-rata">
-                            <label class="form-check-label" for="exampleRadios2">
-                                {{'policy.PRORATA'|translate}}
+                        <div class="form-check" *ngFor="let item of grandData; let i = index">
+                            <input class="form-check-input" [(ngModel)]="grand" type="radio" name="grand"
+                                id="grandData" [value]="item.TITLE" [disabled]="!item.VALID" [checked]="item.SELECTED">
+                            <label class="form-check-label" for="grandData">
+                                {{item.TITLE|translate}} ({{item.AMOUNT | currency:'TRY':'symbol-narrow':'1.2-2':'tr-TR'}})
                             </label>
                         </div>
                     </div>
@@ -50,7 +43,7 @@
 
             </div>
             <hr>
-            <button type="submit" class="btn btn-xs btn-primary float-right text-white" (click)="save()">{{ 'KAYDET' | translate }}</button>
+            <button [disabled]="selectedType == null || selectedReason == null"type="submit" class="btn btn-xs btn-primary float-right text-white" (click)="save()">{{ 'KAYDET' | translate }}</button>
             <button class="btn btn-xs btn-warning float-right text-white mr-1" (click)="cancel()">{{ 'cancel' | translate }}</button>
         </div>
     </div>

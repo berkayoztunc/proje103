@@ -28,6 +28,7 @@ export class SearchComponent implements OnInit {
   select(item) {
     this.storage.policy.selectedCustomer = item;
     this.storage.policy.selectedPolicy = null
+    
   }
   selectPolicy(item) {
     this.storage.policy.selectedPolicy = item;
@@ -35,15 +36,17 @@ export class SearchComponent implements OnInit {
   goPolicy(item) {
     this.storage.policy.selectedPolicy = item;
     this.storage.policy.inPolicy = true;
-
+    this.storage.policy.searchQuery = this.form.value;
     this.router.navigate(['/dashboard/policy/overview']);
   }
   clearForm() {
     this.storage.policy.selectedCustomer = null;
     this.storage.policy.selectedPolicy = null;
     this.storage.policy.inPolicy = false;
+    this.storage.policy.searchQuery  = null;
     this.searchData = [];
     this.isSearched = false;
+    this.form.reset();
     this.createForm();
   }
   createForm() {
@@ -67,8 +70,11 @@ export class SearchComponent implements OnInit {
     
     if (this.storage.policy.inPolicy) {
       this.searchData = this.storage.policy.searchData;
+      this.form.patchValue(this.storage.policy.searchQuery)
     } else {
       this.searchData = [];
+      this.form.reset();
+      this.createForm();
     }
   }
   search() {

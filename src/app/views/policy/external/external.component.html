@@ -1,9 +1,9 @@
-<loader>
+<loader class="child">
 
     <div class="card">
         <div class="card-body">
             <h5 class="card-title">{{ 'modal.external.title' | translate }}</h5>
-
+            <hr>
             <app-alert></app-alert>
             <form [formGroup]="form" (ngSubmit)="save()">
                 <div class="form-group">

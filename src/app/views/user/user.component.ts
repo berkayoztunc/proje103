@@ -29,7 +29,7 @@ export class UserComponent implements OnInit {
 
   ngOnInit(): void {
     if (this.tabelOnInit) {
-      this.getUsers();
+      this.getData();
     }
     this.users = this.storage.user.users;
 
@@ -40,9 +40,9 @@ export class UserComponent implements OnInit {
       const check = item.NAME.toLocaleLowerCase().search(this.search.toLocaleLowerCase()) >= 0 || item.EMAIL.toLocaleLowerCase().search(this.search.toLocaleLowerCase()) >= 0;
       return item.check = check;
     });
-
-
-
+  }
+  refresh() {
+    this.getData();
   }
   select(item, index) {
     this.storage.user.selectedUser = { item, index };
@@ -51,9 +51,9 @@ export class UserComponent implements OnInit {
   unlock(item, i): void {
     this.storage.cancelDialog(this.translate.translations[this.translate.currentLang].email_send).then((value) => {
       if (value.value) {
-        this.request.update('api/users/unlock/' + item.USER_ID, {EMAIL: item.EMAIL}).subscribe(() => {
+        this.request.update('api/users/unlock/' + item.USER_ID, { EMAIL: item.EMAIL, NAME: item.NAME }).subscribe(() => {
           this.storage.successDialog();
-      });
+        });
       }
     });
 
@@ -62,8 +62,8 @@ export class UserComponent implements OnInit {
     this.storage.user.selectedUser = null;
     this.modalService.open(UserFormComponent);
   }
-  getUsers(): void {
-    this.request.get( 'api/users')
+  getData(): void {
+    this.request.get('api/users')
       .subscribe(response => {
         this.storage.user.users = response.data.map((item, index) => {
           item.check = true;

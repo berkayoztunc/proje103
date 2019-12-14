@@ -5,11 +5,12 @@
 
             <div class="col-md-6 ">
                 <div class="input-group">
-                        <input type="text" class="form-control form-control-sm" [placeholder]="'user.email_ad_placeholser' | translate" required [(ngModel)]="search">
+                        <input type="text" class="form-control form-control-sm" [placeholder]="'Role.email_ad_placeholser' | translate" required [(ngModel)]="search">
                         <div class="input-group-append">
                             <a class="btn btn-primary btn-sm" (click)="searchClick()" [title]="'user.search' | translate"><i class="fas fa-search"></i></a>
                             <a class="btn btn-info btn-sm" (click)="search = ''; searchClick()" [title]="'user.search_clear' | translate"><i class="fas fa-eraser"></i></a>
                             <a *permissions="'role.create'" class="btn btn-success btn-sm" (click)="create()" [title]="'user.add_new' | translate"><i class="fas fa-plus"></i></a>
+                            <a class="btn btn-warning btn-sm" (click)="refresh()" ><i class="fas fa-sync"></i></a>        
                         </div>
                 </div>
             </div>
@@ -19,7 +20,7 @@
                 <table class="table">
                     <thead class="bg-primary text-white">
                         <tr>
-                            <th>{{ 'Role.ROLE_ID' |translate}}</th>
+                            <th>{{'Role.ROLE_ID' |translate}}</th>
                             <th>{{'Role.ROLE'|translate}}</th>
                             <th>{{'Role.ACTIVE' | translate}}</th>
                             <th>{{'Role.action'|translate}}</th>
@@ -27,20 +28,20 @@
                     </thead>
 
                     <tbody>
-                        <tr *ngFor="let Role of Roles; let i = index">
-                            <td scope="row" width="5%">{{Role.ROLE_ID}}</td>
-                            <td>{{Role.ROLE}}</td>
+                        <tr *ngFor="let item of data; let i = index" [ngClass]="{'d-none': !item.check }">
+                            <td scope="row" width="5%">{{item.ROLE_ID}}</td>
+                            <td>{{item.ROLE}}</td>
                             <td>
-                                <i class="fas fa-check fa-2x text-success" *ngIf="Role.ACTIVE"></i>
-                                <i class="fas fa-times fa-2x text-danger" *ngIf="!Role.ACTIVE"></i>
+                                <i class="fas fa-check fa-2x text-success" *ngIf="item.ACTIVE"></i>
+                                <i class="fas fa-times fa-2x text-danger" *ngIf="!item.ACTIVE"></i>
 
                             </td>
                             <td>
-                                <a *permissions="'role.update'" class="btn btn-xs btn-warning " (click)="select(Role,i)"><i
+                                <a *permissions="'role.update'" class="btn btn-xs btn-warning " (click)="select(item,i)"><i
                                         class="fas fa-edit"></i></a>
-                                <a *permissions="'permission.browse'" class="btn btn-xs btn-info text-white" (click)="viewPermission(Role)"><i
+                                <a *permissions="'permission.browse'" class="btn btn-xs btn-info text-white" (click)="viewPermission(item)"><i
                                         class="fas fa-info-circle"></i> İzinler </a>
-                                <a *permissions="'role.delete'" class="btn btn-xs btn-danger "(click)="delete(Role,i)"><i class="fas fa-trash"></i></a>
+                                <a *permissions="'role.delete'" class="btn btn-xs btn-danger "(click)="delete(item,i)"><i class="fas fa-trash"></i></a>
                             </td>
                         </tr>
                     </tbody>

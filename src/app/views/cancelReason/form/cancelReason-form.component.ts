@@ -19,17 +19,18 @@ export class CancelReasonFormComponent implements OnInit {
   form: FormGroup;
   edit = true;
   change = false;
+  type$ = ['EXPIRY','IMMEDIATE','TURNAROUND'];
   initValue = {};
   // ** crud stumb ** //
-  item = this.storage.benefit.benefits;
-  selected = this.storage.benefit.selectedBenefit;
+  item = this.storage.cancelReason.cancelReasons;
+  selected = this.storage.cancelReason.selectedCancelReason;
   url = 'api/cancelreasons';
   idFlag = 'CANCEL_REASON_ID';
   createForm() {
     this.form = this.fb.group({
       CANCEL_REASON_ID: [''],
       CANCEL_REASON: ['', Validators.required],
-      CANCEL_REASON_TYPE: ['', Validators.required],
+      CANCEL_REASON_TYPE: [null, Validators.required],
       ACTIVE: [''],
     });
   }

@@ -16,6 +16,8 @@ export class ProductComponent implements OnInit {
   data: Product[];
   search = '';
   tabelOnInit = true;
+  url = 'api/products';
+  idFlag = 'PRODUCT_ID';
   constructor(
     private modalService: NgbModal,
     public activeModal: NgbActiveModal,
@@ -42,9 +44,12 @@ export class ProductComponent implements OnInit {
     this.modalService.open(ProductFormComponent, {size: 'xl'});
 
   }
+  refresh(){
+    this.searchProducts();
+  }
   
   activation(item) {
-    this.request.post('api/products/' + item.PRODUCT_ID, {ACTIVE : !item.ACTIVE}).subscribe((response) => {
+    this.request.post(this.url + item.PRODUCT_ID, {ACTIVE : !item.ACTIVE}).subscribe((response) => {
       if (response) {
         item.ACTIVE = !item.ACTIVE;
       }
@@ -55,7 +60,7 @@ export class ProductComponent implements OnInit {
     this.modalService.open(ProductFormComponent, {size: 'xl'});
   }
   searchProducts(): void {
-    this.request.get( 'api/products' )
+    this.request.get( this.url )
     .subscribe(response => {
       if (response) {
 
@@ -70,7 +75,7 @@ export class ProductComponent implements OnInit {
   delete(item, i): void {
     this.storage.deleteDialog().then((result) => {
       if (result.value) {
-        this.request.delete('api/products/' + item.PRODUCT_ID).subscribe(() => {
+        this.request.delete(this.url + item[this.idFlag]).subscribe(() => {
           this.storage.product.products.splice(i, 1);
           this.data = this.storage.product.products;
         });

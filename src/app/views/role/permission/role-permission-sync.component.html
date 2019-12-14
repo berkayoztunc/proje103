@@ -9,7 +9,7 @@
                             <input type="checkbox" class="success" [id]="'exampleCheck'+i" formControlName="check">
                             <span class="slider round"></span>
                         </label>
-                        <label class="form-check-label" [for]="'exampleCheck'+i " >{{data[i].key}}</label>
+                        <label class="form-check-label" [for]="'exampleCheck'+i " >{{'permisions.'+data[i].key | translate}}</label>
 
                     </div>
                 </div>
