@@ -48,6 +48,9 @@ export class PolicyComponent implements OnInit {
     obj = obj.splice(0, obj.length);
     return obj;
   }
+  sendLetter(item){
+    this.request.post('api/policy/send-letter/'+ this.storage.policy.selectedPolicy.POLICY_ID,{ LETTER : item})
+  }
   infoPolicy() {
     let obj = Object.keys(this.storage.policy.selectedPolicy);
     obj = obj.splice(0, obj.length);

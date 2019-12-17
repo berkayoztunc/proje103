@@ -29,8 +29,8 @@
                                     <div class="form-control-feedback">
                                         <i class="icon-user text-muted"></i>
                                     </div>
-                                    <small *ngIf="!email.valid"
-                                        class="help-block text-danger">{{'Email control' | translate}}</small>
+                                    <small *ngIf="!email.valid && email.dirty"
+                                        class="help-block text-danger">{{'email_control' | translate}}</small>
                                 </div>
 
                                 <div class="form-group form-group-feedback form-group-feedback-left">
@@ -40,8 +40,8 @@
                                     <div class="form-control-feedback">
                                         <i class="icon-lock2 text-muted"></i>
                                     </div>
-                                    <small *ngIf="!password.valid"
-                                        class="help-block text-danger">{{'Password control' | translate}}</small>
+                                    <small *ngIf="!password.valid && password.dirty"
+                                        class="help-block text-danger">{{'password_control' | translate}}</small>
                                 </div>
                                
                                 <div   class="form-group">

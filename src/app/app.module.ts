@@ -42,6 +42,7 @@ import { AuditTypeFormComponent } from './views/auditType/form/auditType-form.co
 import { registerLocaleData } from '@angular/common';
 import localtr from '@angular/common/locales/tr';
 import localeTrExtra from '@angular/common/locales/extra/tr'
+import { PolicyTransectionComponent } from './views/policy/policyTransection/policy-transection.component';
 
 registerLocaleData(localtr, 'tr-TR', localeTrExtra);
 
@@ -51,6 +52,7 @@ export function HttpLoaderFactory(http: HttpClient) {
 @NgModule({
   declarations: [
     ExternalComponent,
+    PolicyTransectionComponent,
     CancelComponent,
     AdressComponent,
     AuditTypeFormComponent,
@@ -74,6 +76,7 @@ export function HttpLoaderFactory(http: HttpClient) {
   ],
   entryComponents : [
     ExternalComponent,
+    PolicyTransectionComponent,
     CustomerComponent,
     AuditTypeFormComponent,
     AdressComponent,

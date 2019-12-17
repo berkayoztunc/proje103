@@ -37,7 +37,7 @@ export class ProductFormComponent implements OnInit {
   selected = this.storage.benefit.selectedBenefit;
   url = 'api/benefits';
   idFlag = 'BENEFIT_ID';
-  
+
   constructor(private activeModal: NgbActiveModal, public request: RequestService, public storage: StoreService, private fb: FormBuilder, private route: ActivatedRoute, private location: Location) {
     this.createForm();
   }
@@ -86,7 +86,7 @@ export class ProductFormComponent implements OnInit {
      // request search from http
    }*/
     this.productType = ['INDIVIDUAL', 'CORPARATE'];
-    this.saleType  = ['WHOLESALE', 'RETAIL'];
+    this.saleType = ['WHOLESALE', 'RETAIL'];
     this.bussinesModel = ['ACENCY', 'SERVICE'];
     this.request.get('api/partners').subscribe((response) => {
       this.partners$ = response.data;
@@ -111,7 +111,17 @@ export class ProductFormComponent implements OnInit {
       this.form.patchValue(this.storage.product.products[this.storage.product.selectedProduct.index]);
     }
     this.initValue = this.form.value;
+    console.log();
+
     this.onChanges();
+  }
+  disableMyInput(key) {
+    let boolean = !this.edit && this.storage.product.selectedProduct.item.USED;
+    if (boolean) {
+      this.form.get(key).disable();
+    } else {
+      this.form.get(key).enable();
+    }
   }
 
   goBack(): void {

@@ -53,3 +53,6 @@ table {
     opacity: .4;
  }
  
+ .desabled  .card-body {
+    cursor: not-allowed !important;
+}

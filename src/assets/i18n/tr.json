@@ -1,7 +1,11 @@
 {
+	"email_control" : "E posta adresi boş olamaz",
+	"password_control" : "Şifre alanı boş olamaz",
 	"BENEFIT_PACK_ID": "Teminat paketi",
 	"BUSINESS_MODEL": "İş modeli",
 	"BUSINESS_PARTNER_ID": "Partner",
+	"Pro-rata": "Kısmi iptal",
+	"Full" : "Full iptal",
 	"Benefit": "Teminatlar",
 	"BenefitPack": {
 		"ACTIVE": "Aktif",
@@ -144,6 +148,7 @@
 	"dialog_no": "Hayır",
 	"dialog_yes": "Evet",
 	"dialog_okey" : "Tamam",
+	"dialog_reinstate" : "Emin misiniz ? Şakamı yapıyorsunuz ?",
 	"email_send": "Şifre sıfırlanıcak eminmisiniz ?",
 	"error": {
 		"M-4001": "Yetkisiz işlem",
@@ -194,7 +199,7 @@
 		"search": "Müşteri veya poliçe arama",
 		"serviceType": "Servis Tipleri",
 		"signout": "Güvenli çıkış",
-		"update-asset": "Dosya yükle",
+		"update-asset": "Asset güncelle",
 		"update-customer": "Müşteri bilgisi güncelle",
 		"update-external-policy-number": "Ek poliçe numarası güncelle",
 		"upload-csv": "Dosya yükle",
@@ -203,6 +208,9 @@
 		"user": "Kullanıcı"
 	},
 	"modal": {
+		"transection"  :{
+			"title": "Poliçe hesap özeti"
+		},
 		"EXPLANATION": "Bilgi verin",
 		"address": {
 			"title": "Adres güncelle"
@@ -310,6 +318,7 @@
 		}
 	},
 	"policy": {
+		"show_transection" : "Poliçe hesap geçmişi",
 		"ACTIVE": "AKTİF",
 		"ADDRESS": "ADRES",
 		"ADDRESS_ID": "Adress numarası",
@@ -324,7 +333,7 @@
 		"EMAIL": "EMAIL",
 		"EXPIRY": "Vade sonu iptal",
 		"EXPLANATION": "AÇIKLAMA",
-		"EXTERNAL_POLICY_NUMBER": "Ek poliçe numarası",
+		"EXTERNAL_POLICY_NUMBER": "Ek poliçe güncelle",
 		"FIRST_NAME": "AD",
 		"FULL": "Full iptal",
 		"HOME_PHONE": "EV TELEFONU",
@@ -474,6 +483,12 @@
 		"search_clear": "Arama temizle"
 	},
 	"permisions": {
+		"batch.policy" : "Poliçe batch",
+		"batch.update-external-policy-number" : "Ek poliçe güncelleme batch",
+		"batch.update-asset" : "Asset güncelleme batch",
+		"batch.update-customer" : "Müşteri güncelleme batch",
+		"batch.cancel-policy": "İptal poliçe batch",
+		"batch.renew-policy" : "Yenileme poliçe batch",
 		"audit_type.create": "Denetim tipi listele",
 		"audit_type.delete": "Denetim tipi sil",
 		"audit_type.update": "Denetim tipi güncelle",
@@ -511,7 +526,7 @@
 		"partner.update": "Ortak güncelle",
 		"partner_channel.create": "Ortak kanalı oluştur",
 		"partner_channel.delete": "Ortak kanalı sil",
-		"partner_channel.update": "ortak kanalı güncelle",
+		"partner_channel.update": "Ortak kanalı güncelle",
 		"permission.browse": "İzinler incele",
 		"permission.update": "İzinler güncelle",
 		"policy.external_policy_number": "Poliçe uzatmalı poliçe numarası ekleme",

@@ -25,8 +25,8 @@ export class ResetPasswordComponent {
   createForm() {
     this.form = this.fb.group({
       PASSWORD: ['', Validators.required],
-      NEW_PASSWORD: ['', [Validators.required, Validators.pattern('^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,20}$')]],
-      CONIFIRM_PASSWORD: ['',[ Validators.required,Validators.pattern('^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,20}$')]],
+      NEW_PASSWORD: ['', [Validators.required, Validators.pattern(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,20}$/)]],
+      CONIFIRM_PASSWORD: ['',[ Validators.required,Validators.pattern(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,20}$/)]],
     }, { validator: this.checkPasswords });
   }
   get validator() { return this.form.controls; }

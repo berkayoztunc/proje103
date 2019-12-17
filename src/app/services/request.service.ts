@@ -13,7 +13,8 @@ export class RequestService {
   error = null;
   //domain = 'http://192.168.116.206:9201/';
   //domain = 'http://192.168.118.210:9201/';
-  domain = 'http://192.168.115.118:9201/';
+  //domain = 'http://172.16.3.10:80/';
+  domain = window.location.origin;
   //domain = 'http://192.168.43.211:9201/';
   onTheGo = false;
   systemError = new Subject();
@@ -120,25 +121,28 @@ export class RequestService {
     return (error: any): Observable<T> => {
       this.onTheGo = false;
       const status = error.status;
-
+      console.log(status,error);
+    
       switch (status) {
         case 404:
             Swal.fire({
-              title: 'Error!',
+              title: 'Not found',
               text: error.message,
-              icon: 'error',
+              icon: 'info',
             });
             break;
         case 400:
             if(error.error.condition){
               this.error = error.error.message;
-              break;
+            }else{
+              this.error = "Eksik veya boş alan gönderdiniz." // burası langlı değil
             }
+            break;
         case 403:
             Swal.fire({
-              title: 'Error!',
+              title: 'Auth!',
               text: error.message,
-              icon: 'error',
+              icon: 'warning',
             });
             break;
         default:

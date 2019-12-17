@@ -20,11 +20,11 @@
             </div>
           </div>
         </div>
-        <div class="col-2" *permissions="'policy.customer.adress.update'">
-          <div class="card mb-0 bg-primary text-white" (click)="addressChange()">
+        <div class="col-2" >
+          <div class="card mb-0 bg-info text-white" (click)="showTransection()">
             <div class="card-body text-center">
               <i class="fas fa-2x fa-user-cog"></i>
-              <p>{{ 'policy.edit_customer_adress' | translate }}</p>
+              <p>{{ 'policy.show_transection' | translate }}</p>
             </div>
           </div>
         </div>
@@ -72,7 +72,7 @@
           </thead>
           <tbody>
             <tr *ngFor="let history of storage.policy.historys;let i = index">
-              <td width="15%">{{history.M_DATE | date:'dd/MM/yyyy hh:mm' }}</td>
+              <td width="15%">{{history.M_DATE | date:'dd/MM/yyyy HH:mm' }}</td>
               <td width="15%">{{history.M_USER_NAME}}</td>
               <td width="20%">{{history.AUDIT_TYPE}}</td>
               <td width="50%" appShowAll class="spacific">{{history.EXPLANATION}}</td>

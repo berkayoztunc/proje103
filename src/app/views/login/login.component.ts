@@ -14,8 +14,8 @@ import * as jwt_decode from 'jwt-decode';
 
 export class LoginComponent implements OnInit {
   model: any = {
-    email: 'ilhan@tema.com.tr',
-    password: 'Tema01001',
+    email: '',
+    password: '',
     application: 'pp'
   };
   loading = false;

@@ -4,17 +4,20 @@ import { Directive, ElementRef, HostListener } from '@angular/core';
   selector: '[appShowAll]'
 })
 export class ShowAllDirective {
+  tool = false;
   constructor(private el: ElementRef) { }
 
-  @HostListener('mouseenter') onMouseEnter() {
-    this.highlight('inherit');
+  @HostListener('click') onMouseEnter() {
+    this.highlight();
   }
+  private highlight() {
+    this.tool = !this.tool;
+    if(this.tool){
+      this.el.nativeElement.style.whiteSpace = 'inherit';
 
-  @HostListener('mouseleave') onMouseLeave() {
-    this.highlight('nowrap');
-  }
+    }else{
+      this.el.nativeElement.style.whiteSpace = 'nowrap';
 
-  private highlight(px: string) {
-    this.el.nativeElement.style.whiteSpace = px;
+    }
   }
 }

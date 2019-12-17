@@ -33,7 +33,7 @@
 
           <a class="dropdown-item" *permissions="'country.create'"routerLink="country">{{ 'menu.country' | translate }}</a>
           <a class="dropdown-item" *permissions="'currency.create'" routerLink="currency">{{ 'menu.currency' | translate }}</a>
-          <a class="dropdown-item" *permissions="'auidit_type.create'" routerLink="auditType">{{ 'menu.auditType' | translate }}</a>
+          <a class="dropdown-item" *permissions="'audit_type.create'" routerLink="auditType">{{ 'menu.auditType' | translate }}</a>
           <div class="dropdown-divider"></div>
           <a class="dropdown-item" *permissions="'user.browse'" routerLink="user">{{ 'menu.user' | translate }}</a>
           <a class="dropdown-item" *permissions="'role.create'" routerLink="role">{{ 'menu.role' | translate }}</a>
@@ -45,15 +45,15 @@
           {{ 'menu.upload-csv' | translate }}
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" routerLink="upload-csv/create-policy">{{ 'menu.create-policy' | translate }}</a>
+          <a class="dropdown-item" routerLink="upload-csv/create-policy" *permissions="'batch.policy'">{{ 'menu.create-policy' | translate }}</a>
           <div class="dropdown-divider"></div>
-          <a class="dropdown-item" routerLink="upload-csv/update-external-policy-number">{{ 'menu.update-external-policy-number' | translate }}</a>
-          <a class="dropdown-item" routerLink="upload-csv/update-asset">{{ 'menu.update-asset' | translate }}</a>
-          <a class="dropdown-item" routerLink="upload-csv/update-customer">{{ 'menu.update-customer' | translate }}</a>
-          <a class="dropdown-item" routerLink="upload-csv/cancel-policy">{{ 'menu.cancel-policy' | translate }}</a>
-          <a class="dropdown-item" routerLink="upload-csv/renew-policy">{{ 'menu.renew-policy' | translate }}</a>
+          <a class="dropdown-item" routerLink="upload-csv/update-external-policy-number" *permissions="'batch.update-external-policy-number'">{{ 'menu.update-external-policy-number' | translate }}</a>
+          <a class="dropdown-item" routerLink="upload-csv/update-asset" *permissions="'batch.update-asset'">{{ 'menu.update-asset' | translate }}</a>
+          <a class="dropdown-item" routerLink="upload-csv/update-customer" *permissions="'batch.update-customer'">{{ 'menu.update-customer' | translate }}</a>
+          <a class="dropdown-item" routerLink="upload-csv/cancel-policy" *permissions="'batch.cancel-policy'">{{ 'menu.cancel-policy' | translate }}</a>
+          <a class="dropdown-item" routerLink="upload-csv/renew-policy" *permissions="'batch.renew-policy'">{{ 'menu.renew-policy' | translate }}</a>
           <div class="dropdown-divider"></div>
-          <a class="dropdown-item" routerLink="upload-csv">Yükleme geçmişim</a>
+          <a class="dropdown-item" routerLink="upload-csv">{{ 'uploads.title' | translate }}</a>
         </div>
       </li>
 

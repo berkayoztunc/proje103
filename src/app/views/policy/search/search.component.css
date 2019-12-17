@@ -38,3 +38,16 @@
 .list-group p{
     margin: 0px;
 }
+
+.list-group-item:hover{
+    cursor: pointer;
+    background-color: rgba(0,0,0,0.04) !important;
+}
+.filter-content.collapse.show {
+    background-color: rgba(0,0,0,0.04) !important;
+
+}
+
+.safe:not(.collapsed){
+    background-color: rgba(0,0,0,0) !important;
+}

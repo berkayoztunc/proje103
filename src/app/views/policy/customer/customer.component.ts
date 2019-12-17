@@ -39,7 +39,7 @@ export class CustomerComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.customerType = ['INDIVIDUAL', 'CORPARATE'];
+    this.customerType = ['INDIVIDUAL', 'CORPORATE'];
 
     this.form.patchValue(this.storage.policy.selectedCustomer);
   }

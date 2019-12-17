@@ -41,12 +41,15 @@ export class BenefitPackBenefitsComponent implements OnInit {
       });
   }
   updateOrder(item) {
-    const model = { BENEFIT_PACK_BENEFIT_ID: item.BENEFIT_PACK_BENEFIT_ID, ORDER_NUMBER: item.ORDER_NUMBER };
-    this.request.update('api/benefitpackbenefits/' + this.storage.benefitPack.selectedBenefitPack.item.BENEFIT_PACK_ID, model).subscribe((response) => {
-      if (response) {
-        this.selectedPackData = response.data;
-      }
-    });
+    if(item.ORDER_NUMBER){
+      const model = { BENEFIT_PACK_BENEFIT_ID: item.BENEFIT_PACK_BENEFIT_ID, ORDER_NUMBER: item.ORDER_NUMBER };
+      this.request.update('api/benefitpackbenefits/' + this.storage.benefitPack.selectedBenefitPack.item.BENEFIT_PACK_ID, model).subscribe((response) => {
+        if (response) {
+          this.selectedPackData = response.data;
+        }
+      });
+    }
+    
   }
   remove(item, index): void {
 
@@ -74,7 +77,10 @@ export class BenefitPackBenefitsComponent implements OnInit {
       .get('api/benefitpackbenefits/' + this.storage.benefitPack.selectedBenefitPack.item.BENEFIT_PACK_ID)
       .subscribe((response) => {
         if (response) {
-          this.selectedPackData = response.data[0].selected ?  response.data[0].selected  : [];
+          this.selectedPackData = response.data[0].selected ?  response.data[0].selected.map((item)=>{
+            item.ORDER_NUMBER  = item.ORDER_NUMBER == null ? 1 : item.ORDER_NUMBER;
+            return item;
+          })  : [];
           this.data = response.data[0].unselected;
           this.realData = Object.assign({}, this.data);
         }

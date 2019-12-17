@@ -273,3 +273,19 @@ p.text-muted.cpl {
   margin-bottom: 2px;
 }
 
+
+
+::-webkit-input-placeholder { /* Edge */
+  color: #cacacad3 !important;
+  font-size: 10px;
+}
+
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+  color: #cacacad3 !important;
+  font-size: 10px;
+}
+
+::placeholder {
+  color: #cacacad3 !important;
+  font-size: 10px;
+}

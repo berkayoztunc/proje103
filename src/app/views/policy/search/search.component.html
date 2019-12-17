@@ -35,13 +35,13 @@
 
 
     </div>
-    <div class="col-md-9 p-0 " *ngIf="searchData.length > 0 && searchData.length < 10">
+    <div class="col-md-9 p-0 " *ngIf="searchData.length > 0 && searchData.length < 10" id="accordion">
       <div class="card">
         <div class="card-body">
           <article class="list-group-item" *ngFor="let customer of searchData;let i = index">
             <header class="filter-header">
-              <div data-toggle="collapse" [attr.data-target]="'#selected'+i" aria-expanded="false"
-                [attr.aria-controls]="'selected'+i" (click)="select(customer)">
+              <div data-toggle="collapse" [attr.data-target]="'#selected'+i" aria-expanded="true"
+                [attr.aria-controls]="'selected'+i" (click)="select(customer)" class="safe">
                 <i class="icon-action fas fa-chevron-down"></i>
                 <h6 class="title">{{customer.FIRST_NAME}} {{customer.LAST_NAME}}
                 </h6>
@@ -49,7 +49,7 @@
                   {{ 'policy.phone_number' | translate }} : {{customer.MOBILE_PHONE}}</p>
               </div>
             </header>
-            <div class="filter-content collapse" [id]="'selected'+i">
+            <div [class]="'filter-content collapse'" [id]="'selected'+i" [attr.data-parent]="'#accordion'">
               <div class="list-group">
                 <div class="list-group-item" *ngFor="let policies of customer.policy" (click)="selectPolicy(policies)">
                   <div>
