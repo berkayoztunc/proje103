@@ -44,7 +44,7 @@ export class ExplanationComponent implements OnInit {
   save(): void {
     this.request.post('api/policy/explanation/' + this.storage.policy.selectedPolicy.POLICY_ID, this.form.value).subscribe((response) => {
       if (response) {
-        this.storage.policy.historys = response.data; // TODO ::: burayı düzelticeksin
+        this.storage.policy.historys = response.data; // TODO :: burayı düzelticeksin
         this.goBack();
         this.storage.successDialog()
       }
