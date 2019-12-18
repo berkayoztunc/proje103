@@ -9,13 +9,17 @@
                     <table class="table table-striped">
                         <thead>
                             <tr>
-                                <th width="25%">{{'transection.BENEFIT'|translate}}</th>
+                                <th width="25%">{{'transection.TX_TYPE'|translate}}</th>
+                                <th >{{'transection.TX_AMOUNT'|translate}}</th>
+                                <th >{{'transection.TX_DATE'|translate}}</th>
                                 <th >{{'transection.EXPLANATION'|translate}}</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr *ngFor="let item of transection">
-                                <th>{{item.TRANSECTION}}</th>
+                                <th>{{item.TX_TYPE}}</th>
+                                <td>{{item.TX_AMOUNT}}</td>
+                                <td>{{item.TX_DATE | dateOverview}}</td>
                                 <td>{{item.EXPLANATION}}</td>
                             </tr>
                         </tbody>

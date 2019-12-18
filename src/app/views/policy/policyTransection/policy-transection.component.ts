@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { RequestService } from 'src/app/services/request.service';
 import { StoreService } from 'src/app/services/store.service';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
-import { FormBuilder, FormGroup  } from '@angular/forms';
 
 
 @Component({
@@ -23,7 +22,7 @@ export class PolicyTransectionComponent implements OnInit {
 
 
   ngOnInit() {
-    this.request.get('api/policy/transection/' + this.storage.policy.selectedPolicy.POLICY_ID).subscribe((response) => {
+    this.request.get('api/policy/transactions/' + this.storage.policy.selectedPolicy.POLICY_ID).subscribe((response) => {
       if (response) {
         this.transection = response.data;
       }

@@ -1,12 +1,18 @@
 {
-	"email_control" : "E posta adresi boş olamaz",
-	"password_control" : "Şifre alanı boş olamaz",
+	"email_control": "E posta adresi boş olamaz",
+	"password_control": "Şifre alanı boş olamaz",
 	"BENEFIT_PACK_ID": "Teminat paketi",
 	"BUSINESS_MODEL": "İş modeli",
 	"BUSINESS_PARTNER_ID": "Partner",
 	"Pro-rata": "Kısmi iptal",
-	"Full" : "Full iptal",
+	"Full": "Full iptal",
 	"Benefit": "Teminatlar",
+	"transection": {
+		"TX_TYPE": "İşlem tipi",
+		"TX_AMOUNT": "Tutar",
+		"TX_DATE": "Tarih",
+		"EXPLANATION": "Açıklama"
+	},
 	"BenefitPack": {
 		"ACTIVE": "Aktif",
 		"BENEFIT_PACK": "Benefit paket adı",
@@ -147,8 +153,8 @@
 	"delete_item": "Bir silme işlemi yapıyorsunuz, emin misiniz ?",
 	"dialog_no": "Hayır",
 	"dialog_yes": "Evet",
-	"dialog_okey" : "Tamam",
-	"dialog_reinstate" : "Emin misiniz ? Şakamı yapıyorsunuz ?",
+	"dialog_okey": "Tamam",
+	"dialog_reinstate": "Emin misiniz ? Şakamı yapıyorsunuz ?",
 	"email_send": "Şifre sıfırlanıcak eminmisiniz ?",
 	"error": {
 		"M-4001": "Yetkisiz işlem",
@@ -208,7 +214,7 @@
 		"user": "Kullanıcı"
 	},
 	"modal": {
-		"transection"  :{
+		"transection": {
 			"title": "Poliçe hesap özeti"
 		},
 		"EXPLANATION": "Bilgi verin",
@@ -318,7 +324,7 @@
 		}
 	},
 	"policy": {
-		"show_transection" : "Poliçe hesap geçmişi",
+		"show_transection": "Poliçe hesap geçmişi",
 		"ACTIVE": "AKTİF",
 		"ADDRESS": "ADRES",
 		"ADDRESS_ID": "Adress numarası",
@@ -483,12 +489,12 @@
 		"search_clear": "Arama temizle"
 	},
 	"permisions": {
-		"batch.policy" : "Poliçe batch",
-		"batch.update-external-policy-number" : "Ek poliçe güncelleme batch",
-		"batch.update-asset" : "Asset güncelleme batch",
-		"batch.update-customer" : "Müşteri güncelleme batch",
+		"batch.policy": "Poliçe batch",
+		"batch.update-external-policy-number": "Ek poliçe güncelleme batch",
+		"batch.update-asset": "Asset güncelleme batch",
+		"batch.update-customer": "Müşteri güncelleme batch",
 		"batch.cancel-policy": "İptal poliçe batch",
-		"batch.renew-policy" : "Yenileme poliçe batch",
+		"batch.renew-policy": "Yenileme poliçe batch",
 		"audit_type.create": "Denetim tipi listele",
 		"audit_type.delete": "Denetim tipi sil",
 		"audit_type.update": "Denetim tipi güncelle",

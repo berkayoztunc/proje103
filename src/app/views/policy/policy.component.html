@@ -83,15 +83,15 @@
         <div class="row m-0">
           <div class="col-md-5 offset-1 p-2" *ngIf="storage.policy.selectedPolicy.product[0]['WELCOME'] && storage.policy.selectedPolicy['PREVIOUS_RENEWAL_DATE'] == NULL">
             <a class="btn btn-xs btn-block btn-info text-white"
-              (click)="sendLetter('WELCOME')">{{ 'policy.send_welcome_letter' | translate }}</a>
+              (click)="sendWelcome()">{{ 'policy.send_welcome_letter' | translate }}</a>
           </div>
           <div class="col-md-5 offset-1 p-2" *ngIf="storage.policy.selectedPolicy.product[0]['RENEWAL'] && storage.policy.selectedPolicy['PREVIOUS_RENEWAL_DATE'] != NULL">
             <a class="btn btn-xs btn-block btn-info text-white"
-              (click)="sendLetter('RENEWAL')">{{ 'policy.send_welcome_letter' | translate }}</a>
+              (click)="sendRenew()">{{ 'policy.send_welcome_letter' | translate }}</a>
           </div>
           <div class="col-md-5 p-2" *ngIf="storage.policy.selectedPolicy.product[0]['GUIDE']">
             <a class="btn  btn-xs btn-block btn-primary text-white"
-              (click)="sendLetter('GUIDE')">{{ 'policy.send_guide_letter' | translate }}</a>
+              (click)="sendGuide()">{{ 'policy.send_guide_letter' | translate }}</a>
           </div>
         </div>
       </article>
