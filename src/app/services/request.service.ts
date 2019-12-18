@@ -14,7 +14,7 @@ export class RequestService {
   //domain = 'http://192.168.116.206:9201/';
   //domain = 'http://192.168.118.210:9201/';
   //domain = 'http://172.16.3.10:80/';
-  domain = window.location.origin;
+  domain = window.location.origin + '/';
   //domain = 'http://192.168.43.211:9201/';
   onTheGo = false;
   systemError = new Subject();

@@ -324,6 +324,9 @@
 		}
 	},
 	"policy": {
+		"send_welcome_letter"  :"Hoşgeldim mektubu",
+		"send_renew_letter"  :"Yenileme mektubu",
+		"send_guide_letter" : "Klavuz mektubu",
 		"show_transection": "Poliçe hesap geçmişi",
 		"ACTIVE": "AKTİF",
 		"ADDRESS": "ADRES",
