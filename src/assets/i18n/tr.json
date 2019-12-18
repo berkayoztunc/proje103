@@ -164,7 +164,8 @@
 		"M-4008": "Hesabınız kitlenmiştir, lütfen bir yetkiliden yardım alın",
 		"M-4015": "Çok fazla kayıt geldi lütfen kriterleri kontrol edin",
 		"M-4016": "Arama sonucu bulunamadı. Lütfen arama kriterleriniz düzenleyin",
-		"M-6001": "Beklenmedik dosya"
+		"M-6001": "Beklenmedik dosya",
+		"M-4000" : "Eksik veya boş alan gönderdiniz."
 	},
 	"form_change": "Kaydetmeden çıkmak için emin misiniz ?",
 	"kapat": "Kapat",

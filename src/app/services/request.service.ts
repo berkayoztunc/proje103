@@ -135,7 +135,7 @@ export class RequestService {
             if(error.error.condition){
               this.error = error.error.message;
             }else{
-              this.error = "Eksik veya boş alan gönderdiniz." // burası langlı değil
+              this.error = "M-4000" // burası langlı değil
             }
             break;
         case 403:
