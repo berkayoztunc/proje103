@@ -154,7 +154,7 @@
 	"dialog_no": "Hayır",
 	"dialog_yes": "Evet",
 	"dialog_okey": "Tamam",
-	"dialog_reinstate": "Emin misiniz ? Şakamı yapıyorsunuz ?",
+	"dialog_reinstate": "Emin misiniz ?",
 	"email_send": "Şifre sıfırlanıcak eminmisiniz ?",
 	"error": {
 		"M-4001": "Yetkisiz işlem",

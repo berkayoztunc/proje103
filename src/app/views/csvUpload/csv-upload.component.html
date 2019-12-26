@@ -30,7 +30,7 @@
             </a>
             <button *ngIf="fileError && fileError.length == 0 && uploadSuccess" type="submit"
               class="btn btn-success float-right text-white btn-xs mr-1"
-              [disabled]="formGroup.invalid || formGroup.prestine"> {{ 'upload.upload' | translate }}</button>
+              [disabled]="formGroup.invalid || formGroup.pristine"> {{ 'upload.upload' | translate }}</button>
 
           </div>
         </div>

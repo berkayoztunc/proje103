@@ -33,6 +33,10 @@
             <p class="text-muted cpl ">{{'policy.EXTERNAL_POLICY_NUMBER' | translate}}</p>
             <p class="text-muted ppl">{{storage.policy.selectedPolicy['EXTERNAL_POLICY_NUMBER'] | dateOverview}}</p>
           </div>
+          <div>
+            <p class="text-muted cpl ">{{'İptal edilme zamanı' | translate}}</p>
+            <p class="text-muted ppl">{{storage.policy.selectedPolicy['CANCELLATION_DATE'] | dateOverview}}</p>
+          </div>
         </div>
         <div class="row m-0" *permissions="'policy.external_policy_number'">
           <div class="col-md-6 offset-3 p-2">

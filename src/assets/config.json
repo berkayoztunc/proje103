@@ -142,17 +142,17 @@
             }
         },
         "cancel-policy" : {
-            "colm" : ["POLICY_NUMBER","CANCEL_DATE","CANCEL_REASON"],
+            "colm" : ["POLICY_NUMBER","CANCELLATION_DATE","CANCEL_REASON_ID"],
             "rule" : {
                 "POLICY_NUMBER" : {
                     "validation" : "required|max:100|min:3",
                     "type" : "string"
                 },
-                "CANCEL_DATE": {
-                    "validation":"required|date:dd/mm/yyyy",
+                "CANCELLATION_DATE": {
+                    "validation":"required|date:DD/MM/yyyy",
                     "type":"date"
                 },
-                "CANCEL_REASON" : {
+                "CANCEL_REASON_ID" : {
                     "validation":"required|number",
                     "type":"integer"
                 }
