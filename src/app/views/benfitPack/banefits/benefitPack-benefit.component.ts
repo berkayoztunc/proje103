@@ -49,11 +49,10 @@ export class BenefitPackBenefitsComponent implements OnInit {
         }
       });
     }
-    
   }
   remove(item, index): void {
 
-    this.request.delete('api/benefitpackbenefits/' + this.storage.benefitPack.selectedBenefitPack.item.BENEFIT_PACK_ID)
+    this.request.delete('api/benefitpackbenefits/' + item.BENEFIT_PACK_BENEFIT_ID)
       .subscribe((response) => {
         if (response) {
           this.selectedPackData.splice(index, 1);

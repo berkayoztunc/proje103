@@ -411,6 +411,7 @@
 		"service_button": "Poliçeyi Aç"
 	},
 	"product": {
+		"REFUND_CANCEL_PERIOD_DAYS" : "Geri ödeme periyod günü",
 		"ACTIVE": "Aktif",
 		"BENEFIT_PACK_ID": "Ürün benefit paketi",
 		"BUSINESS_MODEL": "İş modeli",

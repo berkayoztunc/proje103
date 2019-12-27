@@ -65,6 +65,11 @@
                         name='NEW_COMMISSION_RATE'>
                 </div>
                 <div class='form-group'>
+                    <label>{{'product.REFUND_CANCEL_PERIOD_DAYS' | translate}} </label>
+                    <input  [disabled]="disableMyInput('REFUND_CANCEL_PERIOD_DAYS')"  type='number' class='form-control ' formControlName='REFUND_CANCEL_PERIOD_DAYS'
+                        name='REFUND_CANCEL_PERIOD_DAYS'>
+                </div>
+                <div class='form-group'>
                     <label>{{'product.RENEWAL_COMMISSION_RATE' | translate}} </label>
                     <input [disabled]="disableMyInput('RENEWAL_COMMISSION_RATE')" type='number' class='form-control ' formControlName='RENEWAL_COMMISSION_RATE'
                         name='RENEWAL_COMMISSION_RATE'>
@@ -89,15 +94,7 @@
                         formControlName="CURRENCY">
                     </ng-select>
                 </div>
-                <div class='form-group'>
-                    <label>{{ 'product.OLD_PRODUCT_ID' | translate }} </label>
-                    <input  [disabled]="disableMyInput('OLD_PRODUCT_ID')" type='text' class='form-control ' formControlName='OLD_PRODUCT_ID' name='OLD_PRODUCT_ID'>
-                </div>
-
-                <div class='form-group'>
-                    <label>{{ 'product.OLD_CAMPAIGN_ID' | translate }} </label>
-                    <input [disabled]="disableMyInput('OLD_CAMPAIGN_ID')" type='text' class='form-control ' formControlName='OLD_CAMPAIGN_ID' name='OLD_CAMPAIGN_ID'>
-                </div>
+                
                 <div class='form-group'>
                     <label>{{ 'product.PRODUCT_SALE_TYPE' | translate }} </label>
                     <ng-select [disabled]="disableMyInput('PRODUCT_SALE_TYPE')" [items]="saleType" bindLabel="name" bindValue="value"

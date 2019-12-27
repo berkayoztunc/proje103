@@ -66,8 +66,6 @@ export class ProductFormComponent implements OnInit {
       EXPLANATION: [null], // sınırsız hatırlatma notları textarea
       PRICE: [null],
       CURRENCY: [null, Validators.required], // defaılt: TRY
-      OLD_PRODUCT_ID: [null],
-      OLD_CAMPAIGN_ID: [null],
       PRODUCT_SALE_TYPE: [null, Validators.required], // enum: WHOLESALE || RETAIL
 
     });
@@ -83,11 +81,11 @@ export class ProductFormComponent implements OnInit {
      this.ProductService.getProduct(routeProductId).subscribe(Product=>{
        this.form.patchValue(Product);
      })
-     // request search from http
+     // request search from http corporate
    }*/
-    this.productType = ['INDIVIDUAL', 'CORPARATE'];
+    this.productType = ['INDIVIDUAL', 'CORPORATE'];
     this.saleType = ['WHOLESALE', 'RETAIL'];
-    this.bussinesModel = ['ACENCY', 'SERVICE'];
+    this.bussinesModel = ['AGENCY', 'SERVICE'];
     this.request.get('api/partners').subscribe((response) => {
       this.partners$ = response.data;
     });
@@ -152,6 +150,7 @@ export class ProductFormComponent implements OnInit {
           this.storage.product.products[this.storage.product.selectedProduct.index] = hand;
           this.goBack();
           this.form.reset();
+          this.storage.successDialog();
         }
       });
 
@@ -160,6 +159,7 @@ export class ProductFormComponent implements OnInit {
         if (response) {
           response.data[0].check = true;
           this.storage.product.products.unshift(response);
+          this.storage.successDialog();
           this.form.reset();
           this.goBack();
         }
