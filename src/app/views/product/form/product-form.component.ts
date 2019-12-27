@@ -31,7 +31,7 @@ export class ProductFormComponent implements OnInit {
   bussinesModel = [];
   edit = true;
   change = false;
-  initValue = {};
+  initValue = [];
   // ** crud stumb ** //
   item = this.storage.benefit.benefits;
   selected = this.storage.benefit.selectedBenefit;
@@ -143,9 +143,18 @@ export class ProductFormComponent implements OnInit {
   }
   save(): void {
     if (!this.edit) {
-      const hand = this.form.value;
-      hand.check = true;
-      this.request.update('api/products/' + hand.PRODUCT_ID, hand).subscribe((response) => {
+      let hand = []
+      if(this.storage.product.selectedProduct.USED){
+        hand = this.initValue;
+        hand['MIGRATION_PRODUCT_ID'] = this.form.get('MIGRATION_PRODUCT_ID').value
+        hand['MIGRATION_DATE'] = this.form.get('MIGRATION_DATE').value
+        hand['check'] = true;
+      }else{
+        hand = this.form.value;
+        hand['check'] = true;
+      }
+      
+      this.request.update('api/products/' + hand['PRODUCT_ID'], hand).subscribe((response) => {
         if (response) {
           this.storage.product.products[this.storage.product.selectedProduct.index] = hand;
           this.goBack();

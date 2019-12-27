@@ -97,26 +97,30 @@
             }
         },
         "update-customer" : {
-            "colm" : ["POLICY_NUMBER","CUSTOMER_TYPE","FIRST_NAME","LAST_NAME","MOBILE_PHONE","WORK_PHONE","HOME_PHONE","EMAIL","ADDRESS","CITY_CODE"],
+            "colm" : ["POLICY_NUMBER","CUSTOMER_TYPE","FIRST_NAME","LAST_NAME","NATIONAL_ID","MOBILE_PHONE","WORK_PHONE","HOME_PHONE","EMAIL","ADDRESS","CITY_CODE"],
             "rule" : {
                 "POLICY_NUMBER": {
                     "validation":"required|max:30",
                     "type":"string"
                 },
                 "CUSTOMER_TYPE" :{
-                    "validation":"required|max:15",
+                    "validation":"max:15",
                     "type":"string"
                 },
                 "FIRST_NAME" : {
-                    "validation":"required|max:100",
+                    "validation":"max:100",
                     "type":"string"
                 },
                 "LAST_NAME": {
-                    "validation":"required|max:100",
+                    "validation":"max:100",
+                    "type":"string"
+                },
+                "NATIONAL_ID" : {
+                    "validation":"max:20",
                     "type":"string"
                 },
                 "MOBILE_PHONE" : {
-                    "validation":"required|max:30",
+                    "validation":"max:30",
                     "type":"string"
                 },
                 "WORK_PHONE":{
@@ -132,11 +136,11 @@
                     "type":"string"
                 }, 
                 "ADDRESS" : {
-                    "validation":"required|max:100",
+                    "validation":"max:100",
                     "type":"string"
                 },
                 "CITY_CODE" : {
-                    "validation":"required|max:10",
+                    "validation":"max:10",
                     "type":"string"
                 }
             }
