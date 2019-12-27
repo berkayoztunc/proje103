@@ -18,8 +18,8 @@
                         <tr *ngFor="let item of data; let i = index">
                             <td scope="row">{{item.BATCH_ID}}</td>
                             <td>{{item.BATCH_TYPE}}</td>
-                            <td><a target="_blank" href="{{item.UPDATED_FILE}}">Dosya</a></td>
-                            <td><a target="_blank" href="{{item.ERROR_FILE}}">Dosya</a></td>
+                            <td><a (click)="download(item)">Dosya</a></td>
+                            <td><a (click)="downloadError(item)" >Dosya</a></td>
                             <td>{{item.TOTAL_COUNT}}</td>
                             <td>{{item.ERROR_COUNT}}</td>
                         </tr>

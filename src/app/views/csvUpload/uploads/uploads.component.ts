@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { RequestService } from 'src/app/services/request.service';
+import { ItemsList } from '@ng-select/ng-select/lib/items-list';
 @Component({
   selector: 'app-all-uploads',
   templateUrl: './uploads.component.html',
@@ -14,5 +15,15 @@ export class UploadsComponent implements OnInit {
         this.data  = response.data;
       }
     })
+  }
+  download(item){
+    this.request.get('api/batchs/download-error/'+item.id,).subscribe((response)=>{
+      
+    });
+  }
+  downloadError(item){
+    this.request.get('api/batchs/download/'+item.id).subscribe((response)=>{
+      
+    });
   }
 }
